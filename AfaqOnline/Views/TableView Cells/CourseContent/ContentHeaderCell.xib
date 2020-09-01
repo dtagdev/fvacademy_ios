@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Light.ttf">
+            <string>Poppins-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContentHeaderCell" id="KGk-i7-Jjw" customClass="ContentHeaderCell" customModule="Al_Academya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fhz-Xv-CVE" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgA-gC-ds7">
+                                <rect key="frame" x="3" y="0.0" width="314" height="43"/>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="17"/>
+                                <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YgA-gC-ds7" firstAttribute="width" secondItem="Fhz-Xv-CVE" secondAttribute="width" multiplier="0.98" id="MG4-Nc-x17"/>
+                            <constraint firstItem="YgA-gC-ds7" firstAttribute="centerY" secondItem="Fhz-Xv-CVE" secondAttribute="centerY" id="lJE-kq-voj"/>
+                            <constraint firstItem="YgA-gC-ds7" firstAttribute="centerX" secondItem="Fhz-Xv-CVE" secondAttribute="centerX" id="oMV-Ri-LNs"/>
+                            <constraint firstItem="YgA-gC-ds7" firstAttribute="height" secondItem="Fhz-Xv-CVE" secondAttribute="height" id="tZ8-XT-bTp"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="Fhz-Xv-CVE" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="SZ3-cU-N7g"/>
+                    <constraint firstItem="Fhz-Xv-CVE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eKa-tQ-kSf"/>
+                    <constraint firstItem="Fhz-Xv-CVE" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="j2R-Ha-csX"/>
+                    <constraint firstItem="Fhz-Xv-CVE" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.98" id="lrV-DU-cdi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ContentHeaderLabel" destination="YgA-gC-ds7" id="4fK-5P-Doi"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="141"/>
+        </tableViewCell>
+    </objects>
+</document>

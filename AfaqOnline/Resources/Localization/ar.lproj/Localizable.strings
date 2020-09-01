@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  AfaqOnline
+
+  Created by MGoKu on 6/4/20.
+  Copyright © 2020 Dtag. All rights reserved.
+*/
+
+
+"lang" = "ar";
+"EmptyComment" = "يرجى كتابة التعليق الخاصة بك اولاً";
+"EmptyReview" = "يرجى كتابة المراجعة الخاصة بك اولاً";
+"CommentRecorded" = "تم تسجيل التعليق الخاص بك بنجاح";
+"ReviewRecorded" = "تم تسجيل المراجعة الخاص بك بنجاح";
+"AddToCartMessage" = "لقد تم إضافة الكورس الخاص بك في السلة بنجاح";
+"AddToWishListMessage" = "لقد تم إضافة الكورس الخاص بك في المفضلة لديك";
+"RemoveFromWishListMessage" = "لقد تم إزالة الكورس من المفضلة لديكs";

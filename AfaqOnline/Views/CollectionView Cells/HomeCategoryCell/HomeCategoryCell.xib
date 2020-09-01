@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCategoryCell" id="gTV-IL-0wX" customClass="HomeCategoryCell" customModule="Al_Academya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="226" height="216"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="226" height="216"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1t-NH-Q3w" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                        <rect key="frame" x="2.5" y="2" width="221" height="212"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeCategory" translatesAutoresizingMaskIntoConstraints="NO" id="9ND-fK-WT3" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="221" height="212"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nU-eJ-xlY">
+                                <rect key="frame" x="22" y="182" width="177" height="20"/>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="14"/>
+                                <color key="textColor" red="0.090196078430000007" green="0.31764705879999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="9nU-eJ-xlY" firstAttribute="width" secondItem="o1t-NH-Q3w" secondAttribute="width" multiplier="0.8" id="Av1-2k-lZl"/>
+                            <constraint firstItem="9ND-fK-WT3" firstAttribute="centerY" secondItem="o1t-NH-Q3w" secondAttribute="centerY" id="C36-sL-kq1"/>
+                            <constraint firstItem="9ND-fK-WT3" firstAttribute="height" secondItem="o1t-NH-Q3w" secondAttribute="height" id="HQG-wG-kuO"/>
+                            <constraint firstItem="9nU-eJ-xlY" firstAttribute="centerX" secondItem="9ND-fK-WT3" secondAttribute="centerX" id="IzR-Ef-Io7"/>
+                            <constraint firstItem="9ND-fK-WT3" firstAttribute="centerX" secondItem="o1t-NH-Q3w" secondAttribute="centerX" id="rAw-RQ-FVT"/>
+                            <constraint firstItem="9ND-fK-WT3" firstAttribute="width" secondItem="o1t-NH-Q3w" secondAttribute="width" id="wDL-Uf-Mgr"/>
+                            <constraint firstAttribute="bottom" secondItem="9nU-eJ-xlY" secondAttribute="bottom" constant="10" id="wT7-bg-IIg"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="o1t-NH-Q3w" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="TX1-tK-Tag"/>
+                <constraint firstItem="o1t-NH-Q3w" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.98" id="fk6-lV-iv3"/>
+                <constraint firstItem="o1t-NH-Q3w" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="o5M-Tp-sNX"/>
+                <constraint firstItem="o1t-NH-Q3w" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.98" id="ux5-NN-bB1"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="226" height="216"/>
+            <connections>
+                <outlet property="CategoryImageView" destination="9ND-fK-WT3" id="tZJ-mv-b7n"/>
+                <outlet property="CategoryNameLabel" destination="9nU-eJ-xlY" id="dQt-Q5-UW7"/>
+            </connections>
+            <point key="canvasLocation" x="70" y="160"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="HomeCategory" width="304" height="303.5"/>
+    </resources>
+</document>

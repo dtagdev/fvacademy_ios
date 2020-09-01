@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="gTV-IL-0wX" customClass="CategoryCell" customModule="Al_Academya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="234" height="229"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="234" height="229"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oga-UV-PnE" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                        <rect key="frame" x="1" y="1" width="232" height="227"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeCategory" translatesAutoresizingMaskIntoConstraints="NO" id="q53-XU-9Pm" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="232" height="227"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsB-gh-2a2">
+                                <rect key="frame" x="23.5" y="133.5" width="185" height="20"/>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="14"/>
+                                <color key="textColor" red="0.090196078430000007" green="0.31764705879999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IsB-gh-2a2" firstAttribute="centerX" secondItem="q53-XU-9Pm" secondAttribute="centerX" id="OTx-4z-g6B"/>
+                            <constraint firstItem="q53-XU-9Pm" firstAttribute="centerX" secondItem="oga-UV-PnE" secondAttribute="centerX" id="XYJ-om-p6j"/>
+                            <constraint firstItem="q53-XU-9Pm" firstAttribute="height" secondItem="oga-UV-PnE" secondAttribute="height" id="cQC-On-JpU"/>
+                            <constraint firstItem="IsB-gh-2a2" firstAttribute="centerX" secondItem="oga-UV-PnE" secondAttribute="centerX" id="oEn-tL-t78"/>
+                            <constraint firstItem="q53-XU-9Pm" firstAttribute="width" secondItem="oga-UV-PnE" secondAttribute="width" id="qSz-AM-Kwg"/>
+                            <constraint firstItem="IsB-gh-2a2" firstAttribute="width" secondItem="oga-UV-PnE" secondAttribute="width" multiplier="0.8" id="qfw-iB-bqz"/>
+                            <constraint firstItem="q53-XU-9Pm" firstAttribute="centerY" secondItem="oga-UV-PnE" secondAttribute="centerY" id="szc-6K-AHB"/>
+                            <constraint firstItem="IsB-gh-2a2" firstAttribute="centerY" secondItem="oga-UV-PnE" secondAttribute="centerY" constant="30" id="uGj-nf-8rk"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="oga-UV-PnE" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="RhT-Dt-CSN"/>
+                <constraint firstItem="oga-UV-PnE" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="a65-BA-yeu"/>
+                <constraint firstItem="oga-UV-PnE" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.99" id="esN-tQ-FTs"/>
+                <constraint firstItem="oga-UV-PnE" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.99" id="gUT-F4-WIk"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="234" height="229"/>
+            <connections>
+                <outlet property="CategoryImageView" destination="q53-XU-9Pm" id="pbM-LP-93R"/>
+                <outlet property="CategoryNameLabel" destination="IsB-gh-2a2" id="UQ9-eN-bow"/>
+            </connections>
+            <point key="canvasLocation" x="265.21739130434787" y="199.88839285714286"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="HomeCategory" width="304" height="303.5"/>
+    </resources>
+</document>

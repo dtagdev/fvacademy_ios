@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventChatCell" rowHeight="189" id="KGk-i7-Jjw" customClass="EventChatCell" customModule="Al_Academya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="505" height="189"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="505" height="189"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" translatesAutoresizingMaskIntoConstraints="NO" id="7U7-pc-K7o" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                        <rect key="frame" x="5" y="4.5" width="495" height="180"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MsK-iS-OyP" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="G75-kK-UUQ"/>
+                                    <constraint firstAttribute="width" constant="50" id="m8M-jR-FK2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="H3C-5L-GQ9">
+                                <rect key="frame" x="70" y="10" width="415" height="160"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moderator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtI-b5-7Iv" customClass="CustomLabel" customModule="Al_Academya" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="20"/>
+                                        <color key="backgroundColor" red="1" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="RwO-oA-Ygf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nya-dN-BNa" customClass="CustomTextView" customModule="Al_Academya" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="23" width="415" height="137"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Nya-dN-BNa" firstAttribute="width" secondItem="H3C-5L-GQ9" secondAttribute="width" id="02M-fo-EAv"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="H3C-5L-GQ9" secondAttribute="bottom" constant="10" id="2LU-LQ-17x"/>
+                            <constraint firstAttribute="trailing" secondItem="MsK-iS-OyP" secondAttribute="trailing" constant="10" id="Iqg-hp-MAX"/>
+                            <constraint firstItem="MsK-iS-OyP" firstAttribute="top" secondItem="7U7-pc-K7o" secondAttribute="top" constant="10" id="TNN-Cj-bAk"/>
+                            <constraint firstItem="MsK-iS-OyP" firstAttribute="leading" secondItem="7U7-pc-K7o" secondAttribute="leading" constant="10" id="brx-tq-v40"/>
+                            <constraint firstItem="H3C-5L-GQ9" firstAttribute="leading" secondItem="MsK-iS-OyP" secondAttribute="trailing" constant="10" id="ocU-rU-s9m"/>
+                            <constraint firstAttribute="trailing" secondItem="H3C-5L-GQ9" secondAttribute="trailing" constant="10" id="slf-xc-rC5"/>
+                            <constraint firstItem="H3C-5L-GQ9" firstAttribute="top" secondItem="MsK-iS-OyP" secondAttribute="top" id="uei-PY-kY3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Iqg-hp-MAX"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7U7-pc-K7o" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gbd-xe-Pgc"/>
+                    <constraint firstItem="7U7-pc-K7o" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="jw3-3F-Cq9"/>
+                    <constraint firstItem="7U7-pc-K7o" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.95" id="mc5-7V-kCP"/>
+                    <constraint firstItem="7U7-pc-K7o" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.98" id="uYE-pa-e67"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="MessageContentTV" destination="Nya-dN-BNa" id="beN-pL-D2m"/>
+                <outlet property="MessageContentView" destination="7U7-pc-K7o" id="3vw-ga-qr3"/>
+                <outlet property="UserContentView" destination="H3C-5L-GQ9" id="6dN-U4-k6g"/>
+                <outlet property="UserImageView" destination="MsK-iS-OyP" id="TIc-PU-RtT"/>
+                <outlet property="UserNameLabel" destination="JtI-b5-7Iv" id="aUH-nm-yeP"/>
+            </connections>
+            <point key="canvasLocation" x="239.85507246376812" y="189.17410714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  AfaqOnline
+
+  Created by MGoKu on 6/4/20.
+  Copyright © 2020 Dtag. All rights reserved.
+*/
+
+
+"lang" = "en";
+"EmptyComment" = "Please write your comment first";
+"EmptyReview" = "Please write your review first";
+"CommentRecorded" = "Your comment have been submitted successfully";
+"ReviewRecorded" = "Your review have been submitted successfully";
+"AddToCartMessage" = "Your course have been added to cart successfully";
+"AddToWishListMessage" = "Your course have been added to your wishlist";
+"RemoveFromWishListMessage" = "Your course have been removed from your wishlist";

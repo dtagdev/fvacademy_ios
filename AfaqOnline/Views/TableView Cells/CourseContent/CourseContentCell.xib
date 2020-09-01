@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Light.ttf">
+            <string>Poppins-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CourseContentCell" rowHeight="53" id="KGk-i7-Jjw" customClass="CourseContentCell" customModule="Al_Academya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="53"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="53"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Qy-0b-cIc" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                        <rect key="frame" x="5.5" y="1.5" width="339.5" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0H-o5-cS2">
+                                <rect key="frame" x="50" y="0.0" width="209.5" height="50"/>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="17"/>
+                                <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YkU-f4-zfD">
+                                <rect key="frame" x="5" y="5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="K7W-nx-oj1"/>
+                                    <constraint firstAttribute="height" constant="40" id="YxM-Fx-6HE"/>
+                                </constraints>
+                                <state key="normal" image="Play"/>
+                                <connections>
+                                    <action selector="playAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="w2f-1P-1Sn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:22AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zQ-ed-HUv">
+                                <rect key="frame" x="264.5" y="5" width="70" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="fTd-51-c16"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="r0H-o5-cS2" firstAttribute="leading" secondItem="YkU-f4-zfD" secondAttribute="trailing" constant="5" id="65k-gn-MUs"/>
+                            <constraint firstItem="r0H-o5-cS2" firstAttribute="centerY" secondItem="4Qy-0b-cIc" secondAttribute="centerY" id="8pB-I4-Buj"/>
+                            <constraint firstItem="YkU-f4-zfD" firstAttribute="leading" secondItem="4Qy-0b-cIc" secondAttribute="leading" constant="5" id="Gn9-7x-kBp"/>
+                            <constraint firstItem="8zQ-ed-HUv" firstAttribute="top" secondItem="4Qy-0b-cIc" secondAttribute="top" constant="5" id="RKf-eW-E3P"/>
+                            <constraint firstItem="YkU-f4-zfD" firstAttribute="top" secondItem="4Qy-0b-cIc" secondAttribute="top" constant="5" id="RiB-p8-efE"/>
+                            <constraint firstItem="r0H-o5-cS2" firstAttribute="height" secondItem="4Qy-0b-cIc" secondAttribute="height" id="d95-JY-TNt"/>
+                            <constraint firstItem="8zQ-ed-HUv" firstAttribute="leading" secondItem="r0H-o5-cS2" secondAttribute="trailing" constant="5" id="jIh-gw-oN3"/>
+                            <constraint firstAttribute="trailing" secondItem="8zQ-ed-HUv" secondAttribute="trailing" constant="5" id="xm9-b1-Doq"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="4Qy-0b-cIc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="i1J-Ox-7xS"/>
+                    <constraint firstItem="4Qy-0b-cIc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mp0-PU-OQK"/>
+                    <constraint firstItem="4Qy-0b-cIc" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.95" id="rUr-fe-R0L"/>
+                    <constraint firstItem="4Qy-0b-cIc" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.97" id="zyH-M1-wHz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="contentDurationLabel" destination="8zQ-ed-HUv" id="bL1-3f-H2o"/>
+                <outlet property="courseContentLabel" destination="r0H-o5-cS2" id="vxI-7K-J7d"/>
+                <outlet property="playButton" destination="YkU-f4-zfD" id="WQk-zt-2gr"/>
+            </connections>
+            <point key="canvasLocation" x="153.62318840579712" y="143.63839285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Play" width="184" height="184"/>
+    </resources>
+</document>

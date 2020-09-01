@@ -2,12 +2,13 @@
 //  AfaqOnlineTests.swift
 //  AfaqOnlineTests
 //
-//  Created by MGoKu on 5/5/20.
+//  Created by MGoKu on 6/4/20.
 //  Copyright © 2020 Dtag. All rights reserved.
 //
 
 import XCTest
-@testable import AfaqOnline
+@testable import Al_Academya
+
 
 class AfaqOnlineTests: XCTestCase {
 
@@ -26,7 +27,7 @@ class AfaqOnlineTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }

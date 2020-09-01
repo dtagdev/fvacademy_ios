@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AdsCell" id="gTV-IL-0wX" customClass="AdsCell" customModule="Al_Academya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="432" height="169"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="432" height="169"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fG9-uD-F1E" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                        <rect key="frame" x="2" y="1" width="428" height="167"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pana1" translatesAutoresizingMaskIntoConstraints="NO" id="XIZ-e6-cIN">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="167"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XIZ-e6-cIN" firstAttribute="centerY" secondItem="fG9-uD-F1E" secondAttribute="centerY" id="4ZX-9z-rCD"/>
+                            <constraint firstItem="XIZ-e6-cIN" firstAttribute="width" secondItem="fG9-uD-F1E" secondAttribute="width" id="AvQ-Gm-DhW"/>
+                            <constraint firstItem="XIZ-e6-cIN" firstAttribute="height" secondItem="fG9-uD-F1E" secondAttribute="height" id="TEP-hP-PAd"/>
+                            <constraint firstItem="XIZ-e6-cIN" firstAttribute="centerX" secondItem="fG9-uD-F1E" secondAttribute="centerX" id="hZR-uB-H53"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="fG9-uD-F1E" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ETG-kx-4K7"/>
+                <constraint firstItem="fG9-uD-F1E" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.99" id="QBe-VD-71f"/>
+                <constraint firstItem="fG9-uD-F1E" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.99" id="XwV-1V-rb7"/>
+                <constraint firstItem="fG9-uD-F1E" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="yU3-Wx-4aU"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="432" height="169"/>
+            <connections>
+                <outlet property="AdImageView" destination="XIZ-e6-cIN" id="E77-tW-K3Q"/>
+                <outlet property="ImageView" destination="fG9-uD-F1E" id="opm-OC-IUZ"/>
+            </connections>
+            <point key="canvasLocation" x="222" y="150"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="pana1" width="1109" height="402"/>
+    </resources>
+</document>

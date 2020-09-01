@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WishlistCell" rowHeight="150" id="KGk-i7-Jjw" customClass="WishlistCell" customModule="Al_Academya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="164"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="164"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdq-ga-loX" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                        <rect key="frame" x="8" y="8" width="377" height="148"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="EaW-Ni-BQB">
+                                <rect key="frame" x="302" y="15" width="70" height="25"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeCategory" translatesAutoresizingMaskIntoConstraints="NO" id="aZK-Vw-8NF" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
+                                        <rect key="frame" x="45" y="0.0" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="Ytp-Vf-UwS"/>
+                                            <constraint firstAttribute="height" constant="25" id="z80-gY-wvN"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeCategory" translatesAutoresizingMaskIntoConstraints="NO" id="kwr-hD-2A3" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="0.0" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="TOj-Uy-Sls"/>
+                                            <constraint firstAttribute="width" constant="25" id="rU7-t5-kzc"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeCategory" translatesAutoresizingMaskIntoConstraints="NO" id="pre-Tu-5aW" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="0.0" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="ZP3-6g-K20"/>
+                                            <constraint firstAttribute="height" constant="25" id="tmi-lm-vnd"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeCategory" translatesAutoresizingMaskIntoConstraints="NO" id="ess-PJ-Ypi" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="uqq-uk-Xyd"/>
+                                            <constraint firstAttribute="height" constant="25" id="wtB-oW-bZy"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0GF-r2-dux">
+                                <rect key="frame" x="0.0" y="0.0" width="113" height="148"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcG-fr-Pfo">
+                                <rect key="frame" x="123" y="15.5" width="169" height="24"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
+                                <color key="textColor" red="0.24313725490196078" green="0.24705882352941178" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some description about the course for 2 lines Starting from here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cff-QV-bQJ">
+                                <rect key="frame" x="123" y="49.5" width="244" height="39.5"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                <color key="textColor" red="0.54117647058823526" green="0.59607843137254901" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dX-Ul-4mQ" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                                <rect key="frame" x="247" y="108" width="120" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="350 SAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgq-0V-TMK">
+                                        <rect key="frame" x="5" y="4.5" width="110" height="21"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                        <color key="textColor" red="0.94117647059999998" green="0.96862745100000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U10-7y-h8W">
+                                        <rect key="frame" x="90" y="2.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="3g2-Xc-9Bh"/>
+                                            <constraint firstAttribute="width" constant="25" id="Df7-nd-4KL"/>
+                                        </constraints>
+                                        <state key="normal" image="next"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVk-Pe-odf">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                        <connections>
+                                            <action selector="CourseDetailsAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gXR-bk-jmj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dVk-Pe-odf" firstAttribute="centerX" secondItem="0dX-Ul-4mQ" secondAttribute="centerX" id="7jD-Hp-whK"/>
+                                    <constraint firstItem="U10-7y-h8W" firstAttribute="centerY" secondItem="0dX-Ul-4mQ" secondAttribute="centerY" id="CgK-i6-e7E"/>
+                                    <constraint firstItem="dVk-Pe-odf" firstAttribute="height" secondItem="0dX-Ul-4mQ" secondAttribute="height" id="CzY-vz-nhM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pgq-0V-TMK" secondAttribute="trailing" constant="5" id="ILi-sV-vZ8"/>
+                                    <constraint firstAttribute="trailing" secondItem="U10-7y-h8W" secondAttribute="trailing" constant="5" id="LbW-Mh-DdL"/>
+                                    <constraint firstItem="Pgq-0V-TMK" firstAttribute="centerY" secondItem="0dX-Ul-4mQ" secondAttribute="centerY" id="NFH-l9-1F9"/>
+                                    <constraint firstAttribute="height" constant="30" id="ZDT-mG-Mhn"/>
+                                    <constraint firstItem="dVk-Pe-odf" firstAttribute="width" secondItem="0dX-Ul-4mQ" secondAttribute="width" id="aAk-k8-WBw"/>
+                                    <constraint firstItem="Pgq-0V-TMK" firstAttribute="leading" secondItem="0dX-Ul-4mQ" secondAttribute="leading" constant="5" id="aMP-cR-ei6"/>
+                                    <constraint firstAttribute="width" constant="120" id="dH2-QL-FdG"/>
+                                    <constraint firstItem="dVk-Pe-odf" firstAttribute="centerY" secondItem="0dX-Ul-4mQ" secondAttribute="centerY" id="vmZ-Un-ZVZ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0GF-r2-dux" firstAttribute="width" secondItem="xdq-ga-loX" secondAttribute="width" multiplier="0.3" id="4Qe-48-goW"/>
+                            <constraint firstItem="Cff-QV-bQJ" firstAttribute="leading" secondItem="0GF-r2-dux" secondAttribute="trailing" constant="10" id="Bmf-p1-smr"/>
+                            <constraint firstItem="0GF-r2-dux" firstAttribute="height" secondItem="xdq-ga-loX" secondAttribute="height" id="QKp-1T-76l"/>
+                            <constraint firstItem="Cff-QV-bQJ" firstAttribute="top" secondItem="LcG-fr-Pfo" secondAttribute="bottom" constant="10" id="RbB-cH-fpv"/>
+                            <constraint firstAttribute="trailing" secondItem="0dX-Ul-4mQ" secondAttribute="trailing" constant="10" id="RtJ-eD-TqL"/>
+                            <constraint firstItem="LcG-fr-Pfo" firstAttribute="centerY" secondItem="EaW-Ni-BQB" secondAttribute="centerY" id="U9Y-Wk-OSZ"/>
+                            <constraint firstItem="EaW-Ni-BQB" firstAttribute="top" secondItem="xdq-ga-loX" secondAttribute="top" constant="15" id="grs-xj-9zL"/>
+                            <constraint firstAttribute="trailing" secondItem="Cff-QV-bQJ" secondAttribute="trailing" constant="10" id="jTf-Rp-DBH"/>
+                            <constraint firstAttribute="trailing" secondItem="EaW-Ni-BQB" secondAttribute="trailing" constant="5" id="k5V-Gv-xFl"/>
+                            <constraint firstItem="EaW-Ni-BQB" firstAttribute="leading" secondItem="LcG-fr-Pfo" secondAttribute="trailing" constant="10" id="kdO-79-q2H"/>
+                            <constraint firstItem="0GF-r2-dux" firstAttribute="centerY" secondItem="xdq-ga-loX" secondAttribute="centerY" id="mzD-yT-lJ0"/>
+                            <constraint firstItem="0GF-r2-dux" firstAttribute="leading" secondItem="xdq-ga-loX" secondAttribute="leading" id="rGR-l3-h12"/>
+                            <constraint firstItem="LcG-fr-Pfo" firstAttribute="leading" secondItem="0GF-r2-dux" secondAttribute="trailing" constant="10" id="sEX-tv-cp3"/>
+                            <constraint firstAttribute="bottom" secondItem="0dX-Ul-4mQ" secondAttribute="bottom" constant="10" id="w0n-gp-xc7"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.29999999999999999"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="xdq-ga-loX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qai-9G-tgp"/>
+                    <constraint firstItem="xdq-ga-loX" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="gMt-Ua-Fw9"/>
+                    <constraint firstItem="xdq-ga-loX" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.96" id="iyp-O4-Bw5"/>
+                    <constraint firstItem="xdq-ga-loX" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.9" id="pW7-hG-vou"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="CourseDescLabel" destination="Cff-QV-bQJ" id="OAM-sA-2sB"/>
+                <outlet property="CourseNameLabel" destination="LcG-fr-Pfo" id="9Hw-tY-au1"/>
+                <outlet property="CoursePriceLabel" destination="Pgq-0V-TMK" id="aVH-01-Vzz"/>
+                <outlet property="InstructorImageView" destination="0GF-r2-dux" id="gnf-qC-63S"/>
+                <outlet property="PriceView" destination="0dX-Ul-4mQ" id="E7t-aQ-mzM"/>
+                <outlet property="firstImageView" destination="ess-PJ-Ypi" id="crh-i1-td9"/>
+                <outlet property="lastImageView" destination="aZK-Vw-8NF" id="ViL-Ol-Vae"/>
+                <outlet property="secondImageView" destination="pre-Tu-5aW" id="ZnE-83-Xfi"/>
+                <outlet property="thirdImageView" destination="kwr-hD-2A3" id="XyI-zF-FAs"/>
+            </connections>
+            <point key="canvasLocation" x="183.33333333333334" y="178.79464285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="HomeCategory" width="304" height="303.5"/>
+        <image name="next" width="37.5" height="37.5"/>
+    </resources>
+</document>

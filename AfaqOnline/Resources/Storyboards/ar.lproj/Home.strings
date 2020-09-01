@@ -1,0 +1,69 @@
+
+/* Class = "UILabel"; text = "My Orders"; ObjectID = "1Yv-Oz-tkf"; */
+"1Yv-Oz-tkf.text" = "طلباتي";
+
+/* Class = "UIButton"; normalTitle = "Edit Profile"; ObjectID = "5SU-1u-rQM"; */
+"5SU-1u-rQM.normalTitle" = "تعديل الصفحة الشخصية";
+
+/* Class = "UILabel"; text = "My Cart"; ObjectID = "5Ux-cd-64U"; */
+"5Ux-cd-64U.text" = "السلة";
+
+/* Class = "UIButton"; normalTitle = "See all (45)"; ObjectID = "5bi-VW-Nem"; */
+"5bi-VW-Nem.normalTitle" = "See all (45)";
+
+/* Class = "UIButton"; normalTitle = "See all (9)"; ObjectID = "733-jf-0sh"; */
+"733-jf-0sh.normalTitle" = "See all (9)";
+
+/* Class = "UIButton"; normalTitle = "See all (56)"; ObjectID = "7pr-Pc-E00"; */
+"7pr-Pc-E00.normalTitle" = "See all (56)";
+
+/* Class = "UITextField"; placeholder = "Search for your item"; ObjectID = "9IR-p1-kDg"; */
+"9IR-p1-kDg.placeholder" = "Search for your item";
+
+/* Class = "UILabel"; text = "Future Vision"; ObjectID = "AWT-ll-MGM"; */
+"AWT-ll-MGM.text" = "Future Vision";
+
+/* Class = "UILabel"; text = "email@gmail.com"; ObjectID = "EJR-ju-kmx"; */
+"EJR-ju-kmx.text" = "email@gmail.com";
+
+/* Class = "UILabel"; text = "Upcoming Events"; ObjectID = "IeH-is-tIz"; */
+"IeH-is-tIz.text" = "Upcoming Events";
+
+/* Class = "UITextField"; placeholder = "Search for your item"; ObjectID = "MST-VK-HtC"; */
+"MST-VK-HtC.placeholder" = "Search for your item";
+
+/* Class = "UITextField"; placeholder = "Search for your item"; ObjectID = "TkK-b5-LVn"; */
+"TkK-b5-LVn.placeholder" = "Search for your item";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "aRK-GT-NaD"; */
+"aRK-GT-NaD.text" = "Category";
+
+/* Class = "UILabel"; text = "Trending Courses"; ObjectID = "cnB-t9-AN8"; */
+"cnB-t9-AN8.text" = "Trending Courses";
+
+/* Class = "UIButton"; normalTitle = "Continue To Checkout"; ObjectID = "dAM-z3-Wtv"; */
+"dAM-z3-Wtv.normalTitle" = "Continue To Checkout";
+
+/* Class = "UIButton"; normalTitle = "See all (45)"; ObjectID = "hc0-kf-vIs"; */
+"hc0-kf-vIs.normalTitle" = "See all (45)";
+
+/* Class = "UILabel"; text = "Profile"; ObjectID = "iuh-tL-Q6k"; */
+"iuh-tL-Q6k.text" = "Profile";
+
+/* Class = "UILabel"; text = "Mohamed Ahmed"; ObjectID = "mxy-RF-ryG"; */
+"mxy-RF-ryG.text" = "Mohamed Ahmed";
+
+/* Class = "UIButton"; normalTitle = "Browse More"; ObjectID = "nXT-md-7ou"; */
+"nXT-md-7ou.normalTitle" = "Browse More";
+
+/* Class = "UITextField"; placeholder = "Search for your item"; ObjectID = "p7J-hP-d8a"; */
+"p7J-hP-d8a.placeholder" = "Search for your item";
+
+/* Class = "UILabel"; text = "Instructors"; ObjectID = "tee-9d-x0U"; */
+"tee-9d-x0U.text" = "Instructors";
+
+/* Class = "UILabel"; text = "Wishlist"; ObjectID = "wWG-sI-O6G"; */
+"wWG-sI-O6G.text" = "Wishlist";
+
+/* Class = "UITextField"; placeholder = "Search for your item"; ObjectID = "zcF-EW-EUf"; */
+"zcF-EW-EUf.placeholder" = "Search for your item";
