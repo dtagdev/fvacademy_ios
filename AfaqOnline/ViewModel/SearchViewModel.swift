@@ -13,9 +13,9 @@ import SVProgressHUD
 
 struct SearchViewModel {
 
-    var Results = PublishSubject<[CoursesData]>()
+    var Results = PublishSubject<[TrendCourse]>()
     
-    func fetchResults(data: [CoursesData]) {
+    func fetchResults(data: [TrendCourse]) {
         self.Results.onNext(data)
     }
 

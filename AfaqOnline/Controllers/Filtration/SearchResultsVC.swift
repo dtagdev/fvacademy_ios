@@ -23,7 +23,7 @@ class SearchResultsVC: UIViewController {
     var disposeBag = DisposeBag()
     private let cellIdentifier = "SearchCell"
     
-    var results = [CoursesData]() {
+    var results = [TrendCourse]() {
         didSet {
             DispatchQueue.main.async {
                 self.SearchVM.fetchResults(data: self.results)
@@ -123,10 +123,14 @@ extension SearchResultsVC: UITableViewDelegate {
     func setupResultTableView() {
 
         self.ResultsTableView.rx.setDelegate(self).disposed(by: disposeBag)
+        
         self.ResultsTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        
         self.SearchVM.Results.bind(to: self.ResultsTableView.rx.items(cellIdentifier: self.cellIdentifier, cellType: SearchCell.self)) { index, element, cell in
-            cell.config(InstructorImageUrl: "", CourseName: self.results[index].name ?? "", InstructorName: "TestInstructor", CourseTime: self.results[index].time ?? "", CoursePrice: self.results[index].price ?? "", discountPrice: self.results[index].discount ?? "")
-        }.disposed(by: disposeBag)
+                 // cell.config(InstructorImageUrl: "", CourseName: self.results[index].name ?? "", InstructorName: "TestInstructor", CourseTime: self.results[index].time ?? "", CoursePrice: self.results[index].price ?? "", discountPrice: self.results[index].discount ?? "")
+              }.disposed(by: disposeBag)
+              
+        
         
         self.ResultsTableView.rx.itemSelected.bind { (indexPath) in
             

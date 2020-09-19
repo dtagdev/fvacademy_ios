@@ -63,7 +63,7 @@ class CourseDetailsVC: UIViewController {
 //            }
 //        }
 //    }
-    var RecommendedCourses = [CoursesData]() {
+    var RecommendedCourses = [TrendCourse]() {
         didSet {
             DispatchQueue.main.async {
                 self.courseViewModel.fetchRecommendedCourses(data: self.RecommendedCourses)
@@ -177,38 +177,38 @@ class CourseDetailsVC: UIViewController {
 
 extension CourseDetailsVC {
     func getCourseDetails(course_id: Int) {
-        self.courseViewModel.getCourseDetails(course_id: course_id).subscribe(onNext: { (courseDetails) in
-            if let data =  courseDetails.data {
-//                self.course_id = data.id ?? 0
-                self.courseNameLabel.text = data.name ?? ""
-                self.courseDescriptionTextView.text = data.details ?? ""
-                self.price_discountLabel.attributedText = NSAttributedString(attributedString: (data.price ?? "").strikeThrough()) + NSAttributedString(string: "\n\((Int(data.price ?? "") ?? 0) - (Int(data.discount ?? "") ?? 0)) SAR")
-                self.price = "\((Int(data.price ?? "") ?? 0) - (Int(data.discount ?? "") ?? 0))"
-                self.ratingLabel.text = "\((data.rate ?? 0.0).rounded(toPlaces: 2))"
-                if data.isPurchased == 1 {
-                    self.purchasedFlag = true
-                    self.PurchasedStatusLabel.isHidden = false
-                    self.RecommendedLabel.text = "Related Courses"
-                } else {
-                    self.purchasedFlag = false
-                    self.PurchasedStatusLabel.isHidden = true
-                    self.RecommendedLabel.text = "Recommended"
-                }
-                if data.isWishlist == 1 {
-                    self.wishlistFlag = true
-                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
-                } else {
-                    self.wishlistFlag = false
-                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkUnSelected"), for: .normal)
-                }
-                self.courseTimeLabel.text = "\(data.time ?? "") mins"
-                self.getRelatedCourses(course_id: course_id)
-                self.overViewRequirementsTV.text = ""
-                self.courseTypeLabel.text = data.type ?? ""
-            }
-        }, onError: { (error) in
-            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-            }).disposed(by: disposeBag)
+//        self.courseViewModel.getCourseDetails(course_id: course_id).subscribe(onNext: { (courseDetails) in
+//            if let data =  courseDetails.data {
+////                self.course_id = data.id ?? 0
+//                self.courseNameLabel.text = data.name ?? ""
+//                self.courseDescriptionTextView.text = data.details ?? ""
+//                self.price_discountLabel.attributedText = NSAttributedString(attributedString: (data.price ?? "").strikeThrough()) + NSAttributedString(string: "\n\((Int(data.price ?? "") ?? 0) - (Int(data.discount ?? "") ?? 0)) SAR")
+//                self.price = "\((Int(data.price ?? "") ?? 0) - (Int(data.discount ?? "") ?? 0))"
+//                self.ratingLabel.text = "\((data.rate ?? 0.0).rounded(toPlaces: 2))"
+//                if data.isPurchased == 1 {
+//                    self.purchasedFlag = true
+//                    self.PurchasedStatusLabel.isHidden = false
+//                    self.RecommendedLabel.text = "Related Courses"
+//                } else {
+//                    self.purchasedFlag = false
+//                    self.PurchasedStatusLabel.isHidden = true
+//                    self.RecommendedLabel.text = "Recommended"
+//                }
+//                if data.isWishlist == 1 {
+//                    self.wishlistFlag = true
+//                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
+//                } else {
+//                    self.wishlistFlag = false
+//                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkUnSelected"), for: .normal)
+//                }
+//                self.courseTimeLabel.text = "\(data.time ?? "") mins"
+//                self.getRelatedCourses(course_id: course_id)
+//                self.overViewRequirementsTV.text = ""
+//                self.courseTypeLabel.text = data.type ?? ""
+//            }
+//        }, onError: { (error) in
+//            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+//            }).disposed(by: disposeBag)
     }
     
     func getRelatedCourses(course_id: Int) {

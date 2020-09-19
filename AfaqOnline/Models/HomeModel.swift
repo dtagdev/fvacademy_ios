@@ -6,65 +6,128 @@
 //  Copyright © 2020 Dtag. All rights reserved.
 //
 
+
+
+
 import Foundation
 
-// MARK: - CourseDetailsModel
+// MARK: - HomeModelJSON
 struct HomeModelJSON: Codable {
-    var data: HomeDataClass?
-    var status: Bool?
-    var errors: String?
+    let data: HomeDataClass?
+    let status: Bool?
+    let errors: String?
 }
 
 // MARK: - DataClass
 struct HomeDataClass: Codable {
-    var trendCourses: [CoursesData]?
-    var categories: [Category]?
-    var instructores: [Instructore]?
+    let courses: [TrendCourse]?
+    let categories: [Category]?
+    let instructors: [Instructor]?
+    let events: [Event]?
 
     enum CodingKeys: String, CodingKey {
-        case trendCourses = "trend_courses"
-        case categories, instructores
+        case courses
+        case categories, instructors, events
     }
 }
 
 // MARK: - Category
 struct Category: Codable {
-    var id: Int?
-    var name, img: String?
-    var lang: Int?
-    var createdAt, updatedAt: String?
+    let id: Int?
+    let name, image: String?
+    let lang: Int?
+    let createdAt: String?
+    var selected: Bool?
 
     enum CodingKeys: String, CodingKey {
-        case id, name, img, lang
+        case id, name, image, lang
         case createdAt = "created_at"
-        case updatedAt = "updated_at"
+        case selected
     }
+
+
 }
 
-// MARK: - Instructore
-struct Instructore: Codable {
-    var id: Int?
-    var image: String?
-    var categoryID, instractuerID: Int?
-    var createdAt, updatedAt: String?
-    var userData: UserData?
+// MARK: - Event
+struct Event: Codable {
+    let id: Int?
+    let name, eventDescription, details, level: String?
+    let time, mainImage, price: String?
+    let eventURL, discount: String?
+    let startDate, endDate: String?
+    let trend, lang, categoryID, instractuerID: Int?
+    let createdAt, updatedAt: String?
+    let instructors: [User]?
+    let comments: [Comment]?
+    let contents: [Content]?
+    let category: Category?
+    
+
 
     enum CodingKeys: String, CodingKey {
-        case id, image
+        case id, name
+        case eventDescription = "description"
+        case details, level, time
+        case mainImage = "main_image"
+        case price
+        case eventURL = "event_url"
+        case discount
+        case startDate = "start_date"
+        case endDate = "end_date"
+        case trend, lang
         case categoryID = "category_id"
         case instractuerID = "instractuer_id"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
-        case userData = "user_data"
+        case instructors,comments,category,contents
+    }
+
+}
+
+// MARK: - Content
+struct Content: Codable {
+    let id: Int?
+    let title, startTime, endTime: String?
+    let live, eventID, instructorID: Int?
+    let createdAt, updatedAt: String?
+    let instructor: Instructor?
+
+    enum CodingKeys: String, CodingKey {
+        case id, title
+        case startTime = "start_time"
+        case endTime = "end_time"
+        case live
+        case eventID = "event_id"
+        case instructorID = "instructor_id"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case instructor
     }
 }
 
-// MARK: - UserData
-struct UserData: Codable {
-    var id: Int?
-    var firstName, lastName, title, job: String?
-    var idNumber, medicalNumber, phone, gender: String?
-    var email, emailVerifiedAt, createdAt, updatedAt: String?
+struct Comment: Codable {
+    let id, eventID, userID: Int?
+    let comment, createdAt, updatedAt: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case eventID = "event_id"
+        case userID = "user_id"
+        case comment
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}
+
+
+// MARK: - Instractuer
+struct User: Codable {
+    let id: Int?
+    let firstName, lastName, title, job: String?
+    let idNumber, medicalNumber, phone, gender: String?
+    let email: String?
+    let emailVerifiedAt: String?
+    let createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -80,10 +143,103 @@ struct UserData: Codable {
     }
 }
 
+// MARK: - Instructor
+struct Instructor: Codable {
+    let id: Int?
+       let image: String?
+       let lang: Int?
+       let details: String?
+       let category: Category?
+       let user: User?
+       let rate: String?
+       let rates: [Rate]?
+       let courses: [TrendCourse]?
+    }
 
-//MARK:- Profile Model
+// MARK: - TrendCourse
+struct TrendCourse: Codable {
+    let id: Int?
+    let name, type, courseDescription, details: String?
+    let level, time, mainImage, price: String?
+    let courseURL: String?
+    let discount: String?
+    let trend: Int?
+    let lang: Int?
+    let startDate, endDate: String?
+    let categoryID, instructorID, status: Int?
+    let createdAt, updatedAt: String?
+    let isWishlist, isPurchased: Bool?
+    let rate: Int?
+    let chapters: [Chapter]?
+    let instructor: Instructor?
+
+    enum CodingKeys: String, CodingKey {
+       case id, name, type
+          case courseDescription = "description"
+          case details, level, time
+          case mainImage = "main_image"
+          case price
+          case courseURL = "course_url"
+          case discount, trend, lang
+          case startDate = "start_date"
+          case endDate = "end_date"
+          case categoryID = "category_id"
+          case instructorID = "instructor_id"
+          case status
+          case createdAt = "created_at"
+          case updatedAt = "updated_at"
+          case isWishlist = "is_wishlist"
+          case isPurchased = "is_purchased"
+         case rate, chapters, instructor
+    }
+}
+// MARK: - Chapter
+struct Chapter: Codable {
+    let id: Int?
+    let name, createdAt: String?
+    let lessons: [Lesson]?
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case createdAt = "created_at"
+        case lessons
+    }
+}
+
+// MARK: - Lesson
+struct Lesson: Codable {
+    let id: Int?
+    let name: String?
+    let read: Int?
+    let videoURL, createdAt: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, name, read
+        case videoURL = "video_url"
+        case createdAt = "created_at"
+    }
+}
+
+
+
+
 struct ProfileModelJSON: Codable {
-    var data: UserData?
+    var data: User?
     var status: Bool?
     var errors: String?
+}
+
+struct Rate: Codable {
+    let id, instructorID, userID, rateValue: Int?
+    let comment, createdAt, updatedAt: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case instructorID = "instructor_id"
+        case userID = "user_id"
+        case rateValue = "rate_value"
+        case comment
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
 }

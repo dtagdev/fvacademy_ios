@@ -96,9 +96,9 @@ extension InstructorDetailsVC {
     func getInstructorDetails(instructor_id: Int) {
         self.instructorViewModel.getInstructorDetails(instructor_id: instructor_id).subscribe(onNext: { (InstructorModel) in
             if let data = InstructorModel.data {
-                let user = data.userData ?? UserData()
-                self.InstructorNameLabel.text = "\(user.firstName ?? "") \(user.lastName ?? "")"
-                self.InstructorEmailLabel.text = user.email ?? ""
+                let user = data.user
+                self.InstructorNameLabel.text = "\(user?.firstName ?? "") \(user?.lastName ?? "")"
+                self.InstructorEmailLabel.text = user?.email ?? ""
                 self.InstructorRating.text = "\(4) Instructor Rating"
 //                self.InstructorSummaryTV.text = data.de
                 if data.image ?? "" != "" {

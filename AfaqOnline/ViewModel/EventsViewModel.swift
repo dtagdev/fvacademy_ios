@@ -11,7 +11,7 @@ import RxSwift
 import SVProgressHUD
 
 struct  EventsViewModel {
-    var Events = PublishSubject<[String]>()
+    var Events = PublishSubject<[Event]>()
     var Ads = PublishSubject<[String]>()
     var Participants = PublishSubject<[String]>()
     
@@ -22,7 +22,7 @@ struct  EventsViewModel {
     func fetchParticipants(data: [String]) {
         self.Participants.onNext(data)
     }
-    func fetchEvents(Events: [String]) {
+    func fetchEvents(Events: [Event]) {
         self.Events.onNext(Events)
     }
     
@@ -32,6 +32,22 @@ struct  EventsViewModel {
     func dismissIndicator() {
         SVProgressHUD.dismiss()
     }
+    
+    
+    func getAllEvent(page: Int) -> Observable<AllEventModelJSON> {
+        var lang = Int()
+        if "lang".localized == "ar" {
+            lang = 0
+        } else {
+            lang = 1
+        }
+        let params = [
+            "page": page
+        ]
+        let observer = GetServices.shared.getAllEvent(params: params, lang: 1)
+        return observer
+    }
+
     
     func postAddToCart(course_id: Int, price: String) -> Observable<AddToCartModelJSON> {
         let params: [String: Any] = [

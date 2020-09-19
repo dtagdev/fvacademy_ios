@@ -12,14 +12,14 @@ import SVProgressHUD
 
 struct InstructorsViewModel {
     var Ads = PublishSubject<[String]>()
-    var Instructors = PublishSubject<[InstructorsData]>()
+    var Instructors = PublishSubject<[Instructor]>()
     
     
     func fetchAds(Ads: [String]) {
         self.Ads.onNext(Ads)
     }
     
-    func fetchInstructors(Instructors: [InstructorsData]) {
+    func fetchInstructors(Instructors: [Instructor]) {
         self.Instructors.onNext(Instructors)
     }
     
@@ -29,14 +29,14 @@ struct InstructorsViewModel {
     func dismissIndicator() {
         SVProgressHUD.dismiss()
     }
-    func getInstructors() -> Observable<InstructorsModel> {
+    func getInstructors(lth: Int,htl: Int,rate: Int) -> Observable<InstructorsModelJson> {
         var lang = Int()
         if "lang".localized == "ar" {
             lang = 0
         } else {
             lang = 1
         }
-        let observer = GetServices.shared.getAllInstructors(lang: 1)
+        let observer = GetServices.shared.getAllInstructors(lang: 1,lth: lth,htl: htl,rate: rate)
         return observer
     }
     

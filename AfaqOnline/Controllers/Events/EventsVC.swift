@@ -41,7 +41,7 @@ class EventsVC: UIViewController {
             }
         }
     }
-    var Events = [String]() {
+    var Events = [Event]() {
         didSet {
             DispatchQueue.main.async {
                 self.eventViewModel.fetchEvents(Events: self.Events)
@@ -71,11 +71,13 @@ class EventsVC: UIViewController {
         if categoryName != "" {
             self.CategoryTitleLabel.text = categoryName + " Event"
         }
-        
+        self.eventViewModel.showIndicator()
+        self.getAllEvents(page: self.currentPage)
 //        if type == "home" {
-//            self.getAllCourses(page: self.currentPage)
+//            self.getAllEvents(page: self.currentPage)
+//
 //        } else {
-//            getCourses(category_id: category_id)
+//            //getCourses(category_id: category_id)
 //        }
         self.hideKeyboardWhenTappedAround()
     }
@@ -159,20 +161,21 @@ extension EventsVC: UITextFieldDelegate {
 
 extension EventsVC {
     
-//    func getNextPage() {
-//        self.getAllCourses(page: self.currentPage)
-//    }
-//    func getAllCourses(page: Int) {
-//        self.coursesViewModel.getAllCourses(page: page).subscribe(onNext: { (CoursesModelJSON) in
-//            if let data = CoursesModelJSON.data?.data {
-//                if !self.loadMore {
-//                    self.Events = data
-//
-//                } else {
-//                    self.Events.append(contentsOf: data)
-//                }
-//
-//                let dataClass = CoursesModelJSON.data ?? CoursesDataClass()
+    func getNextPage() {
+        self.getAllEvents(page: self.currentPage)
+    }
+    func getAllEvents(page: Int) {
+        self.eventViewModel.getAllEvent(page: page).subscribe(onNext: { (EventModelJSON) in
+            self.eventViewModel.dismissIndicator()
+            if let data = EventModelJSON.data.events {
+                if !self.loadMore {
+                    self.Events = data
+
+                } else {
+                    self.Events.append(contentsOf: data)
+                }
+
+//                let dataClass = CoursesModelJSON.data ??
 //                if dataClass.to != nil && data.count != 0 {
 //                    self.currentPage += 1
 //                    self.loadMore = true
@@ -183,13 +186,14 @@ extension EventsVC {
 //                } else {
 //                    self.loadMore = false
 //                }
-//
-//                self.loading = false
-//            }
-//        }, onError: { (error) in
-//            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-//        }).disposed(by: disposeBag)
-//    }
+
+                self.loading = false
+            }
+        }, onError: { (error) in
+            self.eventViewModel.dismissIndicator()
+            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+        }).disposed(by: disposeBag)
+    }
 }
 extension EventsVC : UICollectionViewDelegate {
     func BindButtonActions() {
@@ -222,12 +226,11 @@ extension EventsVC : UICollectionViewDelegate {
     }
     
     func setupEventsCollectionView() {
-        self.Events = ["Test", "Test2"]
         let cellIdentifier = "EventsCell"
         self.EventsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.EventsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.eventViewModel.Events.bind(to: self.EventsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: EventsCell.self)) { index, element, cell in
-            cell.config(eventName: self.Events[index], eventDesc: "", eventStartTime: "16 July 2020", eventEndTime: "31 July 2020", eventType: "", rating: 4.5, price: 300, discountPrice: 200, imageURL: "", videoURL: "", userImages: [""])
+            cell.config(eventName: self.Events[index].name ?? "", eventDesc:  self.Events[index].eventDescription ?? "", eventStartTime: self.Events[index].startDate ?? "", eventEndTime:  self.Events[index].endDate ?? "", eventType: "", rating: 4.6, price:(Double(self.Events[index].price ?? "") ?? 0.0), discountPrice: ((Double(self.Events[index].price ?? "") ?? 0.0) - (Double(self.Events[index].discount ?? "") ?? 0.0)), imageURL: self.Events[index].mainImage ?? "",  videoURL: self.Events[index].eventURL ?? "", userImages: [""])
             cell.openDetailsAction = {
                 
             }

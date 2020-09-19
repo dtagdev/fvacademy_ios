@@ -11,14 +11,14 @@ import RxSwift
 import SVProgressHUD
 
 struct  CoursesViewModel {
-    var Courses = PublishSubject<[CoursesData]>()
+    var Courses = PublishSubject<[TrendCourse]>()
     var Ads = PublishSubject<[String]>()
     
     func fetchAds(Ads: [String]) {
         self.Ads.onNext(Ads)
     }
     
-    func fetchCourses(Courses: [CoursesData]) {
+    func fetchCourses(Courses: [TrendCourse]) {
         self.Courses.onNext(Courses)
     }
     
@@ -36,7 +36,7 @@ struct  CoursesViewModel {
         } else {
             lang = 1
         }
-        let observer = GetServices.shared.getCoursesOfSpecificCategory(category_id: category_id, lang: 0)
+        let observer = GetServices.shared.getCoursesOfSpecificCategory(category_id: category_id, lang: 1)
         return observer
     }
     func getAllCourses(page: Int) -> Observable<AllCoursesModelJSON> {
@@ -49,7 +49,7 @@ struct  CoursesViewModel {
         let params = [
             "page": page
         ]
-        let observer = GetServices.shared.getAllCourses(params: params, lang: 0)
+        let observer = GetServices.shared.getAllCourses(params: params, lang: 1)
         return observer
     }
     func postAddToCart(course_id: Int, price: String) -> Observable<AddToCartModelJSON> {

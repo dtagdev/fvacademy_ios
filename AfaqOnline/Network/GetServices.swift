@@ -35,9 +35,9 @@ class GetServices {
     }//END of GET All Jobs
     
     //MARK:- GET All Categories
-    func getAllCategories(lang: Int) -> Observable<CategoriesModel> {
+    func getAllCategories(lang: Int,lth: Int,htl: Int,rate : Int) -> Observable<CategoriesModel> {
         return Observable.create { (observer) -> Disposable in
-            let url = ConfigURLS.getAllCategories + "/\(lang)"
+            let url = ConfigURLS.getAllCategories + "/\(lang)?lth=\(lth)&htl=\(htl)&rate=\(rate)"
             
             Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
                 .validate(statusCode: 200..<300)
@@ -55,15 +55,14 @@ class GetServices {
     }//END of GET All Categories
     
     //MARK:- GET All Instructors
-    func getAllInstructors(lang: Int) -> Observable<InstructorsModel> {
+    func getAllInstructors(lang: Int,lth: Int,htl: Int,rate: Int) -> Observable<InstructorsModelJson> {
         return Observable.create { (observer) -> Disposable in
-            let url = ConfigURLS.getAllInstructors + "/\(lang)"
-            
+            let url = ConfigURLS.getAllInstructors + "/\(lang)?lth=\(lth)&htl=\(htl)&rate=\(rate)"
             Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
                     do {
-                        let InstructorsData = try JSONDecoder().decode(InstructorsModel.self, from: response.data!)
+                        let InstructorsData = try JSONDecoder().decode(InstructorsModelJson.self, from: response.data!)
                         observer.onNext(InstructorsData)
                     } catch {
                         print(error.localizedDescription)
@@ -181,7 +180,30 @@ class GetServices {
             return Disposables.create()
         }
     }//END of GET Related Courses
-    
+   
+    //MARK:- GET All Event
+    func getAllEvent(params: [String: Any], lang: Int) -> Observable<AllEventModelJSON> {
+        return Observable.create { (observer) -> Disposable in
+            let url = ConfigURLS.getAllEvent + "/\(lang)"
+            let token = Helper.getAPIToken() ?? ""
+            let headers = [
+                "Authorization": "Bearer \(token)"
+            ]
+            Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { (response: DataResponse<Any>) in
+                    do {
+                        let CoursesData = try JSONDecoder().decode(AllEventModelJSON.self, from: response.data!)
+                        observer.onNext(CoursesData)
+                    } catch {
+                        print(error.localizedDescription)
+                        observer.onError(error)
+                    }
+            }
+            return Disposables.create()
+        }
+    }//END of GET All event
+
     //MARK:- GET InstructorDetails
     func getInstructorDetails(instructor_id: Int) -> Observable<InstructorDetailsModelJSON> {
         return Observable.create { (observer) -> Disposable in

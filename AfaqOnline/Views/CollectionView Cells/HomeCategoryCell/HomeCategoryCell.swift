@@ -22,9 +22,8 @@ class HomeCategoryCell: UICollectionViewCell {
     func config(categoryImageURL: String, categoryName: String) {
         if categoryImageURL != "" {
             self.CategoryImageView.image = #imageLiteral(resourceName: "HomeCategory")
-//            guard let url = URL(string: categoryImageURL) else { return }
-//
-//            self.CategoryImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
+            guard let url = URL(string: "https://dev.fv.academy/public/files/" + categoryImageURL) else { return }
+            self.CategoryImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
         } else {
             self.CategoryImageView.image = #imageLiteral(resourceName: "HomeCategory")
         }

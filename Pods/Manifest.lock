@@ -1,0 +1,261 @@
+PODS:
+  - Alamofire (4.8.2)
+  - Cosmos (21.0.0)
+  - Differentiator (4.0.1)
+  - DLRadioButton (1.4.12)
+  - DropDown (2.3.13)
+  - FaveButton (3.2.1)
+  - Firebase/Analytics (6.28.1):
+    - Firebase/Core
+  - Firebase/Core (6.28.1):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.6.2)
+  - Firebase/CoreOnly (6.28.1):
+    - FirebaseCore (= 6.9.1)
+  - Firebase/Crashlytics (6.28.1):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.3.0)
+  - Firebase/Messaging (6.28.1):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.6.0)
+  - FirebaseAnalytics (6.6.2):
+    - FirebaseCore (~> 6.8)
+    - FirebaseInstallations (~> 1.4)
+    - GoogleAppMeasurement (= 6.6.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 1.30905.0)
+  - FirebaseCore (6.9.1):
+    - FirebaseCoreDiagnostics (~> 1.3)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Logger (~> 6.7)
+  - FirebaseCoreDiagnostics (1.5.0):
+    - GoogleDataTransport (~> 7.0)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Logger (~> 6.7)
+    - nanopb (~> 1.30905.0)
+  - FirebaseCrashlytics (4.3.0):
+    - FirebaseCore (~> 6.8)
+    - FirebaseInstallations (~> 1.1)
+    - GoogleDataTransport (~> 7.0)
+    - nanopb (~> 1.30905.0)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstallations (1.5.0):
+    - FirebaseCore (~> 6.8)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (4.5.0):
+    - FirebaseCore (~> 6.8)
+    - FirebaseInstallations (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+  - FirebaseMessaging (4.6.0):
+    - FirebaseCore (~> 6.8)
+    - FirebaseInstanceID (~> 4.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Reachability (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+    - Protobuf (>= 3.9.2, ~> 3.9)
+  - FlexibleSteppedProgressBar (0.6.3)
+  - Gallery (2.2.2)
+  - GoogleAppMeasurement (6.6.2):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 1.30905.0)
+  - GoogleDataTransport (7.0.0):
+    - nanopb (~> 1.30905.0)
+  - GoogleMaps (3.8.2):
+    - GoogleMaps/Maps (= 3.8.2)
+  - GoogleMaps/Base (3.8.2)
+  - GoogleMaps/Maps (3.8.2):
+    - GoogleMaps/Base
+  - GooglePlaces (3.8.2):
+    - GoogleMaps/Base (= 3.8.2)
+  - GoogleUtilities/AppDelegateSwizzler (6.7.1):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.7.1):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (6.7.1):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.7.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.7.1):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.7.1)"
+  - GoogleUtilities/Reachability (6.7.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.7.1):
+    - GoogleUtilities/Logger
+  - ImageSlideshow (1.7.0):
+    - ImageSlideshow/Core (= 1.7.0)
+  - ImageSlideshow/Core (1.7.0)
+  - IQAudioRecorderController (1.2.3):
+    - SCSiriWaveformView
+  - IQKeyboardManagerSwift (6.3.0)
+  - Kingfisher (5.4.0)
+  - MOLH (1.4.1)
+  - nanopb (1.30905.0):
+    - nanopb/decode (= 1.30905.0)
+    - nanopb/encode (= 1.30905.0)
+  - nanopb/decode (1.30905.0)
+  - nanopb/encode (1.30905.0)
+  - Parchment (2.0.1)
+  - PromisesObjC (1.2.9)
+  - Protobuf (3.12.0)
+  - PusherSwift (8.0.0):
+    - ReachabilitySwift (~> 5.0)
+    - Starscream (~> 3.1)
+  - ReachabilitySwift (5.0.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SCSiriWaveformView (1.1.1)
+  - SideMenu (5.0.3)
+  - Starscream (3.1.1)
+  - StepProgressBar (0.1.4)
+  - SVProgressHUD (2.2.5)
+  - SwiftMessages (6.0.2):
+    - SwiftMessages/App (= 6.0.2)
+  - SwiftMessages/App (6.0.2)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8.2)
+  - Cosmos (~> 21.0.0)
+  - DLRadioButton (~> 1.4.12)
+  - DropDown (~> 2.3.13)
+  - FaveButton (~> 3.2.1)
+  - Firebase/Analytics
+  - Firebase/Crashlytics
+  - Firebase/Messaging
+  - FlexibleSteppedProgressBar
+  - Gallery
+  - GoogleMaps (~> 3.8.0)
+  - GooglePlaces (~> 3.8.0)
+  - ImageSlideshow (~> 1.7.0)
+  - IQAudioRecorderController
+  - IQKeyboardManagerSwift (~> 6.3.0)
+  - Kingfisher (~> 5.4.0)
+  - MOLH
+  - Parchment (~> 2.0.1)
+  - PusherSwift (~> 8.0)
+  - RxCocoa (~> 5)
+  - RxDataSources (~> 4.0)
+  - RxSwift (~> 5)
+  - SideMenu (~> 5.0.3)
+  - StepProgressBar
+  - SVProgressHUD (~> 2.2.5)
+  - SwiftMessages (~> 6.0.2)
+  - SwiftyJSON (~> 5.0.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Cosmos
+    - Differentiator
+    - DLRadioButton
+    - DropDown
+    - FaveButton
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
+    - FirebaseInstallations
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - FlexibleSteppedProgressBar
+    - Gallery
+    - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleMaps
+    - GooglePlaces
+    - GoogleUtilities
+    - ImageSlideshow
+    - IQAudioRecorderController
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - MOLH
+    - nanopb
+    - Parchment
+    - PromisesObjC
+    - Protobuf
+    - PusherSwift
+    - ReachabilitySwift
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - SCSiriWaveformView
+    - SideMenu
+    - Starscream
+    - StepProgressBar
+    - SVProgressHUD
+    - SwiftMessages
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  FaveButton: 93cfebf6030336fa7653fad2068c3152ed668b39
+  Firebase: ed042590caa0029392257529a8003c25ee82bc18
+  FirebaseAnalytics: 5fa308e1b13f838d0f6dc74719ac2a72e8c5afc4
+  FirebaseCore: 687b8e6a0a4337b898a6326d68254c2f80c143af
+  FirebaseCoreDiagnostics: 7535fe695737f8c5b350584292a70b7f8ff0357b
+  FirebaseCrashlytics: f6ae039fdaf07980425f2ae9f49131fc94009c58
+  FirebaseInstallations: 3c520c951305cbf9ca54eb891ff9e6d1fd384881
+  FirebaseInstanceID: 358d5cb393d2750a745569ede06827c35aea530b
+  FirebaseMessaging: bdd4d573eab37ebee29bad4e7c4b0ef18fa1a952
+  FlexibleSteppedProgressBar: 37741b5cd0cd14f2e2118b597b81d0a6534f4d5a
+  Gallery: 634ea7d58b93fcb8e787a846febac73ec354e7d9
+  GoogleAppMeasurement: 8cd1f289d60e629cf16ab03363b9e89c776b9651
+  GoogleDataTransport: 8a40cb194ad242b6f6dfe72c14fe40fc67c4dcd7
+  GoogleMaps: ae0efe10e9c40bcd9decd0c9fd53d947af7801a3
+  GooglePlaces: 8baf0c60e318431ca3c1b022f2745a23b104caca
+  GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
+  ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
+  IQAudioRecorderController: 69a67c2e0b87bd8746cbb4de175fd7a0bf820009
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
+  MOLH: 9ea6c0390f5963b2df9827ae64035fbc8598b092
+  nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  Parchment: 00cb7d0d0a38f5a4a7e089ec59637b970a58c0f0
+  PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
+  PusherSwift: 8f18b7beaf383e0475607ab6a3f89f477637fb21
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SCSiriWaveformView: 15b9dd6f94c7536e2032b34a35c6ff74d38c7411
+  SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  StepProgressBar: 0dd24d84add0c914aea42848737416583eb95db9
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 1784816730f4f15542a54d1c552628a1e3f95a86
+
+COCOAPODS: 1.8.4

@@ -40,7 +40,7 @@ class CategoriesVC: UIViewController {
             }
         }
     }
-    var Categories = [CategoryData]() {
+    var Categories = [Category]() {
         didSet {
             DispatchQueue.main.async {
                 self.categoryViewModel.fetchCategories(Categories: self.Categories)
@@ -60,10 +60,11 @@ class CategoriesVC: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         setupAdsCollectionView()
         setupCategoriesCollectionView()
+        self.categoryViewModel.showIndicator()
         BindButtonActions()
         SetupSortByDropDown()
         SetupFilterDropDown()
-        getCategories()
+        getCategories(lth: 0,htl: 0,rate : 0)
         self.searchTF.delegate = self
         
         self.hideKeyboardWhenTappedAround()
@@ -112,7 +113,15 @@ class CategoriesVC: UIViewController {
         self.SortByDropDown.dataSource = self.SortByNames
         self.SortByDropDown.selectionAction = { [weak self] (index, item) in
             self?.sortByButton.setTitle(item, for: .normal)
-            self?.selectedSortById = self?.SortByIds[index] ?? 0
+            if index == 0{
+                self?.getCategories(lth: 0,htl: 0,rate : 0)
+            }else if index == 1 {
+                self?.getCategories(lth: 0,htl: 1,rate : 0)
+            }else if index == 2{
+                self?.getCategories(lth: 1,htl: 0,rate : 0)
+        }else if index == 3{
+            self?.getCategories(lth: 0,htl: 0,rate : 1)
+        }
         }
         self.SortByDropDown.direction = .bottom
         self.SortByDropDown.width = self.view.frame.width * 0.95
@@ -123,7 +132,7 @@ class CategoriesVC: UIViewController {
         self.FilterDropDown.dataSource = self.FilterNames
         self.FilterDropDown.selectionAction = { [weak self] (index, item) in
             self?.FilterButton.setTitle(item, for: .normal)
-            self?.selectedFilterId = self?.FilterIds[index] ?? 0
+           
         }
         self.FilterDropDown.direction = .bottom
         self.FilterDropDown.width = self.view.frame.width * 0.95
@@ -150,13 +159,14 @@ extension CategoriesVC: UITextFieldDelegate {
 
 extension CategoriesVC {
     //MARK:- GET Categories
-    func getCategories() {
-        self.categoryViewModel.getCategories().subscribe(onNext: { (categoriesModel) in
+    func getCategories(lth: Int,htl: Int,rate : Int) {
+        self.categoryViewModel.getCategories(lth: lth,htl: htl,rate : rate).subscribe(onNext: { (categoriesModel) in
             if let data = categoriesModel.data {
+                self.categoryViewModel.dismissIndicator()
                 self.Categories = data
-
             }
         }, onError: { (error) in
+            self.categoryViewModel.dismissIndicator()
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
@@ -196,7 +206,7 @@ extension CategoriesVC: UICollectionViewDelegate {
         self.CategoriesCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.CategoriesCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.categoryViewModel.Categories.bind(to: self.CategoriesCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: CategoryCell.self)) { index, element, cell in
-            cell.config(categoryImageURL: "", categoryName: self.Categories[index].name ?? "")
+            cell.config(categoryImageURL:self.Categories[index].image ?? "", categoryName: self.Categories[index].name ?? "")
         }.disposed(by: disposeBag)
         self.CategoriesCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CoursesVC") as? CoursesVC else { return }

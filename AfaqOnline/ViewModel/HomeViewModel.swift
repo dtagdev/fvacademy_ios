@@ -12,10 +12,10 @@ import SVProgressHUD
 
 struct  HomeViewModel {
     var Ads = PublishSubject<[String]>()
-    var Courses = PublishSubject<[CoursesData]>()
+    var Courses = PublishSubject<[TrendCourse]>()
     var Categories = PublishSubject<[Category]>()
-    var Instructors = PublishSubject<[Instructore]>()
-    var Events = PublishSubject<[String]>()
+    var Instructors = PublishSubject<[Instructor]>()
+    var Events = PublishSubject<[Event]>()
     
     func fetchAds(Ads: [String]) {
         self.Ads.onNext(Ads)
@@ -25,13 +25,13 @@ struct  HomeViewModel {
         self.Categories.onNext(Categories)
     }
     
-    func fetchCourses(Courses: [CoursesData]) {
+    func fetchCourses(Courses: [TrendCourse]) {
         self.Courses.onNext(Courses)
     }
-    func fetchEvents(Events: [String]) {
+    func fetchEvents(Events: [Event]) {
         self.Events.onNext(Events)
     }
-    func fetchInstructors(Instructors: [Instructore]) {
+    func fetchInstructors(Instructors: [Instructor]) {
         self.Instructors.onNext(Instructors)
     }
     func showIndicator() {

@@ -42,15 +42,13 @@ class CoursesCell: CustomCollectionViewCell {
         CoursesCell.videoPlayer?.seek(to: CMTime.zero)
         CoursesCell.videoPlayer?.play()
     }
-    func config(courseName: String, courseDesc: String, courseTime: String, courseType: String, rating: Double, price: Int, discountPrice: Int, imageURL: String, videoURL: String) {
+    func config(courseName: String, courseDesc: String, courseTime: String, courseType: String, rating: Double, price: Double, discountPrice: Double, imageURL: String, videoURL: String) {
         if imageURL != "" {
             self.CourseImageView.isHidden = false
             self.playButton.isHidden = true
             CoursesCell.videoPlayer?.pause()
-            self.CourseImageView.image = #imageLiteral(resourceName: "coursePicture")
-//            guard let url = URL(string: imageURL) else  { return }
-//
-//            self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "coursePicture"))
+           guard let url = URL(string: "https://dev.fv.academy/public/files/" + imageURL) else  { return }
+            self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "coursePicture"))
         }
         if videoURL != "" {
             self.CourseImageView.isHidden = true
@@ -68,9 +66,7 @@ class CoursesCell: CustomCollectionViewCell {
                     CoursesCell.videoPlayer?.play()
                     CoursesCell.videoPlayer?.isMuted = true
                 }
-                
             }
-            
             isVideoPlaying = true
         }
         self.CourseNameLabel.text = courseName
@@ -78,7 +74,7 @@ class CoursesCell: CustomCollectionViewCell {
         self.CourseTimeLabel.text = "\(courseTime)mins"
         self.courseTypeLabel.text = courseType
         self.ratingLabel.text = "\(rating)"
-        if discountPrice == 0 {
+        if discountPrice == 0.0 {
             self.priceLabel.text = "\(price) SAR"
         } else {
             self.priceLabel.attributedText = NSAttributedString(attributedString: "\(price)".strikeThrough()) + NSAttributedString(string: " \(discountPrice) SAR")

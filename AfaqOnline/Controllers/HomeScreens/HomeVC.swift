@@ -26,22 +26,21 @@ class HomeVC: UIViewController {
     
     private let homeViewModel = HomeViewModel()
     var disposeBag = DisposeBag()
-    var Ads = ["Test"]
-//        [String]() {
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.homeViewModel.fetchAds(Ads: self.Ads)
-//            }
-//        }
-//    }
-    var Courses = [CoursesData]() {
+    var Ads = ["Test"]{
+        didSet {
+            DispatchQueue.main.async {
+                self.homeViewModel.fetchAds(Ads: self.Ads)
+          }
+     }
+    }
+    var Courses = [TrendCourse]() {
         didSet {
             DispatchQueue.main.async {
                 self.homeViewModel.fetchCourses(Courses: self.Courses)
             }
         }
     }
-    var Events = [String]()
+    var Events = [Event]()
     {
         didSet {
             DispatchQueue.main.async {
@@ -56,7 +55,7 @@ class HomeVC: UIViewController {
             }
         }
     }
-    var Instructors = [Instructore]() {
+    var Instructors = [Instructor]() {
         didSet {
             DispatchQueue.main.async {
                 self.homeViewModel.fetchInstructors(Instructors: self.Instructors)
@@ -81,6 +80,8 @@ class HomeVC: UIViewController {
         self.getHomeData()
         self.searchTF.delegate = self
         self.hideKeyboardWhenTappedAround()
+        self.homeViewModel.showIndicator()
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -163,17 +164,22 @@ extension HomeVC {
         self.homeViewModel.getHomeData().subscribe(onNext: { (homeData) in
             if homeData.status ?? false {
                 if let data = homeData.data {
-                    self.Courses = data.trendCourses ?? []
+                    self.homeViewModel.dismissIndicator()
+                    self.Courses = data.courses ?? []
                     self.Categories = data.categories ?? []
-                    self.Instructors = data.instructores ?? []
+                    self.Instructors = data.instructors ?? []
+                    self.Events = data.events ?? []
+                    self.EventsButton.setTitle("See All ( \(self.Courses.count) )", for: .normal)
                     self.TrendingButton.setTitle("See All ( \(self.Courses.count) )", for: .normal)
                     self.CategoryButton.setTitle("See All ( \(self.Categories.count) )", for: .normal)
                     self.InstructorButton.setTitle("See All ( \(self.Instructors.count) )", for: .normal)
+                    self.EventsButton.setTitle("See All ( \(self.Events.count) )", for: .normal)
                     self.homeViewModel.fetchAds(Ads: self.Ads)
                 }
                 
             }
         }, onError: { (error) in
+            self.homeViewModel.dismissIndicator()
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
@@ -206,7 +212,7 @@ extension HomeVC: UICollectionViewDelegate {
         self.CoursesCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.CoursesCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.homeViewModel.Courses.bind(to: self.CoursesCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: CoursesCell.self)) { index, element, cell in
-            cell.config(courseName: self.Courses[index].name ?? "", courseDesc: self.Courses[index].details ?? "", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: (self.Courses[index].rate ?? 0.0).rounded(toPlaces: 2), price: Int(self.Courses[index].price ?? "") ?? 0, discountPrice: ((Int(self.Courses[index].price ?? "") ?? 0) - (Int(self.Courses[index].discount ?? "") ?? 0) ), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
+            cell.config(courseName: self.Courses[index].name ?? "", courseDesc: self.Courses[index].details ?? "", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: (Double(self.Courses[index].rate ?? 0)), price: Double(self.Courses[index].price ?? "0") ?? 0.0, discountPrice: ((Double(self.Courses[index].price ?? "") ?? 0.0) - (Double(self.Courses[index].discount ?? "") ?? 0.0)), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
             cell.openDetailsAction = {
                 guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailsVC") as? CourseDetailsVC else { return }
                 main.course_id = self.Courses[index].id ?? 0
@@ -221,13 +227,16 @@ extension HomeVC: UICollectionViewDelegate {
     }
     
     func setupEventsCollectionView() {
-        self.Events = ["8th Pediatric MCQ Event","8th Pediatric MCQ Event2"]
-        self.EventsButton.setTitle("See all ( \(self.Events.count) )", for: .normal)
         let cellIdentifier = "EventsCell"
         self.EventsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.EventsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.homeViewModel.Events.bind(to: self.EventsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: EventsCell.self)) { index, element, cell in
-            cell.config(eventName: self.Events[index], eventDesc: "", eventStartTime: "16 July 2020", eventEndTime: "31 July 2020", eventType: "", rating: 4.5, price: 300, discountPrice: 200, imageURL: "", videoURL: "", userImages: [""])
+          
+            let dis =   (Double(self.Events[index].discount ?? "") ?? 0.0)
+            let price = (Double(self.Events[index].price ?? "") ?? 0.0)
+            let result = price - dis
+            
+            cell.config(eventName: self.Events[index].name ?? "", eventDesc: self.Events[index].eventDescription ?? "", eventStartTime: self.Events[index].startDate ?? "", eventEndTime: self.Events[index].endDate ?? "", eventType: "", rating: 4.5, price: Double(self.Events[index].price ?? "") ?? 0.0, discountPrice: result, imageURL: self.Events[index].mainImage ?? "" , videoURL: self.Events[index].eventURL ?? "" , userImages: [""])
             cell.openDetailsAction = {
                 guard let main = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(withIdentifier: "EventsDetailsVC") as? EventsDetailsVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
@@ -244,7 +253,7 @@ extension HomeVC: UICollectionViewDelegate {
         self.CategoryCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.CategoryCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.homeViewModel.Categories.bind(to: self.CategoryCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: HomeCategoryCell.self)) { index, element, cell in
-            cell.config(categoryImageURL: "", categoryName: self.Categories[index].name ?? "")
+            cell.config(categoryImageURL: self.Categories[index].image ?? "", categoryName: self.Categories[index].name ?? "")
         }.disposed(by: disposeBag)
         self.CategoryCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CoursesVC") as? CoursesVC else { return }
@@ -259,8 +268,8 @@ extension HomeVC: UICollectionViewDelegate {
         self.InstructorsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.InstructorsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.homeViewModel.Instructors.bind(to: self.InstructorsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: HomeInstructorCell.self)) { index, element, cell in
-            let instructorData = self.Instructors[index].userData ?? UserData()
-            cell.config(InstructorImageURL: "", InstructorName: "\(instructorData.firstName ?? "") \(instructorData.lastName ?? "")")
+            let instructorData = self.Instructors[index].user
+            cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? "") \(instructorData?.lastName ?? "")")
         }.disposed(by: disposeBag)
         self.InstructorsCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorsVC") as? InstructorsVC else { return }

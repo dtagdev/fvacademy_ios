@@ -22,7 +22,7 @@ class InstructorsVC: UIViewController {
     //SortBy Drop Down
     let SortByDropDown = DropDown()
     var SortByNames = ["Default", "High To Low", "Low To High", "Rate"]
-    var SortByIds = [0, 1, 2]
+    var SortByIds = [0, 1, 2,3]
     var selectedSortById = Int()
     
     //Filter Drop Down
@@ -32,15 +32,14 @@ class InstructorsVC: UIViewController {
     var selectedFilterId = Int()
     private let instructorViewModel = InstructorsViewModel()
     var disposeBag = DisposeBag()
-    var Ads = ["Heya"]
-    //        [String]() {
-    //        didSet {
-    //            DispatchQueue.main.async {
-    //                self.categoryViewModel.fetchAds(Ads: self.Ads)
-    //            }
-    //        }
-    //    }
-    var Instructors = [InstructorsData]() {
+    var Ads = ["Heya"]{
+            didSet {
+                DispatchQueue.main.async {
+                    self.instructorViewModel.fetchAds(Ads: self.Ads)
+                }
+            }
+        }
+    var Instructors = [Instructor]() {
         didSet {
             DispatchQueue.main.async {
                 self.instructorViewModel.fetchInstructors(Instructors: self.Instructors)
@@ -61,7 +60,8 @@ class InstructorsVC: UIViewController {
         BindButtonActions()
         SetupSortByDropDown()
         SetupFilterDropDown()
-        getInstructors()
+        getInstructors(lth: 0,htl: 0,rate : 0)
+        self.instructorViewModel.showIndicator()
         self.searchTF.delegate = self
         self.hideKeyboardWhenTappedAround()
     }
@@ -88,7 +88,16 @@ class InstructorsVC: UIViewController {
         self.SortByDropDown.dataSource = self.SortByNames
         self.SortByDropDown.selectionAction = { [weak self] (index, item) in
             self?.sortByButton.setTitle(item, for: .normal)
-            self?.selectedSortById = self?.SortByIds[index] ?? 0
+            if index == 0{
+                self?.getInstructors(lth: 0,htl: 0,rate : 0)
+            }else if index == 1 {
+                self?.getInstructors(lth: 0,htl: 1,rate : 0)
+            }else if index == 2{
+                self?.getInstructors(lth: 1,htl: 0,rate : 0)
+            }else if index == 3{
+                self?.getInstructors(lth: 0,htl: 0,rate : 1)
+            }
+
         }
         self.SortByDropDown.direction = .bottom
         self.SortByDropDown.width = self.view.frame.width * 0.95
@@ -125,13 +134,15 @@ extension InstructorsVC: UITextFieldDelegate {
 }
 extension InstructorsVC {
     //MARK:- GET Instructors
-    func getInstructors() {
-        self.instructorViewModel.getInstructors().subscribe(onNext: { (instructorsModel) in
-            if let data = instructorsModel.data {
+    func getInstructors(lth: Int,htl: Int,rate: Int) {
+        self.instructorViewModel.getInstructors(lth: lth,htl: htl,rate: rate).subscribe(onNext: { (instructorsModel) in
+            if let data = instructorsModel.data.instructors {
+                self.instructorViewModel.dismissIndicator()
                 self.Instructors = data
                 self.instructorViewModel.fetchAds(Ads: self.Ads)
             }
         }, onError: { (error) in
+            self.instructorViewModel.dismissIndicator()
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
@@ -171,8 +182,8 @@ extension InstructorsVC : UICollectionViewDelegate {
         self.InstructorsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.InstructorsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.instructorViewModel.Instructors.bind(to: self.InstructorsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: InstructorsCell.self)) { index, element, cell in
-            let instructorData = self.Instructors[index].userData ?? UserData()
-            cell.config(InstructorImageURL: "", InstructorName: "\(instructorData.firstName ?? "") \(instructorData.lastName ?? "")")
+            let instructorData = self.Instructors[index].user
+            cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? "") \(instructorData?.lastName ?? "")")
         }.disposed(by: disposeBag)
         self.InstructorsCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorDetailsVC") as? InstructorDetailsVC else { return }

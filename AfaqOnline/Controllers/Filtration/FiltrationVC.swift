@@ -20,7 +20,7 @@ class FiltrationVC: UIViewController {
     @IBOutlet weak var CategoriesCollectionView: UICollectionView!
     @IBOutlet weak var backButton: UIButton!
     private let cellIdentifier = "FiltrationCell"
-    var categories = [CategoryData]() {
+    var categories = [Category]() {
         didSet {
             DispatchQueue.main.async {
                 self.categoriesVM.fetchCategories(Categories: self.categories)
@@ -74,14 +74,14 @@ class FiltrationVC: UIViewController {
 extension FiltrationVC {
     //MARK:- GET Categories
     func getCategories() {
-        self.categoriesVM.getCategories().subscribe(onNext: { (categoriesModel) in
-            if let data = categoriesModel.data {
-                self.categories = data
-                self.categories.append(CategoryData(id: nil, name: "Test3", img: nil, createdAt: nil, updatedAt: nil, selected: false))
-            }
-        }, onError: { (error) in
-            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-            }).disposed(by: disposeBag)
+//        self.categoriesVM.getCategories().subscribe(onNext: { (categoriesModel) in
+//            if let data = categoriesModel.data {
+//                self.categories = data
+//                self.categories.append(Category(id: nil, name: "Test3", img: nil, createdAt: nil, updatedAt: nil, selected: false))
+//            }
+//        }, onError: { (error) in
+//            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+//            }).disposed(by: disposeBag)
     }
 }
 

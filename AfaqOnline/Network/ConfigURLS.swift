@@ -8,7 +8,7 @@
 
 import Foundation
 
-var BASE_URL = "http://devmode.fv.academy"
+var BASE_URL = "https://dev.fv.academy"
 var MOBILE_API = "/api/mobile"
 var DASHBOARD_API = "/api/dashboard"
 var AUTH = "/api/auth"
@@ -41,7 +41,11 @@ struct ConfigURLS {
     //MARK:- POST Add Rate
     static var postAddRate = BASE_URL + MOBILE_API + "/add_rate"
     //MARK:- GET All Courses
-    static var getAllCourses = BASE_URL + DASHBOARD_API + "/all_courses"
+    static var getAllCourses = BASE_URL + MOBILE_API + "/all_courses"
+    
+    //MARK:- GET All Events
+    static var getAllEvent = BASE_URL + MOBILE_API + "/allEvents"
+    
     //MARK:- GET Related Courses
     static var getRelatedCourses = BASE_URL + MOBILE_API + "/related_courses"
     

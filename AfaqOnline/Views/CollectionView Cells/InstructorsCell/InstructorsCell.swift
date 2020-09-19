@@ -22,9 +22,8 @@ class InstructorsCell: UICollectionViewCell {
     func config(InstructorImageURL: String, InstructorName: String) {
         if InstructorImageURL != "" {
             self.InstructorImageView.image = #imageLiteral(resourceName: "HomeCategory")
-//            guard let url = URL(string: InstructorImageURL) else { return }
-//
-//            self.InstructorImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
+            guard let url = URL(string: "https://dev.fv.academy/public/files/" + InstructorImageURL) else { return }
+            self.InstructorImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
         } else {
             self.InstructorImageView.image = #imageLiteral(resourceName: "HomeCategory")
         }

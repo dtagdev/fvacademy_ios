@@ -24,16 +24,13 @@ class AdsCell: UICollectionViewCell {
     
     func config(Type: String, imageURL: String) {
         if Type == "Image" {
-//            if imageURL != "" {
-//                guard let url = URL(string: imageURL) else { return }
-//
-//                self.AdImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "pana1"))
-//            } else {
-//                self.AdImageView.image = #imageLiteral(resourceName: "pana1")
-//            }
+            if imageURL != "" {
+                guard let url = URL(string: "https://dev.fv.academy/public/files/" + imageURL) else { return }
+                self.AdImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "pana1"))
+            } else {
             self.AdImageView.image = #imageLiteral(resourceName: "pana1")
+          }
         }
-        
     }
     @objc func imageTapped()
     {

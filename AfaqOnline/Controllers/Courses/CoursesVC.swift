@@ -42,7 +42,7 @@ class CoursesVC: UIViewController {
                 }
             }
         }
-    var Courses = [CoursesData]() {
+    var Courses = [TrendCourse]() {
         didSet {
             DispatchQueue.main.async {
                 self.coursesViewModel.fetchCourses(Courses: self.Courses)
@@ -76,6 +76,9 @@ class CoursesVC: UIViewController {
             getCourses(category_id: category_id)
         }
         self.hideKeyboardWhenTappedAround()
+        
+        
+        self.coursesViewModel.showIndicator()
     }
     @IBAction func backAction(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -139,6 +142,7 @@ extension CoursesVC {
     func getCourses(category_id: Int) {
         coursesViewModel.getCategoryCourses(category_id: category_id).subscribe(onNext: { (coursesModel) in
             if let data = coursesModel.data {
+                self.coursesViewModel.dismissIndicator()
                 self.Courses = data
             } else if coursesModel.errors ?? "" != "" {
                 displayMessage(title: "", message: coursesModel.errors ?? "", status: .error, forController: self)
@@ -150,9 +154,11 @@ extension CoursesVC {
     func getNextPage() {
         self.getAllCourses(page: self.currentPage)
     }
+    
     func getAllCourses(page: Int) {
         self.coursesViewModel.getAllCourses(page: page).subscribe(onNext: { (CoursesModelJSON) in
-            if let data = CoursesModelJSON.data?.data {
+            if let data = CoursesModelJSON.data?.courses {
+                self.coursesViewModel.dismissIndicator()
                 if !self.loadMore {
                     self.Courses = data
                     
@@ -160,21 +166,22 @@ extension CoursesVC {
                     self.Courses.append(contentsOf: data)
                 }
                 
-                let dataClass = CoursesModelJSON.data ?? CoursesDataClass()
-                if dataClass.to != nil && data.count != 0 {
-                    self.currentPage += 1
-                    self.loadMore = true
-                    if self.currentPage == 2 {
-                        self.getNextPage()
-                    }
-
-                } else {
-                    self.loadMore = false
-                }
+//                let dataClass = CoursesModelJSON.data
+//                if dataClass.to != nil && data.count != 0 {
+//                    self.currentPage += 1
+//                    self.loadMore = true
+//                    if self.currentPage == 2 {
+//                        self.getNextPage()
+//                    }
+//
+//                } else {
+//                    self.loadMore = false
+//                }
                 
                 self.loading = false
             }
         }, onError: { (error) in
+            self.coursesViewModel.dismissIndicator()
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
@@ -214,7 +221,7 @@ extension CoursesVC : UICollectionViewDelegate {
         self.CoursesCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.CoursesCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.coursesViewModel.Courses.bind(to: self.CoursesCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: CoursesCell.self)) { index, element, cell in
-            cell.config(courseName: self.Courses[index].name ?? "", courseDesc: self.Courses[index].details ?? "", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: (self.Courses[index].rate ?? 0.0).rounded(toPlaces: 2), price: Int(self.Courses[index].price ?? "") ?? 0, discountPrice: ((Int(self.Courses[index].price ?? "") ?? 0) - (Int(self.Courses[index].discount ?? "") ?? 0) ), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
+            cell.config(courseName: self.Courses[index].name ?? "", courseDesc: self.Courses[index].details ?? "", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: (Double(self.Courses[index].rate ?? 0)), price: Double(self.Courses[index].price ?? "") ?? 0.0, discountPrice:((Double(self.Courses[index].price ?? "") ?? 0.0) - (Double(self.Courses[index].discount ?? "") ?? 0.0)), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
             cell.openDetailsAction = {
                 guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailsVC") as? CourseDetailsVC else { return }
                 main.course_id = self.Courses[index].id ?? 0
