@@ -74,15 +74,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
         }
         
         if token != "" {
-//            let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
-//            window?.rootViewController = sb
-            let sb = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC")
+           let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
             window?.rootViewController = sb
             Singletone.instance.appUserType = .customer
-        } else {
-            let sb = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC")
+        } else if Helper.getLang() != "" {
+            let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
             window?.rootViewController = sb
             Singletone.instance.appUserType = .guest
+        } else {
+        let sb = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC")
+         window?.rootViewController = sb
+         Singletone.instance.appUserType = .guest
         }
         IQKeyboardManager.shared.enable = true
         PusherManager.shared.connectPusher()

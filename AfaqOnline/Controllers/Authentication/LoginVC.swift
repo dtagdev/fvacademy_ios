@@ -29,7 +29,7 @@ class LoginVC: UIViewController {
         case .iPhone4, .iPhone5, .iPhone6, .iPhone6S, .iPhone7, .iPhone8, .iPhone5S, .iPhoneSE, .iPhoneSE2:
             self.loginButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.loginButton.frame.width - 75), bottom: 0, right: 0)
         default:
-            self.loginButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.loginButton.frame.width - 45), bottom: 0, right: 0)
+            self.loginButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.loginButton.frame.width - 75), bottom: 0, right: 0)
         }
         
         self.hideKeyboardWhenTappedAround()
@@ -54,12 +54,7 @@ extension LoginVC {
             if loginData.status ?? false {
                 displayMessage(title: "", message: "You Have LOGGED IN Successfully", status: .success, forController: self)
             } else {
-//                let errors = loginData.errors ?? Errors()
-                displayMessage(title: "", message: loginData.errors ?? "", status: .error, forController: self)
-//                if let email = errors.email {
-//                    displayMessage(title: "", message: loginData.errors ?? "", status: .error, forController: self)
-//                }
-                
+                displayMessage(title: "", message: loginData.errors ?? "someting wrong", status: .error, forController: self)
             }
             self.loginButton.isEnabled = true
         }, onError: { (error) in

@@ -53,16 +53,15 @@ class CourseDetailsVC: UIViewController {
     let RecommendedCoursesCellIdentifier = "RecommendationCoursesCell"
     let cellIdentifier = "CourseContentCell"
     let headerCellIdentifier = "ContentHeaderCell"
-    var courseData = ["1- Introduction An introduction to the course", "2- the first topic in the Introduction An introduction to the course"]
-//        [String]() {
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.ContentTableView.reloadData()
-//                self.ContentTableView.invalidateIntrinsicContentSize()
-//                self.ContentTableView.layoutIfNeeded()
-//            }
-//        }
-//    }
+    var courseData : TrendCourse?{
+        didSet {
+            DispatchQueue.main.async {
+                self.ContentTableView.reloadData()
+                self.ContentTableView.invalidateIntrinsicContentSize()
+                self.ContentTableView.layoutIfNeeded()
+            }
+        }
+    }
     var RecommendedCourses = [TrendCourse]() {
         didSet {
             DispatchQueue.main.async {
@@ -177,38 +176,47 @@ class CourseDetailsVC: UIViewController {
 
 extension CourseDetailsVC {
     func getCourseDetails(course_id: Int) {
-//        self.courseViewModel.getCourseDetails(course_id: course_id).subscribe(onNext: { (courseDetails) in
-//            if let data =  courseDetails.data {
-////                self.course_id = data.id ?? 0
-//                self.courseNameLabel.text = data.name ?? ""
-//                self.courseDescriptionTextView.text = data.details ?? ""
-//                self.price_discountLabel.attributedText = NSAttributedString(attributedString: (data.price ?? "").strikeThrough()) + NSAttributedString(string: "\n\((Int(data.price ?? "") ?? 0) - (Int(data.discount ?? "") ?? 0)) SAR")
-//                self.price = "\((Int(data.price ?? "") ?? 0) - (Int(data.discount ?? "") ?? 0))"
-//                self.ratingLabel.text = "\((data.rate ?? 0.0).rounded(toPlaces: 2))"
-//                if data.isPurchased == 1 {
-//                    self.purchasedFlag = true
-//                    self.PurchasedStatusLabel.isHidden = false
-//                    self.RecommendedLabel.text = "Related Courses"
-//                } else {
-//                    self.purchasedFlag = false
-//                    self.PurchasedStatusLabel.isHidden = true
-//                    self.RecommendedLabel.text = "Recommended"
-//                }
-//                if data.isWishlist == 1 {
-//                    self.wishlistFlag = true
-//                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
-//                } else {
-//                    self.wishlistFlag = false
-//                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkUnSelected"), for: .normal)
-//                }
-//                self.courseTimeLabel.text = "\(data.time ?? "") mins"
-//                self.getRelatedCourses(course_id: course_id)
-//                self.overViewRequirementsTV.text = ""
-//                self.courseTypeLabel.text = data.type ?? ""
-//            }
-//        }, onError: { (error) in
-//            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-//            }).disposed(by: disposeBag)
+        self.courseViewModel.getCourseDetails(course_id: course_id).subscribe(onNext: { (courseDetails) in
+            if let data =  courseDetails.data {
+                self.courseData = data
+                if data.chapters?.count ?? 0 > 0 {
+                self.courseContentDataLabel.text = "This course consists of \(data.chapters?.count ?? 0) parts:"
+                }else {
+                self.courseContentDataLabel.isHidden = true
+                }
+                self.courseNameLabel.text = data.name ?? ""
+                self.courseDescriptionTextView.text = data.details ?? ""
+                self.price_discountLabel.attributedText = NSAttributedString(attributedString: (data.price ?? "").strikeThrough()) + NSAttributedString(string: "\n\((Double(data.price ?? "") ?? 0.0) - (Double(data.discount ?? "") ?? 0.0)) SAR")
+                self.price = "\((Double(data.price ?? "") ?? 0.0) - (Double(data.discount ?? "") ?? 0.0))"
+                self.ratingLabel.text = "\((data.rate ?? 0))"
+                self.DescriptionTV.text = data.courseDescription
+                guard let url = URL(string: "https://dev.fv.academy/public/files/" + (data.mainImage ?? "") ) else { return }
+                 self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "DetailsImage"))
+                
+                if data.isPurchased == true {
+                    self.purchasedFlag = true
+                    self.PurchasedStatusLabel.isHidden = false
+                    self.RecommendedLabel.text = "Related Courses"
+                } else {
+                    self.purchasedFlag = false
+                    self.PurchasedStatusLabel.isHidden = true
+                    self.RecommendedLabel.text = "Recommended"
+                }
+                if data.isWishlist == true {
+                    self.wishlistFlag = true
+                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
+                } else {
+                    self.wishlistFlag = false
+                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkUnSelected"), for: .normal)
+                }
+                self.courseTimeLabel.text = "\(data.time ?? "") mins"
+                self.getRelatedCourses(course_id: course_id)
+                self.overViewRequirementsTV.text = ""
+                self.courseTypeLabel.text = data.type ?? ""
+            }
+        }, onError: { (error) in
+            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+            }).disposed(by: disposeBag)
     }
     
     func getRelatedCourses(course_id: Int) {
@@ -237,7 +245,7 @@ extension CourseDetailsVC {
     }
     func addToWishList(course_id: Int) {
         self.courseViewModel.postAddToWishList(course_id: course_id).subscribe(onNext: { (addWishListModel) in
-            if let data = addWishListModel.data {
+            if addWishListModel.data == true  {
                 displayMessage(title: "", message: AddToWishListMessage.localized, status: .success, forController: self)
                 self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
             }
@@ -279,35 +287,33 @@ extension CourseDetailsVC: UITableViewDelegate, UITableViewDataSource {
         self.ContentTableView.layoutIfNeeded()
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return  courseData?.chapters?.count ?? 0
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: headerCellIdentifier) as? ContentHeaderCell else { return UITableViewCell()}
-        if section == 0 {
-            cell.config(StepHeaderContent: "1- The first part will discuss the following topics:")
-        } else {
-            cell.config(StepHeaderContent: "2- The second part will discuss the following topics:")
-        }
-        
+        cell.config(StepHeaderContent: self.courseData?.chapters?[section].name ?? "")
         return cell
     }
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        return 45
 //    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return courseData.count
+        return courseData?.chapters?[section].lessons?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CourseContentCell else { return UITableViewCell()}
-        cell.config(StepContent: self.courseData[indexPath.row], stepDuration: "5:20 mins")
+        
+        let lessons = self.courseData?.chapters?[indexPath.section].lessons
+        cell.config(StepContent: lessons?[indexPath.row].name ?? "", stepDuration: "5:20 mins")
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseContentVC") as? CourseContentVC else { return }
-        main.progressName = self.courseData[indexPath.row]
-        main.course_id = 1
-        main.progressDescription = "No Description Added yet"
+        main.progressName =  self.courseData?.chapters?[indexPath.section].name ?? ""
+        main.course_id = self.course_id
+        main.progressDescription = self.courseData?.chapters?[indexPath.section].lessons?[indexPath.row].name ?? ""
+        main.videoURL = self.courseData?.chapters?[indexPath.section].lessons?[indexPath.row].videoURL ?? ""
         self.navigationController?.pushViewController(main, animated: true)
     }
 }

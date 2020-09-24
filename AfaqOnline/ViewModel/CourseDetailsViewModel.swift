@@ -54,7 +54,7 @@ struct CourseDetailsViewModel {
     func postAddToWishList(course_id: Int) -> Observable<AddWishlistModelJSON> {
         let params: [String: Any] = [
             "user_id": Helper.getUserID() ?? 0,
-            "cousre_id": course_id
+            "course_id": course_id
         ]
         let observer = AddServices.shared.POSTAddToWishList(params: params)
         return observer

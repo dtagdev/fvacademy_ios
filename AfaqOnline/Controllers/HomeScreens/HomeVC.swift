@@ -83,10 +83,16 @@ class HomeVC: UIViewController {
         self.homeViewModel.showIndicator()
 
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         searchTF.isHidden = true
         searchTF.text = ""
+        if Helper.getAPIToken() != nil{
+            backButton.isHidden = false
+        }else{
+            backButton.isHidden = true
+        }
     }
     @IBAction func SeeAllActions(_ sender: UIButton) {
         switch sender.tag {
@@ -142,6 +148,7 @@ class HomeVC: UIViewController {
         alert.addAction(yesAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
+        
     }
     
     @IBAction func SearchDidEndEditing(_ sender: CustomTextField) {
@@ -255,13 +262,13 @@ extension HomeVC: UICollectionViewDelegate {
         self.homeViewModel.Categories.bind(to: self.CategoryCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: HomeCategoryCell.self)) { index, element, cell in
             cell.config(categoryImageURL: self.Categories[index].image ?? "", categoryName: self.Categories[index].name ?? "")
         }.disposed(by: disposeBag)
-        self.CategoryCollectionView.rx.itemSelected.bind { (indexPath) in
-            guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CoursesVC") as? CoursesVC else { return }
-            main.category_id = self.Categories[indexPath.row].id ?? 0
-            main.categoryName = self.Categories[indexPath.row].name ?? ""
-            main.type = "category"
-            self.navigationController?.pushViewController(main, animated: true)
-        }.disposed(by: disposeBag)
+//        self.CategoryCollectionView.rx.itemSelected.bind { (indexPath) in
+//            guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CoursesVC") as? CoursesVC else { return }
+//            main.category_id = self.Categories[indexPath.row].id ?? 0
+//            main.categoryName = self.Categories[indexPath.row].name ?? ""
+//            main.type = "category"
+//            self.navigationController?.pushViewController(main, animated: true)
+//        }.disposed(by: disposeBag)
     }
     func setupInstructorCollectionView() {
         let cellIdentifier = "HomeInstructorCell"
@@ -272,7 +279,7 @@ extension HomeVC: UICollectionViewDelegate {
             cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? "") \(instructorData?.lastName ?? "")")
         }.disposed(by: disposeBag)
         self.InstructorsCollectionView.rx.itemSelected.bind { (indexPath) in
-            guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorsVC") as? InstructorsVC else { return }
+            guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorDetailsVC") as? InstructorsVC else { return }
             self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }

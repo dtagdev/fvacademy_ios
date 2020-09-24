@@ -72,7 +72,7 @@ class CourseContentVC: UIViewController {
         setupButtonUIEdges()
         if videoURL != "" {
 //            self.playButton.isHidden = false
-            guard let videoURL = URL(string: videoURL) else { return }
+            guard let videoURL = URL(string: "https://dev.fv.academy/public/lessons/" + videoURL) else { return }
             CoursesCell.videoPlayer = AVPlayer(url: videoURL)
             DispatchQueue.global(qos: .background).async {
                 DispatchQueue.main.async {
@@ -94,6 +94,8 @@ class CourseContentVC: UIViewController {
         setupCommentsTableView()
         self.getCurrentView(page: "Comments")
         self.getCourseComments(course_id: course_id)
+        self.CommentView.isHidden = true
+
     }
     @objc func playerItemDidReachEnd(notification: NSNotification) {
         CourseContentVC.videoPlayer?.seek(to: CMTime.zero)
@@ -114,19 +116,13 @@ class CourseContentVC: UIViewController {
         switch sender.tag {
         case 1:
             print("Add New Review")
-            if self.CommentView.isHidden {
-                self.CommentView.isHidden = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    if self.CommentView.isHidden {
-                        self.CommentView.isHidden = false
-                    } else {
-                        self.CommentView.isHidden = true
-                    }
-                }
-            } else {
-                self.CommentView.isHidden = false
-                displayMessage(title: "", message: "Write your review now", status: .info, forController: self)
-            }
+           guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "RatingVC") as? RatingVC else { return }
+           //main.courseName = self.courseNameLabel.text ?? ""
+           //main.courseDetails = self.courseDescriptionTextView.text
+           //main.price = self.price
+           main.course_id = self.course_id
+           self.navigationController?.pushViewController(main, animated: true)
+            
         case 2, 3:
             print("Send Comment")
             self.choiceType = "comment"
@@ -194,11 +190,11 @@ extension CourseContentVC {
         switch UIDevice().type {
         case .iPhone4, .iPhone5, .iPhone6, .iPhone6S, .iPhone7, .iPhone8, .iPhone5S, .iPhoneSE, .iPhoneSE2:
             self.sendMessageButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.sendMessageButton.frame.width ) - 45, bottom: 0, right: 0)
-            self.sendMessageButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
+            self.sendMessageButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
             self.sendMessageButton.titleLabel?.adjustsFontSizeToFitWidth = true
             self.sendMessageButton.titleLabel?.minimumScaleFactor = 0.5
             self.newReviewButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.newReviewButton.frame.width ) - 45, bottom: 0, right: 0)
-            self.newReviewButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
+            self.newReviewButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
             self.newReviewButton.titleLabel?.adjustsFontSizeToFitWidth = true
             self.newReviewButton.titleLabel?.minimumScaleFactor = 0.5
             self.CertificationButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.CertificationButton.frame.width ) - 45, bottom: 0, right: 0)
@@ -213,11 +209,11 @@ extension CourseContentVC {
             self.submitCommentButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
         default:
             self.sendMessageButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.sendMessageButton.frame.width ) - 30, bottom: 0, right: 0)
-            self.sendMessageButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
+            self.sendMessageButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
             self.sendMessageButton.titleLabel?.adjustsFontSizeToFitWidth = true
             self.sendMessageButton.titleLabel?.minimumScaleFactor = 0.5
             self.newReviewButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.newReviewButton.frame.width ) - 30, bottom: 0, right: 0)
-            self.newReviewButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
+            self.newReviewButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
             self.newReviewButton.titleLabel?.adjustsFontSizeToFitWidth = true
             self.newReviewButton.titleLabel?.minimumScaleFactor = 0.5
             self.CertificationButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.CertificationButton.frame.width ) - 30, bottom: 0, right: 0)

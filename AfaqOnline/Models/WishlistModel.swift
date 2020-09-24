@@ -15,47 +15,31 @@ struct WishlistModelJSON: Codable {
     var errors: String?
 }
 
+
 // MARK: - Datum
 struct WishlistData: Codable {
-    var id, userID, cousreID: Int?
-    var createdAt, updatedAt: String?
-    var courseData: CourseData?
+    let id, userID, courseID: Int?
+    let course: TrendCourse?
+    let user: User?
+    let createdAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id
         case userID = "user_id"
-        case cousreID = "cousre_id"
+        case courseID = "course_id"
+        case course, user
         case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case courseData = "course_data"
     }
 }
 
-// MARK: - CourseData
-struct CourseData: Codable {
-    var id: Int?
-    var name, details, image, price: String?
-}
+
 // MARK: - AddWishlistModelJSON
 struct AddWishlistModelJSON: Codable {
-    var data: AddWishlistData?
-    var status: Bool?
+    var data,status: Bool?
     var errors: String?
 }
 
-// MARK: - DataClass
-struct AddWishlistData: Codable {
-    var userID, cousreID, updatedAt, createdAt: String?
-    var id: Int?
 
-    enum CodingKeys: String, CodingKey {
-        case userID = "user_id"
-        case cousreID = "cousre_id"
-        case updatedAt = "updated_at"
-        case createdAt = "created_at"
-        case id
-    }
-}
 // MARK: - RemoveFromWishListModelJSON
 struct RemoveFromWishListModelJSON: Codable {
     var data, status: Bool?

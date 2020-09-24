@@ -25,7 +25,7 @@ class ForgetPasswordVC: UIViewController {
         case .iPhone4, .iPhone5, .iPhone6, .iPhone6S, .iPhone7, .iPhone8, .iPhone5S, .iPhoneSE, .iPhoneSE2:
             self.sendEmailButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.sendEmailButton.frame.width - 75), bottom: 0, right: 0)
         default:
-            self.sendEmailButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.sendEmailButton.frame.width - 45), bottom: 0, right: 0)
+            self.sendEmailButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.sendEmailButton.frame.width - 75), bottom: 0, right: 0)
         }
         
         DataBinding()

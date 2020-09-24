@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0416811A250FB16700F4C8DA /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04168119250FB16700F4C8DA /* EventModel.swift */; };
 		B02020FF24715FEC00CF3789 /* LanguageScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02020FE24715FEC00CF3789 /* LanguageScreenVC.swift */; };
 		B02021012471616600CF3789 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02021002471616600CF3789 /* Authentication.storyboard */; };
 		B02021042471624C00CF3789 /* AuthenticationPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02021032471624C00CF3789 /* AuthenticationPageVC.swift */; };
@@ -191,6 +192,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04168119250FB16700F4C8DA /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		0865A3C9A06C347C4AAE82B4 /* Pods-AfaqOnlineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfaqOnlineTests.debug.xcconfig"; path = "Target Support Files/Pods-AfaqOnlineTests/Pods-AfaqOnlineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		23F55D8D43BC1528ABE59E4C /* Pods_AfaqOnlineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AfaqOnlineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A28C3B588491FE7635C65B1 /* Pods_AfaqOnline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AfaqOnline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -720,8 +722,8 @@
 			children = (
 				B09FE6D924A8E75100DD4BA0 /* Orders */,
 				B079B167247FD90700737F72 /* Payment */,
-				B077326924A102360042331B /* Events */,
 				B07A2928249221990002AD25 /* WishList */,
+				B077326924A102360042331B /* Events */,
 				B06E46AB2476BE9F00D3246C /* Courses */,
 				B06A7D172476AE2E00424132 /* Instructors */,
 				B0E743342475F8020072174D /* Categories */,
@@ -910,6 +912,7 @@
 				B06E46BB2476DE8F00D3246C /* InstructorsModel.swift */,
 				B06E46BD2476DFB900D3246C /* CoursesModel.swift */,
 				B0701A8024773EDA00AE1255 /* HomeModel.swift */,
+				04168119250FB16700F4C8DA /* EventModel.swift */,
 				B079B16F247FE49E00737F72 /* PaymentsModel.swift */,
 				B07A293C24922FC60002AD25 /* SideMenuModel.swift */,
 				B090AC3A24A03856005DE963 /* WishlistModel.swift */,
@@ -1528,6 +1531,7 @@
 				B07A292A249221B40002AD25 /* WishListVC.swift in Sources */,
 				B0C99DFE2461C3070098B553 /* UIBarButtonItem+Badge.swift in Sources */,
 				B0D2BFE52472996700CB0333 /* AfaqModelsJSON.swift in Sources */,
+				0416811A250FB16700F4C8DA /* EventModel.swift in Sources */,
 				B09FE6DD24A8E99C00DD4BA0 /* OrdersViewModel.swift in Sources */,
 				B0F8C3D4248FCFBF00BF14BF /* FiltrationVC.swift in Sources */,
 				B079B16D247FE1AD00737F72 /* PaymentMethodsCell.swift in Sources */,

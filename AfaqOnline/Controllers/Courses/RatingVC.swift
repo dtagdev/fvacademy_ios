@@ -50,7 +50,7 @@ class RatingVC: UIViewController {
         case .iPhone4, .iPhone5, .iPhone6, .iPhone6S, .iPhone7, .iPhone8, .iPhone5S, .iPhoneSE, .iPhoneSE2:
             self.submitButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.submitButton.frame.width - 75), bottom: 0, right: 0)
         default:
-            self.submitButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.submitButton.frame.width - 45), bottom: 0, right: 0)
+            self.submitButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.submitButton.frame.width - 75), bottom: 0, right: 0)
         }
         
         commentTextView.text = "Write your experience"

@@ -49,8 +49,8 @@ class RegistrationVC: UIViewController {
             self.nextStepButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.nextStepButton.bounds.width - 75), bottom: 0, right: 0)
             self.CreateAccountButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.CreateAccountButton.bounds.width - 75), bottom: 0, right: 0)
         default:
-            self.nextStepButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.nextStepButton.bounds.width - 45), bottom: 0, right: 0)
-            self.CreateAccountButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.CreateAccountButton.bounds.width - 45), bottom: 0, right: 0)
+            self.nextStepButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.nextStepButton.bounds.width - 75), bottom: 0, right: 0)
+            self.CreateAccountButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.CreateAccountButton.bounds.width - 75), bottom: 0, right: 0)
         }
         
         setupMultiColorTermsConditionsLabel()

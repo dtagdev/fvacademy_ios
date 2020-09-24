@@ -40,6 +40,7 @@ class MyOrdersVC: UIViewController {
         setupOrdersTableView()
         searchTF.delegate = self
         self.hideKeyboardWhenTappedAround()
+        self.ordersVM.showIndicator()
         getMyCourses()
     }
     
@@ -91,7 +92,7 @@ extension MyOrdersVC: UITableViewDelegate {
         OrdersTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         self.ordersVM.Orders.bind(to: self.OrdersTableView.rx.items(cellIdentifier: cellIdentifier, cellType: WishlistCell.self)) { index, element, cell in
 
-            cell.config(InstructorImageUrl: "", CourseName: self.Orders[index].name ?? "", CourseDescription: self.Orders[index].details ?? "", CoursePrice: Int(self.Orders[index].price ?? "") ?? 0, discountedPrice: Int(self.Orders[index].discount ?? "") ?? 0, EnrolledUserImageURLs: [])
+            cell.config(InstructorImageUrl: self.Orders[index].mainImage ?? "" , CourseName: self.Orders[index].name ?? "", CourseDescription: self.Orders[index].details ?? "", CoursePrice: Double(self.Orders[index].price ?? "") ?? 0.0, discountedPrice: ((Double(self.Orders[index].price ?? "") ?? 0.0 ) - (Double(self.Orders[index].discount ?? "") ?? 0.0)), EnrolledUserImageURLs: [])
             cell.PriceView.isHidden = true
         }.disposed(by: disposeBag)
         self.OrdersTableView.rx.itemSelected.bind { (indexPath) in
@@ -115,6 +116,7 @@ extension MyOrdersVC {
             if let error = myCoursesModel.errors {
                 displayMessage(title: "", message: error, status: .error, forController: self)
             } else if let myCourses = myCoursesModel.data {
+                self.ordersVM.dismissIndicator()
                 self.Orders = myCourses
             }
         }, onError: { (error) in

@@ -46,7 +46,7 @@ struct AddServices {
             let headers = [
                 "Authorization": "Bearer \(token)"
             ]
-            Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
+            Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
                     print(JSON(response.result.value))

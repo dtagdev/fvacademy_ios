@@ -38,19 +38,15 @@ class WishlistCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func config(InstructorImageUrl: String, CourseName: String, CourseDescription: String, CoursePrice: Int, discountedPrice: Int, EnrolledUserImageURLs: [String]) {
+    func config(InstructorImageUrl: String, CourseName: String, CourseDescription: String, CoursePrice: Double, discountedPrice: Double, EnrolledUserImageURLs: [String]) {
         self.CourseNameLabel.text = CourseName
         self.CourseDescLabel.text = CourseDescription
-        //        if InstructorImageUrl != "" {
-        //            guard let url = URL(string: InstructorImageUrl) else {
-        //                return
-        //            }
-        //
-        //            self.InstructorImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
-        //        } else {
-        //            self.InstructorImageView.image = #imageLiteral(resourceName: "HomeCategory")
-        //        }
-        self.InstructorImageView.image = #imageLiteral(resourceName: "HomeCategory")
+                if InstructorImageUrl != "" {
+                    guard let url = URL(string: "https://dev.fv.academy/public/files/" + InstructorImageUrl) else {return}
+                    self.InstructorImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
+                } else {
+                    self.InstructorImageView.image = #imageLiteral(resourceName: "HomeCategory")
+                }
         if discountedPrice == 0 {
             self.CoursePriceLabel.text = "\(CoursePrice) SAR"
         } else {

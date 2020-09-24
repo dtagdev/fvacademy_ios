@@ -80,14 +80,10 @@ class ProfileVC: UIViewController {
             switch self.Items[index].Id ?? "" {
             case "Notification":
                 displayMessage(title: "", message: "Show Notifications Page", status: .success, forController: self)
-            case "Order":
-                displayMessage(title: "", message: "Show WishList Page", status: .success, forController: self)
-                
+            case "Order":                
                 guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "MyOrdersVC") as? MyOrdersVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
             case "Wishlist":
-                displayMessage(title: "", message: "Show WishList Page", status: .success, forController: self)
-                
                 guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
             case "Password":
@@ -107,8 +103,6 @@ class ProfileVC: UIViewController {
             case "Terms":
                 displayMessage(title: "", message: "Show Terms & Conditions Page", status: .success, forController: self)
             case "Logout":
-                
-                displayMessage(title: "", message: "Show Authentication Screens", status: .success, forController: self)
                 let alert = UIAlertController(title: "Logout", message: "Are you sure you want to Log out?", preferredStyle: .alert)
                 let yesAction = UIAlertAction(title: "YES", style: .default) { (action) in
                     alert.dismiss(animated: true, completion: nil)

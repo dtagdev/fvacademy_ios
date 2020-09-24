@@ -50,10 +50,10 @@ struct ConfigURLS {
     static var getRelatedCourses = BASE_URL + MOBILE_API + "/related_courses"
     
     //MARK:- GET User WishList
-    static var getUserWishList = BASE_URL + MOBILE_API + "/user_wish_list"
+    static var getUserWishList = BASE_URL + AUTH_MOBILE + "/user_wish_list"
     
     //MARK:- POST Add To Wishlist
-    static var postAddToWishlist = BASE_URL + MOBILE_API + "/add_wish_list"
+    static var postAddToWishlist = BASE_URL + AUTH_MOBILE + "/add_wish_list"
     
     //MARK:- POST DELETE From Wishlist
     static var postDeletFromWishlist = BASE_URL + AUTH_MOBILE + "/delete_wishlist/"

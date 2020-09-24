@@ -39,6 +39,7 @@ class WishListVC: UIViewController {
         }
         setupWishlistTableView()
         if Helper.getAPIToken() ?? "" != "" {
+            wishlistVM.showIndicator()
             self.getWishlist()
         } else {
             displayMessage(title: "", message: "Please Login First", status: .info, forController: self)
@@ -84,6 +85,7 @@ extension WishListVC {
     func getWishlist() {
         self.wishlistVM.getWishlist().subscribe(onNext: { (wishListModel) in
             if let data = wishListModel.data {
+                self.wishlistVM.dismissIndicator()
                 self.wishlist = data
             } else {
                 displayMessage(title: "", message: "Something went Wrong", status: .info, forController: self)
@@ -108,8 +110,8 @@ extension WishListVC: UITableViewDelegate {
         WishListTableView.rx.setDelegate(self).disposed(by: disposeBag)
         WishListTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         self.wishlistVM.Courses.bind(to: self.WishListTableView.rx.items(cellIdentifier: cellIdentifier, cellType: WishlistCell.self)) { index, element, cell in
-            let courseData = self.wishlist[index].courseData ?? CourseData()
-            cell.config(InstructorImageUrl: "", CourseName: courseData.name ?? "", CourseDescription: courseData.details ?? "", CoursePrice: Int(courseData.price ?? "") ?? 0, discountedPrice: 0, EnrolledUserImageURLs: [])
+            let courseData = self.wishlist[index].course
+            cell.config(InstructorImageUrl: courseData?.mainImage ?? "" , CourseName: courseData?.name ?? "", CourseDescription: courseData?.details ?? "", CoursePrice: Double(courseData?.price ?? "") ?? 0.0, discountedPrice: ((Double(courseData?.price ?? "") ?? 0.0 ) - (Double(courseData?.discount ?? "") ?? 0.0)), EnrolledUserImageURLs: [])
             cell.PriceView.isHidden = false
         }.disposed(by: disposeBag)
         self.WishListTableView.rx.itemSelected.bind { (indexPath) in
