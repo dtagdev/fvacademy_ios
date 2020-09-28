@@ -18,12 +18,14 @@ struct CommentsModelJSON: Codable {
 struct CommentData: Codable {
     var id, courseID, userID: Int?
     var comment, createdAt, updatedAt: String?
-
+    let comments: [Comment]?
+    
+    
     enum CodingKeys: String, CodingKey {
         case id
         case courseID = "course_id"
         case userID = "user_id"
-        case comment
+        case comment,comments
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
@@ -34,3 +36,6 @@ struct AddCommentModelJSON: Codable {
     var status: Bool?
     var errors: Errors?
 }
+
+
+

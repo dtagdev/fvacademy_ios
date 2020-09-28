@@ -20,6 +20,7 @@ struct AuthenticationViewModel {
     var id_number = BehaviorSubject<String>(value: "")
     var medical_number = BehaviorSubject<String>(value: "")
     var phone = BehaviorSubject<String>(value: "")
+    var code = BehaviorSubject<String>(value: "")
     func showIndicator() {
         SVProgressHUD.show()
     }
@@ -77,12 +78,23 @@ struct AuthenticationViewModel {
     func POSTForgetPassword() -> Observable<PasswordJSONModel> {
         let bindedPhone = try? phone.value()
         let params: [String: Any] = [
-            "phone": bindedPhone?.arToEnDigits ?? ""
+            "email": bindedPhone ?? ""
         ]
         
         let observer = Authentication.shared.postForgetPassword(params: params)
         return observer
     }
+    
+    
+    func POSTSendCode(email : String) -> Observable<PasswordJSONModel> {
+        let params: [String: Any] = [
+            "email": email
+        ]
+        
+        let observer = Authentication.shared.postForgetPassword(params: params)
+        return observer
+    }
+
     
     func GETCheckUserCode(code: String) -> Observable<PasswordJSONModel> {
         let observer = Authentication.shared.getCheckUserCode(code: code)
@@ -92,9 +104,11 @@ struct AuthenticationViewModel {
     func POSTUpdatePassowrd() -> Observable<PasswordJSONModel> {
         let bindedPhone = try? phone.value()
         let bindedPassword = try? password.value()
-        let params: [String: Any] = [
+        let bindCode = try? code.value()
+         let params: [String: Any] = [
             "password": bindedPassword?.arToEnDigits ?? "",
-            "phone": bindedPhone?.arToEnDigits ?? ""
+            "email": bindedPhone ?? "",
+            "code": bindCode ?? ""
         ]
         let observer = Authentication.shared.postUpdatePassword(params: params)
         return observer

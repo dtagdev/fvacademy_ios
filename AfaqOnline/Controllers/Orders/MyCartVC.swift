@@ -17,8 +17,8 @@ class MyCartVC: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     var orderVM = OrdersViewModel()
     var disposeBag = DisposeBag()
-    
-    var items = [String]() {
+
+    var items = [Cart]() {
         didSet {
             DispatchQueue.main.async {
                 self.orderVM.fetchCartItems(items: self.items)
@@ -28,7 +28,6 @@ class MyCartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         setupCartTableView()
         if "lang".localized == "ar" {
             self.backButton.setImage(#imageLiteral(resourceName: "nextAr"), for: .normal)
@@ -36,8 +35,11 @@ class MyCartVC: UIViewController {
             self.backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         }
           searchTF.delegate = self
-            self.hideKeyboardWhenTappedAround()
-        }
+        self.hideKeyboardWhenTappedAround()
+        self.getCart()
+        orderVM.showIndicator()
+        
+    }
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(true)
             searchTF.isHidden = true
@@ -92,14 +94,17 @@ extension MyCartVC: UITextFieldDelegate {
 
 extension MyCartVC: UITableViewDelegate {
     func setupCartTableView() {
-        self.items = ["Test1", "Test2", "Test3"]
         let cellIdentifier = "CartCell"
         self.CartTableView.rx.setDelegate(self).disposed(by: disposeBag)
         self.CartTableView.rowHeight = UITableView.automaticDimension
         self.CartTableView.estimatedRowHeight = UITableView.automaticDimension
         self.CartTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         self.orderVM.CartItems.bind(to: self.CartTableView.rx.items(cellIdentifier: cellIdentifier, cellType: CartCell.self)) { [weak self] index, element, cell in
-            cell.config(courseName: element, courseDesc: "Some description about the course for 2 lines Starting from here", coursePrice: 25)
+            cell.config(courseName: self?.items[index].course?.name ?? "" , courseDesc: self?.items[index].course?.details ?? "" , coursePrice: (Double(self?.items[index].price ?? "") ?? 0.0))
+            cell.deleteClosure = {
+                self?.orderVM.showIndicator()
+                self?.removeFromWishlist(course_id :self?.items[index].id ?? 0 )
+            }
         }.disposed(by: disposeBag)
         
         self.CartTableView.rx.itemSelected.bind { (indexPath) in
@@ -113,6 +118,32 @@ extension MyCartVC: UITableViewDelegate {
 
 extension MyCartVC {
     func getCart() {
-        
+        self.orderVM.getMyCart().subscribe(onNext: { (myCartModel) in
+            if let error = myCartModel.errors {
+            displayMessage(title: "", message: error, status: .error, forController: self)
+            } else if let item = myCartModel.data {
+            self.orderVM.dismissIndicator()
+            self.items = item
+            }
+        }, onError: { (error) in
+         displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+
+        }).disposed(by: disposeBag)
+      }
+    
+    func removeFromWishlist(course_id: Int) {
+        self.orderVM.postRemoveCart(course_id: course_id).subscribe(onNext: { (Cart) in
+            if Cart.status ?? false {
+                displayMessage(title: "", message: "done", status: .info, forController: self)
+                self.getCart()
+            } else if Cart.errors != nil {
+                displayMessage(title: "", message: Cart.errors ?? "", status: .error, forController: self)
+            }
+        }, onError: { (error) in
+            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+        }).disposed(by: disposeBag)
     }
+
+
+    
 }

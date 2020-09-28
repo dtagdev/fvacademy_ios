@@ -81,9 +81,21 @@ class HomeVC: UIViewController {
         self.searchTF.delegate = self
         self.hideKeyboardWhenTappedAround()
         self.homeViewModel.showIndicator()
-
-    }
+        
+        if Helper.getUserID() ?? 0 == 0{
+        let endEditting = UITapGestureRecognizer(target: self, action:#selector(HomeVC.endEditting(sender:)))
+        view.addGestureRecognizer(endEditting)
+        }
+     }
     
+    @objc func endEditting(sender: UITapGestureRecognizer) {
+        displayMessage(title: "", message: "Please Login First", status: .info, forController: self)
+        NotificationCenter.default.post(name: Notification.Name("NavigateToRegister"), object: nil)
+        guard let window = UIApplication.shared.keyWindow else { return }
+        guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "AuthenticationPageVC") as? AuthenticationPageVC else { return }
+        main.currentPage = 1
+        window.rootViewController = main
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         searchTF.isHidden = true
@@ -95,6 +107,9 @@ class HomeVC: UIViewController {
         }
     }
     @IBAction func SeeAllActions(_ sender: UIButton) {
+        if Helper.getUserID() ?? 0 == 0 {
+        displayMessage(title: "", message: "Please Login First", status: .info, forController: self)
+        }else{
         switch sender.tag {
         case 1:
             print("Trending Action")
@@ -119,6 +134,7 @@ class HomeVC: UIViewController {
             self.navigationController?.pushViewController(main, animated: true)
         default:
             break
+            }
         }
     }
     @IBAction func FiltrationAction(_ sender: UIButton) {
@@ -276,7 +292,7 @@ extension HomeVC: UICollectionViewDelegate {
         self.InstructorsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.homeViewModel.Instructors.bind(to: self.InstructorsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: HomeInstructorCell.self)) { index, element, cell in
             let instructorData = self.Instructors[index].user
-            cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? "") \(instructorData?.lastName ?? "")")
+            cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? FirstName(rawValue: "")) \(instructorData?.lastName ?? LastName(rawValue: ""))")
         }.disposed(by: disposeBag)
         self.InstructorsCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorDetailsVC") as? InstructorsVC else { return }

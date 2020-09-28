@@ -19,8 +19,10 @@ class WishlistCell: UITableViewCell {
     @IBOutlet weak var firstImageView: CustomImageView!
     @IBOutlet weak var CoursePriceLabel: UILabel!
     @IBOutlet weak var PriceView: CustomView!
-    
+   
+    var deleteClosure: (() -> Void)? = nil
     var goForDetails:(() -> Void)? = nil
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -83,5 +85,10 @@ class WishlistCell: UITableViewCell {
     @IBAction func CourseDetailsAction(_ sender: UIButton) {
         goForDetails?()
     }
+    
+    @IBAction func DeleteAction(_ sender: CustomButtons) {
+        deleteClosure?()
+    }
+
     
 }

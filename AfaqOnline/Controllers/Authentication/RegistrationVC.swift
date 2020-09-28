@@ -112,12 +112,16 @@ extension RegistrationVC {
     func postRegister(gender: String, title: String, job: String) {
         AuthViewModel.attemptToRegister(gender: gender, title: title, job: job).subscribe(onNext: { (registerData) in
             if registerData.status ?? false {
-                displayMessage(title: "", message: "You have Registered Successfully", status: .success, forController: self)
+            // displayMessage(title: "", message: "You have Registered Successfully", status: .success, forController: self)
                 self.SecondStepView.isHidden = true
                 self.firstStepView.isHidden = false
-                
+                guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "OTPScreenVC") as? OTPScreenVC else { return }
+                main.pageType = "homePage"
+                main.email = self.emailTF.text
+                main.modalPresentationStyle = .overFullScreen
+                main.modalTransitionStyle = .crossDissolve
+                self.present(main, animated: true, completion: nil)
                 NotificationCenter.default.post(name: Notification.Name("NavigateToLogin"), object: nil)
-                
             } else {
                 let errors = registerData.errors ?? Errors()
                 if let email = errors.email {

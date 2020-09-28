@@ -46,6 +46,8 @@ class CourseDetailsVC: UIViewController {
     @IBOutlet weak var DescriptionTV: UITextView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var addToCartButton: UIButton!
+    @IBOutlet weak var paymentButton: UIButton!
+
     
     private var courseViewModel = CourseDetailsViewModel()
     var maxHeight: CGFloat = UIScreen.main.bounds.size.height
@@ -70,6 +72,7 @@ class CourseDetailsVC: UIViewController {
         }
     }
     var price = String()
+    var discount = String()
     var course_id = Int()
     var purchasedFlag = Bool()
     var wishlistFlag = Bool()
@@ -125,17 +128,13 @@ class CourseDetailsVC: UIViewController {
     @IBAction func AddToWishlistAction(_ sender: UIButton) {
         sender.isEnabled = false
         if Helper.getUserID() ?? 0 != 0 {
-            if self.wishlistFlag {
-                self.removeFromWishlist(course_id: self.course_id)
-            } else {
-                self.addToWishList(course_id: self.course_id)
-            }
-            
-        } else {
+          self.addToWishList(course_id: self.course_id)
+        }else {
             displayMessage(title: "", message: "Please Login First", status: .info, forController: self)
+         }
         }
         
-    }
+    
     
     func geCurrentView(page: String) {
         if page == "OverView" {
@@ -170,7 +169,7 @@ class CourseDetailsVC: UIViewController {
     }
     @IBAction func AddToCartAction(_ sender: UIButton) {
         addToCartButton.isEnabled = false
-        self.addToCart(course_id: self.course_id, price: self.price)
+        self.addToCart(course_id: self.course_id, price: self.price, discount: self.discount)
     }
 }
 
@@ -187,7 +186,8 @@ extension CourseDetailsVC {
                 self.courseNameLabel.text = data.name ?? ""
                 self.courseDescriptionTextView.text = data.details ?? ""
                 self.price_discountLabel.attributedText = NSAttributedString(attributedString: (data.price ?? "").strikeThrough()) + NSAttributedString(string: "\n\((Double(data.price ?? "") ?? 0.0) - (Double(data.discount ?? "") ?? 0.0)) SAR")
-                self.price = "\((Double(data.price ?? "") ?? 0.0) - (Double(data.discount ?? "") ?? 0.0))"
+                self.price = "\((Double(data.price ?? "") ?? 0.0))"
+                self.discount = "\(Double(data.discount ?? "") ?? 0.0)"
                 self.ratingLabel.text = "\((data.rate ?? 0))"
                 self.DescriptionTV.text = data.courseDescription
                 guard let url = URL(string: "https://dev.fv.academy/public/files/" + (data.mainImage ?? "") ) else { return }
@@ -205,6 +205,7 @@ extension CourseDetailsVC {
                 if data.isWishlist == true {
                     self.wishlistFlag = true
                     self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
+                    self.WishlistButton.isEnabled = false
                 } else {
                     self.wishlistFlag = false
                     self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkUnSelected"), for: .normal)
@@ -228,36 +229,23 @@ extension CourseDetailsVC {
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
-    func removeFromWishlist(course_id: Int) {
-        self.courseViewModel.postRemoveFromWishList(course_id: course_id).subscribe(onNext: { (wishList) in
-            if wishList.data ?? false {
-                displayMessage(title: "", message: RemoveFromWishListMessage.localized, status: .info, forController: self)
-                self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkUnSelected"), for: .normal)
-                
-            } else if wishList.errors != nil {
-                displayMessage(title: "", message: wishList.errors ?? "", status: .error, forController: self)
-            }
-            self.WishlistButton.isEnabled = true
-        }, onError: { (error) in
-            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-            self.WishlistButton.isEnabled = true
-        }).disposed(by: disposeBag)
-    }
     func addToWishList(course_id: Int) {
         self.courseViewModel.postAddToWishList(course_id: course_id).subscribe(onNext: { (addWishListModel) in
             if addWishListModel.data == true  {
                 displayMessage(title: "", message: AddToWishListMessage.localized, status: .success, forController: self)
                 self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
-            }
+                self.WishlistButton.isEnabled = false
+            }else{
             self.WishlistButton.isEnabled = true
+            }
         }, onError: { (error) in
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             self.WishlistButton.isEnabled = true
             }).disposed(by: disposeBag)
     }
-    func addToCart(course_id: Int, price: String) {
-        self.courseViewModel.postAddToCart(course_id: course_id, price: price).subscribe(onNext: { (cartModel) in
-            if cartModel.data ?? false {
+    func addToCart(course_id: Int, price: String,discount : String) {
+        self.courseViewModel.postAddToCart(course_id: course_id, price: price, discount: discount).subscribe(onNext: { (cartModel) in
+            if cartModel.status ?? false {
                 displayMessage(title: "", message: AddToCartMessage.localized, status: .success, forController: self)
             } else if let errors = cartModel.errors {
                 if errors.courseID != [] {

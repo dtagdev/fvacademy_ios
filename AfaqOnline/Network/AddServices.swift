@@ -46,10 +46,9 @@ struct AddServices {
             let headers = [
                 "Authorization": "Bearer \(token)"
             ]
-            Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
-                    print(JSON(response.result.value))
                     do {
                         let data = try JSONDecoder().decode(AddWishlistModelJSON.self, from: response.data!)
                         observer.onNext(data)
@@ -69,7 +68,7 @@ struct AddServices {
             let headers = [
                 "Authorization": "Bearer \(token)"
             ]
-            Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            Alamofire.request(url, method: .delete, parameters: nil, encoding: URLEncoding.default, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
                     print(JSON(response.result.value))
@@ -132,6 +131,32 @@ struct AddServices {
             return Disposables.create()
         }
     }//END of POST Add Comment
+    
+    //MARK:- POST Add Comment
+       func postAddArticalComment(params: [String: Any]) -> Observable<AddCommentModelJSON> {
+           return Observable.create { (observer) -> Disposable in
+               let url = ConfigURLS.postAddArticalComment
+               let token = Helper.getAPIToken() ?? ""
+               let headers = [
+                   "Authorization": "Bearer \(token)"
+               ]
+               
+               Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
+                   .validate(statusCode: 200..<300)
+                   .responseJSON { (response: DataResponse<Any>) in
+                       do {
+                           let data = try JSONDecoder().decode(AddCommentModelJSON.self, from: response.data!)
+                           observer.onNext(data)
+                       } catch {
+                           print(error.localizedDescription)
+                           observer.onError(error)
+                       }
+               }
+               
+               return Disposables.create()
+           }
+       }//END of POST Add Comment
+    
     //MARK:- POST Add To Cart
     func postAddToCart(params: [String: Any]) -> Observable<AddToCartModelJSON> {
         return Observable.create { (observer) -> Disposable in
@@ -156,4 +181,29 @@ struct AddServices {
             return Disposables.create()
         }
     } //END of POST Add To Cart
+    
+    //MARK:- POST remove Cart
+    func postRemoveFromCart(course_id: Int) -> Observable<RemoveFromCartModelJSON> {
+           return Observable.create { (observer) -> Disposable in
+               let url = ConfigURLS.postDeletFromCart + "\(course_id)"
+               let token = Helper.getAPIToken() ?? ""
+               let headers = [
+                   "Authorization": "Bearer \(token)"
+               ]
+               Alamofire.request(url, method: .delete, parameters: nil, encoding: URLEncoding.default, headers: headers)
+                   .validate(statusCode: 200..<300)
+                   .responseJSON { (response: DataResponse<Any>) in
+                       print(JSON(response.result.value))
+                       do {
+                           let data = try JSONDecoder().decode(RemoveFromCartModelJSON.self, from: response.data!)
+                           observer.onNext(data)
+                       } catch {
+                           print(error.localizedDescription)
+                           observer.onError(error)
+                       }
+               }
+               return Disposables.create()
+           }
+       }//END of Remove from Wish List
+    
 }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ArticalCell" rowHeight="144" id="PNv-Rg-kYh" customClass="ArticalCell" customModule="Al_Academya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="477" height="144"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PNv-Rg-kYh" id="uCo-nX-YuY">
+                <rect key="frame" x="0.0" y="0.0" width="477" height="144"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBM-Bx-QIM" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                        <rect key="frame" x="5" y="1.5" width="467" height="141"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fw-ho-4eP">
+                                <rect key="frame" x="10" y="15" width="124.5" height="25.5"/>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.2470588235" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWM-Ju-et3">
+                                <rect key="frame" x="10" y="50.5" width="447" height="80.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" red="0.54117647059999996" green="0.59607843140000005" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cWM-Ju-et3" firstAttribute="leading" secondItem="jBM-Bx-QIM" secondAttribute="leading" constant="10" id="IpP-8Z-LlA"/>
+                            <constraint firstItem="cWM-Ju-et3" firstAttribute="top" secondItem="5Fw-ho-4eP" secondAttribute="bottom" constant="10" id="OcO-ew-Mm1"/>
+                            <constraint firstAttribute="trailing" secondItem="cWM-Ju-et3" secondAttribute="trailing" constant="10" id="PI3-KT-pcB"/>
+                            <constraint firstAttribute="bottom" secondItem="cWM-Ju-et3" secondAttribute="bottom" constant="10" id="XwY-s3-uiX"/>
+                            <constraint firstItem="5Fw-ho-4eP" firstAttribute="top" secondItem="jBM-Bx-QIM" secondAttribute="top" constant="15" id="q5e-he-TLD"/>
+                            <constraint firstItem="5Fw-ho-4eP" firstAttribute="leading" secondItem="jBM-Bx-QIM" secondAttribute="leading" constant="10" id="wEt-QN-y7Y"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jBM-Bx-QIM" firstAttribute="centerX" secondItem="uCo-nX-YuY" secondAttribute="centerX" id="Ucs-WL-c6r"/>
+                    <constraint firstItem="jBM-Bx-QIM" firstAttribute="width" secondItem="uCo-nX-YuY" secondAttribute="width" multiplier="0.98" id="VD0-FN-SAO"/>
+                    <constraint firstItem="jBM-Bx-QIM" firstAttribute="centerY" secondItem="uCo-nX-YuY" secondAttribute="centerY" id="qhD-NG-P1M"/>
+                    <constraint firstItem="jBM-Bx-QIM" firstAttribute="height" secondItem="uCo-nX-YuY" secondAttribute="height" multiplier="0.98" id="wbY-Qa-Ibh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="Cvo-A3-OA0"/>
+            <connections>
+                <outlet property="CourseDetailsTV" destination="cWM-Ju-et3" id="ecp-SY-e2Y"/>
+                <outlet property="CourseNameLabel" destination="5Fw-ho-4eP" id="hpM-yl-IwH"/>
+            </connections>
+            <point key="canvasLocation" x="245.6521739130435" y="186.83035714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

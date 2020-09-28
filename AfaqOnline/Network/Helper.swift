@@ -44,23 +44,23 @@ class Helper {
     }
     
     //Save API Token Function to userDefaults
-    class func saveAPIToken(user_id: Int,email: String, role: Int, name: String, token: String, token_type: String) {
+    class func saveAPIToken(user_id: Int,email: String, role: Int, name: String, token: String) {
         let def = UserDefaults.standard
         def.set(token, forKey: "token")
-        def.set(token_type, forKey: "token_type")
+        //def.set(token_type, forKey: "token_type")
         def.set(user_id, forKey: "user_id")
         def.set(email, forKey: "email")
         def.set(role, forKey: "role")
         def.set(name, forKey: "name")
         def.synchronize()
-        restartApp()
+        //restartApp()
     }
-    class func saveAPIToken(token: String, token_type: String) {
+    class func saveAPIToken(token: String) {
         let def = UserDefaults.standard
         def.set(token, forKey: "token")
-        def.set(token_type, forKey: "token_type")
+       // def.set(token_type, forKey: "token_type")
         def.synchronize()
-        restartApp()
+        //restartApp()
         }
     class func getAPIToken() -> String? {
         let def = UserDefaults.standard

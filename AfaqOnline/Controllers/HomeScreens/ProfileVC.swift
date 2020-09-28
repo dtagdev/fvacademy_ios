@@ -79,29 +79,35 @@ class ProfileVC: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             switch self.Items[index].Id ?? "" {
             case "Notification":
-                displayMessage(title: "", message: "Show Notifications Page", status: .success, forController: self)
-            case "Order":                
+                print("")
+            case "Order":
                 guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "MyOrdersVC") as? MyOrdersVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
             case "Wishlist":
                 guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
             case "Password":
-                displayMessage(title: "", message: "Show Change Password Page", status: .success, forController: self)
+                print("")
             case "Lang":
-                displayMessage(title: "", message: "Show Change Language Page", status: .success, forController: self)
-                
+                print("")
                 guard let window = UIApplication.shared.keyWindow else { return }
                 guard let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LanguageScreenVC") as? LanguageScreenVC else { return }
                 main.type = "home"
                 window.rootViewController = main
                 UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
             case "About":
-                displayMessage(title: "", message: "Show About The Academy Page", status: .success, forController: self)
+                print("")
             case "Privacy":
-                displayMessage(title: "", message: "Show Privacy Policy Page", status: .success, forController: self)
+                print("")
             case "Terms":
-                displayMessage(title: "", message: "Show Terms & Conditions Page", status: .success, forController: self)
+                print("")
+            case "News":
+                guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "ArticalListVC") as? ArticalListVC else { return }
+                self.navigationController?.pushViewController(main, animated: true)
+            case "Achievements":
+                print("")
+            case "ContactUs":
+                print("")
             case "Logout":
                 let alert = UIAlertController(title: "Logout", message: "Are you sure you want to Log out?", preferredStyle: .alert)
                 let yesAction = UIAlertAction(title: "YES", style: .default) { (action) in
@@ -121,12 +127,11 @@ class ProfileVC: UIViewController {
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             case "Login":
-                displayMessage(title: "", message: "Show Authentication Screens", status: .success, forController: self)
                 guard let window = UIApplication.shared.keyWindow else { return }
                 guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "AuthenticationPageVC") as? AuthenticationPageVC else { return }
                 main.currentPage = 1
                 window.rootViewController = main
-                UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                //UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
             default:
                 break
             }
@@ -170,8 +175,7 @@ extension ProfileVC {
         self.ProfileVM.getProfile().subscribe(onNext: { (ProfileModel) in
             if let profile = ProfileModel.data {
                 self.EmailLabel.text = profile.email ?? ""
-                self.UserNameLabel.text = "\(profile.firstName ?? "") \(profile.lastName ?? "")"
-                
+                self.UserNameLabel.text = "\(profile.firstName ??  "") \(profile.lastName ??  "")"
             }
         }, onError: { (error) in
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
@@ -192,6 +196,10 @@ extension ProfileVC: UITableViewDelegate {
                 SideMenuModel(Name: "About the Academy", Id: "About", Selected: false),
                 SideMenuModel(Name: "Privacy Policy", Id: "Privacy", Selected: false),
                 SideMenuModel(Name: "Terms & Conditions", Id: "Terms", Selected: false),
+                SideMenuModel(Name: "News & Forums", Id: "News", Selected: false),
+                SideMenuModel(Name: "Achievements", Id: "Achievements", Selected: false),
+                SideMenuModel(Name: "Contact Us", Id: "ContactUs", Selected: false),
+                
             ]
             self.Items.append(SideMenuModel(Name: "Logout", Id: "Logout", Selected: false))
         } else {

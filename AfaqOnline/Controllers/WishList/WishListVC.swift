@@ -94,6 +94,21 @@ extension WishListVC {
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
+    
+    func removeFromWishlist(wishlistID: Int) {
+        self.wishlistVM.postRemoveFromWishList(wishlistID: wishlistID).subscribe(onNext: { (wishList) in
+            if wishList.data ?? false {
+                displayMessage(title: "", message: RemoveFromWishListMessage.localized, status: .info, forController: self)
+                self.getWishlist()
+            } else if wishList.errors != nil {
+                displayMessage(title: "", message: wishList.errors ?? "", status: .error, forController: self)
+            }
+        }, onError: { (error) in
+            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+        }).disposed(by: disposeBag)
+    }
+
+    
 }
 
 extension WishListVC: UITextFieldDelegate {
@@ -113,6 +128,13 @@ extension WishListVC: UITableViewDelegate {
             let courseData = self.wishlist[index].course
             cell.config(InstructorImageUrl: courseData?.mainImage ?? "" , CourseName: courseData?.name ?? "", CourseDescription: courseData?.details ?? "", CoursePrice: Double(courseData?.price ?? "") ?? 0.0, discountedPrice: ((Double(courseData?.price ?? "") ?? 0.0 ) - (Double(courseData?.discount ?? "") ?? 0.0)), EnrolledUserImageURLs: [])
             cell.PriceView.isHidden = false
+            cell.deleteClosure = {
+                self.wishlistVM.showIndicator()
+                self.removeFromWishlist(wishlistID : self.wishlist[index].id ?? 0 )
+            }
+            cell.goForDetails = {
+
+            }
         }.disposed(by: disposeBag)
         self.WishListTableView.rx.itemSelected.bind { (indexPath) in
             

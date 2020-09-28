@@ -59,15 +59,12 @@ struct CourseDetailsViewModel {
         let observer = AddServices.shared.POSTAddToWishList(params: params)
         return observer
     }
-    func postRemoveFromWishList(course_id: Int) -> Observable<RemoveFromWishListModelJSON> {
-        
-        let observer = AddServices.shared.postRemoveFromWishList(course_id: course_id)
-        return observer
-    }
-    func postAddToCart(course_id: Int, price: String) -> Observable<AddToCartModelJSON> {
+   
+    func postAddToCart(course_id: Int, price: String,discount : String) -> Observable<AddToCartModelJSON> {
         let params: [String: Any] = [
             "course_id": course_id,
-            "price": price
+            "price": price,
+            "discount" :discount
         ]
         let observer = AddServices.shared.postAddToCart(params: params)
         return observer

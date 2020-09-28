@@ -14,6 +14,9 @@ class ReviewsCell: UITableViewCell {
     @IBOutlet weak var UserNameLabel: UILabel!
     @IBOutlet weak var UserRatingLabel: UILabel!
     @IBOutlet weak var CommentTV: CustomTextView!
+    @IBOutlet weak var rateView: UIView!
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

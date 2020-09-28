@@ -26,7 +26,7 @@ class Authentication {
                         let registerData = try JSONDecoder().decode(AfaqModelsJSON.self, from: response.data!)
                         print(registerData)
                         if let data = registerData.data {
-                            Helper.saveAPIToken(user_id: data.id ?? 0, email: data.email ?? "", role: data.role ?? 0, name: data.name ?? "", token: data.token ?? "", token_type: data.tokenType ?? "")
+                            Helper.saveAPIToken(user_id: data.id ?? 0, email: data.email ?? "", role: data.role ?? 0, name: data.firstName ?? "", token: data.token ?? "")
                         }
                         observer.onNext(registerData)
                     } catch {
@@ -49,7 +49,8 @@ class Authentication {
                     do {
                         let loginData = try JSONDecoder().decode(LoginModelJSON.self, from: response.data!)
                         if let data = loginData.data {
-                            Helper.saveAPIToken(user_id: data.id ?? 0, email: data.email ?? "", role: data.role ?? 0, name: "\(data.firstName ?? "") \(data.lastName ?? "")", token: data.token ?? "", token_type: "")
+                            Helper.saveAPIToken(user_id: data.id ?? 0, email: data.email ?? "", role: data.role ?? 0, name: "\(data.firstName ?? "") \(data.lastName ?? "")", token: data.token ?? "")
+                            Helper.restartApp()
                         }
                         observer.onNext(loginData)
                     } catch {
@@ -194,4 +195,76 @@ class Authentication {
             return Disposables.create()
         }
     }//END of GET My Courses
+    
+    //MARK:- GET My Cart
+     func getMyGetCart() -> Observable<getCartModelJSON> {
+         return Observable.create { (observer) -> Disposable in
+             let url = ConfigURLS.GetCart
+             let token = Helper.getAPIToken() ?? ""
+             let headers = [
+                 "Authorization": "Bearer \(token)"
+             ]
+             Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+                 .validate(statusCode: 200..<300)
+                 .responseJSON { (response: DataResponse<Any>) in
+                     do {
+                         let data = try JSONDecoder().decode(getCartModelJSON.self, from: response.data!)
+                         observer.onNext(data)
+                     } catch {
+                         print(error.localizedDescription)
+                         observer.onError(error)
+                     }
+             }
+             return Disposables.create()
+         }
+     }//END of GET My Courses
+    
+    
+    //MARK:- GET My Artical
+    func getMyArtical(lang : Int) -> Observable<AllArticalModelJSON> {
+        return Observable.create { (observer) -> Disposable in
+            let url = ConfigURLS.getUserArtical + "/\(lang)"
+            let token = Helper.getAPIToken() ?? ""
+            let headers = [
+                "Authorization": "Bearer \(token)"
+            ]
+            Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { (response: DataResponse<Any>) in
+                    do {
+                        let data = try JSONDecoder().decode(AllArticalModelJSON.self, from: response.data!)
+                        observer.onNext(data)
+                    } catch {
+                        print(error.localizedDescription)
+                        observer.onError(error)
+                    }
+            }
+            return Disposables.create()
+        }
+    }//END of GET My Courses
+    
+    //MARK:- GET My Artical
+    func getArticalDetails(lang : Int,id : Int) -> Observable<ArticaDetalislModelJSON> {
+        return Observable.create { (observer) -> Disposable in
+            let url = ConfigURLS.getArticalDetalis + "/\(id)"
+            let token = Helper.getAPIToken() ?? ""
+            let headers = [
+                "Authorization": "Bearer \(token)"
+            ]
+            Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { (response: DataResponse<Any>) in
+                    do {
+                        let data = try JSONDecoder().decode(ArticaDetalislModelJSON.self, from: response.data!)
+                        observer.onNext(data)
+                    } catch {
+                        print(error.localizedDescription)
+                        observer.onError(error)
+                    }
+            }
+            return Disposables.create()
+        }
+    }//END of GET My Courses
+    
+    
 }

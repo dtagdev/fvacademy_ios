@@ -97,13 +97,12 @@ extension InstructorDetailsVC {
         self.instructorViewModel.getInstructorDetails(instructor_id: instructor_id).subscribe(onNext: { (InstructorModel) in
             if let data = InstructorModel.data {
                 let user = data.user
-                self.InstructorNameLabel.text = "\(user?.firstName ?? "") \(user?.lastName ?? "")"
+                self.InstructorNameLabel.text = "\(user?.firstName ?? FirstName(rawValue: "")) \(user?.lastName ?? LastName(rawValue: ""))"
                 self.InstructorEmailLabel.text = user?.email ?? ""
                 self.InstructorRating.text = "\(4) Instructor Rating"
 //                self.InstructorSummaryTV.text = data.de
                 if data.image ?? "" != "" {
 //                    guard let url = URL(string: data.image ?? "") else { return }
-//
 //                    self.InstructorImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "userProfile"))
                     self.InstructorImageView.image = #imageLiteral(resourceName: "userProfile")
                 }

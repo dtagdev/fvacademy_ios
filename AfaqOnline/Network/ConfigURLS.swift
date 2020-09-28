@@ -34,6 +34,11 @@ struct ConfigURLS {
     static var getCourseComments = BASE_URL + MOBILE_API + "/get_comment_of_course"
     //MARK:- GET User Courses
     static var getUserCourses = BASE_URL + AUTH_MOBILE + "/get_courses_of_user"
+    //MARK:- GET User Artical
+    static var getUserArtical = BASE_URL + MOBILE_API + "/articles"
+    //MARK:- GET  Artical Details
+    static var getArticalDetalis = BASE_URL + MOBILE_API + "/single_article"
+    
     //MARK:- POST ADD Course Comment
     static var postCourseComment = BASE_URL + AUTH_MOBILE + "/add_comment"
     //MARK:- GET Home Data
@@ -57,6 +62,10 @@ struct ConfigURLS {
     
     //MARK:- POST DELETE From Wishlist
     static var postDeletFromWishlist = BASE_URL + AUTH_MOBILE + "/delete_wishlist/"
+    
+    //MARK:- POST DELETE From Wishlist
+       static var postDeletFromCart = BASE_URL + AUTH_MOBILE + "/remove_cart/"
+    
     //MARK:- GET Instructor Details
     static var getInstructorDetails = BASE_URL + MOBILE_API + "/instructor_details/"
     
@@ -70,7 +79,7 @@ struct ConfigURLS {
     static var postForgetPassword = BASE_URL + AUTH + "/forgetpass"
     
     //MARK:- Check User Code
-    static var getCheckUserCode = BASE_URL + AUTH + "/checkUserCode"
+    static var getCheckUserCode = BASE_URL + AUTH + "/activate"
     
     //MARK:- POST Update Password
     static var postUpdatePassword = BASE_URL + AUTH + "/update_password"
@@ -80,6 +89,11 @@ struct ConfigURLS {
     
     //MARK:- POST Add Comment
     static var postAddComment = BASE_URL + AUTH_MOBILE + "/add_comment"
+    //MARK:- POST Add Artical Comment
+    static var postAddArticalComment = BASE_URL + AUTH_MOBILE + "/add_article_comment"
+    
+    //MARK:- Get Cart
+      static var GetCart = BASE_URL + AUTH_MOBILE + "/get_cart"
     //MARK:- Chat APIs
     //MARK:- Send Message
     static var sendMessage = BASE_URL + CHAT + "/send_message"

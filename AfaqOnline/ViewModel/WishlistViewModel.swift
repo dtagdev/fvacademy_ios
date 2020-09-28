@@ -31,4 +31,9 @@ struct WishlistViewModel {
         return observer
     }
     
+    func postRemoveFromWishList(wishlistID: Int) -> Observable<RemoveFromWishListModelJSON> {
+           let observer = AddServices.shared.postRemoveFromWishList(course_id: wishlistID)
+           return observer
+       }
+    
 }

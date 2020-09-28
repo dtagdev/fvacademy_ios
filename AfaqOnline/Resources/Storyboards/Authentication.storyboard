@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1085,7 +1085,7 @@ new account</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKO-e4-9cY">
-                                                <rect key="frame" x="10.5" y="403.5" width="393" height="36"/>
+                                                <rect key="frame" x="10.5" y="403.5" width="393" height="32"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                                 <state key="normal" title="Skip">
                                                     <color key="titleColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1157,7 +1157,7 @@ new account</string>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwl-T4-Jba">
                                                 <rect key="frame" x="20.5" y="20" width="373" height="47"/>
-                                                <string key="text">Enter the phone you used to create your
+                                                <string key="text">Enter the Email you used to create your
 account and we will send you  a code to reset your
 password</string>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
@@ -1170,7 +1170,7 @@ password</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RwR-ey-G9f">
                                                         <rect key="frame" x="9.5" y="10" width="354" height="60"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="nZZ-2c-xuN">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="nZZ-2c-xuN">
                                                                 <rect key="frame" x="0.0" y="0.0" width="25" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="25" id="2ap-k1-qcQ"/>
@@ -1180,7 +1180,7 @@ password</string>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fi4-M3-8bA">
                                                                 <rect key="frame" x="35" y="0.0" width="319" height="60"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PHONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6E-kS-MUw" customClass="CustomLabel" customModule="Al_Academya" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6E-kS-MUw" customClass="CustomLabel" customModule="Al_Academya" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="319" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="Mpo-lc-RxX"/>
@@ -1365,7 +1365,7 @@ password</string>
                                                     <constraint firstItem="6tx-cW-xyt" firstAttribute="leading" secondItem="0gK-QY-gE4" secondAttribute="leading" id="f7T-eD-9LB"/>
                                                 </constraints>
                                             </view>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FNJ-Zf-ugt">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhatsApp Image 2020-09-27 at 11.43.46 AM" translatesAutoresizingMaskIntoConstraints="NO" id="FNJ-Zf-ugt">
                                                 <rect key="frame" x="20.5" y="50" width="373" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="gYh-jO-wtE"/>
@@ -1847,6 +1847,7 @@ Passwords must be at least 10 characters in length, but can be more.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="WhatsApp Image 2020-09-27 at 11.43.46 AM" width="247" height="157"/>
         <image name="back" width="25" height="25"/>
         <image name="customer" width="25" height="25"/>
         <image name="email" width="25" height="25"/>

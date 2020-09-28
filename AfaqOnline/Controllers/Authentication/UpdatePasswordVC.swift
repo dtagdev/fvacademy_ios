@@ -17,7 +17,8 @@ class UpdatePasswordVC: UIViewController {
     
     @IBOutlet weak var backButton: UIButton!
     private let AuthViewModel = AuthenticationViewModel()
-    var phone = String()
+    var email = String()
+    var code = String()
     var disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +65,7 @@ extension UpdatePasswordVC {
 //MARK:- Data Binding
 extension UpdatePasswordVC {
     func DataBinding() {
-        self.AuthViewModel.phone.onNext(self.phone)
+        self.AuthViewModel.phone.onNext(self.email)
         _ = new_passwordTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.password).disposed(by: disposeBag)
         self.new_passwordTF.rx.controlEvent([.editingChanged]).asObservable().subscribe { [unowned self] _ in
             if self.new_passwordTF.text!.isPasswordValid() {

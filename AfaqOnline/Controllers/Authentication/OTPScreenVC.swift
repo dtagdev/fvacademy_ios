@@ -22,7 +22,8 @@ class OTPScreenVC: UIViewController {
     
     let authVM = AuthenticationViewModel()
     var disposeBag = DisposeBag()
-    var phone: String?
+    var email: String?
+    var pageType : String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,23 +40,14 @@ class OTPScreenVC: UIViewController {
         
         self.firstTF.becomeFirstResponder()
         bindingData()
-        mobileNumberStatusLabel.text = "Enter the 4-digit code sent to your phone number \(phone ?? "")"
+        mobileNumberStatusLabel.text = "Enter the 4-digit code sent to your Email"
     }
     
     @IBAction func ConfirmAction(_ sender: CustomButtons) {
-        let alert = UIAlertController(title: "", message: "Invalid Code\nDo you want to resend it again?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "YES", style: .default) { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            //Your Action Of Yes Here
-            self.GETCheckUserCode()
-        }
-        yesAction.setValue(#colorLiteral(red: 0.09019607843, green: 0.3176470588, blue: 0.4980392157, alpha: 1), forKey: "titleTextColor")
-        alert.addAction(yesAction)
-        let cancelAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
-        cancelAction.setValue(#colorLiteral(red: 0.09019607843, green: 0.3176470588, blue: 0.4980392157, alpha: 1), forKey: "titleTextColor")
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+         self.GETCheckUserCode()
+        
     }
+    
     @IBAction func backAction(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -65,16 +57,54 @@ extension OTPScreenVC {
         let code = "\(self.firstTF.text ?? "")\(self.secondTF.text ?? "")\(self.thirdTF.text ?? "")\(self.fourthTF.text ?? "")"
         self.authVM.GETCheckUserCode(code: code).subscribe(onNext: { (passwordModel) in
             if passwordModel.data ?? false {
+                if  self.pageType == "resetPass"{
                 guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "UpdatePasswordVC") as? UpdatePasswordVC else { return }
-                main.phone = self.phone ?? ""
+                main.email = self.email ?? ""
+                main.code = code
                 main.modalPresentationStyle = .overFullScreen
                 main.modalTransitionStyle = .crossDissolve
                 self.present(main, animated: true, completion: nil)
+                }else{
+                  Helper.restartApp()
+                }
+            }else{
+           let alert = UIAlertController(title: "", message: "Invalid Code\nDo you want to resend it again?", preferredStyle: .alert)
+                let yesAction = UIAlertAction(title: "YES", style: .default) { (action) in
+                       alert.dismiss(animated: true, completion: nil)
+                    self.POSTSendCode()
+
+                }
+                   yesAction.setValue(#colorLiteral(red: 0.09019607843, green: 0.3176470588, blue: 0.4980392157, alpha: 1), forKey: "titleTextColor")
+                   alert.addAction(yesAction)
+                   let cancelAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
+                   cancelAction.setValue(#colorLiteral(red: 0.09019607843, green: 0.3176470588, blue: 0.4980392157, alpha: 1), forKey: "titleTextColor")
+                   alert.addAction(cancelAction)
+                   self.present(alert, animated: true, completion: nil)
             }
         }, onError: { (error) in
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
+    
+    func POSTSendCode() {
+        self.authVM.POSTSendCode(email : email ?? "").subscribe(onNext: { (passwordModel) in
+            if passwordModel.data ?? false {
+                 self.firstTF.text   = " "
+                 self.secondTF.text  = " "
+                 self.thirdTF.text   = " "
+                 self.fourthTF.text = " "
+                displayMessage(title: "", message: "code sent" , status: .success, forController: self)
+            }else{
+                displayMessage(title: "", message: passwordModel.errors ?? "", status: .error, forController: self)
+            }
+        }, onError: { (error) in
+            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+            }).disposed(by: disposeBag)
+    }
+
+ 
+
+
 }
 extension OTPScreenVC {
     func bindingData() {
@@ -114,9 +144,11 @@ extension OTPScreenVC {
         }.disposed(by: disposeBag)
     }
     //MARK:- Register Label Action Configurations
+  
     @objc func ResendTapAction(_ sender: UITapGestureRecognizer) {
-            print("Resend Action")
+        POSTSendCode()
     }
+    
     func setupMultiColorResendLabel() {
         let main_string = "Didn't receive the code? Resend"
         let coloredString = "Resend"

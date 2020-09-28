@@ -14,8 +14,6 @@ struct CoursesModel: Codable {
     var errors: String?
 }
 
-
-
 // MARK: - MyCoursesModelJSON
 struct MyCoursesModelJSON: Codable {
     var data: [MyCoursesData]?

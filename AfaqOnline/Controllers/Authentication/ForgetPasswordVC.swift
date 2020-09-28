@@ -39,10 +39,13 @@ extension ForgetPasswordVC {
         self.AuthViewModel.POSTForgetPassword().subscribe(onNext: { (passwordModel) in
             if passwordModel.data ?? false {
                 guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "OTPScreenVC") as? OTPScreenVC else { return }
-                main.phone = self.phoneTF.text ?? ""
+                main.email = self.phoneTF.text ?? ""
+                main.pageType = "resetPass"
                 main.modalPresentationStyle = .overFullScreen
                 main.modalTransitionStyle = .crossDissolve
                 self.present(main, animated: true, completion: nil)
+            }else{
+                displayMessage(title: "", message: passwordModel.errors ?? "", status: .error, forController: self)
             }
             self.sendEmailButton.isEnabled = true
         }, onError: { (error) in
@@ -56,11 +59,11 @@ extension ForgetPasswordVC {
     func DataBinding() {
         _ = phoneTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.phone).disposed(by: disposeBag)
         sendEmailButton.rx.tap.bind {
-            guard self.phoneTF.text!.isPhone() else {
+            guard self.phoneTF.text!.isValidEmail() else {
                 if "lang".localized == "ar" {
-                    displayMessage(title: "", message: "يرجى إدخال رقم سعودي صحيح اولاً", status: .info, forController: self)
+                    displayMessage(title: "", message: "يرجى إدخال رقم بريد الكتروني صحيح اولاً", status: .info, forController: self)
                 } else {
-                    displayMessage(title: "", message: "Please Enter a valid KSA number first", status: .info, forController: self)
+                    displayMessage(title: "", message: "Please Enter a valid email first", status: .info, forController: self)
                 }
                 return
             }
