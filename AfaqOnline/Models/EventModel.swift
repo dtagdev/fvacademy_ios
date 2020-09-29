@@ -20,3 +20,12 @@ struct EventDataClass: Codable {
     let events: [Event]?
     let paginate: Paginate?
 }
+
+
+// MARK: - EventDetailsModelJSON
+struct EventDetailsModelJSON: Codable {
+    let data: Event?
+    let status: Bool?
+    let errors: String?
+}
+

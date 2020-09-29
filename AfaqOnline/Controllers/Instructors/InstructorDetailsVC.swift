@@ -58,6 +58,7 @@ class InstructorDetailsVC: UIViewController {
         self.WelcomeHeaderLabel.minimumScaleFactor = 0.5
         self.InstructorSummaryTV.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         self.searchTF.delegate = self
+        self.instructorViewModel.showIndicator()
         self.getInstructorDetails(instructor_id: self.instructor_id)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -96,15 +97,16 @@ extension InstructorDetailsVC {
     func getInstructorDetails(instructor_id: Int) {
         self.instructorViewModel.getInstructorDetails(instructor_id: instructor_id).subscribe(onNext: { (InstructorModel) in
             if let data = InstructorModel.data {
+                self.instructorViewModel.dismissIndicator()
                 let user = data.user
-                self.InstructorNameLabel.text = "\(user?.firstName ?? FirstName(rawValue: "")) \(user?.lastName ?? LastName(rawValue: ""))"
+                self.InstructorNameLabel.text = "\(user?.firstName ?? "") \(user?.lastName ??  "")"
                 self.InstructorEmailLabel.text = user?.email ?? ""
                 self.InstructorRating.text = "\(4) Instructor Rating"
-//                self.InstructorSummaryTV.text = data.de
+                self.InstructorSummaryTV.text = data.details ?? ""
+                self.NumberOfCoursesLabel.text = "\(data.courses?.count ?? 0) Courses"
                 if data.image ?? "" != "" {
-//                    guard let url = URL(string: data.image ?? "") else { return }
-//                    self.InstructorImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "userProfile"))
-                    self.InstructorImageView.image = #imageLiteral(resourceName: "userProfile")
+                    guard let url = URL(string: "https://dev.fv.academy/public/files/" + (data.image ?? "")) else { return }
+                    self.InstructorImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "userProfile"))
                 }
             }
         }, onError: { (error) in

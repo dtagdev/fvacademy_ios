@@ -91,12 +91,21 @@ struct ConfigURLS {
     static var postAddComment = BASE_URL + AUTH_MOBILE + "/add_comment"
     //MARK:- POST Add Artical Comment
     static var postAddArticalComment = BASE_URL + AUTH_MOBILE + "/add_article_comment"
-    
+    //MARK:- POST Add Event Comment
+    static var postAddEventComment = BASE_URL + AUTH_MOBILE + "/add_event_comment"
     //MARK:- Get Cart
-      static var GetCart = BASE_URL + AUTH_MOBILE + "/get_cart"
+    static var GetCart = BASE_URL + AUTH_MOBILE + "/get_cart"
     //MARK:- Chat APIs
     //MARK:- Send Message
     static var sendMessage = BASE_URL + CHAT + "/send_message"
     //MARK:- GET Room Chat
     static var getRoomChat = BASE_URL + CHAT + "/specific_room"
+    //MARK:- GET Instructor Details
+       static var getAboutApp = BASE_URL + MOBILE_API + "/setting"
+    //MARK:- GET  getContactUS
+       static var getContactUS = BASE_URL + MOBILE_API + "/contact"
+    //MARK:- GET Event Details
+          static var EventDetails = BASE_URL + MOBILE_API + "/event_details/"
+    
+    
 }

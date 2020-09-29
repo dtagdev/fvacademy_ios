@@ -38,8 +38,8 @@ class EventContentCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func config(InstructorName: String, InstructorJob: String, StartTime: String, EndTime: String, ContentType: String, selected: Bool) {
-        if selected {
+    func config(InstructorName: String, InstructorJob: String, StartTime: String, EndTime: String, ContentType: String, live: Int) {
+        if live == 1{
             self.liveView.isHidden = false
             self.TimeView.isHidden = true
         } else {

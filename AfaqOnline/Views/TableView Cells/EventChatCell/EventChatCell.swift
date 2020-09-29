@@ -51,7 +51,6 @@ class EventChatCell: UITableViewCell {
         self.MessageContentTV.layoutIfNeeded()
         if ImageUrl != "" {
             guard let url = URL(string: ImageUrl) else { return }
-            
             self.UserImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "userProfile"))
         } else {
             self.UserImageView.image = #imageLiteral(resourceName: "userProfile")

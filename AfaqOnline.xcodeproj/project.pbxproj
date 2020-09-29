@@ -15,6 +15,10 @@
 		044819932521FFE200AC7137 /* ArticalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044819912521FFE200AC7137 /* ArticalCell.swift */; };
 		044819942521FFE200AC7137 /* ArticalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044819922521FFE200AC7137 /* ArticalCell.xib */; };
 		0448199625221CCF00AC7137 /* ArticalcontentVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448199525221CCF00AC7137 /* ArticalcontentVc.swift */; };
+		044819982522634B00AC7137 /* AboutAppVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044819972522634B00AC7137 /* AboutAppVc.swift */; };
+		0448199A2522682200AC7137 /* AboutAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044819992522682200AC7137 /* AboutAppViewModel.swift */; };
+		0448199C25226CCD00AC7137 /* AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448199B25226CCD00AC7137 /* AboutApp.swift */; };
+		0448199E252274A800AC7137 /* ContactUSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448199D252274A800AC7137 /* ContactUSVC.swift */; };
 		B02020FF24715FEC00CF3789 /* LanguageScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02020FE24715FEC00CF3789 /* LanguageScreenVC.swift */; };
 		B02021012471616600CF3789 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02021002471616600CF3789 /* Authentication.storyboard */; };
 		B02021042471624C00CF3789 /* AuthenticationPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02021032471624C00CF3789 /* AuthenticationPageVC.swift */; };
@@ -207,6 +211,10 @@
 		044819912521FFE200AC7137 /* ArticalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticalCell.swift; sourceTree = "<group>"; };
 		044819922521FFE200AC7137 /* ArticalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticalCell.xib; sourceTree = "<group>"; };
 		0448199525221CCF00AC7137 /* ArticalcontentVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticalcontentVc.swift; sourceTree = "<group>"; };
+		044819972522634B00AC7137 /* AboutAppVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppVc.swift; sourceTree = "<group>"; };
+		044819992522682200AC7137 /* AboutAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewModel.swift; sourceTree = "<group>"; };
+		0448199B25226CCD00AC7137 /* AboutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutApp.swift; sourceTree = "<group>"; };
+		0448199D252274A800AC7137 /* ContactUSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUSVC.swift; sourceTree = "<group>"; };
 		0865A3C9A06C347C4AAE82B4 /* Pods-AfaqOnlineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfaqOnlineTests.debug.xcconfig"; path = "Target Support Files/Pods-AfaqOnlineTests/Pods-AfaqOnlineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		23F55D8D43BC1528ABE59E4C /* Pods_AfaqOnlineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AfaqOnlineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A28C3B588491FE7635C65B1 /* Pods_AfaqOnline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AfaqOnline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -418,6 +426,8 @@
 			children = (
 				0448198A2521FA2800AC7137 /* ArticalList.swift */,
 				0448199525221CCF00AC7137 /* ArticalcontentVc.swift */,
+				044819972522634B00AC7137 /* AboutAppVc.swift */,
+				0448199D252274A800AC7137 /* ContactUSVC.swift */,
 			);
 			path = AboutApp;
 			sourceTree = "<group>";
@@ -956,6 +966,7 @@
 				B0943E2A24CA69290096C1E1 /* CommentsModel.swift */,
 				B02D093124CFBB5F00BDD9E8 /* CartModel.swift */,
 				0448198C2521FBAF00AC7137 /* ArticalModel.swift */,
+				0448199B25226CCD00AC7137 /* AboutApp.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -978,6 +989,7 @@
 				B0DDF0D224A30CE300040D20 /* EventDetailsViewModel.swift */,
 				B09FE6DC24A8E99C00DD4BA0 /* OrdersViewModel.swift */,
 				0448198E2521FC5300AC7137 /* ArticalViewModel.swift */,
+				044819992522682200AC7137 /* AboutAppViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1478,6 +1490,7 @@
 				B0202106247166A600CF3789 /* RegistrationVC.swift in Sources */,
 				B0C99DAF2461C2650098B553 /* AppDelegate.swift in Sources */,
 				B0C99E082461C3070098B553 /* CustomCollectionView.swift in Sources */,
+				0448199C25226CCD00AC7137 /* AboutApp.swift in Sources */,
 				B0DCA0A12491868F002E33A7 /* RAMFumeAnimation.swift in Sources */,
 				B06A7D192476AE4600424132 /* InstructorsVC.swift in Sources */,
 				B06F22E6247FA1F8007D7158 /* CourseDetailsViewModel.swift in Sources */,
@@ -1486,6 +1499,7 @@
 				B0D2BFED2472BF7A00CB0333 /* AuthenticationViewModel.swift in Sources */,
 				B0DDF0D924A30EC800040D20 /* EventContentCell.swift in Sources */,
 				B0DDF0D524A30D5300040D20 /* ChatModel.swift in Sources */,
+				0448199A2522682200AC7137 /* AboutAppViewModel.swift in Sources */,
 				B0C99DFC2461C3070098B553 /* CustomButtons.swift in Sources */,
 				B090AC3B24A03856005DE963 /* WishlistModel.swift in Sources */,
 				B0DCA0A52491868F002E33A7 /* RAMBounceAnimation.swift in Sources */,
@@ -1531,6 +1545,7 @@
 				B0C99DFF2461C3070098B553 /* AlertService.swift in Sources */,
 				B0C99DFD2461C3070098B553 /* CustomTextField.swift in Sources */,
 				B06E46A92476B90F00D3246C /* InstructorsCell.swift in Sources */,
+				044819982522634B00AC7137 /* AboutAppVc.swift in Sources */,
 				B0C99E002461C3070098B553 /* CustomAudioController.swift in Sources */,
 				B090AC3924A03045005DE963 /* InstructorDetailsVC.swift in Sources */,
 				B0DCA09B2491868F002E33A7 /* RAMAnimatedTabBarItem.swift in Sources */,
@@ -1569,6 +1584,7 @@
 				B02D093024CFB7C100BDD9E8 /* LocalizationTitles.swift in Sources */,
 				B0C99DF92461C3070098B553 /* CustomTextView.swift in Sources */,
 				B06F22EA247FA30B007D7158 /* CourseContentCell.swift in Sources */,
+				0448199E252274A800AC7137 /* ContactUSVC.swift in Sources */,
 				B0DF578424740B3F00A025EB /* HomeInstructorCell.swift in Sources */,
 				0448198D2521FBAF00AC7137 /* ArticalModel.swift in Sources */,
 				B0C99E052461C3070098B553 /* SideMenu+VC.swift in Sources */,

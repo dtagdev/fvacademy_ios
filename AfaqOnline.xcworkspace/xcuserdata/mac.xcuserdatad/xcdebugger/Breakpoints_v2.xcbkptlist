@@ -23,22 +23,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "54D0307A-B8F2-40AA-A74E-12ECBFBCD10E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AfaqOnline/ViewModel/OrdersViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "postRemoveCart(course_id:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "B21401E4-5432-4C66-A9F2-0478F1550404"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -48,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "198"
             endingLineNumber = "198"
-            landmarkName = "postRemoveFromCart(course_id:)"
+            landmarkName = "postAddToCart(params:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -64,39 +48,311 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
             endingLineNumber = "199"
-            landmarkName = "postRemoveFromCart(course_id:)"
+            landmarkName = "postAddToCart(params:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "25E90858-FCA7-4F6A-AD69-BCDA4A8A1EF3 - 8410dbe72806ba0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.AddToCartModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.AddServices.postAddToCart(params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.AddToCartModelJSON&gt;"
+                  moduleName = "Al Academya"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/AddServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "6676">
+               </Location>
+               <Location
+                  uuid = "25E90858-FCA7-4F6A-AD69-BCDA4A8A1EF3 - 8410dbe72806ba0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.AddToCartModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.AddServices.postAddToCart(params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.AddToCartModelJSON&gt;"
+                  moduleName = "Al Academya"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/AddServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "8852">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8ECE20E3-CEFC-4000-87E2-2020A9FD7282"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/AboutApp/AboutAppVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "getAboutApp()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BCAC026B-01EE-4253-9E47-10464A2EC870"
+            uuid = "DFC30E77-B34A-478B-96E6-EE31312F235B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AfaqOnline/Network/AddServices.swift"
+            filePath = "AfaqOnline/Controllers/AboutApp/AboutAppVc.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "postAddComment(params:)"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "getAboutApp()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "878A38C8-FE68-4D85-B2EE-2D07DE6C1F6F"
+            uuid = "F96844D5-DD89-4F64-A07E-0963A1A6B6B1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/AboutApp/AboutAppVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "getAboutApp()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59AB997E-D376-4C40-B522-86094FD1D80C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/AboutApp/AboutAppVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "getAboutApp()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9812A0AD-E3B8-4B73-B58F-B0B276E34034"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/AboutApp/AboutAppVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "getAboutApp()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3B6D80C-D866-4051-BCD4-2A049F91901B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/AboutApp/AboutAppVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "getAboutApp()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C9CB4ED9-1C73-444A-A5DB-4B5DE105CBB5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/AboutApp/AboutAppVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "getAboutApp()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F47C11B4-8444-4F63-A428-1BA5B70C8661"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AfaqOnline/Network/AddServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "postAddComment(params:)"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "postAddEventComment(params:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF1A99AF-AE2F-4535-8F11-D77BD32AE67C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Network/AddServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "postAddEventComment(params:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AF1A99AF-AE2F-4535-8F11-D77BD32AE67C - d74cb8f4c5e4892a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.EventDetailsModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.AddServices.postAddEventComment(params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.EventDetailsModelJSON&gt;"
+                  moduleName = "Al Academya"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/AddServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "2509">
+               </Location>
+               <Location
+                  uuid = "AF1A99AF-AE2F-4535-8F11-D77BD32AE67C - d74cb8f4c5e4892a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.EventDetailsModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.AddServices.postAddEventComment(params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.EventDetailsModelJSON&gt;"
+                  moduleName = "Al Academya"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/AddServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "3217">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1467DB9D-BB35-477E-ACA6-F0FA60D16B89"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Network/AddServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "postAddEventComment(params:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1467DB9D-BB35-477E-ACA6-F0FA60D16B89 - eebffa2e67db2785"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Al_Academya.AddServices.postAddEventComment(params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.EventDetailsModelJSON&gt;"
+                  moduleName = "Al Academya"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/AddServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  uuid = "1467DB9D-BB35-477E-ACA6-F0FA60D16B89 - 8745e1454a893023"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RxSwift.AnyObserver&lt;Al_Academya.EventDetailsModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.AddServices.postAddEventComment(params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.EventDetailsModelJSON&gt;"
+                  moduleName = "Al Academya"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/AddServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "213">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC08FCAD-D86F-4EF1-934E-F24C857BDCFD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Network/AddServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "postAddEventComment(params:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "67826617-0E51-4665-8D4B-A871AEF8D613"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/Events/EventsDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "getEventDetails(event_id:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D997FE09-4D40-4360-8CE4-BAFB9035958F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/Events/EventsDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "getEventDetails(event_id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

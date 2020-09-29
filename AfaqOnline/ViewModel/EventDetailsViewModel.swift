@@ -14,8 +14,10 @@ import SVProgressHUD
 struct  EventDetailsViewModel {
     var Ads = PublishSubject<[String]>()
     var Participants = PublishSubject<[String]>()
-    var EventContent = PublishSubject<[String]>()
-    var ChatArr = PublishSubject<[ChatModel]>()
+    var EventContent = PublishSubject<[Content]>()
+    var EventComments = PublishSubject<[Comment]>()
+    
+    
     func fetchAds(Ads: [String]) {
         self.Ads.onNext(Ads)
     }
@@ -23,11 +25,11 @@ struct  EventDetailsViewModel {
     func fetchParticipants(data: [String]) {
         self.Participants.onNext(data)
     }
-    func fetchEventContent(data: [String]) {
+    func fetchEventContent(data: [Content]) {
         self.EventContent.onNext(data)
     }
-    func fetchChat(data: [ChatModel]) {
-        self.ChatArr.onNext(data)
+    func fetchComments(data: [Comment]) {
+        self.EventComments.onNext(data)
     }
     
     func showIndicator() {
@@ -51,5 +53,27 @@ struct  EventDetailsViewModel {
         let observer = ChatServices.shared.getEventChat(room_id: room_id)
         return observer
     }
+    
+    func getEventDetails(Event_id: Int) -> Observable<EventDetailsModelJSON> {
+        var lang = Int()
+        if "lang".localized == "ar" {
+            lang = 0
+        } else {
+            lang = 1
+          }
+        let observer = GetServices.shared.getEventDetails(Event_id:Event_id,lang :1 )
+          return observer
+      }
+      
+    func postAddComment(id: Int, comment: String) -> Observable<EventDetailsModelJSON> {
+           let params: [String: Any] = [
+               "event_id": id,
+               "comment": comment
+           ]
+        let observer = AddServices.shared.postAddEventComment(params: params)
+           return observer
+       }
+    
+    
     
 }

@@ -72,7 +72,6 @@ extension OTPScreenVC {
                 let yesAction = UIAlertAction(title: "YES", style: .default) { (action) in
                        alert.dismiss(animated: true, completion: nil)
                     self.POSTSendCode()
-
                 }
                    yesAction.setValue(#colorLiteral(red: 0.09019607843, green: 0.3176470588, blue: 0.4980392157, alpha: 1), forKey: "titleTextColor")
                    alert.addAction(yesAction)

@@ -137,20 +137,17 @@ struct ContentInstructor: Codable {
 // MARK: - Instractuer
 struct User: Codable {
    let id: Int
-     let firstName: FirstName?
-     let lastName: LastName?
-     let title: FirstName?
+     let firstName: String?
+     let lastName: String?
+     let title: String?
      let avatar: String?
-     let job: Job?
+     let job: String?
      let idNumber, medicalNumber, phone: String?
-     let gender: Gender?
+     let gender: String?
      let email: String?
      let isVerified: Int?
      let verifiedAt, emailVerifiedAt: String?
      let createdAt, updatedAt: String?
-
-
-    
     
      enum CodingKeys: String, CodingKey {
          case id
@@ -166,33 +163,6 @@ struct User: Codable {
          case createdAt = "created_at"
          case updatedAt = "updated_at"
      }
-}
-
-
-enum FirstName: String, Codable {
-    case instructor = "instructor"
-    case magdi = "Magdi"
-    case moamena = "Moamena"
-    case reem = "reem"
-}
-
-enum Gender: String, Codable {
-    case female = "female"
-    case male = "male"
-}
-
-enum Job: String, Codable {
-    case drPsychological = "Dr. psychological"
-    case heartSDoctor = "heart's doctor"
-    case instructor = "instructor"
-    case labDoctor = "Lab Doctor"
-}
-
-enum LastName: String, Codable {
-    case farg = "farg"
-    case instructor = "instructor"
-    case kamel = "Kamel"
-    case yacoub = "Yacoub"
 }
 
 // MARK: - Instructor

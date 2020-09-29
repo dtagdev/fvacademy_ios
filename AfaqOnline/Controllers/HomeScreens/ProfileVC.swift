@@ -89,25 +89,29 @@ class ProfileVC: UIViewController {
             case "Password":
                 print("")
             case "Lang":
-                print("")
                 guard let window = UIApplication.shared.keyWindow else { return }
                 guard let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LanguageScreenVC") as? LanguageScreenVC else { return }
                 main.type = "home"
                 window.rootViewController = main
                 UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
             case "About":
-                print("")
+                guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "AboutAppVC") as? AboutAppVC else { return }
+                main.appPageType = "About"
+                self.navigationController?.pushViewController(main, animated: true)
             case "Privacy":
-                print("")
+                guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "AboutAppVC") as? AboutAppVC else { return }
+                main.appPageType = "Return"
+                self.navigationController?.pushViewController(main, animated: true)
             case "Terms":
-                print("")
+              guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "AboutAppVC") as? AboutAppVC else { return }
+              main.appPageType = "Terms"
+                self.navigationController?.pushViewController(main, animated: true)
             case "News":
                 guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "ArticalListVC") as? ArticalListVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
-            case "Achievements":
-                print("")
             case "ContactUs":
-                print("")
+                guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else { return }
+                self.navigationController?.pushViewController(main, animated: true)
             case "Logout":
                 let alert = UIAlertController(title: "Logout", message: "Are you sure you want to Log out?", preferredStyle: .alert)
                 let yesAction = UIAlertAction(title: "YES", style: .default) { (action) in
@@ -197,7 +201,6 @@ extension ProfileVC: UITableViewDelegate {
                 SideMenuModel(Name: "Privacy Policy", Id: "Privacy", Selected: false),
                 SideMenuModel(Name: "Terms & Conditions", Id: "Terms", Selected: false),
                 SideMenuModel(Name: "News & Forums", Id: "News", Selected: false),
-                SideMenuModel(Name: "Achievements", Id: "Achievements", Selected: false),
                 SideMenuModel(Name: "Contact Us", Id: "ContactUs", Selected: false),
                 
             ]

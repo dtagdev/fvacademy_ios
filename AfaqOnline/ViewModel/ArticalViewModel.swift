@@ -7,21 +7,11 @@
 //
 
 import Foundation
-//
-//  OrdersViewModel.swift
-//  AfaqOnline
-//
-//  Created by MGoKu on 6/28/20.
-//  Copyright © 2020 Dtag. All rights reserved.
-//
-
-import Foundation
 import RxSwift
 import SVProgressHUD
 
 
 struct ArticalViewModel {
-
     var Article = PublishSubject<[Article]>()
     var Comments = PublishSubject<[Comment]>()
     

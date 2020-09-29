@@ -156,6 +156,30 @@ struct AddServices {
                return Disposables.create()
            }
        }//END of POST Add Comment
+    //MARK:- POST Add Comment
+          func postAddEventComment(params: [String: Any]) -> Observable<EventDetailsModelJSON> {
+              return Observable.create { (observer) -> Disposable in
+                  let url = ConfigURLS.postAddEventComment
+                  let token = Helper.getAPIToken() ?? ""
+                  let headers = [
+                      "Authorization": "Bearer \(token)"
+                  ]
+                  
+                  Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
+                      .validate(statusCode: 200..<300)
+                      .responseJSON { (response: DataResponse<Any>) in
+                          do {
+                              let data = try JSONDecoder().decode(EventDetailsModelJSON.self, from: response.data!)
+                              observer.onNext(data)
+                          } catch {
+                              print(error.localizedDescription)
+                              observer.onError(error)
+                          }
+                  }
+                  
+                  return Disposables.create()
+              }
+          }//END of POST Add Comment
     
     //MARK:- POST Add To Cart
     func postAddToCart(params: [String: Any]) -> Observable<AddToCartModelJSON> {

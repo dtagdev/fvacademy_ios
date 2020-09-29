@@ -49,15 +49,36 @@ class EventsDetailsVC: UIViewController {
     @IBOutlet weak var FullScreenShareButton: CustomButtons!
     @IBOutlet weak var videoTimeLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
-    
+    @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var introductionLable : UILabel!
+    @IBOutlet weak var  introductionTexView: UITextView!
+    @IBOutlet weak var  goalsLabel: UILabel!
+    @IBOutlet weak var  goalsTextView : UITextView!
     static var videoPlayer: AVPlayer? = nil
     var videoPlayerLayer: AVPlayerLayer? = nil
     var isVideoPlaying = false
     var videoURL = String()
+    var event_id = Int()
     var EventsVM = EventDetailsViewModel()
     var purchasedFlag = false
     var disposeBag = DisposeBag()
-    var room_id = 1
+    var comments = [Comment](){
+         didSet {
+        DispatchQueue.main.async {
+            self.EventsVM.fetchComments(data: self.comments)
+            }
+            
+        }
+    }
+    
+    var content = [Content](){
+         didSet {
+           DispatchQueue.main.async {
+            self.EventsVM.fetchEventContent(data: self.content)
+         }
+        }
+       }
+    
     var Ads = [String]() {
         didSet {
             DispatchQueue.main.async {
@@ -65,6 +86,7 @@ class EventsDetailsVC: UIViewController {
             }
         }
     }
+    
     var participants = [String]() {
         didSet {
             DispatchQueue.main.async {
@@ -72,36 +94,9 @@ class EventsDetailsVC: UIViewController {
             }
         }
     }
-    var EventContent = [String]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.EventsVM.fetchEventContent(data: self.EventContent)
-            }
-        }
-    }
-    var EventChat = [ChatModel]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.EventsVM.fetchChat(data: self.EventChat)
-            }
-        }
-    }
     fileprivate func attemptToAssembleGroupedMessages() {
         print("attempt to group our messages together based on Date proprety")
         
-//        let groupedMessages = Dictionary(grouping: EventChat) { (element) -> String in
-//
-//            return element.date
-//        }
-//        EventChat = Array(groupedMessages.values)
-        print(self.EventChat)
-        self.EventChat.sort { (m1, m2) -> Bool in
-            
-            guard let msg1 = m1.start_date else { return false }
-            guard let msg2 = m2.start_date else { return false}
-            return msg1.currentTimeMillis() < msg2.currentTimeMillis()
-        }
-        print(self.EventChat)
     }
     
     override func viewDidLoad() {
@@ -138,10 +133,27 @@ class EventsDetailsVC: UIViewController {
                 }
                 
             }
-            
-            isVideoPlaying = true
+            eventImageView.isHidden = true
+            self.FullScreenButton.isHidden = false
+            self.FullScreenShareButton.isHidden = false
+            self.videoTimeLabel.isHidden = false
+            self.PlayButton.isHidden = false
+            self.isVideoPlaying = true
+            self.videoPlayerView.isHidden = false
+            self.EventTimeLabel.isHidden = false
+
+        }else{
+            eventImageView.isHidden = false
+            self.FullScreenButton.isHidden = true
+            self.FullScreenShareButton.isHidden = true
+            self.videoTimeLabel.isHidden = true
+            self.PlayButton.isHidden = true
+            self.videoPlayerView.isHidden = true
+            self.EventTimeLabel.isHidden = true
+
         }
-        getChatList(room_id: self.room_id)
+        self.EventsVM.showIndicator()
+        self.getEventDetails(event_id: event_id)
     }
     @objc func playerItemDidReachEnd(notification: NSNotification) {
         EventsDetailsVC.videoPlayer?.seek(to: CMTime.zero)
@@ -151,23 +163,6 @@ class EventsDetailsVC: UIViewController {
         super.viewWillAppear(true)
         self.searchTF.text = ""
         self.searchTF.isHidden = true
-        PusherManager.shared.ListenToChannel(ChannelId: self.room_id) { (event) in
-            if let message = event.data {
-                print(message)
-                let data = message.convertStringToJSON()
-                print(data)
-                let current_user_id = Helper.getUserID()
-                let created_at = data?["date"] as? String ?? ""
-                let messageDate = created_at.toDate() ?? Date()
-                let message_date_to_String = messageDate.getCurrentDate()
-                if current_user_id == data?["sender_id"] as? Int {
-                    self.EventChat.append(ChatModel(senderImage: "", senderName: Helper.getUserName() ?? "", message: data?["message"] as? String ?? "", readAt: "", ReceiverFlag: false, start_date: messageDate))
-                } else {
-                    self.EventChat.append(ChatModel(senderImage: "", senderName: "Other User", message: data?["message"] as? String ?? "", readAt: "", ReceiverFlag: true, start_date: messageDate))
-                }
-//                self.attemptToAssembleGroupedMessages()
-            }
-        }
     }
     @IBAction func backAction(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -190,7 +185,6 @@ class EventsDetailsVC: UIViewController {
             self.searchTF.text = ""
             self.searchTF.isHidden = true
             self.present(main, animated: true, completion: nil)
-            //                self.navigationController?.pushViewController(main, animated: true)
         }
     }
     @IBAction func WishlistAction(_ sender: UIButton) {
@@ -228,7 +222,6 @@ class EventsDetailsVC: UIViewController {
     }
     @IBAction func PlayAction(_ sender: CustomButtons) {
         if purchasedFlag {
-            self.EventChatButton.isHidden = true
             self.FullScreenButton.isHidden = true
             self.FullScreenShareButton.isHidden = true
             self.videoTimeLabel.isHidden = true
@@ -239,9 +232,7 @@ class EventsDetailsVC: UIViewController {
             self.ChatSeperator.isHidden = true
             self.AboutTheEventView.isHidden = false
             self.AboutTheEventSeperator.isHidden = false
-            self.EventChatView.isHidden = true
         } else {
-            self.EventChatButton.isHidden = false
             self.FullScreenButton.isHidden = false
             self.FullScreenShareButton.isHidden = false
             self.videoTimeLabel.isHidden = false
@@ -256,7 +247,8 @@ class EventsDetailsVC: UIViewController {
     
     @IBAction func MessageDidEndEditing(_ sender: UITextField) {
         if !self.MessageTF.text!.isEmpty {
-            self.sendMessage(message: self.MessageTF.text!, room_id: self.room_id, user_id: Helper.getUserID() ?? 0)
+            self.EventsVM.showIndicator()
+            self.addComment(id: event_id, comment: self.MessageTF.text!)
         } else {
             displayMessage(title: "", message: "Please write your comment first", status: .info, forController: self)
         }
@@ -264,6 +256,7 @@ class EventsDetailsVC: UIViewController {
     }
     @IBAction func SendAction(_ sender: CustomButtons) {
         self.MessageTF.resignFirstResponder()
+        self.MessageTF.text  = "" 
     }
     @IBAction func EnrollNowAction(_ sender: UIButton) {
     }
@@ -271,54 +264,52 @@ class EventsDetailsVC: UIViewController {
 }
 
 extension EventsDetailsVC {
-    func sendMessage(message: String, room_id: Int, user_id: Int) {
-        self.EventsVM.postSendMessage(message: message, room_id: room_id, user_id: user_id).subscribe(onNext: { (messageModel) in
-            if let messageData = messageModel.data {
-//                self.EventChat.append(ChatModel(senderImage: "", senderName: Helper.getUserName() ?? "", message: messageData.body ?? "", readAt: messageData.readedAt ?? "", ReceiverFlag: false))
-                self.MessageTF.text = ""
-//
-                let bottomOffset = CGPoint(x: 0, y: self.ScrollViewContainer.contentSize.height - self.ScrollViewContainer.bounds.size.height + 50)
-                self.ScrollViewContainer.setContentOffset(bottomOffset, animated: true)
+    
+    func addComment(id: Int, comment: String) {
+        self.EventsVM.postAddComment(id: id,comment: comment).subscribe(onNext: { (commentModel) in
+            if let _ = commentModel.data {
+                self.getEventDetails(event_id: self.event_id)
+                displayMessage(title: "", message: CommentRecorded.localized, status: .info, forController: self)
+            } else if let errors = commentModel.errors {
+             if "lang".localized == "ar" {
+            displayMessage(title: "", message: "حدث خطأ ما اثناء إرسال الرسالة الخاصة بك، يرجى المحاولة في وقت لاحق", status: .error, forController: self)
+            } else {
+            displayMessage(title: "", message: "Something went wrong while sending your message, Please try again later", status: .error, forController: self)
+            }
             }
         }, onError: { (error) in
             if "lang".localized == "ar" {
-                displayMessage(title: "", message: "حدث خطأ ما اثناء إرسال الرسالة الخاصة بك، يرجى المحاولة في وقت لاحق", status: .error, forController: self)
+            displayMessage(title: "", message: "حدث خطأ ما اثناء إرسال الرسالة الخاصة بك، يرجى المحاولة في وقت لاحق", status: .error, forController: self)
             } else {
-                displayMessage(title: "", message: "Something went wrong while sending your message, Please try again later", status: .error, forController: self)
-            }
-            }).disposed(by: disposeBag)
+             displayMessage(title: "", message: "Something went wrong while sending your message, Please try again later", status: .error, forController: self)
+                      }
+        }).disposed(by: disposeBag)
     }
-    func getChatList(room_id: Int) {
-        self.EventsVM.getRoomChat(room_id: room_id).subscribe(onNext: { (chatModel) in
-            if let data = chatModel.data {
-                var retrievedChat = [ChatModel]()
-                let current_user_id = Helper.getUserID() ?? 0
-                for message in data {
-                    let created_at = message.createdAt ?? ""
-                    let messageDate = created_at.toDate() ?? Date()
-                    let message_date_to_String = messageDate.getCurrentDate()
-                    print("Date of Message: \(message_date_to_String) Created_at: \(created_at) MessageData: \(messageDate)")
-                    if message.senderID ?? 0 == current_user_id {
-                        retrievedChat.append(ChatModel(senderImage: "", senderName: "You", message: message.body ?? "", readAt: message.readedAt ?? "", ReceiverFlag: false, start_date: messageDate))
-                    } else {
-                        retrievedChat.append(ChatModel(senderImage: "", senderName: "Other User", message: message.body ?? "", readAt: message.readedAt ?? "", ReceiverFlag: true, start_date: messageDate))
-                    }
+     
+    func getEventDetails(event_id: Int) {
+        self.EventsVM.getEventDetails(Event_id:event_id).subscribe(onNext: { (eventModel) in
+                if let data = eventModel.data {
+                self.EventsVM.dismissIndicator()
+                self.videoURL = data.eventURL ?? ""
+                self.EventNameLabel.text = data.name ?? ""
+                self.introductionTexView.text = data.details ?? ""
+                self.goalsTextView.text = data.eventDescription ?? ""
+                guard let url = URL(string: "https://dev.fv.academy/public/files/" + (data.mainImage ?? "") ) else { return }
+                self.eventImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "DetailsImage"))
+                self.coursePriceLabel.attributedText = NSAttributedString(attributedString: (data.price ?? "").strikeThrough()) + NSAttributedString(string: "\n\((Double(data.price ?? "") ?? 0.0) - (Double(data.discount ?? "") ?? 0.0)) SAR")
+                    self.comments = data.comments ?? []
+                    self.content = data.contents ?? []
+            }
+            }, onError: { (error) in
+                if "lang".localized == "ar" {
+                    displayMessage(title: "", message: "حدث خطأ ما، يرجى المحاولة في وقت لاحق", status: .error, forController: self)
+                } else {
+                    displayMessage(title: "", message: "Something went wrong , Please try again later", status: .error, forController: self)
                 }
-                self.EventChat = retrievedChat.reversed()
-                self.ChatTableView.scrollToBottomRow()
-                retrievedChat.removeAll()
-//                self.attemptToAssembleGroupedMessages()
-//                self.ChatTableView.reloadData()
-                self.ChatTableView.scrollToBottomRow()
-            }
-        }, onError: { (error) in
-            if "lang".localized == "ar" {
-                displayMessage(title: "", message: "حدث خطأ ما في إستقبال محادثات الحدث، سيتم حل المشكلة في أسرع وقت", status: .error, forController: self)
-            } else {
-                displayMessage(title: "", message: "Something went wrong while getting event chat, Don't Panic we are going to solve it ASAP", status: .error, forController: self)
-            }
-            }).disposed(by: disposeBag)
-    }
+                }).disposed(by: disposeBag)
+        }
+    
+
 }
 extension EventsDetailsVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -383,19 +374,13 @@ extension EventsDetailsVC: UICollectionViewDelegateFlowLayout {
 }
 extension EventsDetailsVC: UITableViewDelegate {
     func setupContentTableView() {
-        self.EventContent = ["Test", "Test2", "Test3"]
         let cellIdentifier = "EventContentCell"
         self.ContentTableView.rx.setDelegate(self).disposed(by: disposeBag)
         self.ContentTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         self.ContentTableView.rowHeight = UITableView.automaticDimension
         self.ContentTableView.estimatedRowHeight = UITableView.automaticDimension
         self.EventsVM.EventContent.bind(to: self.ContentTableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventContentCell.self)) { index, element, cell in
-            if index == 0 {
-                cell.config(InstructorName: self.EventContent[index], InstructorJob: "Rheumatology", StartTime: "16 July 2020 08:00 PM", EndTime: "09:30 PM", ContentType: "Live", selected: true)
-            } else {
-                cell.config(InstructorName: self.EventContent[index], InstructorJob: "Rheumatology", StartTime: "16 July 2020 08:00 PM", EndTime: "09:30 PM", ContentType: "Live", selected: false)
-            }
-            
+                cell.config(InstructorName: self.content[index].instructor?.user?.firstName ?? "", InstructorJob: self.content[index].instructor?.user?.job ?? "", StartTime: self.content[index].startTime ?? "", EndTime: self.content[index].endTime ?? "", ContentType: "Live", live: self.content[index].live ?? 0)
         }.disposed(by: disposeBag)
         
         self.ContentTableView.rx.itemSelected.bind { (indexPath) in
@@ -407,17 +392,23 @@ extension EventsDetailsVC: UITableViewDelegate {
     }
     
     func setupChatTableView() {
-//        self.EventChat = [ChatModel(senderImage: "", senderName: "Mohammed Test", message: "Heya Awesome EventHeya Awesome EventHeya Awesome EventHeya Awesome EventHeya Awesome Event", ReceiverFlag: true), ChatModel(senderImage: "", senderName: "Mohammed Test", message: "Yes I'm Agree with youYes I'm Agree with youYes I'm Agree with youYes I'm Agree with youYes I'm Agree with you", ReceiverFlag: false)]
-        let cellIdentifier = "EventChatCell"
+        let ReviewsCellIdentifier = "ReviewsCell"
+        self.ChatTableView.register(UINib(nibName: ReviewsCellIdentifier, bundle: nil), forCellReuseIdentifier: ReviewsCellIdentifier)
+        self.ChatTableView.rx.setDelegate(self).disposed(by: disposeBag)
         self.ChatTableView.rowHeight = UITableView.automaticDimension
         self.ChatTableView.estimatedRowHeight = UITableView.automaticDimension
-        self.ChatTableView.rx.setDelegate(self).disposed(by: disposeBag)
-        self.ChatTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        self.EventsVM.ChatArr.bind(to: self.ChatTableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventChatCell.self)) { index, element, cell in
-            cell.config(ImageUrl: element.senderImage ?? "", UserName: element.senderName ?? "", Message: element.message ?? "" , ReceiverFlag: element.ReceiverFlag ?? false)
+        self.EventsVM.EventComments.bind(to: self.ChatTableView.rx.items(cellIdentifier: ReviewsCellIdentifier, cellType: ReviewsCell.self)) { index, element, cell in
+            cell.config(UserImageURL: "", UserName: "hazem", UserRating: 0, UserComment: self.comments[index].comment ?? "")
+           cell.rateView.isHidden = true
+
+        
+        }.disposed(by: disposeBag)
+        self.ChatTableView.rx.itemSelected.bind { (indexPath) in
+            
         }.disposed(by: disposeBag)
         self.ChatTableView.rx.contentOffset.bind { (contentOffset) in
             
         }.disposed(by: disposeBag)
     }
+    
 }

@@ -267,6 +267,7 @@ extension HomeVC: UICollectionViewDelegate {
         }.disposed(by: disposeBag)
         self.EventsCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(withIdentifier: "EventsDetailsVC") as? EventsDetailsVC else { return }
+            main.event_id = self.Events[indexPath.row].id ?? 0 
             self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }
@@ -278,13 +279,13 @@ extension HomeVC: UICollectionViewDelegate {
         self.homeViewModel.Categories.bind(to: self.CategoryCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: HomeCategoryCell.self)) { index, element, cell in
             cell.config(categoryImageURL: self.Categories[index].image ?? "", categoryName: self.Categories[index].name ?? "")
         }.disposed(by: disposeBag)
-//        self.CategoryCollectionView.rx.itemSelected.bind { (indexPath) in
+        self.CategoryCollectionView.rx.itemSelected.bind { (indexPath) in
 //            guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CoursesVC") as? CoursesVC else { return }
 //            main.category_id = self.Categories[indexPath.row].id ?? 0
 //            main.categoryName = self.Categories[indexPath.row].name ?? ""
 //            main.type = "category"
 //            self.navigationController?.pushViewController(main, animated: true)
-//        }.disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
     }
     func setupInstructorCollectionView() {
         let cellIdentifier = "HomeInstructorCell"
@@ -292,10 +293,11 @@ extension HomeVC: UICollectionViewDelegate {
         self.InstructorsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.homeViewModel.Instructors.bind(to: self.InstructorsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: HomeInstructorCell.self)) { index, element, cell in
             let instructorData = self.Instructors[index].user
-            cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? FirstName(rawValue: "")) \(instructorData?.lastName ?? LastName(rawValue: ""))")
+            cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? "") \(instructorData?.lastName ??  "")")
         }.disposed(by: disposeBag)
         self.InstructorsCollectionView.rx.itemSelected.bind { (indexPath) in
-            guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorDetailsVC") as? InstructorsVC else { return }
+            guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorDetailsVC") as? InstructorDetailsVC else { return }
+            main.instructor_id = self.Instructors[indexPath.row].id ?? 0
             self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }

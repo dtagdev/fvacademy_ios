@@ -237,6 +237,7 @@ extension EventsVC : UICollectionViewDelegate {
         }.disposed(by: disposeBag)
         self.EventsCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(withIdentifier: "EventsDetailsVC") as? EventsDetailsVC else { return }
+            main.event_id = self.Events[indexPath.row].id ?? 0
             self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
         self.EventsCollectionView.rx.contentOffset.bind { (contentOffset) in
