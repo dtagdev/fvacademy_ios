@@ -189,11 +189,12 @@ struct TrendCourse: Codable {
     let lang: Int?
     let startDate, endDate: String?
     let isWishlist, isPurchased: Bool?
-    let rate: Int?
+    let rate: Double?
     let requirements: [Requirement]?
     let chapters: [Chapter]?
     let instructor: Instructor?
     let category: Category?
+    let rates : [Rate]?
 
     enum CodingKeys: String, CodingKey {
         case id, name, type
@@ -207,7 +208,7 @@ struct TrendCourse: Codable {
         case endDate = "end_date"
         case isWishlist = "is_wishlist"
         case isPurchased = "is_purchased"
-        case rate, requirements, chapters, instructor, category
+        case rate, requirements, chapters, instructor, category,rates
     }
 }
 
@@ -266,13 +267,14 @@ struct Rate: Codable {
    let id, instructorID, userID, rateValue: Int?
     let comment: String?
     let createdAt, updatedAt: String?
+    let user :User?
 
     enum CodingKeys: String, CodingKey {
         case id
         case instructorID = "instructor_id"
         case userID = "user_id"
         case rateValue = "rate_value"
-        case comment
+        case comment,user
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }

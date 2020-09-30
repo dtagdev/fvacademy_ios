@@ -38,13 +38,14 @@ class CourseContentVC: UIViewController {
     var isVideoPlaying = false
     var videoURL = String()
     var CourseContentVM = CourseContentViewModel()
-    var Reviews = [String]() {
+    var Reviews = [Rate]() {
         didSet {
             DispatchQueue.main.async {
                 self.CourseContentVM.fetchReviews(data: self.Reviews)
             }
         }
     }
+    
     var Comments = [CommentData]() {
         didSet {
             DispatchQueue.main.async {
@@ -53,6 +54,9 @@ class CourseContentVC: UIViewController {
         }
     }
     var course_id = Int()
+    var price = String()
+    var courseName = String()
+    var courseDetails = String()
     var disposeBag = DisposeBag()
     var choiceType = String()
     private let ReviewsCellIdentifier = "ReviewsCell"
@@ -117,12 +121,11 @@ class CourseContentVC: UIViewController {
         case 1:
             print("Add New Review")
            guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "RatingVC") as? RatingVC else { return }
-           //main.courseName = self.courseNameLabel.text ?? ""
-           //main.courseDetails = self.courseDescriptionTextView.text
-           //main.price = self.price
+           main.courseName = self.courseName
+           main.courseDetails = self.courseDetails
+           main.price = self.price
            main.course_id = self.course_id
            self.navigationController?.pushViewController(main, animated: true)
-            
         case 2, 3:
             print("Send Comment")
             self.choiceType = "comment"
@@ -244,31 +247,29 @@ extension CourseContentVC {
             }).disposed(by: disposeBag)
     }
     func addComment(course_id: Int, comment: String) {
-        self.CourseContentVM.postAddComment(course_id: self.course_id, comment: self.messageTV.text).subscribe(onNext: { (commentModel) in
+        self.CourseContentVM.postAddComment(course_id: course_id, comment: comment).subscribe(onNext: { (commentModel) in
             if let _ = commentModel.data {
                 displayMessage(title: "", message: CommentRecorded.localized, status: .info, forController: self)
+                self.getCourseComments(course_id : self.course_id)
             } else if let errors = commentModel.errors {
-                if errors.comment != [] {
-                    displayMessage(title: "", message: errors.comment?[0] ?? "", status: .error, forController: self)
-                } else if errors.courseID != [] {
-                    displayMessage(title: "", message: errors.courseID?[0] ?? "", status: .error, forController: self)
-                }
+                    displayMessage(title: "", message: errors, status: .error, forController: self)
             }
         }, onError: { (error) in
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
+
+    
 }
 
 extension CourseContentVC: UITableViewDelegate {
     func setupReviewsTableView() {
-        self.Reviews = ["Test1", "Test2", "Test3"]
         self.ReviewsTableView.register(UINib(nibName: self.ReviewsCellIdentifier, bundle: nil), forCellReuseIdentifier: self.ReviewsCellIdentifier)
         self.ReviewsTableView.rowHeight = UITableView.automaticDimension
         self.ReviewsTableView.estimatedRowHeight = UITableView.automaticDimension
         self.ReviewsTableView.rx.setDelegate(self).disposed(by: disposeBag)
         self.CourseContentVM.Reviews.bind(to: self.ReviewsTableView.rx.items(cellIdentifier: self.ReviewsCellIdentifier, cellType: ReviewsCell.self)) { index, element, cell in
-            cell.config(UserImageURL: "", UserName: self.Reviews[index], UserRating: 3.5, UserComment: "Test123456798Test123456798Test123456798Test123456798Test123456798")
+            cell.config(UserImageURL:self.Reviews[index].user?.avatar ?? "" , UserName: "\(self.Reviews[index].user?.firstName ?? "")  \(self.Reviews[index].user?.lastName ?? "" )", UserRating: Double(self.Reviews[index].rateValue ?? 0), UserComment: self.Reviews[index].comment ?? "")
         }.disposed(by: disposeBag)
         self.ReviewsTableView.rx.itemSelected.bind { (indexPath) in
             
@@ -283,7 +284,8 @@ extension CourseContentVC: UITableViewDelegate {
         self.CommentsTableView.rowHeight = UITableView.automaticDimension
         self.CommentsTableView.estimatedRowHeight = UITableView.automaticDimension
         self.CourseContentVM.Comments.bind(to: self.CommentsTableView.rx.items(cellIdentifier: self.ReviewsCellIdentifier, cellType: ReviewsCell.self)) { index, element, cell in
-            cell.config(UserImageURL: "", UserName: "No Data in API", UserRating: 3.5, UserComment: self.Comments[index].comment ?? "")
+            cell.config(UserImageURL: "", UserName: "hazem", UserRating: 0, UserComment: self.Comments[index].comment ?? "")
+            cell.rateView.isHidden = true 
         }.disposed(by: disposeBag)
         self.CommentsTableView.rx.itemSelected.bind { (indexPath) in
             

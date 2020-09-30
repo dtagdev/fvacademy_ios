@@ -108,19 +108,18 @@ struct AddServices {
     }//END of POST Search by word
     
     //MARK:- POST Add Comment
-    func postAddComment(params: [String: Any]) -> Observable<AddCommentModelJSON> {
+    func postAddComment(params: [String: Any]) -> Observable<CourseCommentsModelJSON> {
         return Observable.create { (observer) -> Disposable in
             let url = ConfigURLS.postAddComment
             let token = Helper.getAPIToken() ?? ""
             let headers = [
                 "Authorization": "Bearer \(token)"
             ]
-            
             Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
                     do {
-                        let data = try JSONDecoder().decode(AddCommentModelJSON.self, from: response.data!)
+                        let data = try JSONDecoder().decode(CourseCommentsModelJSON.self, from: response.data!)
                         observer.onNext(data)
                     } catch {
                         print(error.localizedDescription)

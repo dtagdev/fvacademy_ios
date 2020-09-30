@@ -190,8 +190,16 @@ extension CourseDetailsVC {
                 self.discount = "\(Double(data.discount ?? "") ?? 0.0)"
                 self.ratingLabel.text = "\((data.rate ?? 0))"
                 self.DescriptionTV.text = data.courseDescription
+                if data.requirements?.count ?? 0 > 0{
+                self.overViewRequirementsTV.text = data.requirements?[0].name ?? ""
+                }else{
+                  self.overViewRequirementsTV.text = ""
+                }
+                
                 guard let url = URL(string: "https://dev.fv.academy/public/files/" + (data.mainImage ?? "") ) else { return }
                  self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "DetailsImage"))
+                
+                self.courseInformationLabel.isHidden = true
                 
                 if data.isPurchased == true {
                     self.purchasedFlag = true
@@ -212,7 +220,6 @@ extension CourseDetailsVC {
                 }
                 self.courseTimeLabel.text = "\(data.time ?? "") mins"
                 self.getRelatedCourses(course_id: course_id)
-                self.overViewRequirementsTV.text = ""
                 self.courseTypeLabel.text = data.type ?? ""
             }
         }, onError: { (error) in
@@ -300,10 +307,15 @@ extension CourseDetailsVC: UITableViewDelegate, UITableViewDataSource {
         guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseContentVC") as? CourseContentVC else { return }
         main.progressName =  self.courseData?.chapters?[indexPath.section].name ?? ""
         main.course_id = self.course_id
+        main.Reviews = self.courseData?.rates ?? []
+        main.price = self.courseData?.price ?? ""
+        main.courseName = self.courseData?.name ?? ""
+        main.courseDetails = self.courseData?.courseDescription ?? ""
         main.progressDescription = self.courseData?.chapters?[indexPath.section].lessons?[indexPath.row].name ?? ""
         main.videoURL = self.courseData?.chapters?[indexPath.section].lessons?[indexPath.row].videoURL ?? ""
         self.navigationController?.pushViewController(main, animated: true)
     }
+    
 }
 
 extension CourseDetailsVC: UICollectionViewDelegate {

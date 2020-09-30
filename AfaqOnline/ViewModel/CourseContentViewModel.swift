@@ -13,10 +13,10 @@ import SVProgressHUD
 
 struct CourseContentViewModel {
 
-    var Reviews = PublishSubject<[String]>()
+    var Reviews = PublishSubject<[Rate]>()
     var Comments = PublishSubject<[CommentData]>()
     
-    func fetchReviews(data: [String]) {
+    func fetchReviews(data: [Rate]) {
         self.Reviews.onNext(data)
     }
     func fetchComments(data: [CommentData]) {
@@ -28,15 +28,15 @@ struct CourseContentViewModel {
     func dismissIndicator() {
         SVProgressHUD.dismiss()
     }
-    func getCourseComments(course_id: Int?) -> Observable<CommentsModelJSON> {
+    func getCourseComments(course_id: Int) -> Observable<CommentsModelJSON> {
         let params: [String: Any] = [
-            "course_id": course_id != nil ? course_id ?? 0 : ""
+            "course_id": course_id
         ]
         
         let observer = GetServices.shared.getCourseComments(params: params)
         return observer
     }
-    func postAddComment(course_id: Int, comment: String) -> Observable<AddCommentModelJSON> {
+    func postAddComment(course_id: Int, comment: String) -> Observable<CourseCommentsModelJSON> {
         let params: [String: Any] = [
             "course_id": course_id,
             "comment": comment

@@ -256,7 +256,6 @@ class GetServices {
                 .responseJSON { (response: DataResponse<Any>) in
                     do {
                         let data = try JSONDecoder().decode(CommentsModelJSON.self, from: response.data!)
-                        print(data)
                         observer.onNext(data)
                     } catch {
                         print(error.localizedDescription)

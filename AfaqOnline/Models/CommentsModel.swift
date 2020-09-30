@@ -39,3 +39,31 @@ struct AddCommentModelJSON: Codable {
 
 
 
+import Foundation
+
+
+
+// MARK: - EventDetailsModelJSON
+struct CourseCommentsModelJSON: Codable {
+    let data: CourseCommentsModel?
+    let status: Bool?
+    let errors: String?
+}
+
+// MARK: - DataClass
+struct CourseCommentsModel: Codable {
+    let courseID: String?
+    let userID: Int?
+    let comment, updatedAt, createdAt: String?
+    let id: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case courseID = "course_id"
+        case userID = "user_id"
+        case comment
+        case updatedAt = "updated_at"
+        case createdAt = "created_at"
+        case id
+    }
+}
+

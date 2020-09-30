@@ -32,17 +32,15 @@ class ReviewsCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     func config(UserImageURL: String, UserName: String, UserRating: Double, UserComment: String) {
-//        if UserImageURL != "" {
-//            guard let url = URL(string: UserImageURL) else { return }
-//
-//            self.UserImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
-//        } else {
-//            self.UserImageView.image = #imageLiteral(resourceName: "HomeCategory")
-//        }
-        self.UserImageView.image = #imageLiteral(resourceName: "HomeCategory")
+        if UserComment != "" {
+            guard let url = URL(string: "https://dev.fv.academy/public/files/" + UserComment) else { return }
+
+            self.UserImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
+        } else {
+            self.UserImageView.image = #imageLiteral(resourceName: "HomeCategory")
+        }
         self.UserNameLabel.text = UserName
         self.UserRatingLabel.text = "\(UserRating)"
         self.CommentTV.text = UserComment

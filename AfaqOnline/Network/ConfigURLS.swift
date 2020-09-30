@@ -44,7 +44,7 @@ struct ConfigURLS {
     //MARK:- GET Home Data
     static var getHomeData = BASE_URL + MOBILE_API + "/home_data"
     //MARK:- POST Add Rate
-    static var postAddRate = BASE_URL + MOBILE_API + "/add_rate"
+    static var postAddRate = BASE_URL + AUTH_MOBILE + "/add_rate"
     //MARK:- GET All Courses
     static var getAllCourses = BASE_URL + MOBILE_API + "/all_courses"
     
