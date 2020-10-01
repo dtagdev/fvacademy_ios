@@ -45,6 +45,9 @@ struct ConfigURLS {
     static var getHomeData = BASE_URL + MOBILE_API + "/home_data"
     //MARK:- POST Add Rate
     static var postAddRate = BASE_URL + AUTH_MOBILE + "/add_rate"
+    //MARK:- POST Edit Profile
+      static var postEditProfile = BASE_URL + AUTH_MOBILE + "/update_user_account"
+    
     //MARK:- GET All Courses
     static var getAllCourses = BASE_URL + MOBILE_API + "/all_courses"
     
@@ -78,8 +81,11 @@ struct ConfigURLS {
     //MARK:- POST Forget Password
     static var postForgetPassword = BASE_URL + AUTH + "/forgetpass"
     
-    //MARK:- Check User Code
+    //MARK:- Check User Code in register
     static var getCheckUserCode = BASE_URL + AUTH + "/activate"
+    
+    //MARK:- Check User Code in change Pass
+    static var getCheckPassCode = BASE_URL + AUTH + "/checkUserCode"
     
     //MARK:- POST Update Password
     static var postUpdatePassword = BASE_URL + AUTH + "/update_password"

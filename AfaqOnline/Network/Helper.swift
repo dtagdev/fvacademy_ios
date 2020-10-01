@@ -24,16 +24,16 @@ class Helper {
             case 1:
                 // go to main Screen
                 vc = sb.instantiateViewController(withIdentifier: "HomeTabController")
-//                Authentication.postSetToken(params: params, userType: "user") { (errro, result) in
-//                    if let result = result {
-//                        if result.successMessage != "" {
-//                            print("Device Token have been set")
-//                        } else {
-//                            print("Error Happened")
-//                        }
-//                    }
-//                }
-            Singletone.instance.appUserType = .customer
+                //                Authentication.postSetToken(params: params, userType: "user") { (errro, result) in
+                //                    if let result = result {
+                //                        if result.successMessage != "" {
+                //                            print("Device Token have been set")
+                //                        } else {
+                //                            print("Error Happened")
+                //                        }
+                //                    }
+                //                }
+                Singletone.instance.appUserType = .customer
             default:
                 vc = sb.instantiateViewController(withIdentifier: "HomeTabController")
                 Singletone.instance.appUserType = .guest
@@ -58,14 +58,28 @@ class Helper {
     class func saveAPIToken(token: String) {
         let def = UserDefaults.standard
         def.set(token, forKey: "token")
-       // def.set(token_type, forKey: "token_type")
+        // def.set(token_type, forKey: "token_type")
         def.synchronize()
         //restartApp()
-        }
-    class func getAPIToken() -> String? {
-        let def = UserDefaults.standard
-        return def.object(forKey: "token") as? String
     }
+    class func getAPIToken() -> String? {
+           let def = UserDefaults.standard
+           return def.object(forKey: "token") as? String
+       }
+    
+    class func saveAvatar(image : String) {
+        let def = UserDefaults.standard
+        def.set(image, forKey: "avatar")
+        
+        def.synchronize()
+    }
+    
+    class func getAvatar() -> String? {
+        let def = UserDefaults.standard
+        return def.object(forKey: "avatar") as? String
+    }
+    
+   
     class func getTokenType() -> String? {
         let def = UserDefaults.standard
         return def.object(forKey: "token_type") as? String

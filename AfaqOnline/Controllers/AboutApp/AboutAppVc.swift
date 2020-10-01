@@ -28,6 +28,7 @@ class AboutAppVC: UIViewController {
         super.viewDidLoad()
         AboutViewModel.showIndicator()
         self.getAboutApp()
+    
     }
     
   

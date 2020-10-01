@@ -50,3 +50,7 @@ struct LoginModelJSON: Codable {
 struct RateModelJSON: Codable {
     var status: Bool?
 }
+
+
+
+

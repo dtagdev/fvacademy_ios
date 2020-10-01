@@ -13,15 +13,8 @@ import DLRadioButton
 
 class EditProfileVC: UIViewController {
 
-    @IBOutlet weak var firstStepView: UIView!
     @IBOutlet weak var emailTF: CustomTextField!
-    @IBOutlet weak var usernameTF: CustomTextField!
-    @IBOutlet weak var passwordTF: CustomTextField!
-    @IBOutlet weak var selectTitleDropDown: TextFieldDropDown!
     @IBOutlet weak var CreateAccountButton: CustomButtons!
-    @IBOutlet weak var SecondStepView: UIView!
-    @IBOutlet weak var SecondTermsConditionsLabel: UILabel!
-    @IBOutlet weak var selectJobDropDown: TextFieldDropDown!
     @IBOutlet weak var firstNameTF: CustomTextField!
     @IBOutlet weak var lastNameTF: CustomTextField!
     @IBOutlet weak var idNumberTF: CustomTextField!
@@ -32,42 +25,21 @@ class EditProfileVC: UIViewController {
     @IBOutlet weak var searchTF: CustomTextField!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var ProfileImageView: CustomImageView!
-
     
     
     private let AuthViewModel = AuthenticationViewModel()
     var disposeBag = DisposeBag()
-    var titles = ["Dr", "Mr", "Miss", "Professor"]
-    var jobs = ["Pharmacian", "Human Doctor"]
     var gender = String()
+    var profliePic = UIImage()
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        SecondStepView.isHidden = true
-        firstStepView.isHidden = false
-        DataBinding()
-        setupTitlesDropDown()
-        setupJobsDropDown()
-        getAllJobs()
+
         self.hideKeyboardWhenTappedAround()
-    }
- 
-    func setupTitlesDropDown() {
-        selectTitleDropDown.optionArray = self.titles
-        selectTitleDropDown.didSelect { (selectedText, index, id) in
-            self.selectTitleDropDown.text = selectedText
-        }
-    }
-    func setupJobsDropDown() {
-        selectJobDropDown.optionArray = self.jobs
-        selectJobDropDown.didSelect { (selectedText, index, id) in
-            self.selectJobDropDown.text = selectedText
-        }
-    }
+        self.AuthViewModel.showIndicator()
+        getProfile()
     
-    
-    
+    }
     @IBAction func selectGenderAction(_ sender: DLRadioButton) {
         if sender.tag == 1 {
             print("Male")
@@ -80,7 +52,14 @@ class EditProfileVC: UIViewController {
 
     @IBAction func CreateAccountAction(_ sender: CustomButtons) {
         sender.isEnabled = false
-        self.postRegister(gender: self.gender, title: self.selectTitleDropDown.text ?? "", job: self.selectJobDropDown.text ?? "")
+        self.AuthViewModel.showIndicator()
+        self.postEditProfile(gender: self.gender, avatar: self.profliePic)
+    }
+    
+    
+    
+    @IBAction func choosePic(_ sender: CustomButtons) {
+           showImageActionSheet()
     }
 
  
@@ -118,59 +97,111 @@ class EditProfileVC: UIViewController {
                self.present(main, animated: true, completion: nil)
               }
           }
-    
 }
 
 extension EditProfileVC {
-    func postRegister(gender: String, title: String, job: String) {
-        AuthViewModel.attemptToRegister(gender: gender, title: title, job: job).subscribe(onNext: { (registerData) in
+    func postEditProfile(gender: String,avatar : UIImage){
+        AuthViewModel.attemptToEditProfile(gender: gender,avatar:avatar).subscribe(onNext: { (registerData) in
             if registerData.status ?? false {
-            // displayMessage(title: "", message: "You have Registered Successfully", status: .success, forController: self)
-                self.SecondStepView.isHidden = true
-                self.firstStepView.isHidden = false
-                guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "OTPScreenVC") as? OTPScreenVC else { return }
-                main.pageType = "homePage"
-                main.email = self.emailTF.text
-                main.modalPresentationStyle = .overFullScreen
-                main.modalTransitionStyle = .crossDissolve
-                self.present(main, animated: true, completion: nil)
-                NotificationCenter.default.post(name: Notification.Name("NavigateToLogin"), object: nil)
+                self.AuthViewModel.dismissIndicator()
+             displayMessage(title: "", message: "Your profile edit Successfully", status: .success, forController: self)
             } else {
-                let errors = registerData.errors ?? Errors()
-                if let email = errors.email {
-                    displayMessage(title: "", message: email[0], status: .error, forController: self)
-                }
+                self.AuthViewModel.dismissIndicator()
+               displayMessage(title: "", message: "something went Wrong ", status: .error, forController: self)
             }
             
-            self.CreateAccountButton.isEnabled = true
         }, onError: { (error) in
+            self.AuthViewModel.dismissIndicator()
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             self.CreateAccountButton.isEnabled = true
         }).disposed(by: disposeBag)
     }
-    func getAllJobs() {
-        AuthViewModel.getJobs().subscribe(onNext: { (jobsModel) in
-            if jobsModel.status ?? false {
-//                self.jobs = jobsModel.data ?? []
-            }
-        }, onError: { (error) in
-            displayMessage(title: "", message: "Something went wrong in getting Jobs", status: .error, forController: self)
-            }).disposed(by: disposeBag)
-    }
+    
+    func getProfile() {
+           self.AuthViewModel.getProfile().subscribe(onNext: { (ProfileModel) in
+               if let profile = ProfileModel.data {
+                self.AuthViewModel.dismissIndicator()
+                self.emailTF.text = profile.email ?? ""
+                self.firstNameTF.text = profile.firstName ??  ""
+               self.lastNameTF.text = profile.lastName ??  ""
+                self.phoneTF.text =  profile.phone ??  ""
+                self.idNumberTF.text = profile.idNumber ??  ""
+                self.medicalNumberTF.text = profile.medicalNumber ?? ""
+                self.gender = profile.gender ?? ""
+                if self.gender == "male"{
+                self.maleRadioButton.selected()
+                } else if self.gender == "female" {
+                self.femaleRadioButton.selected()
+                }
+                self.DataBinding()
+                if profile.avatar ?? "" != "" {
+                guard let url = URL(string: "https://dev.fv.academy/public/files/" + (profile.avatar ?? "")) else { return }
+                    self.ProfileImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "userProfile"))
+                }
+               
+               }
+           }, onError: { (error) in
+            self.AuthViewModel.dismissIndicator()
+               displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+               }).disposed(by: disposeBag)
+       }
+    
 }
 extension EditProfileVC {
     //MARK:- DataBinding
     func DataBinding() {
         _ = self.emailTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.email).disposed(by: disposeBag)
-        _ = self.usernameTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.username).disposed(by: disposeBag)
-        _ = self.passwordTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.password).disposed(by: disposeBag)
         _ = self.firstNameTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.first_name).disposed(by: disposeBag)
         _ = self.lastNameTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.last_name).disposed(by: disposeBag)
         _ = self.idNumberTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.id_number).disposed(by: disposeBag)
         _ = self.medicalNumberTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.medical_number).disposed(by: disposeBag)
         _ = self.phoneTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.phone).disposed(by: disposeBag)
-
     }
     
- 
+}
+
+extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func showImageActionSheet() {
+        if ("lang".localized == "en") {
+            let chooseFromLibraryAction = UIAlertAction(title: "Choose from Library", style: .default) { (action) in
+                self.showImagePicker(sourceType: .photoLibrary)
+            }
+            let cameraAction = UIAlertAction(title: "Take a Picture from Camera", style: .default) { (action) in
+                self.showImagePicker(sourceType: .camera)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            AlertService.showAlert(style: .actionSheet, title: "Pick Your Picture", message: nil, actions: [chooseFromLibraryAction, cameraAction, cancelAction], completion: nil)
+        } else {
+            let chooseFromLibraryAction = UIAlertAction(title: "أختر من مكتبة الصور", style: .default) { (action) in
+                self.showImagePicker(sourceType: .photoLibrary)
+            }
+            let cameraAction = UIAlertAction(title: "إلتقاط صورة من الكاميرة", style: .default) { (action) in
+                self.showImagePicker(sourceType: .camera)
+            }
+            
+            let cancelAction = UIAlertAction(title: "إلغاء", style: .cancel, handler: nil)
+            AlertService.showAlert(style: .actionSheet, title: "أختر صورك", message: nil, actions: [chooseFromLibraryAction, cameraAction, cancelAction], completion: nil)
+        }
+    }
+    func showImagePicker(sourceType: UIImagePickerController.SourceType) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        imagePickerController.sourceType = sourceType
+        imagePickerController.mediaTypes = ["public.image"]
+        imagePickerController.view.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.profliePic =  editedImage
+            self.ProfileImageView.image = editedImage
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.profliePic =  originalImage
+            self.ProfileImageView.image = originalImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
 }

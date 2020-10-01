@@ -39,17 +39,14 @@ struct  CoursesViewModel {
         let observer = GetServices.shared.getCoursesOfSpecificCategory(category_id: category_id, lang: 1)
         return observer
     }
-    func getAllCourses(page: Int) -> Observable<AllCoursesModelJSON> {
+    func getAllCourses(lth: Int,htl: Int,rate: Int) -> Observable<AllCoursesModelJSON> {
         var lang = Int()
         if "lang".localized == "ar" {
             lang = 0
         } else {
             lang = 1
         }
-        let params = [
-            "page": page
-        ]
-        let observer = GetServices.shared.getAllCourses(params: params, lang: 1)
+        let observer = GetServices.shared.getAllCourses(lth: lth,htl: htl,rate: rate, lang: 1)
         return observer
     }
     func postAddToCart(course_id: Int, price: String) -> Observable<AddToCartModelJSON> {

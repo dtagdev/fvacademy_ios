@@ -132,10 +132,14 @@ class Authentication {
     }//END of POST Forget Password
     
     //MARK:- GETCheckUser Code
-    func getCheckUserCode(code: String) -> Observable<PasswordJSONModel> {
+    func getCheckUserCode(code: String, type : String) -> Observable<PasswordJSONModel> {
         return Observable.create { (observer) -> Disposable in
-            let url = ConfigURLS.getCheckUserCode + "/\(code)"
-            
+            var url = String()
+            if type == "pass"{
+                 url = ConfigURLS.getCheckPassCode + "/\(code)"
+            }else{
+                 url = ConfigURLS.getCheckUserCode + "/\(code)"
+            }
             Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
@@ -153,15 +157,19 @@ class Authentication {
     }//END of GETCheckUser Code
     
     //MARK:- POST Update Password
-    func postUpdatePassword(params: [String: Any]) -> Observable<PasswordJSONModel> {
+    func postUpdatePassword(params: [String: Any]) -> Observable<PasswordUpdatJSONModel> {
         return Observable.create { (observer) -> Disposable in
             let url = ConfigURLS.postUpdatePassword
+            let token = Helper.getAPIToken() ?? ""
+            let headers = [
+            "Authorization": "Bearer \(token)"
+            ]
             
-            Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil)
+            Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
                     do {
-                        let data = try JSONDecoder().decode(PasswordJSONModel.self, from: response.data!)
+                        let data = try JSONDecoder().decode(PasswordUpdatJSONModel.self, from: response.data!)
                         observer.onNext(data)
                     } catch {
                         print(error.localizedDescription)
@@ -172,6 +180,51 @@ class Authentication {
             return Disposables.create()
         }
     }//END of POST Update Password
+    
+
+    func postEditProfile(image: UIImage, params: [String : Any]) -> Observable<ProfileModelJSON> {
+          return Observable.create { (observer) -> Disposable in
+            let url = ConfigURLS.postEditProfile
+            let token = Helper.getAPIToken() ?? ""
+            let headers = [
+                "Authorization": "Bearer \(token)"
+                ]
+            
+              Alamofire.upload(multipartFormData: { (form: MultipartFormData) in
+                  if let data = image.jpegData(compressionQuality: 0.8) {
+                      form.append(data, withName: "avatar", fileName: "image.jpeg", mimeType: "image/jpeg")
+                  }
+                for (key, value) in params {
+                    form.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
+                }
+                
+              }, usingThreshold: SessionManager.multipartFormDataEncodingMemoryThreshold, to: url, method: .post, headers: headers) { (result: SessionManager.MultipartFormDataEncodingResult) in
+                  switch result {
+                  case .failure(let error):
+                      print(error.localizedDescription)
+                      observer.onError(error)
+                  case .success(request: let upload, streamingFromDisk: _, streamFileURL: _):
+                      upload.uploadProgress { (progress) in
+                          print("Image Uploading Progress: \(progress.fractionCompleted)")
+                      }.responseJSON { (response: DataResponse<Any>) in
+                          do {
+                            let msgData = try JSONDecoder().decode(ProfileModelJSON.self, from: response.data!)
+                            if let data = msgData.data {
+                            Helper.saveAPIToken(user_id: data.id ?? 0, email: data.email ?? "", role: 0, name: data.firstName ?? "", token: Helper.getAPIToken() ?? "")
+                                Helper.saveAvatar(image: data.avatar ?? "")
+                            }
+                            observer.onNext(msgData)
+                          } catch {
+                              print(error.localizedDescription)
+                              observer.onError(error)
+                          }
+                      }
+                  }
+              }
+              return Disposables.create()
+          }
+        
+    }
     
     //MARK:- GET My Courses
     func getMyCourses() -> Observable<MyCoursesModelJSON> {

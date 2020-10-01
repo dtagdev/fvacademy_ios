@@ -71,7 +71,7 @@ class CoursesVC: UIViewController {
         
         self.CategoryTitleLabel.text = categoryName + " Courses"
         if type == "home" {
-            self.getAllCourses(page: self.currentPage)
+            self.getAllCourses(lth: 0,htl: 0,rate : 0)
         } else {
             getCourses(category_id: category_id)
         }
@@ -112,8 +112,21 @@ class CoursesVC: UIViewController {
         self.SortByDropDown.dataSource = self.SortByNames
         self.SortByDropDown.selectionAction = { [weak self] (index, item) in
             self?.sortByButton.setTitle(item, for: .normal)
-            self?.selectedSortById = self?.SortByIds[index] ?? 0
+        if index == 0{
+            self?.coursesViewModel.showIndicator()
+               self?.getAllCourses(lth: 0,htl: 0,rate : 0)
+        }else if index == 1 {
+            self?.coursesViewModel.showIndicator()
+            self?.getAllCourses(lth: 0,htl: 1,rate : 0)
+        }else if index == 2{
+            self?.coursesViewModel.showIndicator()
+            self?.getAllCourses(lth: 1,htl: 0,rate : 0)
+        }else if index == 3{
+            self?.coursesViewModel.showIndicator()
+            self?.getAllCourses(lth: 0,htl: 0,rate : 1)
+                
         }
+    }
         self.SortByDropDown.direction = .bottom
         self.SortByDropDown.width = self.view.frame.width * 0.95
     }
@@ -152,11 +165,11 @@ extension CoursesVC {
             }).disposed(by: disposeBag)
     }
     func getNextPage() {
-        self.getAllCourses(page: self.currentPage)
+        self.getAllCourses(lth: 0,htl: 0,rate : 0)
     }
     
-    func getAllCourses(page: Int) {
-        self.coursesViewModel.getAllCourses(page: page).subscribe(onNext: { (CoursesModelJSON) in
+    func getAllCourses(lth: Int,htl: Int,rate: Int) {
+        self.coursesViewModel.getAllCourses(lth: lth,htl: htl,rate: rate).subscribe(onNext: { (CoursesModelJSON) in
             if let data = CoursesModelJSON.data?.courses {
                 self.coursesViewModel.dismissIndicator()
                 if !self.loadMore {

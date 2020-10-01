@@ -37,10 +37,10 @@ extension ForgetPasswordVC {
     func POSTGetForgetPassword() {
         self.sendEmailButton.isEnabled = false
         self.AuthViewModel.POSTForgetPassword().subscribe(onNext: { (passwordModel) in
-            if passwordModel.data ?? false {
+            if passwordModel.status ?? false {
                 guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "OTPScreenVC") as? OTPScreenVC else { return }
                 main.email = self.phoneTF.text ?? ""
-                main.pageType = "resetPass"
+                main.pageType = "pass"
                 main.modalPresentationStyle = .overFullScreen
                 main.modalTransitionStyle = .crossDissolve
                 self.present(main, animated: true, completion: nil)

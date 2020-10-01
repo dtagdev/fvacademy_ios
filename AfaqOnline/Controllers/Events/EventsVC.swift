@@ -72,13 +72,7 @@ class EventsVC: UIViewController {
             self.CategoryTitleLabel.text = categoryName + " Event"
         }
         self.eventViewModel.showIndicator()
-        self.getAllEvents(page: self.currentPage)
-//        if type == "home" {
-//            self.getAllEvents(page: self.currentPage)
-//
-//        } else {
-//            //getCourses(category_id: category_id)
-//        }
+        self.getAllEvents(lth: 0,htl: 0,rate: 0)
         self.hideKeyboardWhenTappedAround()
     }
     @IBAction func backAction(_ sender: UIButton) {
@@ -134,7 +128,19 @@ class EventsVC: UIViewController {
         self.SortByDropDown.dataSource = self.SortByNames
         self.SortByDropDown.selectionAction = { [weak self] (index, item) in
             self?.sortByButton.setTitle(item, for: .normal)
-            self?.selectedSortById = self?.SortByIds[index] ?? 0
+            if index == 0{
+                       self?.eventViewModel.showIndicator()
+                        self?.getAllEvents(lth: 0,htl: 0,rate : 0)
+                    }else if index == 1 {
+                        self?.eventViewModel.showIndicator()
+                        self?.getAllEvents(lth: 0,htl: 1,rate : 0)
+                    }else if index == 2{
+                        self?.eventViewModel.showIndicator()
+                        self?.getAllEvents(lth: 1,htl: 0,rate : 0)
+                    }else if index == 3{
+                        self?.eventViewModel.showIndicator()
+                        self?.getAllEvents(lth: 0,htl: 0,rate : 1)
+                    }
         }
         self.SortByDropDown.direction = .bottom
         self.SortByDropDown.width = self.view.frame.width * 0.95
@@ -145,7 +151,6 @@ class EventsVC: UIViewController {
         self.FilterDropDown.dataSource = self.FilterNames
         self.FilterDropDown.selectionAction = { [weak self] (index, item) in
             self?.FilterButton.setTitle(item, for: .normal)
-            self?.selectedFilterId = self?.FilterIds[index] ?? 0
         }
         self.FilterDropDown.direction = .bottom
         self.FilterDropDown.width = self.view.frame.width * 0.95
@@ -162,10 +167,10 @@ extension EventsVC: UITextFieldDelegate {
 extension EventsVC {
     
     func getNextPage() {
-        self.getAllEvents(page: self.currentPage)
+        self.getAllEvents(lth: 0,htl: 0,rate: 0)
     }
-    func getAllEvents(page: Int) {
-        self.eventViewModel.getAllEvent(page: page).subscribe(onNext: { (EventModelJSON) in
+    func getAllEvents(lth: Int,htl: Int,rate: Int) {
+        self.eventViewModel.getAllEvent(lth: lth,htl: htl,rate: rate).subscribe(onNext: { (EventModelJSON) in
             self.eventViewModel.dismissIndicator()
             if let data = EventModelJSON.data.events {
                 if !self.loadMore {

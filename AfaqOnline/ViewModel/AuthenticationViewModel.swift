@@ -20,7 +20,6 @@ struct AuthenticationViewModel {
     var id_number = BehaviorSubject<String>(value: "")
     var medical_number = BehaviorSubject<String>(value: "")
     var phone = BehaviorSubject<String>(value: "")
-    var code = BehaviorSubject<String>(value: "")
     func showIndicator() {
         SVProgressHUD.show()
     }
@@ -96,21 +95,51 @@ struct AuthenticationViewModel {
     }
 
     
-    func GETCheckUserCode(code: String) -> Observable<PasswordJSONModel> {
-        let observer = Authentication.shared.getCheckUserCode(code: code)
+    func GETCheckUserCode(code: String,type : String) -> Observable<PasswordJSONModel> {
+        let observer = Authentication.shared.getCheckUserCode(code: code, type :type)
         return observer
     }
     
-    func POSTUpdatePassowrd() -> Observable<PasswordJSONModel> {
+    func POSTUpdatePassowrd(code:String) -> Observable<PasswordUpdatJSONModel> {
         let bindedPhone = try? phone.value()
         let bindedPassword = try? password.value()
-        let bindCode = try? code.value()
+       
          let params: [String: Any] = [
             "password": bindedPassword?.arToEnDigits ?? "",
             "email": bindedPhone ?? "",
-            "code": bindCode ?? ""
+            "code": code
         ]
         let observer = Authentication.shared.postUpdatePassword(params: params)
         return observer
     }
+    func attemptToEditProfile(gender: String,avatar : UIImage) -> Observable<ProfileModelJSON> {
+            let bindedEmail = try? email.value()
+            let bindedFirstName = try? first_name.value()
+            let bindedLastName = try? last_name.value()
+            let bindedIdNumber = try? id_number.value()
+            let bindedMedicalNumber = try? medical_number.value()
+            let bindedPhone = try? phone.value()
+            let params: [String: Any] = [
+                "email": bindedEmail ?? "",
+                "first_name": bindedFirstName ?? "",
+                "last_name": bindedLastName ?? "",
+                "id_number": (bindedIdNumber ?? "").arToEnDigits,
+                "medical_number": (bindedMedicalNumber ?? "").arToEnDigits,
+                "phone": (bindedPhone ?? "").arToEnDigits,
+                "gender": gender,
+                ]
+        let observer = Authentication.shared.postEditProfile(image: avatar, params: params)
+            return observer
+        }
+
+    
+    func getProfile() -> Observable<ProfileModelJSON> {
+           let params: [String: Any] = [
+               "email": Helper.getUserEmail() ?? ""
+           ]
+           let observer = Authentication.shared.getProfile(params: params)
+           return observer
+       }
+    
+    
 }

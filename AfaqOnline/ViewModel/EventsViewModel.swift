@@ -34,17 +34,14 @@ struct  EventsViewModel {
     }
     
     
-    func getAllEvent(page: Int) -> Observable<AllEventModelJSON> {
+    func getAllEvent(lth: Int,htl: Int,rate: Int) -> Observable<AllEventModelJSON> {
         var lang = Int()
         if "lang".localized == "ar" {
             lang = 0
         } else {
             lang = 1
         }
-        let params = [
-            "page": page
-        ]
-        let observer = GetServices.shared.getAllEvent(params: params, lang: 1)
+        let observer = GetServices.shared.getAllEvent(lth: lth,htl: htl,rate: rate, lang: 1)
         return observer
     }
 

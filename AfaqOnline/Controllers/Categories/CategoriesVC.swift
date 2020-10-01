@@ -114,12 +114,16 @@ class CategoriesVC: UIViewController {
         self.SortByDropDown.selectionAction = { [weak self] (index, item) in
             self?.sortByButton.setTitle(item, for: .normal)
             if index == 0{
+                self?.categoryViewModel.showIndicator()
                 self?.getCategories(lth: 0,htl: 0,rate : 0)
             }else if index == 1 {
+                self?.categoryViewModel.showIndicator()
                 self?.getCategories(lth: 0,htl: 1,rate : 0)
             }else if index == 2{
+                self?.categoryViewModel.showIndicator()
                 self?.getCategories(lth: 1,htl: 0,rate : 0)
         }else if index == 3{
+                self?.categoryViewModel.showIndicator()
             self?.getCategories(lth: 0,htl: 0,rate : 1)
         }
         }

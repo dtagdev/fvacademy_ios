@@ -20,13 +20,11 @@ class RecommendationCoursesCell: UICollectionViewCell {
     }
     func config(imageURL: String, CourseName: String) {
         self.CourseNameLabel.text = CourseName
-        self.CourseImageView.image = #imageLiteral(resourceName: "HomeCategory")
-//        if imageURL != "" {
-//            guard let url = URL(string: imageURL) else { return }
-//
-//            self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
-//        } else {
-//            self.CourseImageView.image = #imageLiteral(resourceName: "HomeCategory")
-//        }
+        if imageURL != "" {
+            guard let url = URL(string: "https://dev.fv.academy/public/files/" + imageURL) else { return }
+            self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
+        } else {
+            self.CourseImageView.image = #imageLiteral(resourceName: "HomeCategory")
+        }
     }
 }

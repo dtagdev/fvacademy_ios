@@ -284,12 +284,12 @@ struct Profile: Codable {
     let isVerified: Int?
     let idNumber, email, gender, firstName: String?
     let avatar: String?
-    let title, medicalNumber, job: String
+    let title, medicalNumber, job: String?
     let emailVerifiedAt: String?
     let verifiedAt, updatedAt, createdAt, lastName: String?
     let id: Int?
     let phone: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case isVerified = "is_verified"
         case idNumber = "id_number"

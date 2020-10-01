@@ -116,7 +116,7 @@ extension RegistrationVC {
                 self.SecondStepView.isHidden = true
                 self.firstStepView.isHidden = false
                 guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "OTPScreenVC") as? OTPScreenVC else { return }
-                main.pageType = "homePage"
+                main.pageType = "home"
                 main.email = self.emailTF.text
                 main.modalPresentationStyle = .overFullScreen
                 main.modalTransitionStyle = .crossDissolve

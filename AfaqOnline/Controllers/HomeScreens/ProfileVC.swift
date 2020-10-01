@@ -67,6 +67,8 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func EditProfileAction(_ sender: CustomButtons) {
+    guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "EditProfileVC") as? EditProfileVC else { return }
+        self.navigationController?.pushViewController(main, animated: true)
     }
     func selectionAction(index: Int) {
         for i in 0..<self.Items.count {
@@ -180,6 +182,10 @@ extension ProfileVC {
             if let profile = ProfileModel.data {
                 self.EmailLabel.text = profile.email ?? ""
                 self.UserNameLabel.text = "\(profile.firstName ??  "") \(profile.lastName ??  "")"
+                if profile.avatar ?? "" != "" {
+                    guard let url = URL(string: "https://dev.fv.academy/public/files/" + (profile.avatar ?? "")) else { return }
+                    self.ProfileImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "placeholder"))
+                }
             }
         }, onError: { (error) in
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)

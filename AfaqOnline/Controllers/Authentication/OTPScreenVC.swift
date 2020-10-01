@@ -23,7 +23,7 @@ class OTPScreenVC: UIViewController {
     let authVM = AuthenticationViewModel()
     var disposeBag = DisposeBag()
     var email: String?
-    var pageType : String?
+    var pageType = String()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,7 +44,7 @@ class OTPScreenVC: UIViewController {
     }
     
     @IBAction func ConfirmAction(_ sender: CustomButtons) {
-         self.GETCheckUserCode()
+        self.GETCheckUserCode(type: pageType)
         
     }
     
@@ -53,11 +53,11 @@ class OTPScreenVC: UIViewController {
     }
 }
 extension OTPScreenVC {
-    func GETCheckUserCode() {
+    func GETCheckUserCode(type : String) {
         let code = "\(self.firstTF.text ?? "")\(self.secondTF.text ?? "")\(self.thirdTF.text ?? "")\(self.fourthTF.text ?? "")"
-        self.authVM.GETCheckUserCode(code: code).subscribe(onNext: { (passwordModel) in
-            if passwordModel.data ?? false {
-                if  self.pageType == "resetPass"{
+        self.authVM.GETCheckUserCode(code: code,type: type).subscribe(onNext: { (passwordModel) in
+            if passwordModel.status ?? false {
+                if  self.pageType == "pass"{
                 guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "UpdatePasswordVC") as? UpdatePasswordVC else { return }
                 main.email = self.email ?? ""
                 main.code = code
@@ -87,7 +87,7 @@ extension OTPScreenVC {
     
     func POSTSendCode() {
         self.authVM.POSTSendCode(email : email ?? "").subscribe(onNext: { (passwordModel) in
-            if passwordModel.data ?? false {
+            if passwordModel.status ?? false {
                  self.firstTF.text   = " "
                  self.secondTF.text  = " "
                  self.thirdTF.text   = " "

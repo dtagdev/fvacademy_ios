@@ -198,7 +198,6 @@ extension CourseDetailsVC {
                 
                 guard let url = URL(string: "https://dev.fv.academy/public/files/" + (data.mainImage ?? "") ) else { return }
                  self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "DetailsImage"))
-                
                 self.courseInformationLabel.isHidden = true
                 
                 if data.isPurchased == true {
@@ -219,7 +218,7 @@ extension CourseDetailsVC {
                     self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkUnSelected"), for: .normal)
                 }
                 self.courseTimeLabel.text = "\(data.time ?? "") mins"
-                self.getRelatedCourses(course_id: course_id)
+                self.getRelatedCourses(cat_id: data.category?.id ?? 0)
                 self.courseTypeLabel.text = data.type ?? ""
             }
         }, onError: { (error) in
@@ -227,8 +226,8 @@ extension CourseDetailsVC {
             }).disposed(by: disposeBag)
     }
     
-    func getRelatedCourses(course_id: Int) {
-        self.courseViewModel.getRelatedCourses(course_id: course_id).subscribe(onNext: { (relatedCourses) in
+    func getRelatedCourses(cat_id: Int) {
+        self.courseViewModel.getRelatedCourses(course_id: cat_id).subscribe(onNext: { (relatedCourses) in
             if let data = relatedCourses.data {
                 self.RecommendedCourses = data
             }
@@ -323,7 +322,7 @@ extension CourseDetailsVC: UICollectionViewDelegate {
         self.RecommendationsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.RecommendationsCollectionView.register(UINib(nibName: RecommendedCoursesCellIdentifier, bundle: nil), forCellWithReuseIdentifier: RecommendedCoursesCellIdentifier)
         self.courseViewModel.RecommendedCourses.bind(to: self.RecommendationsCollectionView.rx.items(cellIdentifier: RecommendedCoursesCellIdentifier, cellType: RecommendationCoursesCell.self)) { index, element, cell in
-            cell.config(imageURL: "", CourseName: self.RecommendedCourses[index].name ?? "")
+            cell.config(imageURL: self.RecommendedCourses[index].mainImage ?? "" , CourseName: self.RecommendedCourses[index].name ?? "")
         }.disposed(by: disposeBag)
         
         self.RecommendationsCollectionView.rx.itemSelected.bind { (indexPath) in

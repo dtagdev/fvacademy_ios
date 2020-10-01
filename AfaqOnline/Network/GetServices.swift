@@ -139,14 +139,14 @@ class GetServices {
         }
     }//END of GET Home Data
     //MARK:- GET All Courses
-    func getAllCourses(params: [String: Any], lang: Int) -> Observable<AllCoursesModelJSON> {
+    func getAllCourses(lth: Int,htl: Int,rate: Int,lang: Int) -> Observable<AllCoursesModelJSON> {
         return Observable.create { (observer) -> Disposable in
-            let url = ConfigURLS.getAllCourses + "/\(lang)"
+            let url = ConfigURLS.getAllCourses + "/\(lang)?lth=\(lth)&htl=\(htl)&rate=\(rate)"
             let token = Helper.getAPIToken() ?? ""
             let headers = [
                 "Authorization": "Bearer \(token)"
             ]
-            Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+            Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
                     do {
@@ -182,14 +182,14 @@ class GetServices {
     }//END of GET Related Courses
    
     //MARK:- GET All Event
-    func getAllEvent(params: [String: Any], lang: Int) -> Observable<AllEventModelJSON> {
+    func getAllEvent(lth: Int,htl: Int,rate: Int,lang: Int) -> Observable<AllEventModelJSON> {
         return Observable.create { (observer) -> Disposable in
-            let url = ConfigURLS.getAllEvent + "/\(lang)"
+            let url = ConfigURLS.getAllEvent + "/\(lang)?lth=\(lth)&htl=\(htl)&rate=\(rate)"
             let token = Helper.getAPIToken() ?? ""
             let headers = [
                 "Authorization": "Bearer \(token)"
             ]
-            Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+            Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
                     do {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -878,7 +878,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fsz-gs-aKv">
                                 <rect key="frame" x="0.0" y="94" width="414" height="170"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userProfile" translatesAutoresizingMaskIntoConstraints="NO" id="5fU-Ok-lwL" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="5fU-Ok-lwL" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="1Cx-Te-7eS"/>
@@ -1170,8 +1170,8 @@
         <image name="events" width="25" height="20.333333969116211"/>
         <image name="homeSelected" width="25" height="33.666667938232422"/>
         <image name="homeUnSelected" width="25" height="33.666667938232422"/>
+        <image name="placeholder" width="450" height="450"/>
         <image name="profile2" width="25" height="27.666666030883789"/>
         <image name="search" width="25" height="25"/>
-        <image name="userProfile" width="400" height="450"/>
     </resources>
 </document>

@@ -33,7 +33,7 @@ class UpdatePasswordVC: UIViewController {
         case .iPhone4, .iPhone5, .iPhone6, .iPhone6S, .iPhone7, .iPhone8, .iPhone5S, .iPhoneSE, .iPhoneSE2:
             self.confirmButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.confirmButton.frame.width - 75), bottom: 0, right: 0)
         default:
-            self.confirmButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.confirmButton.frame.width - 45), bottom: 0, right: 0)
+            self.confirmButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.confirmButton.frame.width - 75), bottom: 0, right: 0)
         }
         
         DataBinding()
@@ -45,10 +45,10 @@ class UpdatePasswordVC: UIViewController {
 }
 //MARK:- View Model Functions
 extension UpdatePasswordVC {
-    func POSTUpdateForgetPassword() {
+    func POSTUpdateForgetPassword(code:String) {
         self.confirmButton.isEnabled = false
-        self.AuthViewModel.POSTUpdatePassowrd().subscribe(onNext: { (passwordModel) in
-            if passwordModel.data ?? false {
+        self.AuthViewModel.POSTUpdatePassowrd(code:code).subscribe(onNext: { (passwordModel) in
+            if passwordModel.status ?? false {
                 guard let window = UIApplication.shared.keyWindow else { return }
                 guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "AuthenticationPageVC") as? AuthenticationPageVC else { return }
                 main.currentPage = 1
@@ -95,6 +95,12 @@ extension UpdatePasswordVC {
                 return
             }
             guard self.new_passwordTF.text!.isPasswordValid() else {
+                if "lang".localized == "ar" {
+                displayMessage(title: "", message: "كلمة المرور الحديثة غير صالحة  ", status: .info, forController: self)
+                } else {
+           displayMessage(title: "", message: "Your new password isn't correct", status: .info, forController: self)
+                }
+                
                 return
             }
             guard self.new_password_confirmationTF.text! == self.new_passwordTF.text! else {
@@ -105,7 +111,7 @@ extension UpdatePasswordVC {
                 }
                 return
             }
-            self.POSTUpdateForgetPassword()
+            self.POSTUpdateForgetPassword(code: self.code)
         }.disposed(by: disposeBag)
     }
 }
