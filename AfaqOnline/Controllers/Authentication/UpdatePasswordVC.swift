@@ -50,8 +50,7 @@ extension UpdatePasswordVC {
         self.AuthViewModel.POSTUpdatePassowrd(code:code).subscribe(onNext: { (passwordModel) in
             if passwordModel.status ?? false {
                 guard let window = UIApplication.shared.keyWindow else { return }
-                guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "AuthenticationPageVC") as? AuthenticationPageVC else { return }
-                main.currentPage = 1
+                guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
                 window.rootViewController = main
                 UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
             }

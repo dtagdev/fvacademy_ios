@@ -120,8 +120,7 @@ class ProfileVC: UIViewController {
                     alert.dismiss(animated: true, completion: nil)
                     Helper.LogOut()
                     guard let window = UIApplication.shared.keyWindow else { return }
-                    guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "AuthenticationPageVC") as? AuthenticationPageVC else { return }
-                    main.currentPage = 1
+                    guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
                     window.rootViewController = main
                     UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                 }
@@ -134,10 +133,8 @@ class ProfileVC: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             case "Login":
                 guard let window = UIApplication.shared.keyWindow else { return }
-                guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "AuthenticationPageVC") as? AuthenticationPageVC else { return }
-                main.currentPage = 1
+                guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
                 window.rootViewController = main
-                //UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
             default:
                 break
             }

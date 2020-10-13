@@ -65,11 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
         MOLH.shared.specialKeyWords = ["Cancel","Done"]
         if ("lang".localized == "en") {
             MOLHLanguage.setDefaultLanguage("en")
-            Helper.saveLang(Lang: "en")
+           // Helper.saveLang(Lang: "en")
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
         } else {
             MOLHLanguage.setDefaultLanguage("ar")
-            Helper.saveLang(Lang: "ar")
+            //Helper.saveLang(Lang: "ar")
             UIView.appearance().semanticContentAttribute = .forceRightToLeft
         }
         
@@ -77,12 +77,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
            let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
             window?.rootViewController = sb
             Singletone.instance.appUserType = .customer
-        } else if Helper.getLang() != "" {
+        } else if Helper.getLang() != nil {
             let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
             window?.rootViewController = sb
             Singletone.instance.appUserType = .guest
         } else {
-        let sb = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC")
+        let sb = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LanguageScreenVC")
          window?.rootViewController = sb
          Singletone.instance.appUserType = .guest
         }

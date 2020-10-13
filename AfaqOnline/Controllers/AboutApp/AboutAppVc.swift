@@ -31,9 +31,7 @@ class AboutAppVC: UIViewController {
     
     }
     
-  
-
-        override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(true)
             searchTF.isHidden = true
             searchTF.text = ""

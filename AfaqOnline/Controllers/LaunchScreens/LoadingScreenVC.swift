@@ -12,15 +12,25 @@ class LoadingScreenVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
-            guard let window = UIApplication.shared.keyWindow else { return }
-            let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LanguageScreenVC")
-            window.rootViewController = main
-            UIView.transition(with: window, duration: 1, options: .curveEaseInOut, animations: nil, completion: nil)
-        }
+        
+        
     }
 
+    @IBAction func nextAction(_ sender: CustomButtons) {
+      
+        guard let window = UIApplication.shared.keyWindow else { return }
+        let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC2")
+        window.rootViewController = main
+        
+    }
+    
+    @IBAction func skipAction(_ sender: CustomButtons) {
+        guard let window = UIApplication.shared.keyWindow else { return }
+        let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
+        window.rootViewController = sb
+               
+    }
+    
 
 }
 

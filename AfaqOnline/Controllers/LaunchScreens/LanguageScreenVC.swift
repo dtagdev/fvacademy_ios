@@ -37,9 +37,9 @@ class LanguageScreenVC: UIViewController {
                
                 UIView.transition(with: window, duration: 0.5, options: .beginFromCurrentState, animations: nil, completion: nil)
             } else {
-                guard let window = UIApplication.shared.keyWindow else { return }
-                let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
-                window.rootViewController = sb
+                     guard let window = UIApplication.shared.keyWindow else { return }
+                let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC")
+                window.rootViewController = main
                 UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut, animations: nil, completion: nil)
             }
              UIView.appearance().semanticContentAttribute = .forceLeftToRight
@@ -67,8 +67,8 @@ class LanguageScreenVC: UIViewController {
                 UIView.transition(with: window, duration: 0.5, options: .beginFromCurrentState, animations: nil, completion: nil)
             } else {
                 guard let window = UIApplication.shared.keyWindow else { return }
-                let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
-                window.rootViewController = sb
+                let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC")
+                window.rootViewController = main
                 UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut, animations: nil, completion: nil)
             }
             UIView.appearance().semanticContentAttribute = .forceRightToLeft

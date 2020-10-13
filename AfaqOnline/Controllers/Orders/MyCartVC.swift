@@ -120,14 +120,15 @@ extension MyCartVC {
     func getCart() {
         self.orderVM.getMyCart().subscribe(onNext: { (myCartModel) in
             if let error = myCartModel.errors {
+            self.orderVM.dismissIndicator()
             displayMessage(title: "", message: error, status: .error, forController: self)
             } else if let item = myCartModel.data {
             self.orderVM.dismissIndicator()
             self.items = item
             }
         }, onError: { (error) in
+            self.orderVM.dismissIndicator()
          displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-
         }).disposed(by: disposeBag)
       }
     

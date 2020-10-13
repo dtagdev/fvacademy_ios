@@ -26,13 +26,6 @@ class OTPScreenVC: UIViewController {
     var pageType = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        if "lang".localized == "ar" {
-            self.backButton.setImage(#imageLiteral(resourceName: "nextAr"), for: .normal)
-        } else {
-            self.backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
-        }
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.ResendTapAction(_:)))
         resendLabel.isUserInteractionEnabled = true
         resendLabel.addGestureRecognizer(gestureRecognizer)
@@ -40,7 +33,7 @@ class OTPScreenVC: UIViewController {
         
         self.firstTF.becomeFirstResponder()
         bindingData()
-        mobileNumberStatusLabel.text = "Enter the 4-digit code sent to your Email"
+        mobileNumberStatusLabel.text = "Please enter the code so you can proceed"
     }
     
     @IBAction func ConfirmAction(_ sender: CustomButtons) {

@@ -21,8 +21,6 @@ class HomeVC: UIViewController {
     @IBOutlet weak var CategoryButton: UIButton!
     @IBOutlet weak var InstructorButton: UIButton!
     @IBOutlet weak var EventsButton: UIButton!
-    @IBOutlet weak var searchTF: UITextField!
-    @IBOutlet weak var backButton: UIButton!
     
     private let homeViewModel = HomeViewModel()
     var disposeBag = DisposeBag()
@@ -72,13 +70,7 @@ class HomeVC: UIViewController {
         setupCategoryCollectionView()
         setupEventsCollectionView()
         setupInstructorCollectionView()
-        if "lang".localized == "ar" {
-            self.backButton.setImage(#imageLiteral(resourceName: "nextAr"), for: .normal)
-        } else {
-            self.backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
-        }
         self.getHomeData()
-        self.searchTF.delegate = self
         self.hideKeyboardWhenTappedAround()
         self.homeViewModel.showIndicator()
         
@@ -90,21 +82,13 @@ class HomeVC: UIViewController {
     
     @objc func endEditting(sender: UITapGestureRecognizer) {
         displayMessage(title: "", message: "Please Login First", status: .info, forController: self)
-        NotificationCenter.default.post(name: Notification.Name("NavigateToRegister"), object: nil)
         guard let window = UIApplication.shared.keyWindow else { return }
-        guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "AuthenticationPageVC") as? AuthenticationPageVC else { return }
-        main.currentPage = 1
+        guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
         window.rootViewController = main
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        searchTF.isHidden = true
-        searchTF.text = ""
-        if Helper.getAPIToken() != nil{
-            backButton.isHidden = false
-        }else{
-            backButton.isHidden = true
-        }
+   
     }
     @IBAction func SeeAllActions(_ sender: UIButton) {
         if Helper.getUserID() ?? 0 == 0 {
@@ -137,47 +121,7 @@ class HomeVC: UIViewController {
             }
         }
     }
-    @IBAction func FiltrationAction(_ sender: UIButton) {
-        if self.searchTF.isHidden {
-            Constants.shared.searchingEnabled = true
-            self.searchTF.isHidden = false
-        } else {
-            Constants.shared.searchingEnabled = false
-            self.searchTF.isHidden = true
-        }
-    }
-    @IBAction func BackAction(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to Log out?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "YES", style: .default) { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            Helper.LogOut()
-            guard let window = UIApplication.shared.keyWindow else { return }
-            guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "AuthenticationPageVC") as? AuthenticationPageVC else { return }
-            main.currentPage = 1
-            window.rootViewController = main
-            UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-        }
-        
-        yesAction.setValue(#colorLiteral(red: 0.3104775548, green: 0.3218831122, blue: 0.4838557839, alpha: 1), forKey: "titleTextColor")
-        let cancelAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
-        cancelAction.setValue(#colorLiteral(red: 0.3104775548, green: 0.3218831122, blue: 0.4838557839, alpha: 1), forKey: "titleTextColor")
-        alert.addAction(yesAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-        
-    }
     
-    @IBAction func SearchDidEndEditing(_ sender: CustomTextField) {
-        if Constants.shared.searchingEnabled {
-            guard let main = UIStoryboard(name: "Filtration", bundle: nil).instantiateViewController(withIdentifier: "FiltrationVC") as? FiltrationVC else { return }
-            main.modalPresentationStyle = .overFullScreen
-            main.modalTransitionStyle = .crossDissolve
-            main.search_name = self.searchTF.text ?? ""
-            self.searchTF.text = ""
-            self.searchTF.isHidden = true
-            self.present(main, animated: true, completion: nil)
-        }
-    }
     
     
 }
@@ -208,12 +152,7 @@ extension HomeVC {
     }
 }
 
-extension HomeVC: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.searchTF.resignFirstResponder()
-        return true
-    }
-}
+
 //MARK:- Data Binding
 extension HomeVC: UICollectionViewDelegate {
     func setupAdsCollectionView() {

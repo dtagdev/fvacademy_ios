@@ -17,7 +17,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var passwordTF: CustomTextField!
     @IBOutlet weak var loginButton: CustomButtons!
     @IBOutlet weak var registerLabel: UILabel!
-    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var forgetPassButton: UIButton!
     
     private let AuthViewModel = AuthenticationViewModel()
     var disposeBag = DisposeBag()
@@ -25,12 +25,6 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        switch UIDevice().type {
-        case .iPhone4, .iPhone5, .iPhone6, .iPhone6S, .iPhone7, .iPhone8, .iPhone5S, .iPhoneSE, .iPhoneSE2:
-            self.loginButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.loginButton.frame.width - 75), bottom: 0, right: 0)
-        default:
-            self.loginButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.loginButton.frame.width - 75), bottom: 0, right: 0)
-        }
         
         self.hideKeyboardWhenTappedAround()
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.RegisterTapAction(_:)))
@@ -69,8 +63,7 @@ extension LoginVC {
     func DataBinding() {
         _ = emailUserNameTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.email).disposed(by: disposeBag)
         _ = passwordTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.password).disposed(by: disposeBag)
-        self.addUnderLineToButtonText(text: "Skip", button: self.skipButton)
-        self.skipButton.rx.tap.bind { (_) in
+        self.forgetPassButton.rx.tap.bind { (_) in
             guard let window = UIApplication.shared.keyWindow else { return }
             guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
             //        main.setSelectIndex(from: 0, to: 1)
@@ -82,11 +75,11 @@ extension LoginVC {
     //MARK:- Register Label Action Configurations
     @objc func RegisterTapAction(_ sender: UITapGestureRecognizer) {
             print("Register Action")
-        NotificationCenter.default.post(name: Notification.Name("NavigateToRegister"), object: nil)
+
     }
     func setupMultiColorRegisterLabel() {
-        let main_string = "Don't have an account? Swipe right to create a new account"
-        let coloredString = "create a new account"
+        let main_string = "Don’t have an account? Sign Up"
+        let coloredString = "Sign Up"
 
         let Range = (main_string as NSString).range(of: coloredString)
 
