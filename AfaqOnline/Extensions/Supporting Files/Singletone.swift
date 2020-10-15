@@ -14,6 +14,8 @@ class Singletone: NSObject {
     public enum userType {
         case customer
         case guest
+        case instructor
+        
     }
     
     var aboutApp = String()

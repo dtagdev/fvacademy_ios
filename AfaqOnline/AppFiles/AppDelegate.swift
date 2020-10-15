@@ -24,19 +24,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
             Singletone.instance.appUserType = .guest
         } else {
             switch Singletone.instance.appUserType {
-            case .customer:
+        case .customer:
                 guard let window = UIApplication.shared.keyWindow else { return }
                 guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
                 window.rootViewController = main
                 UIView.transition(with: window, duration: 0.5, options: .beginFromCurrentState, animations: nil, completion: nil)
                 Singletone.instance.appUserType = .customer
-            case .guest:
+        case .guest:
                 guard let window = UIApplication.shared.keyWindow else { return }
                 guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
                 window.rootViewController = main
                 UIView.transition(with: window, duration: 0.5, options: .beginFromCurrentState, animations: nil, completion: nil)
                 Singletone.instance.appUserType = .guest
             
+                
+        case .instructor:
+            guard let window = UIApplication.shared.keyWindow else { return }
+            guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
+                window.rootViewController = main
+            UIView.transition(with: window, duration: 0.5, options: .beginFromCurrentState, animations: nil, completion: nil)
+            Singletone.instance.appUserType = .instructor
                 
             }
         }
@@ -82,10 +89,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
             window?.rootViewController = sb
             Singletone.instance.appUserType = .guest
         } else {
-        let sb = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LanguageScreenVC")
+        let sb = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LanguageScreenNav")
          window?.rootViewController = sb
          Singletone.instance.appUserType = .guest
         }
+        
         IQKeyboardManager.shared.enable = true
         PusherManager.shared.connectPusher()
         return true

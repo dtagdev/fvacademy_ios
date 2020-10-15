@@ -42,8 +42,9 @@ class OTPScreenVC: UIViewController {
     }
     
     @IBAction func backAction(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
+    
 }
 extension OTPScreenVC {
     func GETCheckUserCode(type : String) {
@@ -142,13 +143,10 @@ extension OTPScreenVC {
     }
     
     func setupMultiColorResendLabel() {
-        let main_string = "Didn't receive the code? Resend"
-        let coloredString = "Resend"
-
+        let main_string = "Send a new code"
+        let coloredString = "code"
         let Range = (main_string as NSString).range(of: coloredString)
-
         let attribute = NSMutableAttributedString.init(string: main_string)
-        
         attribute.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.09019607843, green: 0.3176470588, blue: 0.4980392157, alpha: 1) , range: Range)
         resendLabel.attributedText = attribute
     }

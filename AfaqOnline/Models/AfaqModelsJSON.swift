@@ -25,6 +25,7 @@ struct DataClass: Codable {
     let verifiedAt: String?
     let gender, token: String?
     let role: Int?
+    let avatar : String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -33,7 +34,7 @@ struct DataClass: Codable {
         case email, title, job, phone
         case isVerified = "is_verified"
         case verifiedAt = "verified_at"
-        case gender, token, role
+        case gender, token, role,avatar
     }
 }
 

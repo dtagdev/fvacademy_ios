@@ -30,6 +30,8 @@ class ForgetPasswordVC: UIViewController {
         
         DataBinding()
     }
+    
+    
  
 }
 //MARK:- View Model Functions

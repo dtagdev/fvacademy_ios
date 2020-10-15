@@ -17,6 +17,10 @@ class LanguageScreenVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+          self.navigationController?.navigationBar.isHidden = true
+      }
+    
     @IBAction func EnglishLanguageAction(_ sender: CustomButtons) {
         Helper.saveLang(Lang: "en")
         if MOLHLanguage.currentAppleLanguage() == "ar" {
@@ -37,10 +41,9 @@ class LanguageScreenVC: UIViewController {
                
                 UIView.transition(with: window, duration: 0.5, options: .beginFromCurrentState, animations: nil, completion: nil)
             } else {
-                     guard let window = UIApplication.shared.keyWindow else { return }
-                let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC")
-                window.rootViewController = main
-                UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut, animations: nil, completion: nil)
+                guard let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC") as? LoadingScreenVC else { return }
+              self.navigationController?.pushViewController(main, animated: true)
+                
             }
              UIView.appearance().semanticContentAttribute = .forceLeftToRight
         }
@@ -66,10 +69,9 @@ class LanguageScreenVC: UIViewController {
                 window.rootViewController = main
                 UIView.transition(with: window, duration: 0.5, options: .beginFromCurrentState, animations: nil, completion: nil)
             } else {
-                guard let window = UIApplication.shared.keyWindow else { return }
-                let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC")
-                window.rootViewController = main
-                UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut, animations: nil, completion: nil)
+                guard let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC") as? LoadingScreenVC else { return }
+                       self.navigationController?.pushViewController(main, animated: true)
+                
             }
             UIView.appearance().semanticContentAttribute = .forceRightToLeft
         }

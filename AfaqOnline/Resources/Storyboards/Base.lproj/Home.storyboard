@@ -23,11 +23,11 @@
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="s7p-Jo-PTV" customClass="HomeVC" customModule="Al_Academya" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sNk-6I-g97">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNS-4o-yFC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="917"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1917"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzU-6P-tdZ">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="931.66666666666663"/>
@@ -38,12 +38,22 @@
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 96" translatesAutoresizingMaskIntoConstraints="NO" id="b9z-g0-FZI">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                                     </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jus-ze-6wl">
+                                                        <rect key="frame" x="8" y="20" width="30" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="a7x-kh-UQG"/>
+                                                            <constraint firstAttribute="height" constant="30" id="dvg-cN-Vdk"/>
+                                                        </constraints>
+                                                        <state key="normal" image="Group 5"/>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="b9z-g0-FZI" firstAttribute="top" secondItem="dUa-pJ-oWN" secondAttribute="top" id="7kh-6p-9h0"/>
                                                     <constraint firstAttribute="height" constant="70" id="JWb-qq-mX6"/>
                                                     <constraint firstItem="b9z-g0-FZI" firstAttribute="leading" secondItem="dUa-pJ-oWN" secondAttribute="leading" id="Svu-Wq-GHy"/>
+                                                    <constraint firstItem="Jus-ze-6wl" firstAttribute="leading" secondItem="dUa-pJ-oWN" secondAttribute="leading" constant="8" id="Val-fZ-nhB"/>
+                                                    <constraint firstItem="Jus-ze-6wl" firstAttribute="centerY" secondItem="dUa-pJ-oWN" secondAttribute="centerY" id="YSp-LE-VsV"/>
                                                     <constraint firstAttribute="bottom" secondItem="b9z-g0-FZI" secondAttribute="bottom" id="si1-fB-cCN"/>
                                                     <constraint firstAttribute="trailing" secondItem="b9z-g0-FZI" secondAttribute="trailing" id="vJj-wQ-51c"/>
                                                 </constraints>
@@ -281,6 +291,7 @@
                                             <constraint firstAttribute="height" secondItem="L1Y-B6-hvd" secondAttribute="height" multiplier="1.35" id="dH1-fe-Cph"/>
                                             <constraint firstItem="mlE-h4-ld9" firstAttribute="centerX" secondItem="jzU-6P-tdZ" secondAttribute="centerX" id="eh2-rf-3c3"/>
                                             <constraint firstItem="dUa-pJ-oWN" firstAttribute="width" secondItem="jzU-6P-tdZ" secondAttribute="width" id="evN-gy-yCN"/>
+                                            <constraint firstItem="dUa-pJ-oWN" firstAttribute="top" secondItem="jzU-6P-tdZ" secondAttribute="top" id="g8l-0N-Hvt"/>
                                             <constraint firstItem="dUa-pJ-oWN" firstAttribute="top" secondItem="jzU-6P-tdZ" secondAttribute="top" id="gDp-zJ-3Bu"/>
                                             <constraint firstItem="mlE-h4-ld9" firstAttribute="width" secondItem="jzU-6P-tdZ" secondAttribute="width" multiplier="0.99" id="gbe-36-snL"/>
                                         </constraints>
@@ -305,7 +316,7 @@
                         <viewLayoutGuide key="safeArea" id="0n7-1C-KfQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="3YJ-ne-ZaQ"/>
-                    <size key="freeformSize" width="414" height="1000"/>
+                    <size key="freeformSize" width="414" height="2000"/>
                     <connections>
                         <outlet property="AdsCollectionView" destination="d4o-py-ZBe" id="Cbf-8H-vfJ"/>
                         <outlet property="CategoryButton" destination="733-jf-0sh" id="ZgT-iI-QZZ"/>
@@ -320,7 +331,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VNJ-FL-A5U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1161" y="876"/>
+            <point key="canvasLocation" x="-1164" y="1211"/>
         </scene>
         <!--CategoriesVC-->
         <scene sceneID="rXE-pv-nfH">
@@ -1104,7 +1115,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Group 96" width="576.33331298828125" height="175"/>
+        <image name="Group 5" width="16.666666030883789" height="13.666666984558105"/>
+        <image name="Group 96" width="413.66665649414062" height="65.333335876464844"/>
         <image name="back" width="25" height="25"/>
         <image name="cartUnSelected" width="25" height="22.666666030883789"/>
         <image name="category" width="16.666666030883789" height="16.666666030883789"/>

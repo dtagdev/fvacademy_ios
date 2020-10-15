@@ -132,9 +132,9 @@ class ProfileVC: UIViewController {
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             case "Login":
-                guard let window = UIApplication.shared.keyWindow else { return }
                 guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
-                window.rootViewController = main
+                self.navigationController?.pushViewController(main, animated: true)
+                
             default:
                 break
             }

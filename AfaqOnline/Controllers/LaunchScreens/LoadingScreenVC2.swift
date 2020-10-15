@@ -18,9 +18,9 @@ class LoadingScreenVC2: UIViewController {
     }
 
     @IBAction func nextAction(_ sender: CustomButtons) {
-        guard let window = UIApplication.shared.keyWindow else { return }
-        let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC3")
-        window.rootViewController = main
+    guard let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LoadingScreenVC3") as? LoadingScreenVC3 else { return }
+          self.navigationController?.pushViewController(main, animated: true)
+    
     }
     
     @IBAction func skipAction(_ sender: CustomButtons) {

@@ -15,25 +15,41 @@ class Authentication {
     
     static let shared = Authentication()
     //MARK:- POST Register
-    func postRegister(params: [String : Any]) -> Observable<AfaqModelsJSON> {
+    func postRegister(image: UIImage,params: [String : Any]) -> Observable<AfaqModelsJSON> {
         return Observable.create { (observer) -> Disposable in
             let url = ConfigURLS.postRegister
             
-            Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
-                .validate(statusCode: 200..<300)
-                .responseJSON { (response: DataResponse<Any>) in
-                    do {
-                        let registerData = try JSONDecoder().decode(AfaqModelsJSON.self, from: response.data!)
-                        print(registerData)
-                        if let data = registerData.data {
-                            Helper.saveAPIToken(user_id: data.id ?? 0, email: data.email ?? "", role: data.role ?? 0, name: data.firstName ?? "", token: data.token ?? "")
+            Alamofire.upload(multipartFormData: { (form: MultipartFormData) in
+                if let data = image.jpegData(compressionQuality: 0.8) {
+                    form.append(data, withName: "avatar", fileName: "image.jpeg", mimeType: "image/jpeg")
+                }
+                for (key, value) in params {
+                    form.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
+                }
+                        
+                }, usingThreshold: SessionManager.multipartFormDataEncodingMemoryThreshold, to: url, method: .post, headers: nil) { (result: SessionManager.MultipartFormDataEncodingResult) in
+                    switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    observer.onError(error)
+                case .success(request: let upload, streamingFromDisk: _, streamFileURL: _):
+                    upload.uploadProgress { (progress) in
+                      print("Image Uploading Progress: \(progress.fractionCompleted)")
+                  }.responseJSON { (response: DataResponse<Any>) in
+             do {
+                    let registerData = try JSONDecoder().decode(AfaqModelsJSON.self, from: response.data!)
+                    print(registerData)
+                    if let data = registerData.data {
+                     Helper.saveAPIToken(user_id: data.id ?? 0, email: data.email ?? "", role: data.role ?? 0, name: data.firstName ?? "", token: data.token ?? "")
                         }
                         observer.onNext(registerData)
-                    } catch {
-                        print(error.localizedDescription)
+                     } catch {
+                         print(error.localizedDescription)
                         observer.onError(error)
                     }
-            }
+                  }
+                }
+             }
             return Disposables.create()
         }
     }//END of POST Register

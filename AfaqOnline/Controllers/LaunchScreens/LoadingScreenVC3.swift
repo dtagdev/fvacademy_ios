@@ -18,16 +18,32 @@ class LoadingScreenVC3 : UIViewController {
     
     }
 
-    @IBAction func nextAction(_ sender: CustomButtons) {
+    @IBAction func signUpAction(_ sender: CustomButtons) {
+        guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
+        self.navigationController?.pushViewController(main, animated: true)
         
     }
     
-    @IBAction func skipAction(_ sender: CustomButtons) {
+    @IBAction func browseAction(_ sender: CustomButtons) {
         guard let window = UIApplication.shared.keyWindow else { return }
         let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
         window.rootViewController = sb
                
     }
+    
+    
+    @IBAction func userAction(_ sender: CustomButtons) {
+          guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
+          self.navigationController?.pushViewController(main, animated: true)
+          
+      }
+      
+    @IBAction func instractorAction(_ sender: CustomButtons) {
+     guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
+        main.type = "instructor"
+        self.navigationController?.pushViewController(main, animated: true)
+
+      }
     
 
 }

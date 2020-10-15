@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Pk-cR-k39">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sa3-VK-mRG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -16,14 +16,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 273" translatesAutoresizingMaskIntoConstraints="NO" id="cTR-Um-hgI">
-                                <rect key="frame" x="120.5" y="194" width="173" height="75"/>
+                                <rect key="frame" x="120.5" y="238" width="173" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="173" id="avS-l1-THe"/>
                                     <constraint firstAttribute="height" constant="75" id="frw-Io-uFQ"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="93k-Dr-0TZ">
-                                <rect key="frame" x="62" y="439.5" width="290" height="100"/>
+                                <rect key="frame" x="62" y="483.5" width="290" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfR-e0-SS5" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
                                         <rect key="frame" x="75" y="0.0" width="140" height="40"/>
@@ -66,13 +66,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your app’s language :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTM-xU-1gq">
-                                <rect key="frame" x="16" y="399" width="226" height="20.5"/>
+                                <rect key="frame" x="94" y="443" width="226" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.11372549019607843" green="0.26666666666666666" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language can be changed from settings later on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3M-kZ-ig5">
-                                <rect key="frame" x="22" y="579.5" width="370.5" height="20.5"/>
+                                <rect key="frame" x="22" y="623.5" width="370.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.34509803921568627" green="0.63921568627450975" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -84,18 +84,19 @@
                             <constraint firstItem="93k-Dr-0TZ" firstAttribute="width" secondItem="F8X-wB-5eN" secondAttribute="width" multiplier="0.7" id="Adh-32-Ij3"/>
                             <constraint firstItem="cTR-Um-hgI" firstAttribute="top" secondItem="wOG-qw-dEh" secondAttribute="top" constant="150" id="DDC-VY-xux"/>
                             <constraint firstItem="93k-Dr-0TZ" firstAttribute="centerX" secondItem="wOG-qw-dEh" secondAttribute="centerX" id="ILw-8H-J6C"/>
-                            <constraint firstItem="rTM-xU-1gq" firstAttribute="leading" secondItem="wOG-qw-dEh" secondAttribute="leading" constant="16" id="M5R-Sz-3IR"/>
                             <constraint firstItem="b3M-kZ-ig5" firstAttribute="centerX" secondItem="F8X-wB-5eN" secondAttribute="centerX" id="RWw-WV-OYh"/>
                             <constraint firstItem="cTR-Um-hgI" firstAttribute="centerX" secondItem="wOG-qw-dEh" secondAttribute="centerX" id="Xdh-sh-Vzw"/>
                             <constraint firstItem="b3M-kZ-ig5" firstAttribute="top" secondItem="93k-Dr-0TZ" secondAttribute="bottom" constant="40" id="ZQe-tu-4pb"/>
                             <constraint firstItem="93k-Dr-0TZ" firstAttribute="top" secondItem="rTM-xU-1gq" secondAttribute="bottom" constant="20" id="iG3-hL-Shx"/>
+                            <constraint firstItem="rTM-xU-1gq" firstAttribute="centerX" secondItem="F8X-wB-5eN" secondAttribute="centerX" id="jNo-f0-qY1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wOG-qw-dEh"/>
                     </view>
+                    <navigationItem key="navigationItem" id="8cP-zr-l84"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znH-N9-VpO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="545" y="50"/>
+            <point key="canvasLocation" x="2365.217391304348" y="49.553571428571423"/>
         </scene>
         <!--Loading ScreenVC-->
         <scene sceneID="Iim-Td-59e">
@@ -115,15 +116,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 295" translatesAutoresizingMaskIntoConstraints="NO" id="P5o-kj-WHZ">
                                 <rect key="frame" x="64.5" y="169.5" width="285" height="285"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Pkp-IB-cGz">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Pkp-IB-cGz">
                                 <rect key="frame" x="62" y="685.5" width="290" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdE-SC-0Pm" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="40"/>
                                         <color key="backgroundColor" red="0.30451574920000002" green="0.53405332569999997" blue="0.74332338570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="nD5-Qm-lTv"/>
-                                            <constraint firstAttribute="width" constant="100" id="o2Y-Ie-oCf"/>
                                         </constraints>
                                         <state key="normal" title="Skip">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -138,10 +138,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1G-TT-fH9" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                        <rect key="frame" x="190" y="0.0" width="100" height="40"/>
+                                        <rect key="frame" x="155" y="0.0" width="135" height="40"/>
                                         <color key="backgroundColor" red="0.30451574920000002" green="0.53405332569999997" blue="0.74332338570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="hFZ-F8-nC8"/>
                                             <constraint firstAttribute="height" constant="40" id="hWf-mE-ung"/>
                                         </constraints>
                                         <state key="normal" title="Next">
@@ -190,10 +189,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jyd-fu-0Xd"/>
                     </view>
+                    <navigationItem key="navigationItem" id="PfK-ll-TjR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpE-8h-VCN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="50"/>
+            <point key="canvasLocation" x="3180" y="50"/>
         </scene>
         <!--Loading ScreenVC2-->
         <scene sceneID="maN-KB-HxT">
@@ -213,14 +213,13 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-10-08 at 3.24.20 PM" translatesAutoresizingMaskIntoConstraints="NO" id="iDE-yn-Hvb">
                                 <rect key="frame" x="64.5" y="160" width="285" height="285"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1zv-nM-3tg">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1zv-nM-3tg">
                                 <rect key="frame" x="62" y="716" width="290" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5K-yJ-srP" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="40"/>
                                         <color key="backgroundColor" red="0.30451574920000002" green="0.53405332569999997" blue="0.74332338570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="hVM-Tq-MgA"/>
                                             <constraint firstAttribute="height" constant="40" id="o9w-3y-h0z"/>
                                         </constraints>
                                         <state key="normal" title="Skip">
@@ -236,11 +235,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dP-m8-Q6A" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                        <rect key="frame" x="190" y="0.0" width="100" height="40"/>
+                                        <rect key="frame" x="155" y="0.0" width="135" height="40"/>
                                         <color key="backgroundColor" red="0.30451574920000002" green="0.53405332569999997" blue="0.74332338570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="DfI-a6-8YZ"/>
-                                            <constraint firstAttribute="width" constant="100" id="stM-eo-c7n"/>
                                         </constraints>
                                         <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -280,10 +278,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zsf-W5-R9o"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7HY-tn-aZE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oae-ge-tZU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1904" y="50"/>
+            <point key="canvasLocation" x="4103" y="50"/>
         </scene>
         <!--Loading ScreenVC3-->
         <scene sceneID="fwg-LO-tRE">
@@ -303,15 +302,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-10-08 at 3.24.07 PM" translatesAutoresizingMaskIntoConstraints="NO" id="mr5-Wp-xbN">
                                 <rect key="frame" x="64.5" y="160" width="285" height="285"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9K5-Bg-6KA">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9K5-Bg-6KA">
                                 <rect key="frame" x="62" y="635.5" width="290" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hb9-Y9-u4n" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="40"/>
                                         <color key="backgroundColor" red="0.30588235294117649" green="0.53333333333333333" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Ocf-U6-Z8N"/>
-                                            <constraint firstAttribute="width" constant="100" id="vhv-98-Euz"/>
                                         </constraints>
                                         <state key="normal" title="Brouse">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -322,14 +320,13 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="skipAction:" destination="YYK-dH-cOa" eventType="touchUpInside" id="zdR-wf-8IQ"/>
+                                            <action selector="browseAction:" destination="YYK-dH-cOa" eventType="touchUpInside" id="Lyo-gE-0eN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDd-PF-fcg" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                        <rect key="frame" x="190" y="0.0" width="100" height="40"/>
+                                        <rect key="frame" x="155" y="0.0" width="135" height="40"/>
                                         <color key="backgroundColor" red="0.30451574920000002" green="0.53405332569999997" blue="0.74332338570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="JeS-sk-25y"/>
                                             <constraint firstAttribute="height" constant="40" id="yC8-my-bp1"/>
                                         </constraints>
                                         <state key="normal" title="Sign Up">
@@ -341,7 +338,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="nextAction:" destination="YYK-dH-cOa" eventType="touchUpInside" id="88q-lr-KOz"/>
+                                            <action selector="signUpAction:" destination="YYK-dH-cOa" eventType="touchUpInside" id="iZd-fN-osn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -360,12 +357,18 @@
                                         <state key="normal" title="I am already a user">
                                             <color key="titleColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="userAction:" destination="YYK-dH-cOa" eventType="touchUpInside" id="Cgi-TU-Q5w"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQF-EU-0B4">
                                         <rect key="frame" x="0.0" y="38" width="148" height="30"/>
                                         <state key="normal" title="Become an Instructor">
                                             <color key="titleColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="instractorAction:" destination="YYK-dH-cOa" eventType="touchUpInside" id="EcH-lv-pwA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -389,10 +392,29 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PYH-OF-tdM"/>
                     </view>
+                    <navigationItem key="navigationItem" id="yO5-uM-z4B"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeg-rl-ouH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2583" y="50"/>
+            <point key="canvasLocation" x="4990" y="50"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gBI-9q-2Ob">
+            <objects>
+                <navigationController storyboardIdentifier="LanguageScreenNav" automaticallyAdjustsScrollViewInsets="NO" id="Sa3-VK-mRG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="od9-1f-88J">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9Pk-cR-k39" kind="relationship" relationship="rootViewController" id="TCe-Ib-OhC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d1n-Df-WGV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1455.072463768116" y="49.553571428571423"/>
         </scene>
     </scenes>
     <resources>

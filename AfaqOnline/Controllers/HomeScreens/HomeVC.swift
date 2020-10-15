@@ -82,9 +82,9 @@ class HomeVC: UIViewController {
     
     @objc func endEditting(sender: UITapGestureRecognizer) {
         displayMessage(title: "", message: "Please Login First", status: .info, forController: self)
-        guard let window = UIApplication.shared.keyWindow else { return }
-        guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
-        window.rootViewController = main
+    guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
+    self.navigationController?.pushViewController(main, animated: true)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
