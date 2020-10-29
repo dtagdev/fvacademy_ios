@@ -14,7 +14,7 @@ struct PasswordJSONModel: Codable {
 }
 
 struct PasswordUpdatJSONModel: Codable {
-    var data : Profile?
+    var data : User?
     var status: Bool?
     var errors: String?
 }

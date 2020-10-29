@@ -28,7 +28,6 @@ class LoadingScreenVC3 : UIViewController {
         guard let window = UIApplication.shared.keyWindow else { return }
         let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
         window.rootViewController = sb
-               
     }
     
     

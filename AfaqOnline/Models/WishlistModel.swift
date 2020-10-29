@@ -20,7 +20,7 @@ struct WishlistModelJSON: Codable {
 struct WishlistData: Codable {
     let id, userID, courseID: Int?
     let course: TrendCourse?
-    let user: Profile?
+    let user: User?
     let createdAt: String?
 
     enum CodingKeys: String, CodingKey {

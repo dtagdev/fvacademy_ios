@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 314" translatesAutoresizingMaskIntoConstraints="NO" id="n1T-nj-NTZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="300.00000000000006"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="fhX-kV-hdR"/>
                                                 </constraints>
@@ -94,7 +94,7 @@
                                                 <rect key="frame" x="0.0" y="250" width="414" height="750"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-10-13 at 2.58.04 PM" translatesAutoresizingMaskIntoConstraints="NO" id="aR8-e4-USF">
-                                                        <rect key="frame" x="187" y="16" width="40.000000000000057" height="8"/>
+                                                        <rect key="frame" x="187" y="16" width="40" height="8"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="40" id="Tad-WT-1xf"/>
                                                             <constraint firstAttribute="height" constant="8" id="pU2-1b-bgE"/>
@@ -726,9 +726,9 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qyi-Ja-Gu6" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="294" height="41.5"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QNB-Un-vLJ" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="41.5"/>
-                                                                        <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QNB-Un-vLJ" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="294" height="41.5"/>
+                                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -767,7 +767,7 @@
                                                                 <constraints>
                                                                     <constraint firstItem="QNB-Un-vLJ" firstAttribute="centerX" secondItem="Qyi-Ja-Gu6" secondAttribute="centerX" id="2Hi-p7-afz"/>
                                                                     <constraint firstItem="QNB-Un-vLJ" firstAttribute="height" secondItem="Qyi-Ja-Gu6" secondAttribute="height" id="4sP-SB-3zj"/>
-                                                                    <constraint firstItem="QNB-Un-vLJ" firstAttribute="width" secondItem="Qyi-Ja-Gu6" secondAttribute="width" multiplier="0.9" id="XhW-pf-jyh"/>
+                                                                    <constraint firstItem="QNB-Un-vLJ" firstAttribute="width" secondItem="Qyi-Ja-Gu6" secondAttribute="width" id="XhW-pf-jyh"/>
                                                                     <constraint firstItem="QNB-Un-vLJ" firstAttribute="centerY" secondItem="Qyi-Ja-Gu6" secondAttribute="centerY" id="nD4-3O-ZO1"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
@@ -792,9 +792,9 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxN-Z8-6Be" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="58.5" width="294" height="41.5"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-type your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rwF-wA-DW4" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="41.5"/>
-                                                                        <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-type your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rwF-wA-DW4" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="294" height="41.5"/>
+                                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -811,7 +811,7 @@
                                                                 <constraints>
                                                                     <constraint firstItem="rwF-wA-DW4" firstAttribute="height" secondItem="NxN-Z8-6Be" secondAttribute="height" id="3FV-3c-qj8"/>
                                                                     <constraint firstItem="rwF-wA-DW4" firstAttribute="centerY" secondItem="NxN-Z8-6Be" secondAttribute="centerY" id="Xt4-t5-pWR"/>
-                                                                    <constraint firstItem="rwF-wA-DW4" firstAttribute="width" secondItem="NxN-Z8-6Be" secondAttribute="width" multiplier="0.9" id="cmF-Tl-Mtz"/>
+                                                                    <constraint firstItem="rwF-wA-DW4" firstAttribute="width" secondItem="NxN-Z8-6Be" secondAttribute="width" id="cmF-Tl-Mtz"/>
                                                                     <constraint firstItem="rwF-wA-DW4" firstAttribute="centerX" secondItem="NxN-Z8-6Be" secondAttribute="centerX" id="hxr-le-4p0"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
@@ -1125,7 +1125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLX-W0-u8L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2128.985507246377" y="156.69642857142856"/>
+            <point key="canvasLocation" x="2181" y="165"/>
         </scene>
         <!--Forget PasswordVC-->
         <scene sceneID="RmH-h6-oUV">
@@ -1352,14 +1352,14 @@ password</string>
                                                 <rect key="frame" x="0.0" y="250" width="414" height="800"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-10-13 at 2.58.55 PM" translatesAutoresizingMaskIntoConstraints="NO" id="CDC-x0-9gX">
-                                                        <rect key="frame" x="187" y="16" width="40.000000000000057" height="8"/>
+                                                        <rect key="frame" x="187" y="16" width="40" height="8"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="8" id="ONy-cy-brb"/>
                                                             <constraint firstAttribute="width" constant="40" id="d2I-bL-uYK"/>
                                                         </constraints>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tx-cW-xyt">
-                                                        <rect key="frame" x="16" y="20" width="70" height="22"/>
+                                                        <rect key="frame" x="16" y="20" width="70" height="37"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="70" id="7Ht-2t-J8f"/>
                                                         </constraints>
@@ -1369,19 +1369,19 @@ password</string>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykr-Oj-mEz">
-                                                        <rect key="frame" x="32" y="58" width="60.5" height="20.5"/>
+                                                        <rect key="frame" x="32" y="73" width="60.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the code so you can proceed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgT-bV-2mk">
-                                                        <rect key="frame" x="59" y="110.5" width="296" height="20"/>
+                                                        <rect key="frame" x="75" y="125.5" width="264.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pwf-oW-ssx">
-                                                        <rect key="frame" x="38.5" y="146.5" width="337" height="100"/>
+                                                        <rect key="frame" x="38.5" y="158" width="337" height="100"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LP6-NK-xeq" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="77" height="100"/>
@@ -1465,13 +1465,13 @@ password</string>
                                                         </constraints>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send a new code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WS7-ag-VTN">
-                                                        <rect key="frame" x="266.5" y="278.5" width="131.5" height="20.5"/>
+                                                        <rect key="frame" x="266.5" y="290" width="131.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.1137254902" green="0.2666666667" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JL-R3-y5t" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                                        <rect key="frame" x="107" y="345.5" width="200" height="40"/>
+                                                        <rect key="frame" x="107" y="357" width="200" height="40"/>
                                                         <color key="backgroundColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="bWt-Nx-WyG"/>
@@ -2453,10 +2453,10 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                 <rect key="frame" x="0.0" y="88" width="414" height="788"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FpV-S8-fCa">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZ4-Bc-A8h" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="177" width="290" height="50"/>
+                                                <rect key="frame" x="26" y="134.5" width="290" height="50"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N5z-Ec-oMS" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="0.0" width="270" height="50"/>
@@ -2501,7 +2501,7 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0N-Kd-LRi" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="253" width="290" height="50"/>
+                                                <rect key="frame" x="26" y="210.5" width="290" height="50"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pTi-X2-UBc" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="0.0" width="270" height="50"/>
@@ -2546,7 +2546,7 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ek-uA-coC">
-                                                <rect key="frame" x="37" y="111" width="42" height="21"/>
+                                                <rect key="frame" x="37" y="82" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.1137254902" green="0.2666666667" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2562,55 +2562,66 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                                     <action selector="BackAction:" destination="C4u-dc-RKK" eventType="touchUpInside" id="oMF-FU-Dqv"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlC-c3-kiT">
-                                                <rect key="frame" x="128" y="344" width="158" height="30"/>
-                                                <state key="normal" title="Forgot Your password?">
-                                                    <color key="titleColor" red="0.74509803921568629" green="0.83921568627450982" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t have an account? Sign Up" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13E-Vz-Phd">
-                                                <rect key="frame" x="104" y="548" width="206.5" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uid-dF-Qqa" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                                <rect key="frame" x="147" y="390" width="120" height="40"/>
-                                                <color key="backgroundColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="E4e-NE-xWO"/>
-                                                    <constraint firstAttribute="width" constant="120" id="oig-xv-og0"/>
-                                                </constraints>
-                                                <state key="normal" title="login">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="LoginAction:" destination="C4u-dc-RKK" eventType="touchUpInside" id="1tu-go-cX2"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bx-8w-tQC">
-                                                <rect key="frame" x="0.0" y="573" width="414" height="280"/>
+                                                <rect key="frame" x="0.0" y="292.5" width="414" height="468"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 310" translatesAutoresizingMaskIntoConstraints="NO" id="qtk-eF-qFg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="280"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 685" translatesAutoresizingMaskIntoConstraints="NO" id="qtk-eF-qFg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="468"/>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zq-f1-jxp">
-                                                        <rect key="frame" x="133" y="16" width="148" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="FRo-9L-Ldg"/>
-                                                            <constraint firstAttribute="width" constant="148" id="cvb-VI-hYk"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Become an Instructor">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="kDb-kS-Bfp">
+                                                        <rect key="frame" x="104" y="0.0" width="206.5" height="189"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uid-dF-Qqa" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
+                                                                <rect key="frame" x="43" y="0.0" width="120" height="40"/>
+                                                                <color key="backgroundColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="E4e-NE-xWO"/>
+                                                                    <constraint firstAttribute="width" constant="120" id="oig-xv-og0"/>
+                                                                </constraints>
+                                                                <state key="normal" title="login">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="20"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="LoginAction:" destination="C4u-dc-RKK" eventType="touchUpInside" id="1tu-go-cX2"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlC-c3-kiT">
+                                                                <rect key="frame" x="24" y="64" width="158" height="30"/>
+                                                                <state key="normal" title="Forgot Your password?">
+                                                                    <color key="titleColor" red="0.74509803921568629" green="0.83921568627450982" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="forgetPasswordAction:" destination="C4u-dc-RKK" eventType="touchUpInside" id="Amu-Th-TkT"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t have an account? Sign Up" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13E-Vz-Phd">
+                                                                <rect key="frame" x="0.0" y="118" width="206.5" height="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zq-f1-jxp">
+                                                                <rect key="frame" x="29" y="159" width="148" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="FRo-9L-Ldg"/>
+                                                                    <constraint firstAttribute="width" constant="148" id="cvb-VI-hYk"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Become an Instructor">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="becomeInstractor:" destination="C4u-dc-RKK" eventType="touchUpInside" id="giv-uf-C4h"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello there, Welcome back !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ary-TJ-chv">
-                                                        <rect key="frame" x="100" y="215" width="214.5" height="21"/>
+                                                        <rect key="frame" x="100" y="347.5" width="214.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -2618,13 +2629,12 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="9zq-f1-jxp" firstAttribute="top" secondItem="5bx-8w-tQC" secondAttribute="top" constant="16" id="4iM-Yd-0e6"/>
-                                                    <constraint firstAttribute="height" constant="280" id="7hN-fk-r3g"/>
                                                     <constraint firstAttribute="trailing" secondItem="qtk-eF-qFg" secondAttribute="trailing" id="GL7-Bs-IEV"/>
+                                                    <constraint firstItem="kDb-kS-Bfp" firstAttribute="top" secondItem="5bx-8w-tQC" secondAttribute="top" id="SAJ-3b-0Td"/>
                                                     <constraint firstItem="qtk-eF-qFg" firstAttribute="leading" secondItem="5bx-8w-tQC" secondAttribute="leading" id="TT7-Uy-G6f"/>
                                                     <constraint firstItem="qtk-eF-qFg" firstAttribute="top" secondItem="5bx-8w-tQC" secondAttribute="top" id="a3U-Ho-sen"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ary-TJ-chv" secondAttribute="bottom" constant="44" id="g9s-aE-tAH"/>
-                                                    <constraint firstItem="9zq-f1-jxp" firstAttribute="centerX" secondItem="5bx-8w-tQC" secondAttribute="centerX" id="sg3-cg-69h"/>
+                                                    <constraint firstItem="kDb-kS-Bfp" firstAttribute="centerX" secondItem="5bx-8w-tQC" secondAttribute="centerX" id="deP-16-u40"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ary-TJ-chv" secondAttribute="bottom" constant="100" id="g9s-aE-tAH"/>
                                                     <constraint firstAttribute="bottom" secondItem="qtk-eF-qFg" secondAttribute="bottom" id="v1U-j0-89z"/>
                                                     <constraint firstItem="ary-TJ-chv" firstAttribute="centerX" secondItem="5bx-8w-tQC" secondAttribute="centerX" id="xSD-Hz-CPB"/>
                                                 </constraints>
@@ -2633,25 +2643,20 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="TUp-Tf-HN8" firstAttribute="top" secondItem="FpV-S8-fCa" secondAttribute="top" id="1xl-KK-GKe"/>
-                                            <constraint firstAttribute="height" constant="800" id="2zE-1H-6mv"/>
-                                            <constraint firstItem="rZ4-Bc-A8h" firstAttribute="top" secondItem="4ek-uA-coC" secondAttribute="bottom" constant="45" id="9MQ-41-daF"/>
-                                            <constraint firstItem="uid-dF-Qqa" firstAttribute="top" secondItem="IlC-c3-kiT" secondAttribute="bottom" constant="16" id="ABg-Y7-flv"/>
-                                            <constraint firstItem="5bx-8w-tQC" firstAttribute="top" secondItem="13E-Vz-Phd" secondAttribute="bottom" constant="8" symbolic="YES" id="EF2-TO-D95"/>
-                                            <constraint firstItem="13E-Vz-Phd" firstAttribute="centerX" secondItem="FpV-S8-fCa" secondAttribute="centerX" id="Ltl-8d-YQ0"/>
+                                            <constraint firstAttribute="height" constant="700" id="2zE-1H-6mv"/>
+                                            <constraint firstItem="rZ4-Bc-A8h" firstAttribute="top" secondItem="4ek-uA-coC" secondAttribute="bottom" constant="32" id="9MQ-41-daF"/>
+                                            <constraint firstItem="5bx-8w-tQC" firstAttribute="top" secondItem="B0N-Kd-LRi" secondAttribute="bottom" constant="32" id="AdN-Hd-g6a"/>
                                             <constraint firstItem="B0N-Kd-LRi" firstAttribute="leading" secondItem="FpV-S8-fCa" secondAttribute="leading" constant="26" id="O8p-tZ-GjI"/>
                                             <constraint firstItem="TUp-Tf-HN8" firstAttribute="leading" secondItem="FpV-S8-fCa" secondAttribute="leading" constant="16" id="Q65-fL-L1T"/>
-                                            <constraint firstItem="4ek-uA-coC" firstAttribute="top" secondItem="TUp-Tf-HN8" secondAttribute="bottom" constant="61" id="QEB-cW-cAd"/>
+                                            <constraint firstItem="4ek-uA-coC" firstAttribute="top" secondItem="TUp-Tf-HN8" secondAttribute="bottom" constant="32" id="QEB-cW-cAd"/>
                                             <constraint firstAttribute="trailing" secondItem="B0N-Kd-LRi" secondAttribute="trailing" constant="98" id="RYO-bX-trp"/>
-                                            <constraint firstItem="IlC-c3-kiT" firstAttribute="centerX" secondItem="FpV-S8-fCa" secondAttribute="centerX" id="V9K-Gs-B58"/>
                                             <constraint firstItem="rZ4-Bc-A8h" firstAttribute="leading" secondItem="FpV-S8-fCa" secondAttribute="leading" constant="26" id="WNW-WW-LMo"/>
+                                            <constraint firstItem="5bx-8w-tQC" firstAttribute="height" secondItem="FpV-S8-fCa" secondAttribute="height" multiplier="0.668571" id="Whe-vr-mHe"/>
                                             <constraint firstAttribute="trailing" secondItem="rZ4-Bc-A8h" secondAttribute="trailing" constant="98" id="Xx0-4x-JCI"/>
                                             <constraint firstItem="5bx-8w-tQC" firstAttribute="leading" secondItem="FpV-S8-fCa" secondAttribute="leading" id="ZVj-IY-Jmc"/>
-                                            <constraint firstItem="uid-dF-Qqa" firstAttribute="centerX" secondItem="FpV-S8-fCa" secondAttribute="centerX" id="aUG-X9-tbE"/>
                                             <constraint firstItem="4ek-uA-coC" firstAttribute="leading" secondItem="FpV-S8-fCa" secondAttribute="leading" constant="37" id="dLI-Sx-aXE"/>
                                             <constraint firstItem="B0N-Kd-LRi" firstAttribute="top" secondItem="rZ4-Bc-A8h" secondAttribute="bottom" constant="26" id="gLq-kI-haO"/>
-                                            <constraint firstItem="13E-Vz-Phd" firstAttribute="top" secondItem="uid-dF-Qqa" secondAttribute="bottom" constant="118" id="keT-EN-u8m"/>
                                             <constraint firstAttribute="trailing" secondItem="5bx-8w-tQC" secondAttribute="trailing" id="nCS-mg-fpc"/>
-                                            <constraint firstItem="IlC-c3-kiT" firstAttribute="top" secondItem="B0N-Kd-LRi" secondAttribute="bottom" constant="41" id="yIv-EJ-spr"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2953,8 +2958,8 @@ Passwords must be at least 10 characters in length, but can be more.</string>
     <resources>
         <image name="Group 243" width="115.5" height="115.5"/>
         <image name="Group 247" width="19.5" height="18.5"/>
-        <image name="Group 310" width="383.5" height="465.5"/>
         <image name="Group 314" width="455" height="251.5"/>
+        <image name="Group 685" width="380.5" height="468"/>
         <image name="Rectangle 11" width="17" height="17"/>
         <image name="Screen Shot 2020-10-13 at 2.58.04 PM" width="206" height="42"/>
         <image name="Screen Shot 2020-10-13 at 2.58.23 PM" width="202" height="38"/>

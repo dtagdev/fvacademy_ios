@@ -20,14 +20,16 @@ struct HomeModelJSON: Codable {
 
 // MARK: - DataClass
 struct HomeDataClass: Codable {
+    
     let courses: [TrendCourse]?
     let categories: [Category]?
     let instructors: [Instructor]?
     let events: [Event]?
-
+    let articles: [Article]?
+    
     enum CodingKeys: String, CodingKey {
         case courses
-        case categories, instructors, events
+        case categories, instructors, events,articles
     }
 }
 
@@ -57,6 +59,7 @@ struct Event: Codable {
      let eventURL, discount: String?
      let trend, lang: Int?
      let startDate, endDate: String?
+     let rate : Double?
      let instructors: [User]?
      let contents: [Content]?
      let comments: [Comment]?
@@ -72,7 +75,7 @@ struct Event: Codable {
             case discount, trend, lang
             case startDate = "start_date"
             case endDate = "end_date"
-            case instructors, contents, comments, category
+            case instructors, contents, comments, category,rate
     }
 }
 // MARK: - CommentElement
@@ -88,7 +91,6 @@ struct Comment: Codable {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case articleID = "article_id"
-
     }
 }
 
@@ -98,7 +100,7 @@ struct Content: Codable {
     let title, startTime, endTime: String?
     let live, eventID, instructorID: Int?
     let createdAt, updatedAt: String?
-    let instructor: ContentInstructor?
+    let instructor: Instructor?
 
     enum CodingKeys: String, CodingKey {
         case id, title
@@ -112,27 +114,6 @@ struct Content: Codable {
         case instructor
     }
 }
-
-// MARK: - ContentInstructor
-struct ContentInstructor: Codable {
-    let id: Int?
-    let image: String?
-    let lang: Int?
-    let details: String?
-    let categoryID, userID: Int?
-    let createdAt, updatedAt: String?
-    let user: User?
-
-    enum CodingKeys: String, CodingKey {
-        case id, image, lang, details
-        case categoryID = "category_id"
-        case userID = "user_id"
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case user
-    }
-}
-
 
 // MARK: - Instractuer
 struct User: Codable {
@@ -173,7 +154,7 @@ struct Instructor: Codable {
       let details: String?
       let category: Category?
       let user: User?
-      let rate: RateUnion?
+      let rate: Double?
       let rates: [Rate]?
       let courses: [TrendCourse]?
     }
@@ -216,7 +197,7 @@ struct TrendCourse: Codable {
 struct Chapter: Codable {
     let id: Int?
     let name: String?
-    let createdAt: ChapterCreatedAt?
+    let createdAt: String?
     let lessons: [Lesson]?
 
     enum CodingKeys: String, CodingKey {
@@ -225,20 +206,13 @@ struct Chapter: Codable {
         case lessons
     }
 }
-
-enum ChapterCreatedAt: String, Codable {
-    case the202008101008Am = "2020-08-10 10:08 am"
-    case the202009271208Pm = "2020-09-27 12:08 pm"
-    case the20200927153Am = "2020-09-27 1:53 am"
-}
-
 // MARK: - Lesson
 struct Lesson: Codable {
     let id: Int?
     let name: String?
     let read: Int?
     let videoURL: String?
-    let createdAt: LessonCreatedAt?
+    let createdAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name, read
@@ -247,18 +221,12 @@ struct Lesson: Codable {
     }
 }
 
-enum LessonCreatedAt: String, Codable {
-    case the202008101008Am = "2020-08-10 10:08 am"
-    case the202008101208Pm = "2020-08-10 12:08 pm"
-    case the20200927153Am = "2020-09-27 1:53 am"
-}
-
 struct Requirement: Codable {
     let name: String?
 }
 
 struct ProfileModelJSON: Codable {
-    var data: Profile?
+    var data: User?
     var status: Bool?
     var errors: String?
 }
@@ -280,57 +248,18 @@ struct Rate: Codable {
     }
 }
 
-struct Profile: Codable {
-    let isVerified: Int?
-    let idNumber, email, gender, firstName: String?
-    let avatar: String?
-    let title, medicalNumber, job: String?
-    let emailVerifiedAt: String?
-    let verifiedAt, updatedAt, createdAt, lastName: String?
+// MARK: - Article
+struct Article: Codable {
     let id: Int?
-    let phone: String?
-    
+    let title, details, mainImage: String?
+    let lang: Int?
+    let comments: [Comment]?
+    let createdAt: String?
+
     enum CodingKeys: String, CodingKey {
-        case isVerified = "is_verified"
-        case idNumber = "id_number"
-        case email, gender
-        case firstName = "first_name"
-        case avatar, title
-        case medicalNumber = "medical_number"
-        case job
-        case emailVerifiedAt = "email_verified_at"
-        case verifiedAt = "verified_at"
-        case updatedAt = "updated_at"
+        case id, title, details
+        case mainImage = "main_image"
+        case lang, comments
         case createdAt = "created_at"
-        case lastName = "last_name"
-        case id, phone
-    }
-}
-
-enum RateUnion: Codable {
-    case integer(Int)
-    case string(String)
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let x = try? container.decode(Int.self) {
-            self = .integer(x)
-            return
-        }
-        if let x = try? container.decode(String.self) {
-            self = .string(x)
-            return
-        }
-        throw DecodingError.typeMismatch(RateUnion.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for RateUnion"))
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case .integer(let x):
-            try container.encode(x)
-        case .string(let x):
-            try container.encode(x)
-        }
     }
 }

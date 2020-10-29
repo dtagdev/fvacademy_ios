@@ -121,71 +121,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "47BA1365-B66C-47A2-9E0C-7113E3ADE52E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AfaqOnline/Network/Authentication.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "postEditProfile(image:params:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "75260439-B7A9-47B3-AED4-560DCE3149D5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AfaqOnline/Network/Authentication.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "postEditProfile(image:params:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "75260439-B7A9-47B3-AED4-560DCE3149D5 - d12bd3a823519277"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Alamofire.SessionManager.MultipartFormDataEncodingResult) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.ProfileModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.Authentication.postEditProfile(image: __C.UIImage, params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.ProfileModelJSON&gt;"
-                  moduleName = "Al Academya"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/Authentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "207"
-                  endingLineNumber = "207"
-                  offsetFromSymbolStart = "820">
-               </Location>
-               <Location
-                  uuid = "75260439-B7A9-47B3-AED4-560DCE3149D5 - c7b5c41083039d0d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.NSProgress) -&gt; () in closure #2 (Alamofire.SessionManager.MultipartFormDataEncodingResult) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.ProfileModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.Authentication.postEditProfile(image: __C.UIImage, params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.ProfileModelJSON&gt;"
-                  moduleName = "Al Academya"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/Authentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "208"
-                  endingLineNumber = "208"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "195669FF-8D34-4A85-9A40-967A13A5A8A4"
+            uuid = "C86F81AC-24C1-4A67-8029-D460BBFE8EEC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -201,110 +137,143 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7E74395D-972F-4C23-82A0-42D369ED1706"
+            uuid = "6B24C6C0-EF70-4990-AC2F-6D4F0EC7FABC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AfaqOnline/Network/Authentication.swift"
+            filePath = "AfaqOnline/Controllers/Authentication/UploadProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "postEditProfile(image:params:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "postRegister()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C86F81AC-24C1-4A67-8029-D460BBFE8EEC"
+            uuid = "8667BD30-ED9F-46EF-8624-F19511091E98"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AfaqOnline/Network/Authentication.swift"
+            filePath = "AfaqOnline/Controllers/Authentication/UploadProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "postEditProfile(image:params:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "postRegister()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "835C4420-E999-44B2-B7E0-90B2C29FC861"
+            uuid = "A35A108F-2FB2-41EA-9CEB-2F915ED5B99E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AfaqOnline/Network/Authentication.swift"
+            filePath = "AfaqOnline/Controllers/Authentication/UploadProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "postEditProfile(image:params:)"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "postRegister()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A748FB6C-E50D-4654-96A4-53D9B54B84D6"
+            uuid = "AFF7448A-065E-4666-8FB1-B38247D61A7C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/Authentication/UploadProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "postRegister()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7F9CAA39-DF76-471B-9DFF-D860FA37487A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/Authentication/UploadProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "postRegister()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E7A98B1-1BFA-4651-B2D3-AAA4737579A5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AfaqOnline/Network/Authentication.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "postEditProfile(image:params:)"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "postLogin(params:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06BDF946-E360-4B34-9FC6-F6CF521EC786"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Network/Authentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "postLogin(params:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "A748FB6C-E50D-4654-96A4-53D9B54B84D6 - d12bd3a823519277"
+                  uuid = "06BDF946-E360-4B34-9FC6-F6CF521EC786 - 1b0fa2d11c54c945"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Alamofire.SessionManager.MultipartFormDataEncodingResult) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.ProfileModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.Authentication.postEditProfile(image: __C.UIImage, params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.ProfileModelJSON&gt;"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.LoginModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.Authentication.postLogin(params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.LoginModelJSON&gt;"
                   moduleName = "Al Academya"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/Authentication.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "209"
-                  endingLineNumber = "209"
-                  offsetFromSymbolStart = "993">
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "4911">
                </Location>
                <Location
-                  uuid = "A748FB6C-E50D-4654-96A4-53D9B54B84D6 - c7b5c41083039d0d"
+                  uuid = "06BDF946-E360-4B34-9FC6-F6CF521EC786 - 1b0fa2d11c54c945"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.NSProgress) -&gt; () in closure #2 (Alamofire.SessionManager.MultipartFormDataEncodingResult) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.ProfileModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.Authentication.postEditProfile(image: __C.UIImage, params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.ProfileModelJSON&gt;"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.LoginModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.Authentication.postLogin(params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.LoginModelJSON&gt;"
                   moduleName = "Al Academya"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/Authentication.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "209"
-                  endingLineNumber = "209"
-                  offsetFromSymbolStart = "428">
-               </Location>
-               <Location
-                  uuid = "A748FB6C-E50D-4654-96A4-53D9B54B84D6 - 8afafd71ef81a330"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in closure #2 (Alamofire.SessionManager.MultipartFormDataEncodingResult) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Al_Academya.ProfileModelJSON&gt;) -&gt; RxSwift.Disposable in Al_Academya.Authentication.postEditProfile(image: __C.UIImage, params: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; RxSwift.Observable&lt;Al_Academya.ProfileModelJSON&gt;"
-                  moduleName = "Al Academya"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/work/fvacademy_ios/AfaqOnline/Network/Authentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "211"
-                  endingLineNumber = "211"
-                  offsetFromSymbolStart = "214">
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "5360">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -312,64 +281,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3F6BD99C-39F5-4871-B637-50520DE502A6"
+            uuid = "E224C43C-6C40-420E-9A2C-5C0C6994355B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AfaqOnline/Network/Authentication.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "postUpdatePassword(params:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "postLogin(params:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "32B16BC9-4772-4C1C-9C08-3B11A7B416B3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AfaqOnline/Controllers/Authentication/UpdatePasswordVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "POSTUpdateForgetPassword(code:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F5213DF8-0D69-470E-B5A9-5B322A07D2D8"
+            uuid = "804308A6-7D12-4002-A8D5-76213B89D51B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AfaqOnline/Network/Authentication.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "postUpdatePassword(params:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "postLogin(params:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D8122D74-D2B6-47A7-A68F-1D6514D5B78D"
+            uuid = "773D072E-7D10-4B43-BA39-FFB4A5F63217"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AfaqOnline/ViewModel/CoursesViewModel.swift"
+            filePath = "AfaqOnline/Controllers/Authentication/UploadProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "getAllCourses(lth:htl:rate:)"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "postRegister()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7D41BF40-8F47-4F79-95D7-43AB37E25B0B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AfaqOnline/Controllers/Authentication/UploadProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "postRegister()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -13,33 +13,12 @@ import DropDown
 
 class CategoriesVC: UIViewController {
 
-    @IBOutlet weak var AdsCollectionView: UICollectionView!
     @IBOutlet weak var CategoriesCollectionView: UICollectionView!
-    @IBOutlet weak var sortByButton: UIButton!
-    @IBOutlet weak var FilterButton: UIButton!
-    @IBOutlet weak var searchTF: CustomTextField!
     @IBOutlet weak var backButton: UIButton!
     
-    //SortBy Drop Down
-    let SortByDropDown = DropDown()
-    var SortByNames = ["Default", "High To Low", "Low To High", "Rate"]
-    var SortByIds = [0, 1, 2]
-    var selectedSortById = Int()
-    
-    //Filter Drop Down
-    let FilterDropDown = DropDown()
-    var FilterNames = ["Filer","Test1", "Test2"]
-    var FilterIds = [0, 1, 2]
-    var selectedFilterId = Int()
     private let categoryViewModel = CategoriesViewModel()
     var disposeBag = DisposeBag()
-    var Ads = [String]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.categoryViewModel.fetchAds(Ads: self.Ads)
-            }
-        }
-    }
+
     var Categories = [Category]() {
         didSet {
             DispatchQueue.main.async {
@@ -58,30 +37,10 @@ class CategoriesVC: UIViewController {
             self.backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         }
         self.navigationController?.isNavigationBarHidden = true
-        setupAdsCollectionView()
         setupCategoriesCollectionView()
         self.categoryViewModel.showIndicator()
-        BindButtonActions()
-        SetupSortByDropDown()
-        SetupFilterDropDown()
         getCategories(lth: 0,htl: 0,rate : 0)
-        self.searchTF.delegate = self
         
-        self.hideKeyboardWhenTappedAround()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        searchTF.isHidden = true
-        searchTF.text = ""
-    }
-    @IBAction func SearchAction(_ sender: UIButton) {
-        if self.searchTF.isHidden {
-            Constants.shared.searchingEnabled = true
-            self.searchTF.isHidden = false
-        } else {
-            Constants.shared.searchingEnabled = false
-            self.searchTF.isHidden = true
-        }
     }
     
     @IBAction func backAction(_ sender: UIButton) {
@@ -106,104 +65,25 @@ class CategoriesVC: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    func SetupSortByDropDown() {
-        self.SortByDropDown.anchorView = self.sortByButton
-        self.SortByDropDown.bottomOffset = CGPoint(x: 0, y: 50)
-        self.SortByDropDown.dataSource = self.SortByNames
-        self.SortByDropDown.selectionAction = { [weak self] (index, item) in
-            self?.sortByButton.setTitle(item, for: .normal)
-            if index == 0{
-                self?.categoryViewModel.showIndicator()
-                self?.getCategories(lth: 0,htl: 0,rate : 0)
-            }else if index == 1 {
-                self?.categoryViewModel.showIndicator()
-                self?.getCategories(lth: 0,htl: 1,rate : 0)
-            }else if index == 2{
-                self?.categoryViewModel.showIndicator()
-                self?.getCategories(lth: 1,htl: 0,rate : 0)
-        }else if index == 3{
-                self?.categoryViewModel.showIndicator()
-            self?.getCategories(lth: 0,htl: 0,rate : 1)
-        }
-        }
-        self.SortByDropDown.direction = .bottom
-        self.SortByDropDown.width = self.view.frame.width * 0.95
-    }
-    func SetupFilterDropDown() {
-        self.FilterDropDown.anchorView = self.FilterButton
-        self.FilterDropDown.bottomOffset = CGPoint(x: 0, y: 50)
-        self.FilterDropDown.dataSource = self.FilterNames
-        self.FilterDropDown.selectionAction = { [weak self] (index, item) in
-            self?.FilterButton.setTitle(item, for: .normal)
-           
-        }
-        self.FilterDropDown.direction = .bottom
-        self.FilterDropDown.width = self.view.frame.width * 0.95
-    }
-    @IBAction func searchDidEndEditing(_ sender: CustomTextField) {
-        if Constants.shared.searchingEnabled {
-            guard let main = UIStoryboard(name: "Filtration", bundle: nil).instantiateViewController(withIdentifier: "FiltrationVC") as? FiltrationVC else { return }
-            main.modalPresentationStyle = .overFullScreen
-            main.modalTransitionStyle = .crossDissolve
-            main.search_name = self.searchTF.text ?? ""
-            self.searchTF.text = ""
-            self.searchTF.isHidden = true
-            self.present(main, animated: true, completion: nil)
-            //                self.navigationController?.pushViewController(main, animated: true)
-        }
-    }
 }
-extension CategoriesVC: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.searchTF.resignFirstResponder()
-        return true
-    }
-}
+
 
 extension CategoriesVC {
     //MARK:- GET Categories
     func getCategories(lth: Int,htl: Int,rate : Int) {
-        self.categoryViewModel.getCategories(lth: lth,htl: htl,rate : rate).subscribe(onNext: { (categoriesModel) in
-            if let data = categoriesModel.data {
-                self.categoryViewModel.dismissIndicator()
-                self.Categories = data
-            }
-        }, onError: { (error) in
-            self.categoryViewModel.dismissIndicator()
-            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-            }).disposed(by: disposeBag)
-    }
+         self.categoryViewModel.getCategories(lth: lth,htl: htl,rate : rate).subscribe(onNext: { (categoriesModel) in
+             if let data = categoriesModel.data {
+                 self.categoryViewModel.dismissIndicator()
+                 self.Categories = data
+             }
+         }, onError: { (error) in
+             self.categoryViewModel.dismissIndicator()
+             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+             }).disposed(by: disposeBag)
+     }
 }
 
 extension CategoriesVC: UICollectionViewDelegate {
-    func BindButtonActions() {
-        self.sortByButton.rx.tap.bind {
-            self.SortByDropDown.show()
-        }.disposed(by: disposeBag)
-        self.FilterButton.rx.tap.bind {
-//            self.FilterDropDown.show()
-            guard let main = UIStoryboard(name: "Filtration", bundle: nil).instantiateViewController(withIdentifier: "FiltrationVC") as? FiltrationVC else { return }
-            main.modalPresentationStyle = .overFullScreen
-            main.modalTransitionStyle = .crossDissolve
-            main.search_name = self.searchTF.text ?? ""
-            self.present(main, animated: true, completion: nil)
-        }.disposed(by: disposeBag)
-    }
-    func setupAdsCollectionView() {
-        self.Ads = ["ssd"]
-        let cellIdentifier = "AdsCell"
-        self.AdsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
-        self.AdsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-        self.categoryViewModel.Ads.bind(to: self.AdsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: AdsCell.self)) { index, element, cell in
-            cell.config(Type: "Image", imageURL: "")
-            cell.AdOpenActionClosure = {
-                
-            }
-        }.disposed(by: disposeBag)
-        self.AdsCollectionView.rx.itemSelected.bind { (indexPath) in
-            
-        }.disposed(by: disposeBag)
-    }
     func setupCategoriesCollectionView() {
         let cellIdentifier = "CategoryCell"
         self.CategoriesCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -212,29 +92,17 @@ extension CategoriesVC: UICollectionViewDelegate {
             cell.config(categoryImageURL:self.Categories[index].image ?? "", categoryName: self.Categories[index].name ?? "")
         }.disposed(by: disposeBag)
         self.CategoriesCollectionView.rx.itemSelected.bind { (indexPath) in
-            guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CoursesVC") as? CoursesVC else { return }
-            main.category_id = self.Categories[indexPath.row].id ?? 0
-            main.categoryName = self.Categories[indexPath.row].name ?? ""
-            main.type = "category"
-            self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }
 }
 
 extension CategoriesVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == AdsCollectionView {
-            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-            
-            let size:CGFloat = (collectionView.frame.size.width - space)
-            return CGSize(width: size, height: collectionView.frame.size.height - 10)
-        } else  {
             let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
             let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
             
             let size:CGFloat = (collectionView.frame.size.width - space) / 3.1
             return CGSize(width: size, height: size)
-        }
+        
     }
 }

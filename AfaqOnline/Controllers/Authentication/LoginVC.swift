@@ -49,6 +49,19 @@ class LoginVC: UIViewController {
         guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
         window.rootViewController = main
     }
+    
+    
+    @IBAction func forgetPasswordAction(_ sender: UIButton) {
+         guard let window = UIApplication.shared.keyWindow else { return }
+         guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
+         window.rootViewController = main
+     }
+    
+   
+    @IBAction func becomeInstractor (_ sender: UIButton) {
+         guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
+        self.navigationController?.pushViewController(main, animated: true)
+      }
 }
 //MARK:- AuthenticationViewModel Functions
 extension LoginVC {
@@ -57,7 +70,7 @@ extension LoginVC {
             if loginData.status ?? false {
                 displayMessage(title: "", message: "You Have LOGGED IN Successfully", status: .success, forController: self)
             } else {
-                displayMessage(title: "", message: loginData.errors ?? "someting wrong", status: .error, forController: self)
+                displayMessage(title: "", message: "someting wrong", status: .error, forController: self)
             }
             self.loginButton.isEnabled = true
         }, onError: { (error) in

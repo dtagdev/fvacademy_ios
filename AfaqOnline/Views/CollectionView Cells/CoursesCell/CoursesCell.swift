@@ -12,17 +12,12 @@ import AVKit
 class CoursesCell: CustomCollectionViewCell {
 
     @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var courseTypeLabel: CustomLabel!
+    @IBOutlet weak var instractorName: UILabel!
     @IBOutlet weak var CourseImageView: UIImageView!
     @IBOutlet weak var videoPlayView: UIView!
     @IBOutlet weak var CourseNameLabel: UILabel!
     @IBOutlet weak var CourseTimeLabel: CustomLabel!
-    @IBOutlet weak var CourseDescriptionTextView: UITextView!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var firstImageView: CustomImageView!
-    @IBOutlet weak var secondImageView: CustomImageView!
-    @IBOutlet weak var thirdImageView: CustomImageView!
-    @IBOutlet weak var fourthImageView: CustomImageView!
     @IBOutlet weak var priceLabel: UILabel!
     
     static var videoPlayer: AVPlayer? = nil
@@ -42,7 +37,7 @@ class CoursesCell: CustomCollectionViewCell {
         CoursesCell.videoPlayer?.seek(to: CMTime.zero)
         CoursesCell.videoPlayer?.play()
     }
-    func config(courseName: String, courseDesc: String, courseTime: String, courseType: String, rating: Double, price: Double, discountPrice: Double, imageURL: String, videoURL: String) {
+    func config(courseName: String, courseInstractor: String, courseTime: String, courseType: String, rating: Double, price: Double, discountPrice: Double, imageURL: String, videoURL: String) {
         if imageURL != "" {
             self.CourseImageView.isHidden = false
             self.playButton.isHidden = true
@@ -70,9 +65,9 @@ class CoursesCell: CustomCollectionViewCell {
             isVideoPlaying = true
         }
         self.CourseNameLabel.text = courseName
-        self.CourseDescriptionTextView.text = courseDesc
+        self.instractorName.text = courseInstractor
         self.CourseTimeLabel.text = "\(courseTime)mins"
-        self.courseTypeLabel.text = courseType
+        //self.courseTypeLabel.text = courseType
         self.ratingLabel.text = "\(rating)"
         if discountPrice == 0.0 {
             self.priceLabel.text = "\(price) SAR"

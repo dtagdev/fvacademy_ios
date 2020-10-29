@@ -34,17 +34,29 @@ class UploadProfileVC : UIViewController {
     }
     
     @IBAction func CreateAccountAction(_ sender: CustomButtons) {
+        if  self.ProfileImageView.image != nil {
+        AuthViewModel.showIndicator()
         self.postRegister()
+        }else{
+            displayMessage(title: "", message: "please upload proflie Picture", status: .info, forController: self)
+
+        }
     }
     
     @IBAction func skipAction(_ sender: CustomButtons) {
+     if  self.ProfileImageView.image != nil  {
         AuthViewModel.showIndicator()
         self.postRegister()
+        }else{
+        displayMessage(title: "", message: "please upload proflie Picture", status: .info, forController: self)
+        }
     }
+    
     
     @IBAction func BackAction(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+
 }
 
 extension UploadProfileVC {

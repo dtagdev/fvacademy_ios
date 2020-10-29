@@ -17,7 +17,7 @@ struct AddToCartModelJSON: Codable {
 struct Cart: Codable {
     let id: Int?
     let course: TrendCourse?
-    let user: Profile?
+    let user: User?
     let price, discount, createdAt: String?
 
     enum CodingKeys: String, CodingKey {

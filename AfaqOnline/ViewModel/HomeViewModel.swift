@@ -16,6 +16,7 @@ struct  HomeViewModel {
     var Categories = PublishSubject<[Category]>()
     var Instructors = PublishSubject<[Instructor]>()
     var Events = PublishSubject<[Event]>()
+    var Articals = PublishSubject<[Article]>()
     
     func fetchAds(Ads: [String]) {
         self.Ads.onNext(Ads)
@@ -33,6 +34,10 @@ struct  HomeViewModel {
     }
     func fetchInstructors(Instructors: [Instructor]) {
         self.Instructors.onNext(Instructors)
+    }
+    
+    func fetchArtical(Artical: [Article]) {
+        self.Articals.onNext(Artical)
     }
     func showIndicator() {
         SVProgressHUD.show()

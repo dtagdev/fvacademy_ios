@@ -22,24 +22,6 @@ struct ArticalData: Codable {
     let paginate: Paginate?
 }
 
-// MARK: - Article
-struct Article: Codable {
-    let id: Int?
-    let title, details, mainImage: String?
-    let lang: Int?
-    let comments: [Comment]?
-    let createdAt: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id, title, details
-        case mainImage = "main_image"
-        case lang, comments
-        case createdAt = "created_at"
-    }
-}
-
-
-
 // MARK: - AllEventModelJSON
 struct ArticaDetalislModelJSON: Codable {
     let data: ArticaDetalis?
@@ -54,9 +36,11 @@ struct ArticaDetalis: Codable {
     let lang: Int?
     let comments: [Comment]?
     let createdAt: String?
+    let rate: Double?
+
 
     enum CodingKeys: String, CodingKey {
-        case id, title, details
+        case id, title, details,rate
         case mainImage = "main_image"
         case lang, comments
         case createdAt = "created_at"

@@ -17,10 +17,13 @@ class HomeVC: UIViewController {
     @IBOutlet weak var CategoryCollectionView: CustomCollectionView!
     @IBOutlet weak var InstructorsCollectionView: CustomCollectionView!
     @IBOutlet weak var EventsCollectionView: CustomCollectionView!
+    @IBOutlet weak var articalCollectionView: CustomCollectionView!
     @IBOutlet weak var TrendingButton: UIButton!
     @IBOutlet weak var CategoryButton: UIButton!
     @IBOutlet weak var InstructorButton: UIButton!
     @IBOutlet weak var EventsButton: UIButton!
+    @IBOutlet weak var articalButton: UIButton!
+
     
     private let homeViewModel = HomeViewModel()
     var disposeBag = DisposeBag()
@@ -31,6 +34,7 @@ class HomeVC: UIViewController {
           }
      }
     }
+    
     var Courses = [TrendCourse]() {
         didSet {
             DispatchQueue.main.async {
@@ -61,6 +65,16 @@ class HomeVC: UIViewController {
         }
     }
     
+    var Articals = [Article]() {
+           didSet {
+               DispatchQueue.main.async {
+                   self.homeViewModel.fetchArtical(Artical: self.Articals)
+               }
+           }
+       }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,6 +84,7 @@ class HomeVC: UIViewController {
         setupCategoryCollectionView()
         setupEventsCollectionView()
         setupInstructorCollectionView()
+         setupArticalCollectionView()
         self.getHomeData()
         self.hideKeyboardWhenTappedAround()
         self.homeViewModel.showIndicator()
@@ -91,9 +106,9 @@ class HomeVC: UIViewController {
    
     }
     @IBAction func SeeAllActions(_ sender: UIButton) {
-        if Helper.getUserID() ?? 0 == 0 {
-        displayMessage(title: "", message: "Please Login First", status: .info, forController: self)
-        }else{
+//        if Helper.getUserID() ?? 0 == 0 {
+//        displayMessage(title: "", message: "Please Login First", status: .info, forController: self)
+//        }else{
         switch sender.tag {
         case 1:
             print("Trending Action")
@@ -120,7 +135,7 @@ class HomeVC: UIViewController {
             break
             }
         }
-    }
+    //}
     
     
     
@@ -135,12 +150,14 @@ extension HomeVC {
                     self.Courses = data.courses ?? []
                     self.Categories = data.categories ?? []
                     self.Instructors = data.instructors ?? []
+                    self.Articals = data.articles ?? []
                     self.Events = data.events ?? []
                     self.EventsButton.setTitle("See All ( \(self.Courses.count) )", for: .normal)
                     self.TrendingButton.setTitle("See All ( \(self.Courses.count) )", for: .normal)
                     self.CategoryButton.setTitle("See All ( \(self.Categories.count) )", for: .normal)
                     self.InstructorButton.setTitle("See All ( \(self.Instructors.count) )", for: .normal)
                     self.EventsButton.setTitle("See All ( \(self.Events.count) )", for: .normal)
+                    self.articalButton.setTitle("See All ( \(self.Articals.count) )", for: .normal)
                     self.homeViewModel.fetchAds(Ads: self.Ads)
                 }
                 
@@ -174,7 +191,9 @@ extension HomeVC: UICollectionViewDelegate {
         self.CoursesCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.CoursesCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.homeViewModel.Courses.bind(to: self.CoursesCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: CoursesCell.self)) { index, element, cell in
-            cell.config(courseName: self.Courses[index].name ?? "", courseDesc: self.Courses[index].details ?? "", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: ((self.Courses[index].rate?.rounded(toPlaces: 2) ?? 0)), price: Double(self.Courses[index].price ?? "0") ?? 0.0, discountPrice: ((Double(self.Courses[index].price ?? "") ?? 0.0) - (Double(self.Courses[index].discount ?? "") ?? 0.0)), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
+            
+            cell.config(courseName: self.Courses[index].name ?? "", courseInstractor: "\(self.Courses[index].instructor?.user?.firstName ?? "") \(self.Courses[index].instructor?.user?.lastName ??  "")", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: ((self.Courses[index].rate?.rounded(toPlaces: 1) ?? 0)), price: Double(self.Courses[index].price ?? "0") ?? 0.0, discountPrice: ((Double(self.Courses[index].price ?? "") ?? 0.0) - (Double(self.Courses[index].discount ?? "") ?? 0.0)), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
+            
             cell.openDetailsAction = {
                 guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailsVC") as? CourseDetailsVC else { return }
                 main.course_id = self.Courses[index].id ?? 0
@@ -189,16 +208,16 @@ extension HomeVC: UICollectionViewDelegate {
     }
     
     func setupEventsCollectionView() {
-        let cellIdentifier = "EventsCell"
+        let cellIdentifier = "LiveCell"
         self.EventsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.EventsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-        self.homeViewModel.Events.bind(to: self.EventsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: EventsCell.self)) { index, element, cell in
+        self.homeViewModel.Events.bind(to: self.EventsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: LiveCell.self)) { index, element, cell in
           
             let dis =   (Double(self.Events[index].discount ?? "") ?? 0.0)
             let price = (Double(self.Events[index].price ?? "") ?? 0.0)
             let result = price - dis
             
-            cell.config(eventName: self.Events[index].name ?? "", eventDesc: self.Events[index].eventDescription ?? "", eventStartTime: self.Events[index].startDate ?? "", eventEndTime: self.Events[index].endDate ?? "", eventType: "", rating: 4.5, price: Double(self.Events[index].price ?? "") ?? 0.0, discountPrice: result, imageURL: self.Events[index].mainImage ?? "" , videoURL: self.Events[index].eventURL ?? "" , userImages: [""])
+            cell.config(eventName: self.Events[index].name ?? "", eventDesc: self.Events[index].eventDescription ?? "", eventStartTime: self.Events[index].startDate ?? "", eventEndTime: self.Events[index].endDate ?? "", eventType: "", rating: ((self.Events[index].rate?.rounded(toPlaces: 1) ?? 0)) , price: Double(self.Events[index].price ?? "") ?? 0.0, discountPrice: result, imageURL: self.Events[index].mainImage ?? "" , videoURL: self.Events[index].eventURL ?? "" , userImages: [""])
             cell.openDetailsAction = {
                 guard let main = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(withIdentifier: "EventsDetailsVC") as? EventsDetailsVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
@@ -226,13 +245,29 @@ extension HomeVC: UICollectionViewDelegate {
 //            self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }
+    func setupArticalCollectionView(){
+        let cellIdentifier = "HomeArticalsCell"
+        self.articalCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        self.articalCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        self.homeViewModel.Articals.bind(to: self.articalCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: HomeArticalsCell.self)) { index, element, cell in
+            cell.config(articalName: self.Articals[index].title ?? "", articalDesc: self.Articals[index].details ?? "", rating: ((self.Events[index].rate?.rounded(toPlaces: 1) ?? 0)), imageURL: self.Articals[index].mainImage ?? "")
+        }.disposed(by: disposeBag)
+        self.articalCollectionView.rx.itemSelected.bind { (indexPath) in
+            //guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailsVC") as? CourseDetailsVC else { return }
+         //   main.course_id = self.Courses[indexPath.row].id ?? 0
+          //  self.navigationController?.pushViewController(main, animated: true)
+        }.disposed(by: disposeBag)
+    
+    }
+    
     func setupInstructorCollectionView() {
+        
         let cellIdentifier = "HomeInstructorCell"
         self.InstructorsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.InstructorsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         self.homeViewModel.Instructors.bind(to: self.InstructorsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: HomeInstructorCell.self)) { index, element, cell in
             let instructorData = self.Instructors[index].user
-            cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? "") \(instructorData?.lastName ??  "")")
+            cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? "") \(instructorData?.lastName ??  "")",rating:((self.Instructors[index].rate?.rounded(toPlaces: 1) ?? 0)))
         }.disposed(by: disposeBag)
         self.InstructorsCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorDetailsVC") as? InstructorDetailsVC else { return }
@@ -241,7 +276,6 @@ extension HomeVC: UICollectionViewDelegate {
         }.disposed(by: disposeBag)
     }
 }
-
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -255,14 +289,22 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
             let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
             let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
             
-            let size:CGFloat = (collectionView.frame.size.width - space) / 1.01
+            let size:CGFloat = (collectionView.frame.size.width - space) / 1.3
+            return CGSize(width: size, height: collectionView.frame.size.height - 10)
+            
+        }else if collectionView == articalCollectionView {
+            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+            
+            let size:CGFloat = (collectionView.frame.size.width - space) / 1.3
             return CGSize(width: size, height: collectionView.frame.size.height - 10)
         } else if collectionView == EventsCollectionView {
             let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
             let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
             
-            let size:CGFloat = (collectionView.frame.size.width - space) / 1.01
+            let size:CGFloat = (collectionView.frame.size.width - space) / 1.3
             return CGSize(width: size, height: collectionView.frame.size.height - 10)
+            
         } else if collectionView == CategoryCollectionView {
             let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
             let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
@@ -272,9 +314,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
         } else {
             let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
             let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-            
-//            let size:CGFloat = (collectionView.frame.size.width - space) / 6
-            return CGSize(width: 90, height: 90)
+                return CGSize(width: 140, height: 140)
         }
     }
 }

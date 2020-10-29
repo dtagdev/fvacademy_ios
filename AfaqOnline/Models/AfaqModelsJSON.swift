@@ -12,7 +12,6 @@ import Foundation
 struct AfaqModelsJSON: Codable {
     var status: Bool?
     var data: DataClass?
-    var email: [String]?
     var errors: Errors?
 }
 
