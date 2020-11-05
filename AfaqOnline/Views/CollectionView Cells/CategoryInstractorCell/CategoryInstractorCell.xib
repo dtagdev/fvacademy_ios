@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryInstractorCell" id="gTV-IL-0wX" customClass="CategoryInstractorCell" customModule="Al_Academya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="844" height="340"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="844" height="340"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJh-2S-o6o">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="340"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CgD-iD-oTs">
+                                <rect key="frame" x="0.0" y="68" width="253" height="204"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 243" translatesAutoresizingMaskIntoConstraints="NO" id="mGd-fp-Col" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="8" width="253" height="196"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Instructor" translatesAutoresizingMaskIntoConstraints="NO" id="3EL-h2-SaL" customClass="CustomImageView" customModule="Al_Academya" customModuleProvider="target">
+                                        <rect key="frame" x="63.5" y="42.5" width="126.5" height="127"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="3EL-h2-SaL" secondAttribute="height" multiplier="1:1" id="2oE-T3-igj"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="33"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="mGd-fp-Col" firstAttribute="top" secondItem="CgD-iD-oTs" secondAttribute="top" constant="8" id="1Sy-qj-7Oo"/>
+                                    <constraint firstAttribute="trailing" secondItem="mGd-fp-Col" secondAttribute="trailing" id="C1j-ka-FDm"/>
+                                    <constraint firstItem="3EL-h2-SaL" firstAttribute="width" secondItem="mGd-fp-Col" secondAttribute="width" multiplier="0.5" id="DRd-cY-Klj"/>
+                                    <constraint firstItem="mGd-fp-Col" firstAttribute="leading" secondItem="CgD-iD-oTs" secondAttribute="leading" id="PKS-4f-QGr"/>
+                                    <constraint firstItem="3EL-h2-SaL" firstAttribute="centerX" secondItem="mGd-fp-Col" secondAttribute="centerX" id="RSW-ki-VB0"/>
+                                    <constraint firstItem="3EL-h2-SaL" firstAttribute="centerY" secondItem="mGd-fp-Col" secondAttribute="centerY" id="SOm-nf-zPq"/>
+                                    <constraint firstAttribute="bottom" secondItem="mGd-fp-Col" secondAttribute="bottom" id="tWZ-lb-HPa"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="AMg-5f-Mzj">
+                                <rect key="frame" x="261" y="124" width="583" height="92.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Maddison Fandom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1M-7N-qtX">
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9Zm-C5-qSm">
+                                        <rect key="frame" x="0.0" y="22.5" width="164.5" height="25"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="customer" translatesAutoresizingMaskIntoConstraints="NO" id="00i-BI-avf">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A total of 27 Courses &amp; 10 Lives" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kE-D6-lhD">
+                                                <rect key="frame" x="33" y="0.0" width="131.5" height="25"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="9"/>
+                                                <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.82745098039999998" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zVq-bv-Zcy">
+                                        <rect key="frame" x="0.0" y="47.5" width="195" height="25"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="customer" translatesAutoresizingMaskIntoConstraints="NO" id="eAY-P8-8oi">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="389,241 students attended her courses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERE-mu-n5g">
+                                                <rect key="frame" x="33" y="0.0" width="162" height="25"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="9"/>
+                                                <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.82745098039999998" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MIv-8W-dfO">
+                                        <rect key="frame" x="0.0" y="72.5" width="144.5" height="20"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSy-Mp-Smf" customClass="CosmosView" customModule="Cosmos">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="20"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(23)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4Y-H9-V4D">
+                                                <rect key="frame" x="128" y="0.0" width="16.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="9"/>
+                                                <color key="textColor" red="0.52549019607843139" green="0.70588235294117641" blue="0.82745098039215681" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyo-La-13I">
+                                <rect key="frame" x="381.5" y="293.5" width="81" height="30"/>
+                                <state key="normal" title="View profile">
+                                    <color key="titleColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xr7-zn-Tps">
+                                <rect key="frame" x="84.5" y="339.5" width="675" height="0.5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="81f-xq-rsg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xr7-zn-Tps" firstAttribute="centerX" secondItem="tJh-2S-o6o" secondAttribute="centerX" id="0uY-fe-LPa"/>
+                            <constraint firstItem="CgD-iD-oTs" firstAttribute="centerY" secondItem="tJh-2S-o6o" secondAttribute="centerY" id="7Y5-A6-td5"/>
+                            <constraint firstItem="CgD-iD-oTs" firstAttribute="leading" secondItem="tJh-2S-o6o" secondAttribute="leading" id="Da1-JQ-Hzd"/>
+                            <constraint firstItem="CgD-iD-oTs" firstAttribute="width" secondItem="tJh-2S-o6o" secondAttribute="width" multiplier="0.3" id="H2f-ar-b3q"/>
+                            <constraint firstAttribute="trailing" secondItem="AMg-5f-Mzj" secondAttribute="trailing" id="M0p-W6-46t"/>
+                            <constraint firstItem="xr7-zn-Tps" firstAttribute="top" secondItem="Jyo-La-13I" secondAttribute="bottom" constant="16" id="Qz8-Bo-8WK"/>
+                            <constraint firstItem="Jyo-La-13I" firstAttribute="centerX" secondItem="tJh-2S-o6o" secondAttribute="centerX" id="aB3-rC-dUZ"/>
+                            <constraint firstAttribute="bottom" secondItem="xr7-zn-Tps" secondAttribute="bottom" id="e4g-6y-oF6"/>
+                            <constraint firstItem="xr7-zn-Tps" firstAttribute="width" secondItem="tJh-2S-o6o" secondAttribute="width" multiplier="0.8" id="kk7-dE-zKY"/>
+                            <constraint firstItem="CgD-iD-oTs" firstAttribute="height" secondItem="tJh-2S-o6o" secondAttribute="height" multiplier="0.6" id="m2S-Ks-XN9"/>
+                            <constraint firstItem="AMg-5f-Mzj" firstAttribute="leading" secondItem="CgD-iD-oTs" secondAttribute="trailing" constant="8" id="nhS-De-x9E"/>
+                            <constraint firstItem="AMg-5f-Mzj" firstAttribute="centerY" secondItem="CgD-iD-oTs" secondAttribute="centerY" id="vcH-VC-Owe"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="tJh-2S-o6o" secondAttribute="trailing" id="J4P-xK-rmc"/>
+                <constraint firstAttribute="bottom" secondItem="tJh-2S-o6o" secondAttribute="bottom" id="OUz-Th-dcF"/>
+                <constraint firstItem="tJh-2S-o6o" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="b4C-L8-0Ib"/>
+                <constraint firstItem="tJh-2S-o6o" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eFm-J9-IGx"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="844" height="340"/>
+            <point key="canvasLocation" x="-437.68115942028987" y="198.88392857142856"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Group 243" width="115.5" height="115.5"/>
+        <image name="Instructor" width="560" height="515"/>
+        <image name="customer" width="25" height="25"/>
+    </resources>
+</document>

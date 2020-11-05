@@ -38,16 +38,17 @@ class OTPScreenVC: UIViewController {
     
     @IBAction func ConfirmAction(_ sender: CustomButtons) {
         self.GETCheckUserCode(type: pageType)
-        
     }
     
     @IBAction func backAction(_ sender: UIButton) {
         guard let window = UIApplication.shared.keyWindow else { return }
-        let sb = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController")
-        window.rootViewController = sb
+             guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
+             window.rootViewController = main
+        
     }
     
 }
+
 extension OTPScreenVC {
     func GETCheckUserCode(type : String) {
         let code = "\(self.firstTF.text ?? "")\(self.secondTF.text ?? "")\(self.thirdTF.text ?? "")\(self.fourthTF.text ?? "")"

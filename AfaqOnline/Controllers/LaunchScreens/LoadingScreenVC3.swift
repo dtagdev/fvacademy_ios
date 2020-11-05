@@ -20,8 +20,8 @@ class LoadingScreenVC3 : UIViewController {
 
     @IBAction func signUpAction(_ sender: CustomButtons) {
         guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
+        main.type = "user"
         self.navigationController?.pushViewController(main, animated: true)
-        
     }
     
     @IBAction func browseAction(_ sender: CustomButtons) {
@@ -39,7 +39,7 @@ class LoadingScreenVC3 : UIViewController {
       
     @IBAction func instractorAction(_ sender: CustomButtons) {
      guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
-        main.type = "instructor"
+        main.type = "Instructor"
         self.navigationController?.pushViewController(main, animated: true)
 
       }

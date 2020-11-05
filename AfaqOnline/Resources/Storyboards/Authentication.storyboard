@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwv-kK-b4k">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 314" translatesAutoresizingMaskIntoConstraints="NO" id="n1T-nj-NTZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
@@ -91,7 +91,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vH-tB-AJ8" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="250" width="414" height="750"/>
+                                                <rect key="frame" x="0.0" y="250" width="414" height="1050"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-10-13 at 2.58.04 PM" translatesAutoresizingMaskIntoConstraints="NO" id="aR8-e4-USF">
                                                         <rect key="frame" x="187" y="16" width="40" height="8"/>
@@ -112,19 +112,19 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAF-NW-PKW">
-                                                        <rect key="frame" x="32" y="71" width="82.5" height="29"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                        <color key="textColor" red="0.1137254902" green="0.2666666667" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="32" y="71" width="80.5" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                        <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="PSJ-VV-Gj8">
-                                                        <rect key="frame" x="20" y="116" width="374" height="51.5"/>
+                                                        <rect key="frame" x="16" y="129.5" width="382" height="60"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EuO-UH-n9U" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="179" height="51.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="183" height="60"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k0b-nT-y7o" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="9" y="0.0" width="161" height="51.5"/>
+                                                                        <rect key="frame" x="9" y="0.0" width="165" height="60"/>
                                                                         <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
@@ -157,10 +157,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgP-dD-V5t" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="195" y="0.0" width="179" height="51.5"/>
+                                                                <rect key="frame" x="199" y="0.0" width="183" height="60"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nK0-hh-Huk" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="9" y="0.0" width="161" height="51.5"/>
+                                                                        <rect key="frame" x="9" y="0.0" width="165" height="60"/>
                                                                         <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
@@ -193,15 +193,18 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="JuF-bx-gZd"/>
+                                                        </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pan-xQ-be5">
-                                                        <rect key="frame" x="20" y="183.5" width="294" height="450"/>
+                                                        <rect key="frame" x="20" y="205.5" width="294" height="550"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhu-oA-rt4" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="294" height="49.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="294" height="39.5"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Professionality / Job" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JOq-Kr-PPe" customClass="TextFieldDropDown" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="49.5"/>
+                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="39.5"/>
                                                                         <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
@@ -264,10 +267,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Crj-xO-HdX" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="66.5" width="294" height="50"/>
+                                                                <rect key="frame" x="0.0" y="56.5" width="294" height="40"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ciN-Zr-0Zj" customClass="TextFieldDropDown" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="50"/>
+                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="40"/>
                                                                         <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
@@ -308,10 +311,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roV-Q2-etg" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="133.5" width="294" height="49.5"/>
+                                                                <rect key="frame" x="0.0" y="113.5" width="294" height="39.5"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acr-5z-GTc" customClass="TextFieldDropDown" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="49.5"/>
+                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="39.5"/>
                                                                         <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
@@ -351,11 +354,99 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNG-5r-I1k" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="170" width="294" height="40"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Specialized Category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E5O-r9-NS3" customClass="TextFieldDropDown" customModule="Al_Academya" customModuleProvider="target">
+                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="40"/>
+                                                                        <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="inset">
+                                                                                <real key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="E5O-r9-NS3" firstAttribute="centerX" secondItem="GNG-5r-I1k" secondAttribute="centerX" id="5m5-j5-pX0"/>
+                                                                    <constraint firstItem="E5O-r9-NS3" firstAttribute="height" secondItem="GNG-5r-I1k" secondAttribute="height" id="FyP-vO-vyG"/>
+                                                                    <constraint firstItem="E5O-r9-NS3" firstAttribute="width" secondItem="GNG-5r-I1k" secondAttribute="width" multiplier="0.9" id="Oui-go-B2L"/>
+                                                                    <constraint firstItem="E5O-r9-NS3" firstAttribute="centerY" secondItem="GNG-5r-I1k" secondAttribute="centerY" id="whj-fM-4Fo"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                        <real key="value" value="0.20000000000000001"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                        <real key="value" value="2"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="15"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="0.20000000000000001"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSf-vP-1Oa" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="227" width="294" height="39.5"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Language" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ih6-kn-efM" customClass="TextFieldDropDown" customModule="Al_Academya" customModuleProvider="target">
+                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="39.5"/>
+                                                                        <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="inset">
+                                                                                <real key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="ih6-kn-efM" firstAttribute="height" secondItem="KSf-vP-1Oa" secondAttribute="height" id="0yF-6F-tS2"/>
+                                                                    <constraint firstItem="ih6-kn-efM" firstAttribute="centerX" secondItem="KSf-vP-1Oa" secondAttribute="centerX" id="K7q-zu-s6Z"/>
+                                                                    <constraint firstItem="ih6-kn-efM" firstAttribute="centerY" secondItem="KSf-vP-1Oa" secondAttribute="centerY" id="L7D-WC-Wdo"/>
+                                                                    <constraint firstItem="ih6-kn-efM" firstAttribute="width" secondItem="KSf-vP-1Oa" secondAttribute="width" multiplier="0.9" id="Tuu-S1-kBQ"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                        <real key="value" value="0.20000000000000001"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                        <real key="value" value="2"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="15"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="0.20000000000000001"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0D2-ZH-16Z" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="200" width="294" height="50"/>
+                                                                <rect key="frame" x="0.0" y="283.5" width="294" height="39.5"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uU5-Vj-96q" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="50"/>
+                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="39.5"/>
                                                                         <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -393,10 +484,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yTZ-uV-RMF" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="267" width="294" height="49.5"/>
+                                                                <rect key="frame" x="0.0" y="340" width="294" height="40"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iso-5z-51B" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="49.5"/>
+                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="40"/>
                                                                         <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
@@ -437,10 +528,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8P-Du-srM" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="333.5" width="294" height="50"/>
+                                                                <rect key="frame" x="0.0" y="397" width="294" height="39.5"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Medical Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zT4-Yg-4BL" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="50"/>
+                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="39.5"/>
                                                                         <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -478,10 +569,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQR-S2-6XL" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="400.5" width="294" height="49.5"/>
+                                                                <rect key="frame" x="0.0" y="453.5" width="294" height="40"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uof-c6-qYQ" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="49.5"/>
+                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="40"/>
                                                                         <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -518,13 +609,57 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmL-cg-jbk" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="510.5" width="294" height="39.5"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Personal Details" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pnt-Dh-tiv" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
+                                                                        <rect key="frame" x="14.5" y="0.0" width="265" height="39.5"/>
+                                                                        <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="inset">
+                                                                                <real key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="Pnt-Dh-tiv" firstAttribute="width" secondItem="dmL-cg-jbk" secondAttribute="width" multiplier="0.9" id="LP4-gq-SoL"/>
+                                                                    <constraint firstItem="Pnt-Dh-tiv" firstAttribute="centerY" secondItem="dmL-cg-jbk" secondAttribute="centerY" id="V7U-Cz-Rx8"/>
+                                                                    <constraint firstItem="Pnt-Dh-tiv" firstAttribute="centerX" secondItem="dmL-cg-jbk" secondAttribute="centerX" id="lJI-wU-zd6"/>
+                                                                    <constraint firstItem="Pnt-Dh-tiv" firstAttribute="height" secondItem="dmL-cg-jbk" secondAttribute="height" id="lbq-Yk-UHc"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                        <real key="value" value="0.20000000000000001"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                        <real key="value" value="2"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="15"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="0.20000000000000001"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="450" id="dq5-ks-H5d"/>
+                                                            <constraint firstAttribute="height" constant="550" id="dq5-ks-H5d"/>
                                                         </constraints>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOg-Uy-mfD" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                                        <rect key="frame" x="107" y="665.5" width="200" height="40"/>
+                                                        <rect key="frame" x="107" y="787.5" width="200" height="40"/>
                                                         <color key="backgroundColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="2nl-ar-f7k"/>
@@ -560,19 +695,19 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96862745098039216" green="0.98431372549019602" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="Pan-xQ-be5" firstAttribute="top" secondItem="PSJ-VV-Gj8" secondAttribute="bottom" constant="16" id="0fW-oa-mzl"/>
                                                     <constraint firstItem="WAF-NW-PKW" firstAttribute="leading" secondItem="9vH-tB-AJ8" secondAttribute="leading" constant="32" id="28s-ia-bAR"/>
+                                                    <constraint firstItem="PSJ-VV-Gj8" firstAttribute="top" secondItem="WAF-NW-PKW" secondAttribute="bottom" constant="32" id="51J-fh-mRr"/>
                                                     <constraint firstItem="aOg-Uy-mfD" firstAttribute="centerX" secondItem="9vH-tB-AJ8" secondAttribute="centerX" id="5cC-DK-11C"/>
-                                                    <constraint firstAttribute="trailing" secondItem="PSJ-VV-Gj8" secondAttribute="trailing" constant="20" id="9PR-5J-SSh"/>
                                                     <constraint firstAttribute="trailing" secondItem="Pan-xQ-be5" secondAttribute="trailing" constant="100" id="DO3-Xt-wbc"/>
                                                     <constraint firstItem="Pan-xQ-be5" firstAttribute="leading" secondItem="9vH-tB-AJ8" secondAttribute="leading" constant="20" id="DTa-55-npR"/>
                                                     <constraint firstItem="Fas-PJ-PnC" firstAttribute="leading" secondItem="9vH-tB-AJ8" secondAttribute="leading" constant="16" id="DlC-t5-TAD"/>
                                                     <constraint firstItem="aR8-e4-USF" firstAttribute="centerX" secondItem="9vH-tB-AJ8" secondAttribute="centerX" id="Efm-gg-ToD"/>
+                                                    <constraint firstItem="Pan-xQ-be5" firstAttribute="top" secondItem="PSJ-VV-Gj8" secondAttribute="bottom" constant="16" id="GJC-Ay-ULX"/>
                                                     <constraint firstItem="aR8-e4-USF" firstAttribute="top" secondItem="9vH-tB-AJ8" secondAttribute="top" constant="16" id="KHW-00-o6A"/>
-                                                    <constraint firstItem="PSJ-VV-Gj8" firstAttribute="top" secondItem="WAF-NW-PKW" secondAttribute="bottom" constant="16" id="Mwf-Fn-1Ko"/>
-                                                    <constraint firstItem="PSJ-VV-Gj8" firstAttribute="leading" secondItem="9vH-tB-AJ8" secondAttribute="leading" constant="20" id="VSH-NE-meZ"/>
                                                     <constraint firstItem="WAF-NW-PKW" firstAttribute="top" secondItem="9vH-tB-AJ8" secondAttribute="top" constant="71" id="aL1-PO-6vO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="PSJ-VV-Gj8" secondAttribute="trailing" constant="16" id="beq-I6-Mm2"/>
                                                     <constraint firstItem="Fas-PJ-PnC" firstAttribute="top" secondItem="9vH-tB-AJ8" secondAttribute="top" constant="20" symbolic="YES" id="cX5-ke-d3H"/>
+                                                    <constraint firstItem="PSJ-VV-Gj8" firstAttribute="leading" secondItem="9vH-tB-AJ8" secondAttribute="leading" constant="16" id="lEF-BM-CxZ"/>
                                                     <constraint firstItem="aOg-Uy-mfD" firstAttribute="top" secondItem="Pan-xQ-be5" secondAttribute="bottom" constant="32" id="mi1-zi-qnK"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -599,7 +734,7 @@
                                         <constraints>
                                             <constraint firstItem="s6P-lq-Zuf" firstAttribute="centerX" secondItem="cwv-kK-b4k" secondAttribute="centerX" id="0yX-9Z-OQM"/>
                                             <constraint firstItem="9vH-tB-AJ8" firstAttribute="width" secondItem="cwv-kK-b4k" secondAttribute="width" id="2h1-2e-NFw"/>
-                                            <constraint firstAttribute="height" constant="1000" id="8cy-RL-VnF"/>
+                                            <constraint firstAttribute="height" constant="1300" id="8cy-RL-VnF"/>
                                             <constraint firstItem="F3v-a2-dpM" firstAttribute="top" secondItem="cwv-kK-b4k" secondAttribute="top" constant="52" id="Buo-B9-tDg"/>
                                             <constraint firstItem="n1T-nj-NTZ" firstAttribute="leading" secondItem="cwv-kK-b4k" secondAttribute="leading" id="RNT-tm-lcw"/>
                                             <constraint firstItem="F3v-a2-dpM" firstAttribute="centerX" secondItem="cwv-kK-b4k" secondAttribute="centerX" id="TO3-XU-P8d"/>
@@ -633,6 +768,8 @@
                         <viewLayoutGuide key="safeArea" id="haZ-et-5U3"/>
                     </view>
                     <connections>
+                        <outlet property="CateView" destination="GNG-5r-I1k" id="ySl-tS-zn6"/>
+                        <outlet property="LanguageView" destination="KSf-vP-1Oa" id="6OO-sf-49i"/>
                         <outlet property="emailTF" destination="Iso-5z-51B" id="a4J-sK-sou"/>
                         <outlet property="firstNameTF" destination="k0b-nT-y7o" id="aRT-IA-Lva"/>
                         <outlet property="firstStepView" destination="cwv-kK-b4k" id="1v1-9O-zUA"/>
@@ -640,10 +777,15 @@
                         <outlet property="lastNameTF" destination="nK0-hh-Huk" id="u9D-fR-Oc2"/>
                         <outlet property="medicalNumberTF" destination="zT4-Yg-4BL" id="zPm-LH-8vE"/>
                         <outlet property="nextStepButton" destination="aOg-Uy-mfD" id="0ve-vn-JiC"/>
+                        <outlet property="personalInfoTF" destination="Pnt-Dh-tiv" id="EZm-nY-4Ot"/>
+                        <outlet property="personalInfoView" destination="dmL-cg-jbk" id="QkX-P7-pSU"/>
                         <outlet property="phoneTF" destination="uU5-Vj-96q" id="HQq-Cp-Tyw"/>
+                        <outlet property="selectCateDropDown" destination="E5O-r9-NS3" id="kr6-1i-5tr"/>
                         <outlet property="selectGerderDropDown" destination="ciN-Zr-0Zj" id="E1T-OW-cf1"/>
                         <outlet property="selectJobDropDown" destination="JOq-Kr-PPe" id="cu1-HL-OdI"/>
+                        <outlet property="selectLanguageDropDown" destination="ih6-kn-efM" id="eR6-zg-JkV"/>
                         <outlet property="selectTitleDropDown" destination="acr-5z-GTc" id="DFJ-7v-mgC"/>
+                        <outlet property="stackViewHeight" destination="dq5-ks-H5d" id="3RX-m9-cWP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEb-Lk-6dT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -715,19 +857,19 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ny-Va-KI9">
-                                                        <rect key="frame" x="32" y="71" width="82.5" height="29"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <rect key="frame" x="32" y="71" width="80.5" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                         <color key="textColor" red="0.1137254902" green="0.2666666667" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="3WO-Df-row">
-                                                        <rect key="frame" x="20" y="183.5" width="294" height="100"/>
+                                                        <rect key="frame" x="20" y="181" width="294" height="130"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qyi-Ja-Gu6" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="294" height="41.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="294" height="56.5"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QNB-Un-vLJ" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="294" height="41.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="294" height="56.5"/>
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -790,10 +932,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxN-Z8-6Be" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="58.5" width="294" height="41.5"/>
+                                                                <rect key="frame" x="0.0" y="73.5" width="294" height="56.5"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-type your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rwF-wA-DW4" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="294" height="41.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="294" height="56.5"/>
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -835,11 +977,11 @@
                                                             </view>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="100" id="xkx-MS-gpe"/>
+                                                            <constraint firstAttribute="height" constant="130" id="xkx-MS-gpe"/>
                                                         </constraints>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I read and agree to the Terms &amp; Conditions and Privacy Policy listed" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTp-Gh-Ojc">
-                                                        <rect key="frame" x="72" y="308" width="300" height="26.5"/>
+                                                        <rect key="frame" x="72" y="335.5" width="300" height="26.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="300" id="KqQ-t8-6UU"/>
                                                         </constraints>
@@ -848,7 +990,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For a strong password, these points should exist to proceed" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bi-fn-PLh">
-                                                        <rect key="frame" x="44" y="366" width="300" height="31.5"/>
+                                                        <rect key="frame" x="44" y="393.5" width="300" height="31.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="300" id="tx2-BU-gj5"/>
                                                         </constraints>
@@ -857,7 +999,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slf-Dg-DTY" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                                        <rect key="frame" x="107" y="574.5" width="200" height="40"/>
+                                                        <rect key="frame" x="107" y="602" width="200" height="40"/>
                                                         <color key="backgroundColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="4uK-Kp-4yr"/>
@@ -888,7 +1030,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Zue-KP-0t2">
-                                                        <rect key="frame" x="32" y="412.5" width="312" height="96"/>
+                                                        <rect key="frame" x="32" y="440" width="312" height="96"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="4pU-du-jE1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="312" height="16"/>
@@ -1028,7 +1170,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2T5-EE-YjQ" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                                        <rect key="frame" x="44" y="311" width="20" height="20"/>
+                                                        <rect key="frame" x="44" y="338.5" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="E4B-Fm-dwf"/>
                                                             <constraint firstAttribute="width" constant="20" id="boO-6M-lzU"/>
@@ -1369,22 +1511,22 @@ password</string>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykr-Oj-mEz">
-                                                        <rect key="frame" x="32" y="73" width="60.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="32" y="73" width="80.5" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                         <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the code so you can proceed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgT-bV-2mk">
-                                                        <rect key="frame" x="75" y="125.5" width="264.5" height="16.5"/>
+                                                        <rect key="frame" x="75" y="131.5" width="264.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pwf-oW-ssx">
-                                                        <rect key="frame" x="38.5" y="158" width="337" height="100"/>
+                                                        <rect key="frame" x="38.5" y="164" width="337" height="80"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LP6-NK-xeq" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="100"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="80"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -1403,7 +1545,7 @@ password</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dzj-BY-Q5N" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="87" y="0.0" width="76.5" height="100"/>
+                                                                <rect key="frame" x="87" y="0.0" width="76.5" height="80"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -1422,7 +1564,7 @@ password</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mHR-K3-Vqn" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="173.5" y="0.0" width="77" height="100"/>
+                                                                <rect key="frame" x="173.5" y="0.0" width="77" height="80"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -1441,7 +1583,7 @@ password</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2fW-ak-IFH" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="260.5" y="0.0" width="76.5" height="100"/>
+                                                                <rect key="frame" x="260.5" y="0.0" width="76.5" height="80"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -1461,17 +1603,17 @@ password</string>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="100" id="tUX-XA-zS3"/>
+                                                            <constraint firstAttribute="height" constant="80" id="tUX-XA-zS3"/>
                                                         </constraints>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send a new code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WS7-ag-VTN">
-                                                        <rect key="frame" x="266.5" y="290" width="131.5" height="20.5"/>
+                                                        <rect key="frame" x="266.5" y="276" width="131.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.1137254902" green="0.2666666667" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JL-R3-y5t" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                                        <rect key="frame" x="107" y="357" width="200" height="40"/>
+                                                        <rect key="frame" x="107" y="343" width="200" height="40"/>
                                                         <color key="backgroundColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="bWt-Nx-WyG"/>
@@ -1508,7 +1650,7 @@ password</string>
                                                 <color key="backgroundColor" red="0.96862745098039216" green="0.98431372549019602" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="6tx-cW-xyt" firstAttribute="top" secondItem="hfv-Aa-YHA" secondAttribute="top" constant="20" symbolic="YES" id="3RV-wm-eAZ"/>
-                                                    <constraint firstItem="Pwf-oW-ssx" firstAttribute="width" secondItem="hfv-Aa-YHA" secondAttribute="width" multiplier="0.9" constant="-35.600000000000023" id="9VI-Tb-7dN"/>
+                                                    <constraint firstItem="Pwf-oW-ssx" firstAttribute="width" secondItem="hfv-Aa-YHA" secondAttribute="width" multiplier="0.9" constant="-35.600000000000001" id="9VI-Tb-7dN"/>
                                                     <constraint firstItem="Pwf-oW-ssx" firstAttribute="centerX" secondItem="hfv-Aa-YHA" secondAttribute="centerX" id="C7e-VM-iYh"/>
                                                     <constraint firstItem="CDC-x0-9gX" firstAttribute="top" secondItem="hfv-Aa-YHA" secondAttribute="top" constant="16" id="EAj-24-bSa"/>
                                                     <constraint firstItem="CDC-x0-9gX" firstAttribute="centerX" secondItem="hfv-Aa-YHA" secondAttribute="centerX" id="EBs-jG-31g"/>
@@ -2456,10 +2598,10 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZ4-Bc-A8h" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="134.5" width="290" height="50"/>
+                                                <rect key="frame" x="26" y="140.5" width="290" height="60"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N5z-Ec-oMS" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="0.0" width="270" height="50"/>
+                                                        <rect key="frame" x="20" y="0.0" width="270" height="60"/>
                                                         <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -2479,7 +2621,7 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                                     <constraint firstItem="N5z-Ec-oMS" firstAttribute="leading" secondItem="rZ4-Bc-A8h" secondAttribute="leading" constant="20" symbolic="YES" id="ImM-Gu-xlo"/>
                                                     <constraint firstAttribute="bottom" secondItem="N5z-Ec-oMS" secondAttribute="bottom" id="POA-OP-QtE"/>
                                                     <constraint firstItem="N5z-Ec-oMS" firstAttribute="top" secondItem="rZ4-Bc-A8h" secondAttribute="top" id="XzE-pm-LE6"/>
-                                                    <constraint firstAttribute="height" constant="50" id="Yc6-xM-4W4"/>
+                                                    <constraint firstAttribute="height" constant="60" id="Yc6-xM-4W4"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
@@ -2501,10 +2643,10 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0N-Kd-LRi" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="210.5" width="290" height="50"/>
+                                                <rect key="frame" x="26" y="226.5" width="290" height="60"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pTi-X2-UBc" customClass="CustomTextField" customModule="Al_Academya" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="0.0" width="270" height="50"/>
+                                                        <rect key="frame" x="20" y="0.0" width="270" height="60"/>
                                                         <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -2520,7 +2662,7 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="FnL-Fs-U2b"/>
+                                                    <constraint firstAttribute="height" constant="60" id="FnL-Fs-U2b"/>
                                                     <constraint firstAttribute="bottom" secondItem="pTi-X2-UBc" secondAttribute="bottom" id="ciw-3y-Mj1"/>
                                                     <constraint firstAttribute="trailing" secondItem="pTi-X2-UBc" secondAttribute="trailing" id="hb7-ta-SLO"/>
                                                     <constraint firstItem="pTi-X2-UBc" firstAttribute="leading" secondItem="B0N-Kd-LRi" secondAttribute="leading" constant="20" symbolic="YES" id="mGk-Jk-kdO"/>
@@ -2546,8 +2688,8 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ek-uA-coC">
-                                                <rect key="frame" x="37" y="82" width="42" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="37" y="82" width="57.5" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <color key="textColor" red="0.1137254902" green="0.2666666667" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2563,7 +2705,7 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bx-8w-tQC">
-                                                <rect key="frame" x="0.0" y="292.5" width="414" height="468"/>
+                                                <rect key="frame" x="0.0" y="318.5" width="414" height="468"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 685" translatesAutoresizingMaskIntoConstraints="NO" id="qtk-eF-qFg">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="468"/>
@@ -2757,8 +2899,8 @@ Passwords must be at least 10 characters in length, but can be more.</string>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7h-Nt-Jp2">
-                                                        <rect key="frame" x="32" y="71" width="82.5" height="29"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <rect key="frame" x="32" y="71" width="80.5" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                         <color key="textColor" red="0.1137254902" green="0.2666666667" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>

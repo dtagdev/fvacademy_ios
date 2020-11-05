@@ -21,8 +21,13 @@ struct AuthenticationViewModel {
     var medical_number = BehaviorSubject<String>(value: "")
     var phone = BehaviorSubject<String>(value: "")
    
+    var Categories = PublishSubject<[Category]>()
+      
     
     
+    func fetchCategories(Categories: [Category]) {
+          self.Categories.onNext(Categories)
+      }
     
     
     func showIndicator() {
@@ -56,7 +61,33 @@ struct AuthenticationViewModel {
         return observer
     }
     
-    func validate(gender : String,job : String,title: String) -> Observable<String> {
+    
+    //MARK:- Attempt to register
+    func attemptToRegisterInstrcutor(image : UIImage,gender : String,job : String,title: String,bindedEmail:String,bindedPassword:String,bindedFirstName:String,bindedLastName:String,bindedIdNumber:String,bindedMedicalNumber:String,bindedPhone:String,bindedLang:Int,bindedDetails:String,bindedCat:Int) -> Observable<AfaqModelsJSON> {
+        let params: [String: Any] = [
+            "email": bindedEmail,
+            "password": bindedPassword ,
+            "first_name": bindedFirstName ,
+            "last_name": bindedLastName ,
+            "id_number": bindedIdNumber ,
+            "medical_number": bindedMedicalNumber ,
+            "phone": bindedPhone ,
+            "title": title,
+            "job": job,
+            "gender": gender,
+            "lang":bindedLang,
+            "details":bindedDetails,
+            "category_id":bindedCat,
+            "avatar": image
+            ]
+        let observer = Authentication.shared.postRegisterInstracutor(image:image,params: params)
+        return observer
+    }
+    
+    
+    
+    
+    func validate(gender : String,job : String,title: String,type : String,categiory : String ,lang:String) -> Observable<String> {
             return Observable.create({ (observer) -> Disposable in
                 let bindedName = (try? self.first_name.value()) ?? ""
                 let bindedLastName = (try? self.last_name.value()) ?? ""
@@ -64,7 +95,7 @@ struct AuthenticationViewModel {
                 let bindedPhone = (try? self.phone.value()) ?? ""
                 let bindedIdNumber = (try? self.id_number.value()) ?? ""
                 let bindedMedicalNumber = (try? self.medical_number.value()) ?? ""
-              
+            
                 if bindedName.isEmpty {
                     observer.onNext("Please Enter Your First name ")
                 } else if bindedLastName.isEmpty {
@@ -91,6 +122,12 @@ struct AuthenticationViewModel {
                    observer.onNext("Please select your title")
                 }else if title.isEmpty {
                    observer.onNext("Please select your job")
+                }else if type == "Instructor" {
+                    if categiory.isEmpty{
+                        observer.onNext("Please select your Categiory")
+                    }else if lang.isEmpty{
+                        observer.onNext("Please select your Language")
+                    }
                 }else{
                     observer.onNext("")
                 }
@@ -199,4 +236,17 @@ struct AuthenticationViewModel {
            let observer = Authentication.shared.getProfile(params: params)
            return observer
        }
+    
+    
+    func getCategories(lth: Int,htl: Int,rate : Int) -> Observable<CategoriesModel> {
+         var lang = Int()
+         if "lang".localized == "ar" {
+             lang = 0
+         } else {
+             lang = 1
+         }
+         let observer = GetServices.shared.getAllCategories(lang: 1,lth: lth,htl: htl,rate : rate)
+         return observer
+     }
+    
 }

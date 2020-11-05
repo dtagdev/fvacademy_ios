@@ -27,7 +27,10 @@ class PasswordVC: UIViewController {
     var idNumber =  String()
     var medicalNumber =  String()
     var phone =  String()
-    
+    var details = String()
+    var lang = Int()
+    var cat_id = Int()
+    var type = String()
     
     var disposeBag = DisposeBag()
     
@@ -41,7 +44,9 @@ class PasswordVC: UIViewController {
     
     
     @IBAction func BackAction(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        guard let window = UIApplication.shared.keyWindow else { return }
+             guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
+             window.rootViewController = main
     }
     
     
@@ -71,6 +76,7 @@ extension PasswordVC {
                 valid = false
             }
         }).disposed(by: disposeBag)
+        
         if self.termsConditionsButton.currentImage == #imageLiteral(resourceName: "Rectangle 11") {
             if "lang".localized == "ar" {
                 displayMessage(title: "", message: "يرجى الموافقة على الشروط و الأحكام أولاً", status: .error, forController: self)
@@ -92,15 +98,19 @@ extension PasswordVC {
             guard self.validateInput() else { return }
             guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "UploadProfileVC") as? UploadProfileVC else { return }
             main.gender =  self.gender
-             main.job =  self.job
-             main.Title =  self.Title
-             main.email  = self.email
-             main.firstName = self.firstName
-             main.lastName = self.lastName
-             main.idNumber = self.idNumber
-             main.medicalNumber = self.medicalNumber
-             main.phone = self.phone
+            main.job =  self.job
+            main.Title =  self.Title
+            main.email  = self.email
+            main.firstName = self.firstName
+            main.lastName = self.lastName
+            main.idNumber = self.idNumber
+            main.medicalNumber = self.medicalNumber
+            main.phone = self.phone
             main.Password = self.new_passwordTF.text ?? ""
+            main.details = self.details
+            main.lang = self.lang
+            main.cat_id = self.cat_id
+            main.type = self.type
             self.navigationController?.pushViewController(main, animated: true)
             
         }.disposed(by: disposeBag)

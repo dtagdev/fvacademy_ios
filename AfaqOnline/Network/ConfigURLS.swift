@@ -18,6 +18,8 @@ var AUTH_MOBILE = "/api/auth/mobile"
 struct ConfigURLS {
     //MARK:- POST Register
     static var postRegister = BASE_URL + AUTH + "/register"
+    //MARK:- POST Register Instructor
+    static var postRegisterInstructor = BASE_URL + AUTH + "/register_instructor"
     //MARK:- POST Login
     static var postLogin = BASE_URL + AUTH + "/login"
     //MARK:- GET Jobs

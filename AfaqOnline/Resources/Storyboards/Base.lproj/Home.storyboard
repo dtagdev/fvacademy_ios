@@ -44,6 +44,9 @@
                                                             <constraint firstAttribute="width" constant="30" id="a7x-kh-UQG"/>
                                                             <constraint firstAttribute="height" constant="30" id="dvg-cN-Vdk"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <action selector="sideMenuAction:" destination="s7p-Jo-PTV" eventType="touchUpInside" id="luc-lA-bNS"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -485,6 +488,9 @@
                                                                         <real key="value" value="10"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="instractorAction:" destination="s7p-Jo-PTV" eventType="touchUpInside" id="WwG-0y-dWn"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

@@ -67,7 +67,6 @@ class CategoriesVC: UIViewController {
     }
 }
 
-
 extension CategoriesVC {
     //MARK:- GET Categories
     func getCategories(lth: Int,htl: Int,rate : Int) {
@@ -92,6 +91,8 @@ extension CategoriesVC: UICollectionViewDelegate {
             cell.config(categoryImageURL:self.Categories[index].image ?? "", categoryName: self.Categories[index].name ?? "")
         }.disposed(by: disposeBag)
         self.CategoriesCollectionView.rx.itemSelected.bind { (indexPath) in
+            guard let main = UIStoryboard(name: "Categories", bundle: nil).instantiateViewController(withIdentifier: "CategoriesDetailsVC") as? CategoriesDetailsVC else { return }
+         self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }
 }

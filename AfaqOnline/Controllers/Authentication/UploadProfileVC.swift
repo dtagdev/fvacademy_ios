@@ -17,7 +17,7 @@ class UploadProfileVC : UIViewController {
     @IBOutlet weak var ProfileImageView: CustomImageView!
     private let AuthViewModel = AuthenticationViewModel()
     var disposeBag = DisposeBag()
-    var profliePic = UIImage()
+    var profliePic : UIImage?
     var gender = String()
     var Title = String()
     var job = String()
@@ -28,40 +28,45 @@ class UploadProfileVC : UIViewController {
     var medicalNumber =  String()
     var phone =  String()
     var Password =  String()
+    var details = String()
+    var lang = Int()
+    var cat_id = Int()
+    var type = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
     }
     
     @IBAction func CreateAccountAction(_ sender: CustomButtons) {
-        if  self.ProfileImageView.image != nil {
-        AuthViewModel.showIndicator()
-        self.postRegister()
-        }else{
-            displayMessage(title: "", message: "please upload proflie Picture", status: .info, forController: self)
-
-        }
+           AuthViewModel.showIndicator()
+           if type == "Instructor"{
+               self.postInstractorRegister()
+           }else{
+            self.postRegister()
+           }
     }
     
     @IBAction func skipAction(_ sender: CustomButtons) {
-     if  self.ProfileImageView.image != nil  {
         AuthViewModel.showIndicator()
-        self.postRegister()
+        if type == "Instructor"{
+            self.postInstractorRegister()
         }else{
-        displayMessage(title: "", message: "please upload proflie Picture", status: .info, forController: self)
+         self.postRegister()
         }
     }
     
-    
     @IBAction func BackAction(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        guard let window = UIApplication.shared.keyWindow else { return }
+             guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
+             window.rootViewController = main
+        
     }
-
 }
 
 extension UploadProfileVC {
     func postRegister(){
-        AuthViewModel.attemptToRegister(image : profliePic, gender: gender, job: job, title: Title, bindedEmail: email, bindedPassword: Password, bindedFirstName: firstName, bindedLastName: lastName, bindedIdNumber: idNumber, bindedMedicalNumber: medicalNumber, bindedPhone: phone).subscribe(onNext: { (registerData) in
+        AuthViewModel.attemptToRegister(image : profliePic ?? #imageLiteral(resourceName: "Group 243"), gender: gender, job: job, title: Title, bindedEmail: email, bindedPassword: Password, bindedFirstName: firstName, bindedLastName: lastName, bindedIdNumber: idNumber, bindedMedicalNumber: medicalNumber, bindedPhone: phone).subscribe(onNext: { (registerData) in
             if registerData.status ?? false {
                 self.AuthViewModel.dismissIndicator()
                 displayMessage(title: "", message: "You have Registered Successfully", status: .success, forController: self)
@@ -79,6 +84,27 @@ extension UploadProfileVC {
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
         }).disposed(by: disposeBag)
     }
+    
+    func postInstractorRegister(){
+        AuthViewModel.attemptToRegisterInstrcutor(image : profliePic ?? #imageLiteral(resourceName: "Group 243"), gender: gender, job: job, title: Title, bindedEmail: email, bindedPassword: Password, bindedFirstName: firstName, bindedLastName: lastName, bindedIdNumber: idNumber, bindedMedicalNumber: medicalNumber, bindedPhone: phone, bindedLang: lang, bindedDetails: details, bindedCat: cat_id).subscribe(onNext: { (registerData) in
+            if registerData.status ?? false {
+                self.AuthViewModel.dismissIndicator()
+                displayMessage(title: "", message: "You have Registered Successfully", status: .success, forController: self)
+                guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "OTPScreenVC") as? OTPScreenVC else { return }
+                self.navigationController?.pushViewController(main, animated: true)
+            } else {
+                let errors = registerData.errors ?? Errors()
+                self.AuthViewModel.dismissIndicator()
+                if let email = errors.email {
+                  displayMessage(title: "", message: email[0], status: .error, forController: self)
+                }
+            }
+        }, onError: { (error) in
+            self.AuthViewModel.dismissIndicator()
+            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+        }).disposed(by: disposeBag)
+    }
+    
 }
 
 extension UploadProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

@@ -89,10 +89,10 @@ class HomeVC: UIViewController {
         self.hideKeyboardWhenTappedAround()
         self.homeViewModel.showIndicator()
         
-        if Helper.getUserID() ?? 0 == 0{
-        let endEditting = UITapGestureRecognizer(target: self, action:#selector(HomeVC.endEditting(sender:)))
-        view.addGestureRecognizer(endEditting)
-        }
+//        if Helper.getUserID() ?? 0 == 0{
+//        let endEditting = UITapGestureRecognizer(target: self, action:#selector(HomeVC.endEditting(sender:)))
+//        view.addGestureRecognizer(endEditting)
+//        }
      }
     
     @objc func endEditting(sender: UITapGestureRecognizer) {
@@ -101,6 +101,8 @@ class HomeVC: UIViewController {
     self.navigationController?.pushViewController(main, animated: true)
         
     }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
    
@@ -137,7 +139,16 @@ class HomeVC: UIViewController {
         }
     //}
     
+    @IBAction func instractorAction(_ sender: CustomButtons) {
+        guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
+           main.type = "Instructor"
+           self.navigationController?.pushViewController(main, animated: true)
+
+         }
     
+    @IBAction func sideMenuAction(_ sender: UIBarButtonItem) {
+          self.setupSideMenu()
+      }
     
 }
 //MARK:- Retrieving Backend Data

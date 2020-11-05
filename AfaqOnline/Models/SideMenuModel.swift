@@ -7,11 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct SideMenuModel {
+    var Name: String
+     var Id: String
+    var image: UIImage
     
-    var Name: String?
-    var Id: String?
-    var Selected: Bool?
+    init(Name: String, Id: String, image: UIImage) {
+        self.Name = Name
+        self.Id = Id
+        self.image = image
+    }
 }
