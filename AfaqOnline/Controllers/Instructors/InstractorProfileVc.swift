@@ -135,10 +135,10 @@ extension InstractorProfileVc: UICollectionViewDelegate {
            }.disposed(by: disposeBag)
        }
     func setupAttendLiveCollectionView() {
-            let cellIdentifier = "AllCourseCell"
+            let cellIdentifier = "LiveCell"
             self.AttendLiveCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
             self.AttendLiveCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-            self.homeViewModel.Courses.bind(to: self.AttendLiveCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: AllCourseCell.self)) { index, element, cell in
+            self.homeViewModel.Courses.bind(to: self.AttendLiveCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: LiveCell.self)) { index, element, cell in
                 //cell.config(courseName: self.Courses[index].name ?? "", courseInstractor: "\(self.Courses[index].instructor?.user?.firstName ?? "") \(self.Courses[index].instructor?.user?.lastName ??  "")", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: ((self.Courses[index].rate?.rounded(toPlaces: 1) ?? 0)), price: Double(self.Courses[index].price ?? "") ?? 0.0, discountPrice:((Double(self.Courses[index].price ?? "") ?? 0.0) - (Double(self.Courses[index].discount ?? "") ?? 0.0)), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
                 
             }.disposed(by: disposeBag)

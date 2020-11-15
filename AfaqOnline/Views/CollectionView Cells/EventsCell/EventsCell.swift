@@ -20,10 +20,6 @@ class EventsCell: CustomCollectionViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var instractorName: UILabel!
     
-
-    
-    
-    
     static var videoPlayer: AVPlayer? = nil
     var videoPlayerLayer: AVPlayerLayer? = nil
     var isVideoPlaying = false

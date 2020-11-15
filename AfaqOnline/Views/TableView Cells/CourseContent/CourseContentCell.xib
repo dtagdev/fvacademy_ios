@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,16 +25,16 @@
                         <rect key="frame" x="5.5" y="1.5" width="339.5" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0H-o5-cS2">
-                                <rect key="frame" x="50" y="0.0" width="209.5" height="50"/>
+                                <rect key="frame" x="25" y="0.0" width="234.5" height="50"/>
                                 <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="17"/>
                                 <color key="textColor" red="0.074509803920000006" green="0.1450980392" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YkU-f4-zfD">
-                                <rect key="frame" x="5" y="5" width="40" height="40"/>
+                                <rect key="frame" x="5" y="17.5" width="15" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="K7W-nx-oj1"/>
-                                    <constraint firstAttribute="height" constant="40" id="YxM-Fx-6HE"/>
+                                    <constraint firstAttribute="width" constant="15" id="K7W-nx-oj1"/>
+                                    <constraint firstAttribute="height" constant="15" id="YxM-Fx-6HE"/>
                                 </constraints>
                                 <state key="normal" image="Play"/>
                                 <connections>
@@ -43,7 +42,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:22AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zQ-ed-HUv">
-                                <rect key="frame" x="264.5" y="5" width="70" height="21"/>
+                                <rect key="frame" x="264.5" y="14.5" width="70" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="fTd-51-c16"/>
                                 </constraints>
@@ -52,13 +51,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="r0H-o5-cS2" firstAttribute="leading" secondItem="YkU-f4-zfD" secondAttribute="trailing" constant="5" id="65k-gn-MUs"/>
+                            <constraint firstItem="YkU-f4-zfD" firstAttribute="centerY" secondItem="4Qy-0b-cIc" secondAttribute="centerY" id="7wL-TO-MvJ"/>
                             <constraint firstItem="r0H-o5-cS2" firstAttribute="centerY" secondItem="4Qy-0b-cIc" secondAttribute="centerY" id="8pB-I4-Buj"/>
+                            <constraint firstItem="8zQ-ed-HUv" firstAttribute="centerY" secondItem="4Qy-0b-cIc" secondAttribute="centerY" id="Ebd-xU-nEV"/>
                             <constraint firstItem="YkU-f4-zfD" firstAttribute="leading" secondItem="4Qy-0b-cIc" secondAttribute="leading" constant="5" id="Gn9-7x-kBp"/>
-                            <constraint firstItem="8zQ-ed-HUv" firstAttribute="top" secondItem="4Qy-0b-cIc" secondAttribute="top" constant="5" id="RKf-eW-E3P"/>
-                            <constraint firstItem="YkU-f4-zfD" firstAttribute="top" secondItem="4Qy-0b-cIc" secondAttribute="top" constant="5" id="RiB-p8-efE"/>
                             <constraint firstItem="r0H-o5-cS2" firstAttribute="height" secondItem="4Qy-0b-cIc" secondAttribute="height" id="d95-JY-TNt"/>
                             <constraint firstItem="8zQ-ed-HUv" firstAttribute="leading" secondItem="r0H-o5-cS2" secondAttribute="trailing" constant="5" id="jIh-gw-oN3"/>
                             <constraint firstAttribute="trailing" secondItem="8zQ-ed-HUv" secondAttribute="trailing" constant="5" id="xm9-b1-Doq"/>

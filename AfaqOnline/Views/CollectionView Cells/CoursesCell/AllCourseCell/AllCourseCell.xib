@@ -124,7 +124,7 @@
                                 <state key="normal" image="cartSelected"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmC-8S-qv3" customClass="CustomLabel" customModule="Al_Academya" customModuleProvider="target">
-                                <rect key="frame" x="547" y="55" width="34" height="14"/>
+                                <rect key="frame" x="537" y="55" width="44" height="24"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="0.95999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,7 +137,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ng-K3-usz" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                <rect key="frame" x="461" y="77" width="120" height="25"/>
+                                <rect key="frame" x="461" y="87" width="120" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="350 SAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc6-BK-TEp">
                                         <rect key="frame" x="5" y="2" width="82" height="21"/>

@@ -14,47 +14,34 @@ import RxCocoa
 class CourseDetailsVC: UIViewController {
 
     @IBOutlet weak var CourseImageView: UIImageView!
-    @IBOutlet weak var enrollerImageView1: CustomImageView!
-    @IBOutlet weak var enrollerImageView2: CustomImageView!
-    @IBOutlet weak var enrollerImageView3: CustomImageView!
-    @IBOutlet weak var enrollerImageView4: CustomImageView!
-    @IBOutlet weak var enrollersCounter: UILabel!
+  
     @IBOutlet weak var price_discountLabel: UILabel!
-    @IBOutlet weak var enrollView: CustomView!
     @IBOutlet weak var courseNameLabel: UILabel!
     @IBOutlet weak var courseTimeLabel: CustomLabel!
-    @IBOutlet weak var courseDescriptionTextView: CustomTextView!
-    @IBOutlet weak var courseInformationLabel: UILabel!
-    @IBOutlet weak var currentStepNameLabel: UILabel!
-    @IBOutlet weak var currentStepDateLabel: UILabel!
-    @IBOutlet weak var currentStepTimeLabel: UILabel!
-    @IBOutlet weak var courseContentDataLabel: UILabel!
-    @IBOutlet weak var ContentTableView: CustomTableView!
-    @IBOutlet weak var stepProgressBar: StepProgressBar!
-    @IBOutlet weak var LessonsView: UIView!
-    @IBOutlet weak var OverViewView: UIView!
-    @IBOutlet weak var OverViewSeperator: UIView!
-    @IBOutlet weak var LessonsSeperator: UIView!
-    @IBOutlet weak var PurchasedStatusLabel: CustomLabel!
-    @IBOutlet weak var EnrollNowOrContinueLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var RecommendationsCollectionView: UICollectionView!
-    @IBOutlet weak var RecommendedLabel: UILabel!
-    @IBOutlet weak var overViewRequirementsTV: UITextView!
+    @IBOutlet weak var CoursesCollectionView: CustomCollectionView!
     @IBOutlet weak var courseTypeLabel: CustomLabel!
     @IBOutlet weak var WishlistButton: UIButton!
     @IBOutlet weak var DescriptionTV: UITextView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var addToCartButton: UIButton!
-    @IBOutlet weak var paymentButton: UIButton!
+ 
+    @IBOutlet weak var requermentTableView: UITableView!
+    @IBOutlet weak var whatLearnTableView: UITableView!
+    @IBOutlet weak var ContentTableView: UITableView!
+    @IBOutlet weak var feedBackTableView: UITableView!
 
     
+
     private var courseViewModel = CourseDetailsViewModel()
     var maxHeight: CGFloat = UIScreen.main.bounds.size.height
     var disposeBag = DisposeBag()
-    let RecommendedCoursesCellIdentifier = "RecommendationCoursesCell"
     let cellIdentifier = "CourseContentCell"
     let headerCellIdentifier = "ContentHeaderCell"
+    let requermentIdentifier = "RequirementsCell"
+    let feedBackIdentifier = "ReviewsCell"
+    
     var courseData : TrendCourse?{
         didSet {
             DispatchQueue.main.async {
@@ -64,7 +51,7 @@ class CourseDetailsVC: UIViewController {
             }
         }
     }
-    var RecommendedCourses = [TrendCourse]() {
+    var RecommendedCourses = [String]() {
         didSet {
             DispatchQueue.main.async {
                 self.courseViewModel.fetchRecommendedCourses(data: self.RecommendedCourses)
@@ -85,46 +72,13 @@ class CourseDetailsVC: UIViewController {
         } else {
             self.backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         }
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.CourseInformationTapAction(_:)))
-        courseInformationLabel.isUserInteractionEnabled = true
-        courseInformationLabel.addGestureRecognizer(gestureRecognizer)
-        setupMultiColorCourseInfoLabel()
-        let enrollViewGesture = UITapGestureRecognizer(target: self, action:  #selector(self.EnrollAction))
-        self.enrollView.addGestureRecognizer(enrollViewGesture)
+
         setupContentTableView()
         setupRecommendationsCollectionView()
-        self.getCourseDetails(course_id: course_id)
-        
-        geCurrentView(page: "OverView")
+      //  self.getCourseDetails(course_id: course_id)
+        setupCoursesCollectionView()
     }
-    @objc func EnrollAction(sender : UITapGestureRecognizer) {
-        // Do what you want
-        print("Enroll Action")
-        guard let main = UIStoryboard(name: "PaymentMethod", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as? PaymentVC else { return }
-        main.courseName = self.courseNameLabel.text ?? ""
-        main.price = self.price
-        self.navigationController?.pushViewController(main, animated: true)
-    }
-    @IBAction func backAction(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func ratingAction(_ sender: UIButton) {
-        guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "RatingVC") as? RatingVC else { return }
-        main.courseName = self.courseNameLabel.text ?? ""
-        main.courseDetails = self.courseDescriptionTextView.text
-        main.price = self.price
-        main.course_id = self.course_id
-        self.navigationController?.pushViewController(main, animated: true)
-    }
-    @IBAction func CurrentViewPageAction(_ sender: CustomButtons) {
-        if sender.tag == 1 {
-            geCurrentView(page: "OverView")
-        } else {
-            geCurrentView(page: "Lessons")
-        }
-        
-    }
+ 
     @IBAction func AddToWishlistAction(_ sender: UIButton) {
         sender.isEnabled = false
         if Helper.getUserID() ?? 0 != 0 {
@@ -135,42 +89,39 @@ class CourseDetailsVC: UIViewController {
         }
         
     
-    
-    func geCurrentView(page: String) {
-        if page == "OverView" {
-            self.OverViewView.isHidden = false
-            self.OverViewSeperator.isHidden = false
-            self.LessonsView.isHidden = true
-            self.LessonsSeperator.isHidden = true
-        } else {
-            self.OverViewView.isHidden = true
-            self.OverViewSeperator.isHidden = true
-            self.LessonsView.isHidden = false
-            self.LessonsSeperator.isHidden = false
-        }
-    }
-    
-    //MARK:- Register Label Action Configurations
-    @objc func CourseInformationTapAction(_ sender: UITapGestureRecognizer) {
-            print("Register Action")
-        NotificationCenter.default.post(name: Notification.Name("NavigateToRegister"), object: nil)
-    }
-    func setupMultiColorCourseInfoLabel() {
-        let main_string = "Live Now Event time 9:30 am to 11:00 am"
-        let coloredString = "Live Now"
-        let secondColoredString = "9:30 am to 11:00 am"
-        let Range = (main_string as NSString).range(of: coloredString)
-        let Range2 = (main_string as NSString).range(of: secondColoredString)
-        let attribute = NSMutableAttributedString.init(string: main_string)
-        
-        attribute.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 1, green: 0.5042124391, blue: 0.4857309461, alpha: 1) , range: Range)
-        attribute.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 1, green: 0.5042124391, blue: 0.4857309461, alpha: 1) , range: Range2)
-        courseInformationLabel.attributedText = attribute
-    }
+
     @IBAction func AddToCartAction(_ sender: UIButton) {
         addToCartButton.isEnabled = false
         self.addToCart(course_id: self.course_id, price: self.price, discount: self.discount)
     }
+    
+    @IBAction func SeeAllActions(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            guard let main = UIStoryboard(name: "Categories", bundle: nil).instantiateViewController(withIdentifier: "NewCoursesVC") as? NewCoursesVC else { return }
+            main.type = "Course"
+            self.navigationController?.pushViewController(main, animated: true)
+        case 2:
+           guard let main = UIStoryboard(name: "Categories", bundle: nil).instantiateViewController(withIdentifier: "NewCoursesVC") as? NewCoursesVC else { return }
+           main.type = "Event"
+           self.navigationController?.pushViewController(main, animated: true)
+        default:
+            break
+            }
+        }
+    
+    @IBAction func backAction(_ sender: UIButton) {
+          self.navigationController?.popViewController(animated: true)
+      }
+
+    
+    @IBAction func instractorAction(_ sender: UIButton) {
+        guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstractorProfileVc") as? InstractorProfileVc else { return }
+        self.navigationController?.pushViewController(main, animated: true)
+    }
+    
+    
+    
 }
 
 extension CourseDetailsVC {
@@ -178,45 +129,25 @@ extension CourseDetailsVC {
         self.courseViewModel.getCourseDetails(course_id: course_id).subscribe(onNext: { (courseDetails) in
             if let data =  courseDetails.data {
                 self.courseData = data
-                if data.chapters?.count ?? 0 > 0 {
-                self.courseContentDataLabel.text = "This course consists of \(data.chapters?.count ?? 0) parts:"
-                }else {
-                self.courseContentDataLabel.isHidden = true
-                }
+
                 self.courseNameLabel.text = data.name ?? ""
-                self.courseDescriptionTextView.text = data.details ?? ""
-                self.price_discountLabel.attributedText = NSAttributedString(attributedString: (data.price ?? "").strikeThrough()) + NSAttributedString(string: "\n\((Double(data.price ?? "") ?? 0.0) - (Double(data.discount ?? "") ?? 0.0)) SAR")
-                self.price = "\((Double(data.price ?? "") ?? 0.0))"
-                self.discount = "\(Double(data.discount ?? "") ?? 0.0)"
-                self.ratingLabel.text = "\((data.rate ?? 0))"
-                self.DescriptionTV.text = data.courseDescription
-                if data.requirements?.count ?? 0 > 0{
-                self.overViewRequirementsTV.text = data.requirements?[0].name ?? ""
-                }else{
-                  self.overViewRequirementsTV.text = ""
-                }
+                    // self.price_discountLabel.attributedText = NSAttributedString(attributedString: (data.price ?? "").strikeThrough()) + NSAttributedString(string: "\n\((Double(data.price ?? "") ?? 0.0) - (Double(data.discount ?? "") ?? 0.0)) SAR")
+//                self.price = "\((Double(data.price ?? "") ?? 0.0))"
+//                self.discount = "\(Double(data.discount ?? "") ?? 0.0)"
+//                self.ratingLabel.text = "\((data.rate ?? 0))"
+//                self.DescriptionTV.text = data.courseDescription
                 
                 guard let url = URL(string: "https://dev.fv.academy/public/files/" + (data.mainImage ?? "") ) else { return }
                  self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "DetailsImage"))
-                self.courseInformationLabel.isHidden = true
+//                if data.isWishlist == true {
+//                    self.wishlistFlag = true
+//                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
+//                    self.WishlistButton.isEnabled = false
+//                } else {
+//                    self.wishlistFlag = false
+//                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkUnSelected"), for: .normal)
+//                }
                 
-                if data.isPurchased == true {
-                    self.purchasedFlag = true
-                    self.PurchasedStatusLabel.isHidden = false
-                    self.RecommendedLabel.text = "Related Courses"
-                } else {
-                    self.purchasedFlag = false
-                    self.PurchasedStatusLabel.isHidden = true
-                    self.RecommendedLabel.text = "Recommended"
-                }
-                if data.isWishlist == true {
-                    self.wishlistFlag = true
-                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
-                    self.WishlistButton.isEnabled = false
-                } else {
-                    self.wishlistFlag = false
-                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkUnSelected"), for: .normal)
-                }
                 self.courseTimeLabel.text = "\(data.time ?? "") mins"
                 self.getRelatedCourses(cat_id: data.category?.id ?? 0)
                 self.courseTypeLabel.text = data.type ?? ""
@@ -229,12 +160,13 @@ extension CourseDetailsVC {
     func getRelatedCourses(cat_id: Int) {
         self.courseViewModel.getRelatedCourses(course_id: cat_id).subscribe(onNext: { (relatedCourses) in
             if let data = relatedCourses.data {
-                self.RecommendedCourses = data
+                //   self.RecommendedCourses = data
             }
         }, onError: { (error) in
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
+    
     func addToWishList(course_id: Int) {
         self.courseViewModel.postAddToWishList(course_id: course_id).subscribe(onNext: { (addWishListModel) in
             if addWishListModel.data == true  {
@@ -267,75 +199,144 @@ extension CourseDetailsVC {
             }).disposed(by: disposeBag)
     }
 }
+
+extension CourseDetailsVC: UICollectionViewDelegate {
+    func setupRecommendationsCollectionView() {
+        self.RecommendedCourses = ["1","2","3","4"]
+        let cellIdentifier = "CoursesCell"
+        self.RecommendationsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        self.RecommendationsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        self.courseViewModel.RecommendedCourses.bind(to: self.RecommendationsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: CoursesCell.self)) { index, element, cell in
+           // cell.config(imageURL: self.RecommendedCourses[index].mainImage ?? "" , CourseName: self.RecommendedCourses[index].name ?? "")
+        }.disposed(by: disposeBag)
+        self.RecommendationsCollectionView.rx.itemSelected.bind { (indexPath) in
+        }.disposed(by: disposeBag)
+    }
+    
+    func setupCoursesCollectionView() {
+        self.RecommendedCourses = ["1","2","3","4"]
+        let cellIdentifier = "CoursesCell"
+        self.CoursesCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        self.CoursesCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        self.courseViewModel.RecommendedCourses.bind(to: self.CoursesCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: CoursesCell.self)) { index, element, cell in
+            
+            // cell.config(courseName: self.Courses[index].name ?? "", courseInstractor: "\(self.Courses[index].instructor?.user?.firstName ?? "") \(self.Courses[index].instructor?.user?.lastName ??  "")", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: ((self.Courses[index].rate?.rounded(toPlaces: 1) ?? 0)), price: Double(self.Courses[index].price ?? "0") ?? 0.0, discountPrice: ((Double(self.Courses[index].price ?? "") ?? 0.0) - (Double(self.Courses[index].discount ?? "") ?? 0.0)), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
+            
+        }.disposed(by: disposeBag)
+    }
+    
+}
+
+extension CourseDetailsVC : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+           if collectionView == CoursesCollectionView {
+            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+            
+            let size:CGFloat = (collectionView.frame.size.width - space) / 1.3
+            return CGSize(width: size, height: collectionView.frame.size.height - 10)
+            
+        } else{
+            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+            
+            let size:CGFloat = (collectionView.frame.size.width - space) / 1.3
+            return CGSize(width: size, height: collectionView.frame.size.height - 10)
+            
+        }
+    }
+}
+
 extension CourseDetailsVC: UITableViewDelegate, UITableViewDataSource {
     func setupContentTableView() {
         self.ContentTableView.delegate = self
         self.ContentTableView.dataSource = self
+        self.requermentTableView.delegate = self
+        self.requermentTableView.dataSource = self
+        self.whatLearnTableView.delegate = self
+        self.whatLearnTableView.dataSource = self
+        self.feedBackTableView.delegate = self
+        self.feedBackTableView.dataSource = self
+        
         self.ContentTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        self.requermentTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: requermentIdentifier)
+        self.whatLearnTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: requermentIdentifier)
+        self.feedBackTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: feedBackIdentifier)
         self.ContentTableView.register(UINib(nibName: headerCellIdentifier, bundle: nil), forCellReuseIdentifier: headerCellIdentifier)
+        
         self.ContentTableView.rowHeight = UITableView.automaticDimension
         self.ContentTableView.estimatedRowHeight = UITableView.automaticDimension
         self.ContentTableView.sectionHeaderHeight = UITableView.automaticDimension
         self.ContentTableView.estimatedSectionHeaderHeight = UITableView.automaticDimension
         self.ContentTableView.invalidateIntrinsicContentSize()
         self.ContentTableView.layoutIfNeeded()
+        
+        self.feedBackTableView.rowHeight = UITableView.automaticDimension
+        self.feedBackTableView.estimatedRowHeight = UITableView.automaticDimension
+        self.feedBackTableView.invalidateIntrinsicContentSize()
+        self.feedBackTableView.layoutIfNeeded()
+        
+        self.requermentTableView.rowHeight = UITableView.automaticDimension
+        self.requermentTableView.estimatedRowHeight = UITableView.automaticDimension
+        self.requermentTableView.invalidateIntrinsicContentSize()
+        self.requermentTableView.layoutIfNeeded()
+         
+        self.whatLearnTableView.rowHeight = UITableView.automaticDimension
+        self.whatLearnTableView.estimatedRowHeight = UITableView.automaticDimension
+        self.whatLearnTableView.invalidateIntrinsicContentSize()
+        self.whatLearnTableView.layoutIfNeeded()
+        
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return  courseData?.chapters?.count ?? 0
+        if tableView == ContentTableView {
+        return  4 //courseData?.chapters?.count ?? 0
+        }else{
+        return  0
+        }
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: headerCellIdentifier) as? ContentHeaderCell else { return UITableViewCell()}
-        cell.config(StepHeaderContent: self.courseData?.chapters?[section].name ?? "")
+        if tableView == ContentTableView {
+        cell.config(StepHeaderContent:  "asd asda ssd d f d d  ")
+        }
         return cell
     }
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 45
-//    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return courseData?.chapters?[section].lessons?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CourseContentCell else { return UITableViewCell()}
-        
-        let lessons = self.courseData?.chapters?[indexPath.section].lessons
-        cell.config(StepContent: lessons?[indexPath.row].name ?? "", stepDuration: "5:20 mins")
-        return cell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseContentVC") as? CourseContentVC else { return }
-        main.progressName =  self.courseData?.chapters?[indexPath.section].name ?? ""
-        main.course_id = self.course_id
-        main.Reviews = self.courseData?.rates ?? []
-        main.price = self.courseData?.price ?? ""
-        main.courseName = self.courseData?.name ?? ""
-        main.courseDetails = self.courseData?.courseDescription ?? ""
-        main.progressDescription = self.courseData?.chapters?[indexPath.section].lessons?[indexPath.row].name ?? ""
-        main.videoURL = self.courseData?.chapters?[indexPath.section].lessons?[indexPath.row].videoURL ?? ""
-        self.navigationController?.pushViewController(main, animated: true)
-    }
-    
-}
 
-extension CourseDetailsVC: UICollectionViewDelegate {
-    func setupRecommendationsCollectionView() {
-        self.RecommendationsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
-        self.RecommendationsCollectionView.register(UINib(nibName: RecommendedCoursesCellIdentifier, bundle: nil), forCellWithReuseIdentifier: RecommendedCoursesCellIdentifier)
-        self.courseViewModel.RecommendedCourses.bind(to: self.RecommendationsCollectionView.rx.items(cellIdentifier: RecommendedCoursesCellIdentifier, cellType: RecommendationCoursesCell.self)) { index, element, cell in
-            cell.config(imageURL: self.RecommendedCourses[index].mainImage ?? "" , CourseName: self.RecommendedCourses[index].name ?? "")
-        }.disposed(by: disposeBag)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       // return courseData?.chapters?[section].lessons?.count ?? 0
         
-        self.RecommendationsCollectionView.rx.itemSelected.bind { (indexPath) in
-            self.getCourseDetails(course_id: self.RecommendedCourses[indexPath.row].id ?? 0)
-        }.disposed(by: disposeBag)
+        if tableView == ContentTableView {
+           return  3
+        }else if tableView == whatLearnTableView {
+           return  6
+        }else if tableView == requermentTableView {
+            return  6
+        }else if tableView == feedBackTableView {
+            return  2
+        }else{
+           return  0
+        }
     }
-}
-extension CourseDetailsVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-        
-        let size:CGFloat = (collectionView.frame.size.width - space) / 3
-        return CGSize(width: size, height: collectionView.frame.size.height - 10)
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == ContentTableView {
+         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CourseContentCell else { return UITableViewCell()}
+              // let lessons = self.courseData?.chapters?[indexPath.section].lessons
+               cell.config(StepContent: "asd dff g  gg  gg g ", stepDuration: "5:20 mins")
+        return cell
+        }else if tableView == requermentTableView {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: requermentIdentifier) as? RequirementsCell else { return UITableViewCell()}
+            cell.config(StepHeader : "String")
+            return cell
+        }else if tableView == whatLearnTableView {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: requermentIdentifier) as? RequirementsCell else { return UITableViewCell()}
+            cell.config(StepHeader : "String")
+            return cell
+        }else  {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: feedBackIdentifier) as? ReviewsCell else { return UITableViewCell()}
+            cell.config(UserImageURL: "" ,UserName : "hazem",UserRating : 0.0,UserComment : "hi sweety" )
+            return cell
+        }
     }
 }

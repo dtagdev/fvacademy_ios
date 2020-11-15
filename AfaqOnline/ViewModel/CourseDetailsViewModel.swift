@@ -13,12 +13,12 @@ import SVProgressHUD
 struct CourseDetailsViewModel {
 
     var CourseData = PublishSubject<[String]>()
-    var RecommendedCourses = PublishSubject<[TrendCourse]>()
+    var RecommendedCourses = PublishSubject<[String]>()
     
     func fetchCourseData(data: [String]) {
         self.CourseData.onNext(data)
     }
-    func fetchRecommendedCourses(data: [TrendCourse]) {
+    func fetchRecommendedCourses(data: [String]) {
         self.RecommendedCourses.onNext(data)
     }
     func showIndicator() {

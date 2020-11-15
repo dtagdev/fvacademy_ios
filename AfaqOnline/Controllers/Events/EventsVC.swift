@@ -123,6 +123,6 @@ extension EventsVC: UICollectionViewDelegateFlowLayout {
             let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
             
             let size:CGFloat = (collectionView.frame.size.width - space)
-            return CGSize(width: size, height: 120)
+            return CGSize(width: size, height: 140)
         }
 }

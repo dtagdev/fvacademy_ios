@@ -34,12 +34,12 @@ class ReviewsCell: UITableViewCell {
 
     }
     func config(UserImageURL: String, UserName: String, UserRating: Double, UserComment: String) {
-        if UserComment != "" {
-            guard let url = URL(string: "https://dev.fv.academy/public/files/" + UserComment) else { return }
+        if UserImageURL != "" {
+            guard let url = URL(string: "https://dev.fv.academy/public/files/" + UserImageURL) else { return }
 
-            self.UserImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "HomeCategory"))
+            self.UserImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "placeholder"))
         } else {
-            self.UserImageView.image = #imageLiteral(resourceName: "HomeCategory")
+            self.UserImageView.image = #imageLiteral(resourceName: "placeholder")
         }
         self.UserNameLabel.text = UserName
         self.UserRatingLabel.text = "\(UserRating)"

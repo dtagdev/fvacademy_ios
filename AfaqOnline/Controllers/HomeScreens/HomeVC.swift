@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+
 class HomeVC: UIViewController {
 
     @IBOutlet weak var AdsCollectionView: UICollectionView!
@@ -120,9 +121,7 @@ class HomeVC: UIViewController {
             main.type = "home"
             self.navigationController?.pushViewController(main, animated: true)
         case 2:
-            print("Events Action")
-            guard let main = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(withIdentifier: "EventsVC") as? EventsVC else { return }
-            main.previousScreen = "home"
+            guard let main = UIStoryboard(name: "Live", bundle: nil).instantiateViewController(withIdentifier: "LiveVC") as? LiveVC else { return }
             self.navigationController?.pushViewController(main, animated: true)
         case 3:
             print("Category Action")
@@ -130,15 +129,20 @@ class HomeVC: UIViewController {
             main.previousScreen = "home"
             self.navigationController?.pushViewController(main, animated: true)
         case 4:
-            print("Instuctor Action")
-            guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorsVC") as? InstructorsVC else { return }
+            guard let main = UIStoryboard(name: "Articles", bundle: nil).instantiateViewController(withIdentifier: "ArticalesVC") as? ArticalesVC else { return }
             self.navigationController?.pushViewController(main, animated: true)
+        case 5:
+            guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorsVC") as? InstructorsVC else { return }
+           self.navigationController?.pushViewController(main, animated: true)
+            
         default:
             break
             }
         }
     //}
     
+    
+
     @IBAction func instractorAction(_ sender: CustomButtons) {
         guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
            main.type = "Instructor"
@@ -249,11 +253,8 @@ extension HomeVC: UICollectionViewDelegate {
             cell.config(categoryImageURL: self.Categories[index].image ?? "", categoryName: self.Categories[index].name ?? "")
         }.disposed(by: disposeBag)
         self.CategoryCollectionView.rx.itemSelected.bind { (indexPath) in
-//            guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CoursesVC") as? CoursesVC else { return }
-//            main.category_id = self.Categories[indexPath.row].id ?? 0
-//            main.categoryName = self.Categories[indexPath.row].name ?? ""
-//            main.type = "category"
-//            self.navigationController?.pushViewController(main, animated: true)
+            guard let main = UIStoryboard(name: "Categories", bundle: nil).instantiateViewController(withIdentifier: "CategoriesDetailsVC") as? CategoriesDetailsVC else { return }
+            self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }
     func setupArticalCollectionView(){
@@ -264,9 +265,8 @@ extension HomeVC: UICollectionViewDelegate {
             cell.config(articalName: self.Articals[index].title ?? "", articalDesc: self.Articals[index].details ?? "", rating: ((self.Events[index].rate?.rounded(toPlaces: 1) ?? 0)), imageURL: self.Articals[index].mainImage ?? "")
         }.disposed(by: disposeBag)
         self.articalCollectionView.rx.itemSelected.bind { (indexPath) in
-            //guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailsVC") as? CourseDetailsVC else { return }
-         //   main.course_id = self.Courses[indexPath.row].id ?? 0
-          //  self.navigationController?.pushViewController(main, animated: true)
+            guard let main = UIStoryboard(name: "Articles", bundle: nil).instantiateViewController(withIdentifier: "ArticalesDetailsVC") as? ArticalesDetailsVC else { return }
+            self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     
     }
@@ -281,8 +281,7 @@ extension HomeVC: UICollectionViewDelegate {
             cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? "") \(instructorData?.lastName ??  "")",rating:((self.Instructors[index].rate?.rounded(toPlaces: 1) ?? 0)))
         }.disposed(by: disposeBag)
         self.InstructorsCollectionView.rx.itemSelected.bind { (indexPath) in
-            guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorDetailsVC") as? InstructorDetailsVC else { return }
-            main.instructor_id = self.Instructors[indexPath.row].id ?? 0
+            guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstractorProfileVc") as? InstractorProfileVc else { return }
             self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }

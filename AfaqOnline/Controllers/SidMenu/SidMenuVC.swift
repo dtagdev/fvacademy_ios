@@ -89,7 +89,7 @@ class SideMenuVC : UIViewController {
                 self.navigationController?.pushViewController(main, animated: true)
             case "Password":
                 print("")
-            case "Lang":
+            case "Setting":
                 guard let window = UIApplication.shared.keyWindow else { return }
                 guard let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LanguageScreenVC") as? LanguageScreenVC else { return }
                 main.type = "home"
@@ -179,29 +179,26 @@ extension SideMenuVC: UITableViewDelegate {
         
         if token != "" {
             self.Items = [
-                SideMenuModel(Name: "My courses", Id: "courses", image: #imageLiteral(resourceName: "profile2")),
-                 SideMenuModel(Name: "My Wishlist", Id: "Wishlist", image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "My Orders", Id: "Order",  image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "My Certifcates", Id: "Certifcates", image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "Inbox", Id: "Inbox", image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "Notifications", Id: "Notification", image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "Change Password", Id: "Password", image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "Change Language", Id: "Lang", image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "News & Forums", Id: "News", image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "Contact Us", Id: "ContactUs", image: #imageLiteral(resourceName: "profile2")),
+                SideMenuModel(Name: "My courses", Id: "courses", image: #imageLiteral(resourceName: "reading-book")),
+                 SideMenuModel(Name: "My Wishlist", Id: "Wishlist", image: #imageLiteral(resourceName: "favorite-black-48dp")),
+                SideMenuModel(Name: "My Certifcates", Id: "Certifcates", image: #imageLiteral(resourceName: "graduation-hat")),
+                SideMenuModel(Name: "Inbox", Id: "Inbox", image: #imageLiteral(resourceName: "inbox")),
+                SideMenuModel(Name: "Notifications", Id: "Notification", image: #imageLiteral(resourceName: "notifications-black-48dp")),
+                SideMenuModel(Name: "About", Id: "About", image: #imageLiteral(resourceName: "info-black-48dp")),
+                SideMenuModel(Name: "Setting", Id: "Setting", image: #imageLiteral(resourceName: "settings-black-48dp")),
+                SideMenuModel(Name: "Help", Id: "Help", image: #imageLiteral(resourceName: "help-black-48dp")),
+
                 
             ]
-            self.Items.append(SideMenuModel(Name: "Log out", Id: "Logout",image: #imageLiteral(resourceName: "profile2")))
+            self.Items.append(SideMenuModel(Name: "Log out", Id: "Logout",image: #imageLiteral(resourceName: "Group 175")))
         } else {
             self.Items = [
-                SideMenuModel(Name: "Notifications", Id: "Notification", image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "About", Id: "About", image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "Privacy", Id: "Privacy", image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "Terms & Conditions", Id: "Terms",image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "Setting", Id: "Lang",image: #imageLiteral(resourceName: "profile2")),
-                SideMenuModel(Name: "help", Id: "help", image: #imageLiteral(resourceName: "profile2")),
+                SideMenuModel(Name: "Notifications", Id: "Notification", image: #imageLiteral(resourceName: "notifications-black-48dp")),
+                SideMenuModel(Name: "About", Id: "About", image: #imageLiteral(resourceName: "info-black-48dp")),
+                SideMenuModel(Name: "Setting", Id: "Setting",image: #imageLiteral(resourceName: "settings-black-48dp")),
+                SideMenuModel(Name: "help", Id: "help", image: #imageLiteral(resourceName: "help-black-48dp")),
             ]
-            self.Items.append(SideMenuModel(Name: "Sign Up", Id: "SignUp",image: #imageLiteral(resourceName: "profile2")))
+            self.Items.append(SideMenuModel(Name: "Sign Up", Id: "SignUp",image: #imageLiteral(resourceName: "Group 175")))
         }
         self.ProfileTableView.rx.setDelegate(self).disposed(by: disposeBag)
         self.ProfileTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
