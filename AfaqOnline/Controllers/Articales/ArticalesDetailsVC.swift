@@ -19,23 +19,32 @@ import UIKit
 import StepProgressBar
 import RxSwift
 import RxCocoa
-import Charts
+import Cosmos
 
 class ArticalesDetailsVC : UIViewController {
 
     @IBOutlet weak var CourseImageView: UIImageView!
-  
     @IBOutlet weak var courseNameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var DescriptionTV: UITextView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var feedBackTableView: UITableView!
-    @IBOutlet weak var chaerView : BarChartView!
+    @IBOutlet weak var instractorName: UILabel!
+    @IBOutlet weak var instrustorNameLabel: UILabel!
+    @IBOutlet weak var instrustorTotatCourseLabel: UILabel!
+    @IBOutlet weak var instrustorStudentAttendedLabel: UILabel!
+    @IBOutlet weak var instrustorRateLabel: UILabel!
+    @IBOutlet weak var instrustorRateview: CosmosView!
+    @IBOutlet weak var instrustorImage: UIImageView!
+    
+    @IBOutlet weak var articalNameLabel: UILabel!
+
 
     
-
+    
     private var courseViewModel = CourseDetailsViewModel()
-    
+    var Articles : Article?
+
     var maxHeight: CGFloat = UIScreen.main.bounds.size.height
     var disposeBag = DisposeBag()
    
@@ -62,7 +71,21 @@ class ArticalesDetailsVC : UIViewController {
             self.backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         }
         setupContentTableView()
-        setData()
+        
+        guard let url = URL(string: "https://dev.fv.academy/public/files/" + (Articles?.mainImage ?? "")) else  { return }
+            self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "coursePicture"))
+        self.articalNameLabel.text = Articles?.title ?? ""
+        self.instractorName.text = "\(Articles?.instructor?.user?.firstName ?? "") \(Articles?.instructor?.user?.lastName ??  "")"
+        self.ratingLabel.text = "\(3)"
+        self.instrustorNameLabel.text = "\(Articles?.instructor?.user?.firstName ?? "") \(Articles?.instructor?.user?.lastName ??  "")"
+        //instrustorTotatCourseLabel.text = ""
+        //instrustorStudentAttendedLabel.text = ""
+        DescriptionTV.text = Articles?.details ?? ""
+        self.instrustorRateLabel.text = "(\(Articles?.instructor?.rates?.count ?? 0))"
+        self.instrustorRateview.rating = Articles?.instructor?.rate ?? 0.0
+        guard let instractorUrl = URL(string: "https://dev.fv.academy/public/files/" + (Articles?.instructor?.image ?? "") ) else { return }
+      self.instrustorImage.kf.setImage(with: instractorUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
+
     }
 
         
@@ -74,6 +97,7 @@ class ArticalesDetailsVC : UIViewController {
     
     @IBAction func instractorAction(_ sender: UIButton) {
         guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstractorProfileVc") as? InstractorProfileVc else { return }
+        main.id = Articles?.instructor?.id ?? 0 
         self.navigationController?.pushViewController(main, animated: true)
     }
     
@@ -116,36 +140,15 @@ extension ArticalesDetailsVC : UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  3
+        return Articles?.comments?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: feedBackIdentifier) as? ReviewsCell else { return UITableViewCell()}
-       cell.config(UserImageURL: "" ,UserName : "hazem",UserRating : 0.0, UserComment : "hi sweety" )
+        cell.config(UserImageURL: "" ,UserName : "hazem",UserRating : 0.0, UserComment : Articles?.comments?[indexPath.row].comment ?? "" )
         cell.rateView.isHidden = true
         return cell
         
     }
 }
 
-extension ArticalesDetailsVC : ChartViewDelegate {
-   
-    
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print("hazem")
-    }
-    func setData(){
-        let yValue : [BarChartDataEntry] = [
-             BarChartDataEntry(x: 10, y: 0),
-             BarChartDataEntry(x: 20, y: 0),
-             BarChartDataEntry(x: 30, y: 0),
-             BarChartDataEntry(x: 40, y: 0),
-             BarChartDataEntry(x: 50, y: 0),
-             ]
-        
-        let set1 = BarChartDataSet(entries: yValue)
-        let data = BarChartData(dataSet: set1)
-        self.chaerView.data = data
-    }
-    
-}

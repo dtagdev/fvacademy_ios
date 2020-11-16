@@ -19,7 +19,7 @@ class CoursesCell: CustomCollectionViewCell {
     @IBOutlet weak var CourseTimeLabel: CustomLabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
-    
+    @IBOutlet weak var liveView: UIView!
     static var videoPlayer: AVPlayer? = nil
     var videoPlayerLayer: AVPlayerLayer? = nil
     var isVideoPlaying = false
@@ -83,5 +83,4 @@ class CoursesCell: CustomCollectionViewCell {
     @IBAction func GoForDetailsAction(_ sender: UIButton) {
         openDetailsAction?()
     }
-    
 }

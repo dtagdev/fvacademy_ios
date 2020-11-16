@@ -118,6 +118,9 @@
                                 <state key="normal" title="View profile">
                                     <color key="titleColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="GoForDetailsAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ymX-QO-3Ev"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xr7-zn-Tps">
                                 <rect key="frame" x="84.5" y="339.5" width="675" height="0.5"/>

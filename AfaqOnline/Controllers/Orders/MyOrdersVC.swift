@@ -92,8 +92,8 @@ extension MyOrdersVC: UITableViewDelegate {
         OrdersTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         self.ordersVM.Orders.bind(to: self.OrdersTableView.rx.items(cellIdentifier: cellIdentifier, cellType: WishlistCell.self)) { index, element, cell in
 
-            cell.config(InstructorImageUrl: self.Orders[index].mainImage ?? "" , CourseName: self.Orders[index].name ?? "", CourseDescription: self.Orders[index].details ?? "", CoursePrice: Double(self.Orders[index].price ?? "") ?? 0.0, discountedPrice: ((Double(self.Orders[index].price ?? "") ?? 0.0 ) - (Double(self.Orders[index].discount ?? "") ?? 0.0)), EnrolledUserImageURLs: [])
-            cell.PriceView.isHidden = true
+//            cell.config(InstructorImageUrl: self.Orders[index].mainImage ?? "" , CourseName: self.Orders[index].name ?? "", CourseDescription: self.Orders[index].details ?? "", CoursePrice: Double(self.Orders[index].price ?? "") ?? 0.0, discountedPrice: ((Double(self.Orders[index].price ?? "") ?? 0.0 ) - (Double(self.Orders[index].discount ?? "") ?? 0.0)), EnrolledUserImageURLs: [])
+//            cell.PriceView.isHidden = true
         }.disposed(by: disposeBag)
         self.OrdersTableView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailsVC") as? CourseDetailsVC else { return }

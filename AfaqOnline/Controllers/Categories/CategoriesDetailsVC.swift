@@ -123,10 +123,10 @@ extension CategoriesDetailsVC: UICollectionViewDelegate {
     }
     
     func setupEventsCollectionView() {
-        let cellIdentifier = "EventsCell"
+        let cellIdentifier = "CoursesCell"
         self.EventsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.EventsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-        self.homeViewModel.Events.bind(to: self.EventsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: EventsCell.self)) { index, element, cell in
+        self.homeViewModel.Events.bind(to: self.EventsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: CoursesCell.self)) { index, element, cell in
           
             //let dis =   (Double(self.Events[index].discount ?? "") ?? 0.0)
             //let price = (Double(self.Events[index].price ?? "") ?? 0.0)

@@ -12,7 +12,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
-
+import Cosmos
 class InstractorProfileVc : UIViewController {
 
     @IBOutlet weak var CoursesCollectionView: CustomCollectionView!
@@ -22,9 +22,20 @@ class InstractorProfileVc : UIViewController {
     @IBOutlet weak var TrendingButton: UIButton!
     @IBOutlet weak var InstructorButton: UIButton!
     @IBOutlet weak var EventsButton: UIButton!
+    
+    @IBOutlet weak var instrustorNameLabel: UILabel!
+    @IBOutlet weak var instrustorNameHeaderLabel: UILabel!
+      @IBOutlet weak var instrustorTotatCourseLabel: UILabel!
+      @IBOutlet weak var instrustorStudentAttendedLabel: UILabel!
+      @IBOutlet weak var instrustorRateLabel: UILabel!
+      @IBOutlet weak var instrustorRateview: CosmosView!
+      @IBOutlet weak var instrustorImage: UIImageView!
+     @IBOutlet weak var instrustorDetails : UITextView!
 
     private let homeViewModel = HomeViewModel()
+    private let instructorViewModel = InstructorsViewModel()
     var disposeBag = DisposeBag()
+    var id  = Int()
     var Courses = [TrendCourse]() {
         didSet {
             DispatchQueue.main.async {
@@ -48,6 +59,7 @@ class InstractorProfileVc : UIViewController {
         setupAllCoursesCollectionView()
         setupAttendLiveCollectionView()
         self.getHomeData()
+        self.getInstructorDetails(instructor_id: id)
         self.homeViewModel.showIndicator()
         
      }
@@ -94,6 +106,28 @@ extension InstractorProfileVc {
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
+    
+    func getInstructorDetails(instructor_id: Int) {
+        self.instructorViewModel.getInstructorDetails(instructor_id: instructor_id).subscribe(onNext: { (InstructorModel) in
+            if let data = InstructorModel.data {
+                self.instructorViewModel.dismissIndicator()
+                let user = data.user
+                self.instrustorDetails.text = data.details ?? "" 
+                self.instrustorNameLabel.text = "\(user?.firstName ?? "") \(user?.lastName ??  "")"
+                self.instrustorNameHeaderLabel.text =  "\(user?.firstName ?? "") \(user?.lastName ??  "")"
+                self.instrustorTotatCourseLabel.text = "A total of \(data.total_courses ?? 0) Courses & \(data.total_events ?? 0) Lives"
+            //self.instrustorStudentAttendedLabel.text = ""
+            self.instrustorRateLabel.text = "(\(data.rates?.count ?? 0))"
+            self.instrustorRateview.rating = data.rate ?? 0.0
+            guard let instractorUrl = URL(string: "https://dev.fv.academy/public/files/" + (data.image ?? "") ) else { return }
+          self.instrustorImage.kf.setImage(with: instractorUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
+                
+            }
+        }, onError: { (error) in
+            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+            }).disposed(by: disposeBag)
+    }
+    
 }
 
 

@@ -17,6 +17,7 @@ class RequirementsCell: UITableViewCell {
         // Initialization code
         ContentHeaderLabel.adjustsFontSizeToFitWidth = true
         ContentHeaderLabel.minimumScaleFactor = 0.5
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

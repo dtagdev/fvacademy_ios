@@ -17,12 +17,11 @@ class CartCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.CourseDetailsTV.isScrollEnabled = false
-        CourseNameLabel.adjustsFontSizeToFitWidth = true
-        CourseNameLabel.minimumScaleFactor = 0.5
-        priceLabel.adjustsFontSizeToFitWidth = true
-        priceLabel.minimumScaleFactor = 0.5
+//        self.CourseDetailsTV.isScrollEnabled = false
+//        CourseNameLabel.adjustsFontSizeToFitWidth = true
+//        CourseNameLabel.minimumScaleFactor = 0.5
+//        priceLabel.adjustsFontSizeToFitWidth = true
+//        priceLabel.minimumScaleFactor = 0.5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

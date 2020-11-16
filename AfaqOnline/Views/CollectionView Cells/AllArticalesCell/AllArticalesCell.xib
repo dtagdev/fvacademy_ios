@@ -57,7 +57,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="wuZ-3o-bBN">
-                                <rect key="frame" x="171" y="32" width="193.5" height="35.5"/>
+                                <rect key="frame" x="171" y="8" width="193.5" height="35.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaM-IE-CTv">
                                         <rect key="frame" x="0.0" y="0.0" width="193.5" height="18.5"/>
@@ -116,7 +116,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sA1-dx-IZg" customClass="CustomView" customModule="Al_Academya" customModuleProvider="target">
-                                <rect key="frame" x="279" y="83.5" width="100" height="25"/>
+                                <rect key="frame" x="279" y="59.5" width="100" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1h-He-i1Z">
                                         <rect key="frame" x="28.5" y="2" width="38.5" height="21"/>
@@ -135,6 +135,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rx2-aI-lxm">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="GoForDetailsAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="QmJ-2F-SM3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="0.95999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -155,7 +158,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="wuZ-3o-bBN" firstAttribute="top" secondItem="NZ3-AN-uUr" secondAttribute="top" constant="32" id="1Qn-HR-yav"/>
+                            <constraint firstItem="wuZ-3o-bBN" firstAttribute="top" secondItem="NZ3-AN-uUr" secondAttribute="top" constant="8" id="1Qn-HR-yav"/>
                             <constraint firstAttribute="trailing" secondItem="sA1-dx-IZg" secondAttribute="trailing" constant="8" id="D9o-oM-Sv9"/>
                             <constraint firstItem="uBI-2n-hBT" firstAttribute="width" secondItem="NZ3-AN-uUr" secondAttribute="width" multiplier="0.400172" id="EHf-09-Fwu"/>
                             <constraint firstItem="wuZ-3o-bBN" firstAttribute="leading" secondItem="uBI-2n-hBT" secondAttribute="trailing" constant="16" id="RfL-ZB-XMy"/>
@@ -202,6 +205,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="403" height="151"/>
+            <connections>
+                <outlet property="CourseImageView" destination="kqJ-Bt-ifh" id="2Oh-JU-4em"/>
+                <outlet property="CourseNameLabel" destination="NaM-IE-CTv" id="zy7-yd-iOs"/>
+                <outlet property="instractorName" destination="3de-pR-ktV" id="nza-0E-v52"/>
+                <outlet property="ratingLabel" destination="N3F-iZ-HG4" id="jR4-1R-PQh"/>
+            </connections>
             <point key="canvasLocation" x="-39.855072463768117" y="130.24553571428572"/>
         </collectionViewCell>
     </objects>

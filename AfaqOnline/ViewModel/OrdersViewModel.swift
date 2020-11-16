@@ -14,13 +14,13 @@ import SVProgressHUD
 struct OrdersViewModel {
 
     var Orders = PublishSubject<[MyCoursesData]>()
-    var CartItems = PublishSubject<[Cart]>()
+    var CartItems = PublishSubject<[String]>()
     
     func fetchOrders(data: [MyCoursesData]) {
         self.Orders.onNext(data)
     }
 
-    func fetchCartItems(items: [Cart]) {
+    func fetchCartItems(items: [String]) {
         self.CartItems.onNext(items)
     }
     func showIndicator() {

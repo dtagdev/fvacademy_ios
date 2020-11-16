@@ -217,7 +217,10 @@ extension HomeVC: UICollectionViewDelegate {
         }.disposed(by: disposeBag)
         self.CoursesCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailsVC") as? CourseDetailsVC else { return }
-            main.course_id = self.Courses[indexPath.row].id ?? 0
+              DispatchQueue.main.async {
+                main.course_id = self.Courses[indexPath.row].id ?? 0
+                    }
+            
             self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }
@@ -282,6 +285,7 @@ extension HomeVC: UICollectionViewDelegate {
         }.disposed(by: disposeBag)
         self.InstructorsCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstractorProfileVc") as? InstractorProfileVc else { return }
+            main.id = self.Instructors[indexPath.row].id ?? 0
             self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }

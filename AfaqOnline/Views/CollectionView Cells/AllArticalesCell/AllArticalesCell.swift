@@ -25,16 +25,16 @@ class AllArticalesCell : CustomCollectionViewCell {
     }
 
 
-    func config(courseName: String, courseInstractor: String, rating: Double, imageURL: String) {
+    func config(articalName: String, articalInstractor: String, rating: Double, imageURL: String) {
+        
         if imageURL != "" {
             self.CourseImageView.isHidden = false
-            CoursesCell.videoPlayer?.pause()
            guard let url = URL(string: "https://dev.fv.academy/public/files/" + imageURL) else  { return }
             self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "coursePicture"))
         }
         
-        self.CourseNameLabel.text = courseName
-        self.instractorName.text = courseInstractor
+        self.CourseNameLabel.text = articalName
+        self.instractorName.text = articalName
         self.ratingLabel.text = "\(rating)"
         
     }//END of Config

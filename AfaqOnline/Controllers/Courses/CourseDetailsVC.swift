@@ -10,30 +10,36 @@ import UIKit
 import StepProgressBar
 import RxSwift
 import RxCocoa
+import Cosmos
 
 class CourseDetailsVC: UIViewController {
 
     @IBOutlet weak var CourseImageView: UIImageView!
-  
-    @IBOutlet weak var price_discountLabel: UILabel!
     @IBOutlet weak var courseNameLabel: UILabel!
     @IBOutlet weak var courseTimeLabel: CustomLabel!
+    @IBOutlet weak var courseTime2Label: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var courseRateview: CosmosView!
     @IBOutlet weak var RecommendationsCollectionView: UICollectionView!
     @IBOutlet weak var CoursesCollectionView: CustomCollectionView!
-    @IBOutlet weak var courseTypeLabel: CustomLabel!
     @IBOutlet weak var WishlistButton: UIButton!
     @IBOutlet weak var DescriptionTV: UITextView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var addToCartButton: UIButton!
- 
     @IBOutlet weak var requermentTableView: UITableView!
-    @IBOutlet weak var whatLearnTableView: UITableView!
     @IBOutlet weak var ContentTableView: UITableView!
-    @IBOutlet weak var feedBackTableView: UITableView!
+    @IBOutlet weak var langLabel: UILabel!
+    @IBOutlet weak var studentLabel: UILabel!
+    @IBOutlet weak var instrustorNameLabel: UILabel!
+    @IBOutlet weak var instrustorTotatCourseLabel: UILabel!
+    @IBOutlet weak var instrustorStudentAttendedLabel: UILabel!
+    @IBOutlet weak var instrustorRateLabel: UILabel!
+    @IBOutlet weak var instrustorRateview: CosmosView!
+    @IBOutlet weak var instrustorImage: UIImageView!
+    @IBOutlet weak var courseInstrustorNameLabel: UILabel!
+    @IBOutlet weak var totalLessonLabel: UILabel!
 
-    
-
+ 
     private var courseViewModel = CourseDetailsViewModel()
     var maxHeight: CGFloat = UIScreen.main.bounds.size.height
     var disposeBag = DisposeBag()
@@ -51,6 +57,7 @@ class CourseDetailsVC: UIViewController {
             }
         }
     }
+    
     var RecommendedCourses = [String]() {
         didSet {
             DispatchQueue.main.async {
@@ -58,11 +65,13 @@ class CourseDetailsVC: UIViewController {
             }
         }
     }
+    
     var price = String()
     var discount = String()
     var course_id = Int()
     var purchasedFlag = Bool()
     var wishlistFlag = Bool()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,8 +84,9 @@ class CourseDetailsVC: UIViewController {
 
         setupContentTableView()
         setupRecommendationsCollectionView()
-      //  self.getCourseDetails(course_id: course_id)
+       self.getCourseDetails(course_id: course_id)
         setupCoursesCollectionView()
+        courseViewModel.showIndicator()
     }
  
     @IBAction func AddToWishlistAction(_ sender: UIButton) {
@@ -113,44 +123,55 @@ class CourseDetailsVC: UIViewController {
     @IBAction func backAction(_ sender: UIButton) {
           self.navigationController?.popViewController(animated: true)
       }
-
     
     @IBAction func instractorAction(_ sender: UIButton) {
         guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstractorProfileVc") as? InstractorProfileVc else { return }
+        main.id = courseData?.instructor?.id ?? 0 
         self.navigationController?.pushViewController(main, animated: true)
     }
-    
-    
-    
 }
 
 extension CourseDetailsVC {
     func getCourseDetails(course_id: Int) {
         self.courseViewModel.getCourseDetails(course_id: course_id).subscribe(onNext: { (courseDetails) in
             if let data =  courseDetails.data {
+                 self.courseViewModel.dismissIndicator()
                 self.courseData = data
-
                 self.courseNameLabel.text = data.name ?? ""
-                    // self.price_discountLabel.attributedText = NSAttributedString(attributedString: (data.price ?? "").strikeThrough()) + NSAttributedString(string: "\n\((Double(data.price ?? "") ?? 0.0) - (Double(data.discount ?? "") ?? 0.0)) SAR")
-//                self.price = "\((Double(data.price ?? "") ?? 0.0))"
-//                self.discount = "\(Double(data.discount ?? "") ?? 0.0)"
-//                self.ratingLabel.text = "\((data.rate ?? 0))"
-//                self.DescriptionTV.text = data.courseDescription
+                //self.price_discountLabel.attributedText = NSAttributedString(attributedString: (data.price ?? "").strikeThrough()) + NSAttributedString(string: "\n\((Double(data.price ?? "") ?? 0.0) - (Double(data.discount ?? "") ?? 0.0)) SAR")
                 
+
+                self.instrustorNameLabel.text = "\(data.instructor?.user?.firstName ?? "") \(data.instructor?.user?.lastName ??  "")"
+                     
+                //instrustorTotatCourseLabel.text = ""
+                //instrustorStudentAttendedLabel.text = ""
+                self.instrustorRateLabel.text = "(\(data.instructor?.rates?.count ?? 0))"
+                self.instrustorRateview.rating = data.instructor?.rate ?? 0.0
+                
+                guard let instractorUrl = URL(string: "https://dev.fv.academy/public/files/" + (data.instructor?.image ?? "") ) else { return }
+                self.instrustorImage.kf.setImage(with: instractorUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
+
+                self.price = "\((Double(data.price ?? "") ?? 0.0))"
+                self.discount = "\(Double(data.discount ?? "") ?? 0.0)"
+                self.courseRateview.rating = data.rate ?? 0
+                self.ratingLabel.text = "(\((data.rates?.count ?? 0)))"
+                self.DescriptionTV.text = data.courseDescription
+                self.totalLessonLabel.text = "\(data.chaptersCount ?? 0) Sections \(data.chaptersLessonCount ?? 0) Lessons Total of \(data.time ?? "") mins."
                 guard let url = URL(string: "https://dev.fv.academy/public/files/" + (data.mainImage ?? "") ) else { return }
-                 self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "DetailsImage"))
-//                if data.isWishlist == true {
-//                    self.wishlistFlag = true
-//                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
-//                    self.WishlistButton.isEnabled = false
-//                } else {
-//                    self.wishlistFlag = false
-//                    self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkUnSelected"), for: .normal)
-//                }
+                self.CourseImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "DetailsImage"))
+                if data.isWishlist == true {
+                    self.wishlistFlag = true
+                    self.WishlistButton.setImage(#imageLiteral(resourceName: "icons8-heart-48"), for: .normal)
+                    self.WishlistButton.isEnabled = false
+                } else {
+                    self.wishlistFlag = false
+                    self.WishlistButton.setImage(#imageLiteral(resourceName: "icons8-heart-50"), for: .normal)
+                }
                 
                 self.courseTimeLabel.text = "\(data.time ?? "") mins"
+                self.courseTime2Label.text = "\(data.time ?? "") mins"
                 self.getRelatedCourses(cat_id: data.category?.id ?? 0)
-                self.courseTypeLabel.text = data.type ?? ""
+               self.courseInstrustorNameLabel.text = "\(data.instructor?.user?.firstName ?? "") \(data.instructor?.user?.lastName ??  "")"
             }
         }, onError: { (error) in
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
@@ -171,7 +192,7 @@ extension CourseDetailsVC {
         self.courseViewModel.postAddToWishList(course_id: course_id).subscribe(onNext: { (addWishListModel) in
             if addWishListModel.data == true  {
                 displayMessage(title: "", message: AddToWishListMessage.localized, status: .success, forController: self)
-                self.WishlistButton.setImage(#imageLiteral(resourceName: "bookmarkSelected"), for: .normal)
+                self.WishlistButton.setImage(#imageLiteral(resourceName: "icons8-heart-48"), for: .normal)
                 self.WishlistButton.isEnabled = false
             }else{
             self.WishlistButton.isEnabled = true
@@ -224,7 +245,6 @@ extension CourseDetailsVC: UICollectionViewDelegate {
             
         }.disposed(by: disposeBag)
     }
-    
 }
 
 extension CourseDetailsVC : UICollectionViewDelegateFlowLayout {
@@ -248,21 +268,18 @@ extension CourseDetailsVC : UICollectionViewDelegateFlowLayout {
 }
 
 extension CourseDetailsVC: UITableViewDelegate, UITableViewDataSource {
+   
     func setupContentTableView() {
         self.ContentTableView.delegate = self
         self.ContentTableView.dataSource = self
         self.requermentTableView.delegate = self
         self.requermentTableView.dataSource = self
-        self.whatLearnTableView.delegate = self
-        self.whatLearnTableView.dataSource = self
-        self.feedBackTableView.delegate = self
-        self.feedBackTableView.dataSource = self
-        
+
         self.ContentTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        self.requermentTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: requermentIdentifier)
-        self.whatLearnTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: requermentIdentifier)
-        self.feedBackTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: feedBackIdentifier)
+       
         self.ContentTableView.register(UINib(nibName: headerCellIdentifier, bundle: nil), forCellReuseIdentifier: headerCellIdentifier)
+        
+        self.requermentTableView.register(UINib(nibName: requermentIdentifier, bundle: nil), forCellReuseIdentifier: requermentIdentifier)
         
         self.ContentTableView.rowHeight = UITableView.automaticDimension
         self.ContentTableView.estimatedRowHeight = UITableView.automaticDimension
@@ -270,72 +287,44 @@ extension CourseDetailsVC: UITableViewDelegate, UITableViewDataSource {
         self.ContentTableView.estimatedSectionHeaderHeight = UITableView.automaticDimension
         self.ContentTableView.invalidateIntrinsicContentSize()
         self.ContentTableView.layoutIfNeeded()
-        
-        self.feedBackTableView.rowHeight = UITableView.automaticDimension
-        self.feedBackTableView.estimatedRowHeight = UITableView.automaticDimension
-        self.feedBackTableView.invalidateIntrinsicContentSize()
-        self.feedBackTableView.layoutIfNeeded()
-        
+    
         self.requermentTableView.rowHeight = UITableView.automaticDimension
         self.requermentTableView.estimatedRowHeight = UITableView.automaticDimension
         self.requermentTableView.invalidateIntrinsicContentSize()
         self.requermentTableView.layoutIfNeeded()
-         
-        self.whatLearnTableView.rowHeight = UITableView.automaticDimension
-        self.whatLearnTableView.estimatedRowHeight = UITableView.automaticDimension
-        self.whatLearnTableView.invalidateIntrinsicContentSize()
-        self.whatLearnTableView.layoutIfNeeded()
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView == ContentTableView {
-        return  4 //courseData?.chapters?.count ?? 0
-        }else{
-        return  0
-        }
+        return courseData?.chapters?.count ?? 1
+
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: headerCellIdentifier) as? ContentHeaderCell else { return UITableViewCell()}
         if tableView == ContentTableView {
-        cell.config(StepHeaderContent:  "asd asda ssd d f d d  ")
+        cell.config(StepHeaderContent:  "asd asda ssd dfdd")
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       // return courseData?.chapters?[section].lessons?.count ?? 0
         
         if tableView == ContentTableView {
-           return  3
-        }else if tableView == whatLearnTableView {
-           return  6
-        }else if tableView == requermentTableView {
-            return  6
-        }else if tableView == feedBackTableView {
-            return  2
-        }else{
-           return  0
+           return  courseData?.chapters?[section].lessons?.count ?? 0
+        }else {
+            return  courseData?.requirements?.count ?? 0
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == ContentTableView {
          guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CourseContentCell else { return UITableViewCell()}
-              // let lessons = self.courseData?.chapters?[indexPath.section].lessons
-               cell.config(StepContent: "asd dff g  gg  gg g ", stepDuration: "5:20 mins")
+               let lessons = self.courseData?.chapters?[indexPath.section].lessons
+               cell.config(StepContent: "asd dffg", stepDuration: "5:20 mins")
         return cell
-        }else if tableView == requermentTableView {
+        }else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: requermentIdentifier) as? RequirementsCell else { return UITableViewCell()}
             cell.config(StepHeader : "String")
-            return cell
-        }else if tableView == whatLearnTableView {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: requermentIdentifier) as? RequirementsCell else { return UITableViewCell()}
-            cell.config(StepHeader : "String")
-            return cell
-        }else  {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: feedBackIdentifier) as? ReviewsCell else { return UITableViewCell()}
-            cell.config(UserImageURL: "" ,UserName : "hazem",UserRating : 0.0,UserComment : "hi sweety" )
             return cell
         }
     }

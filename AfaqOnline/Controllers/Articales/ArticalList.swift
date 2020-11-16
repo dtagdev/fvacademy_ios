@@ -13,7 +13,7 @@ import RxCocoa
 import RxSwift
 
 
-class ArticalListVC: UIViewController {
+class ArticalListVC : UIViewController {
 
     @IBOutlet weak var searchTF: CustomTextField!
     @IBOutlet weak var OrdersTableView: UITableView!
@@ -43,7 +43,7 @@ class ArticalListVC: UIViewController {
         searchTF.delegate = self
         self.hideKeyboardWhenTappedAround()
         self.ArticleVM.showIndicator()
-        getMyCourses()
+      //  getMyCourses()
     }
     
 
@@ -112,17 +112,4 @@ extension ArticalListVC: UITableViewDelegate {
         return 90
     }
 }
-extension ArticalListVC {
-    func getMyCourses() {
-        self.ArticleVM.getMyArtical().subscribe(onNext: { (myArticalModel) in
-            if let error = myArticalModel.errors {
-                displayMessage(title: "", message: error, status: .error, forController: self)
-            } else if let myArticle = myArticalModel.data?.articles {
-                self.ArticleVM.dismissIndicator()
-                self.Articles = myArticle
-            }
-        }, onError: { (error) in
-            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-            }).disposed(by: disposeBag)
-    }
-}
+

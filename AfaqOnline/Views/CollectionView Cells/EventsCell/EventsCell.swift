@@ -19,6 +19,8 @@ class EventsCell: CustomCollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var instractorName: UILabel!
+    @IBOutlet weak var liveView: UIView!
+
     
     static var videoPlayer: AVPlayer? = nil
     var videoPlayerLayer: AVPlayerLayer? = nil

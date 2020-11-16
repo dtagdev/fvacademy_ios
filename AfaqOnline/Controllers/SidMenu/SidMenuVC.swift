@@ -131,7 +131,9 @@ class SideMenuVC : UIViewController {
             case "Login":
                 guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
-                
+                case "SignUp":
+                guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
+                self.navigationController?.pushViewController(main, animated: true)
             default:
                 break
             }

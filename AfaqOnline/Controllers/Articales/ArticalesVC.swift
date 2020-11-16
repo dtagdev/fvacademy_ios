@@ -26,16 +26,17 @@ class ArticalesVC: UIViewController {
     @IBOutlet weak var CategoryTitleLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     
-    private let coursesViewModel = CoursesViewModel()
 
     var disposeBag = DisposeBag()
-    var Courses = [TrendCourse]() {
+    var Articles = [Article]() {
         didSet {
             DispatchQueue.main.async {
-                self.coursesViewModel.fetchCourses(Courses: self.Courses)
+                self.ArticleVM.fetchArtical(data: self.Articles)
             }
         }
     }
+    var ArticleVM = ArticalViewModel()
+    
     var categoryName = String()
     var currentPage = 1
     var loading = false
@@ -51,13 +52,9 @@ class ArticalesVC: UIViewController {
             self.backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         }
         setupCoursesCollectionView()
-        self.CategoryTitleLabel.text = categoryName + " Courses"
-        self.getAllCourses(lth: 0,htl: 0,rate : 0)
-        
         self.hideKeyboardWhenTappedAround()
-        
-        
-        self.coursesViewModel.showIndicator()
+        self.ArticleVM.showIndicator()
+        getMyArticals()
     }
     @IBAction func backAction(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -66,72 +63,25 @@ class ArticalesVC: UIViewController {
 
 }
 
-
-extension ArticalesVC {
-    //MARK:- GET Courses
-    func getCourses(category_id: Int) {
-        coursesViewModel.getCategoryCourses(category_id: category_id).subscribe(onNext: { (coursesModel) in
-            if let data = coursesModel.data {
-                self.coursesViewModel.dismissIndicator()
-                self.Courses = data
-            } else if coursesModel.errors ?? "" != "" {
-                displayMessage(title: "", message: coursesModel.errors ?? "", status: .error, forController: self)
-            }
-        }, onError: { (error) in
-            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-            }).disposed(by: disposeBag)
-    }
-    func getNextPage() {
-        self.getAllCourses(lth: 0,htl: 0,rate : 0)
-    }
-    
-    func getAllCourses(lth: Int,htl: Int,rate: Int) {
-        self.coursesViewModel.getAllCourses(lth: lth,htl: htl,rate: rate).subscribe(onNext: { (CoursesModelJSON) in
-            if let data = CoursesModelJSON.data?.courses {
-                self.coursesViewModel.dismissIndicator()
-                if !self.loadMore {
-                    self.Courses = data
-                    
-                } else {
-                    self.Courses.append(contentsOf: data)
-                }
-                
-//                let dataClass = CoursesModelJSON.data
-//                if dataClass.to != nil && data.count != 0 {
-//                    self.currentPage += 1
-//                    self.loadMore = true
-//                    if self.currentPage == 2 {
-//                        self.getNextPage()
-//                    }
-//
-//                } else {
-//                    self.loadMore = false
-//                }
-                
-                self.loading = false
-            }
-        }, onError: { (error) in
-            self.coursesViewModel.dismissIndicator()
-            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-            }).disposed(by: disposeBag)
-    }
-}
 extension ArticalesVC : UICollectionViewDelegate {
     
     func setupCoursesCollectionView() {
         let cellIdentifier = "AllArticalesCell"
         self.CoursesCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         self.CoursesCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-        self.coursesViewModel.Courses.bind(to: self.CoursesCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: AllArticalesCell.self)) { index, element, cell in
-           // cell.config(courseName: self.Courses[index].name ?? "", courseInstractor: "\(self.Courses[index].instructor?.user?.firstName ?? "") \(self.Courses[index].instructor?.user?.lastName ??  "")", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: ((self.Courses[index].rate?.rounded(toPlaces: 1) ?? 0)), price: Double(self.Courses[index].price ?? "") ?? 0.0, discountPrice:((Double(self.Courses[index].price ?? "") ?? 0.0) - (Double(self.Courses[index].discount ?? "") ?? 0.0)), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
+        self.ArticleVM.Article.bind(to: self.CoursesCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: AllArticalesCell.self)) { index, element, cell in
             
-            cell.openDetailsAction = {
+            cell.config(articalName: self.Articles[index].title ?? "" , articalInstractor:  "\(self.Articles[index].instructor?.user? .firstName ?? "") \(self.Articles[index].instructor?.user?.lastName ??  "")" , rating: 2.3, imageURL: self.Articles[index].mainImage ?? "")
+            
+                cell.openDetailsAction = {
                 guard let main = UIStoryboard(name: "Articles", bundle: nil).instantiateViewController(withIdentifier: "ArticalesDetailsVC") as? ArticalesDetailsVC else { return }
+                    main.Articles = self.Articles[index]
                 self.navigationController?.pushViewController(main, animated: true)
             }
         }.disposed(by: disposeBag)
         self.CoursesCollectionView.rx.itemSelected.bind { (indexPath) in
             guard let main = UIStoryboard(name: "Articles", bundle: nil).instantiateViewController(withIdentifier: "ArticalesDetailsVC") as? ArticalesDetailsVC else { return }
+            main.Articles = self.Articles[indexPath.row]
             self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     
@@ -147,5 +97,18 @@ extension ArticalesVC : UICollectionViewDelegateFlowLayout {
         
             return CGSize(width: size, height: 140)
         }
-    
+}
+extension ArticalesVC  {
+    func getMyArticals() {
+        self.ArticleVM.getMyArtical().subscribe(onNext: { (myArticalModel) in
+            if let error = myArticalModel.errors {
+                displayMessage(title: "", message: error, status: .error, forController: self)
+            } else if let myArticle = myArticalModel.data?.articles {
+                self.ArticleVM.dismissIndicator()
+                self.Articles = myArticle
+            }
+        }, onError: { (error) in
+            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+            }).disposed(by: disposeBag)
+    }
 }

@@ -16,7 +16,8 @@ class NewCoursesVC: UIViewController {
     @IBOutlet weak var CoursesCollectionView: UICollectionView!
     @IBOutlet weak var CategoryTitleLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
-    
+    @IBOutlet weak var descriptionView: UIView!
+
     private let coursesViewModel = CoursesViewModel()
 
     var disposeBag = DisposeBag()
@@ -58,6 +59,11 @@ class NewCoursesVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func closeDescriptionAction(_ sender: UIButton) {
+         self.descriptionView.isHidden = true
+        
+     }
+
 
 }
 
@@ -125,7 +131,9 @@ extension NewCoursesVC : UICollectionViewDelegate {
                 cell.liveView.isHidden = true
                 cell.newView.isHidden = false
             }
-            
+            cell.openDetailsAction = {
+                self.descriptionView.isHidden = false
+            }
             // cell.config(courseName: self.Courses[index].name ?? "", courseInstractor: "\(self.Courses[index].instructor?.user?.firstName ?? "") \(self.Courses[index].instructor?.user?.lastName ??  "")", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: ((self.Courses[index].rate?.rounded(toPlaces: 1) ?? 0)), price: Double(self.Courses[index].price ?? "") ?? 0.0, discountPrice:((Double(self.Courses[index].price ?? "") ?? 0.0) - (Double(self.Courses[index].discount ?? "") ?? 0.0)), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
      
         }.disposed(by: disposeBag)

@@ -72,8 +72,8 @@ extension InstructorsVC : UICollectionViewDelegate {
             cell.config(InstructorImageURL: self.Instructors[index].image ?? "", InstructorName: "\(instructorData?.firstName ?? "") \(instructorData?.lastName ??  "")",rating:((self.Instructors[index].rate?.rounded(toPlaces: 1) ?? 0)))
         }.disposed(by: disposeBag)
         self.InstructorsCollectionView.rx.itemSelected.bind { (indexPath) in
-            guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstructorDetailsVC") as? InstructorDetailsVC else { return }
-            main.instructor_id = self.Instructors[indexPath.row].id ?? 0
+            guard let main = UIStoryboard(name: "Instructors", bundle: nil).instantiateViewController(withIdentifier: "InstractorProfileVc") as? InstractorProfileVc else { return }
+            main.id = self.Instructors[indexPath.row].id ?? 0
             self.navigationController?.pushViewController(main, animated: true)
         }.disposed(by: disposeBag)
     }
