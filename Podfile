@@ -33,6 +33,8 @@ target 'AfaqOnline' do
   pod 'Firebase/Crashlytics'
   pod 'StepProgressBar'
   pod 'PusherSwift', '~> 8.0'
+  pod 'FlagPhoneNumber'
+
 
   
   target 'AfaqOnlineTests' do
