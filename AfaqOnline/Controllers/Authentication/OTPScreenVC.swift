@@ -37,7 +37,7 @@ class OTPScreenVC: UIViewController {
     }
     
     @IBAction func ConfirmAction(_ sender: CustomButtons) {
-        self.GETCheckUserCode(type: pageType)
+        self.GETCheckUserCode()
     }
     
     @IBAction func backAction(_ sender: UIButton) {
@@ -50,20 +50,13 @@ class OTPScreenVC: UIViewController {
 }
 
 extension OTPScreenVC {
-    func GETCheckUserCode(type : String) {
+    func GETCheckUserCode() {
         let code = "\(self.firstTF.text ?? "")\(self.secondTF.text ?? "")\(self.thirdTF.text ?? "")\(self.fourthTF.text ?? "")"
-        self.authVM.GETCheckUserCode(code: code,type: type).subscribe(onNext: { (passwordModel) in
+        self.authVM.GETCheckUserCode(code: code).subscribe(onNext: { (passwordModel) in
             if passwordModel.status ?? false {
-                if  self.pageType == "pass"{
-                guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "UpdatePasswordVC") as? UpdatePasswordVC else { return }
-                main.email = self.email ?? ""
-                main.code = code
-                main.modalPresentationStyle = .overFullScreen
-                main.modalTransitionStyle = .crossDissolve
-                self.present(main, animated: true, completion: nil)
-                }else{
-                  Helper.restartApp()
-                }
+            guard let window = UIApplication.shared.keyWindow else { return }
+            guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
+            window.rootViewController = main
             }else{
            let alert = UIAlertController(title: "", message: "Invalid Code\nDo you want to resend it again?", preferredStyle: .alert)
                 let yesAction = UIAlertAction(title: "YES", style: .default) { (action) in
@@ -97,10 +90,6 @@ extension OTPScreenVC {
             displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
             }).disposed(by: disposeBag)
     }
-
- 
-
-
 }
 extension OTPScreenVC {
     func bindingData() {

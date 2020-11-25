@@ -24,9 +24,15 @@ class HomeVC: UIViewController {
     @IBOutlet weak var InstructorButton: UIButton!
     @IBOutlet weak var EventsButton: UIButton!
     @IBOutlet weak var articalButton: UIButton!
+    @IBOutlet weak var logoImage : UIImageView!
+    @IBOutlet weak var smalllogoImage : UIImageView!
+
+    
 
     
     private let homeViewModel = HomeViewModel()
+    private var courseViewModel = CourseDetailsViewModel()
+
     var disposeBag = DisposeBag()
     var Ads = ["Test"]{
         didSet {
@@ -79,6 +85,15 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if "lang".localized == "ar" {
+            logoImage.image = #imageLiteral(resourceName: "Mask Group 19-1")
+            smalllogoImage.isHidden = true
+             }else {
+            logoImage.image = #imageLiteral(resourceName: "Mask Group20")
+            smalllogoImage.isHidden = false
+
+            }
+        
         // Do any additional setup after loading the view.
         setupAdsCollectionView()
         setupCoursesCollectionView()
@@ -90,10 +105,10 @@ class HomeVC: UIViewController {
         self.hideKeyboardWhenTappedAround()
         self.homeViewModel.showIndicator()
         
-//        if Helper.getUserID() ?? 0 == 0{
-//        let endEditting = UITapGestureRecognizer(target: self, action:#selector(HomeVC.endEditting(sender:)))
-//        view.addGestureRecognizer(endEditting)
-//        }
+        if Helper.getUserID() ?? 0 == 0{
+        let endEditting = UITapGestureRecognizer(target: self, action:#selector(HomeVC.endEditting(sender:)))
+        view.addGestureRecognizer(endEditting)
+        }
      }
     
     @objc func endEditting(sender: UITapGestureRecognizer) {
@@ -103,15 +118,14 @@ class HomeVC: UIViewController {
         
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-   
     }
+    
     @IBAction func SeeAllActions(_ sender: UIButton) {
-//        if Helper.getUserID() ?? 0 == 0 {
-//        displayMessage(title: "", message: "Please Login First", status: .info, forController: self)
-//        }else{
+        if Helper.getUserID() ?? 0 == 0 {
+        displayMessage(title: "", message: "Please Login First", status: .info, forController: self)
+        }else{
         switch sender.tag {
         case 1:
             print("Trending Action")
@@ -139,20 +153,42 @@ class HomeVC: UIViewController {
             break
             }
         }
-    //}
+    }
     
-    
-
-    @IBAction func instractorAction(_ sender: CustomButtons) {
+    @IBAction func instractorAction(_ sender: UIButton) {
         guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
            main.type = "Instructor"
            self.navigationController?.pushViewController(main, animated: true)
-
          }
     
+    
+   @IBAction func startTodayAction(_ sender: UIButton) {
+      guard let main = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchVC") as? SearchVC else { return }
+         self.navigationController?.pushViewController(main, animated: true)
+     }
+    
+    
     @IBAction func sideMenuAction(_ sender: UIBarButtonItem) {
-          self.setupSideMenu()
+        self.setupSideMenu()
       }
+    
+    func addToCart(course_id: Int, price: String,discount : String) {
+        self.courseViewModel.postAddToCart(course_id: course_id, price: price, discount: discount).subscribe(onNext: { (cartModel) in
+            if cartModel.status ?? false {
+                displayMessage(title: "", message: AddToCartMessage.localized, status: .success, forController: self)
+            } else if let errors = cartModel.errors {
+                if errors.courseID != [] {
+                    displayMessage(title: "", message: errors.courseID?[0] ?? "", status: .error, forController: self)
+                } else if errors.price != [] {
+                    displayMessage(title: "", message: errors.price?[0] ?? "", status: .error, forController: self)
+                }
+            }
+           // self.addToCartButton.isEnabled = true
+        }, onError: { (error) in
+            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
+          //  self.addToCartButton.isEnabled = true
+            }).disposed(by: disposeBag)
+    }
     
 }
 //MARK:- Retrieving Backend Data
@@ -208,7 +244,9 @@ extension HomeVC: UICollectionViewDelegate {
         self.homeViewModel.Courses.bind(to: self.CoursesCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: CoursesCell.self)) { index, element, cell in
             
             cell.config(courseName: self.Courses[index].name ?? "", courseInstractor: "\(self.Courses[index].instructor?.user?.firstName ?? "") \(self.Courses[index].instructor?.user?.lastName ??  "")", courseTime: self.Courses[index].time ?? "", courseType: self.Courses[index].type ?? "", rating: ((self.Courses[index].rate?.rounded(toPlaces: 1) ?? 0)), price: Double(self.Courses[index].price ?? "0") ?? 0.0, discountPrice: ((Double(self.Courses[index].price ?? "") ?? 0.0) - (Double(self.Courses[index].discount ?? "") ?? 0.0)), imageURL: self.Courses[index].mainImage ?? "", videoURL: self.Courses[index].courseURL ?? "")
-            
+            cell.addToCart = {
+                self.addToCart(course_id: self.Courses[index].id ?? 0 , price: self.Courses[index].price ?? "0",discount : self.Courses[index].discount ?? "")
+            }
             cell.openDetailsAction = {
                 guard let main = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailsVC") as? CourseDetailsVC else { return }
                 main.course_id = self.Courses[index].id ?? 0

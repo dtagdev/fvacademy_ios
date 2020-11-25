@@ -17,7 +17,6 @@ class LoginVC: UIViewController {
     @IBOutlet weak var passwordTF: CustomTextField!
     @IBOutlet weak var loginButton: CustomButtons!
     @IBOutlet weak var registerLabel: UILabel!
-    @IBOutlet weak var forgetPassButton: UIButton!
     
     private let AuthViewModel = AuthenticationViewModel()
     var disposeBag = DisposeBag()
@@ -50,18 +49,19 @@ class LoginVC: UIViewController {
         window.rootViewController = main
     }
     
-    
-    @IBAction func forgetPasswordAction(_ sender: UIButton) {
-         guard let window = UIApplication.shared.keyWindow else { return }
-         guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
-         window.rootViewController = main
+    @IBAction func forgeAction(_ sender: UIButton) {
+       guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "ForgetPasswordVC") as? ForgetPasswordVC else { return }
+       self.navigationController?.pushViewController(main, animated: true)
      }
     
-   
+    
     @IBAction func becomeInstractor (_ sender: UIButton) {
-         guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
+    guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
+        main.type = "Instructor"
         self.navigationController?.pushViewController(main, animated: true)
       }
+
+    
 }
 //MARK:- AuthenticationViewModel Functions
 extension LoginVC {
@@ -81,17 +81,9 @@ extension LoginVC {
 }
 //MARK:- Data Binding
 extension LoginVC {
-    
     func DataBinding() {
         _ = emailUserNameTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.email).disposed(by: disposeBag)
         _ = passwordTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.password).disposed(by: disposeBag)
-        self.forgetPassButton.rx.tap.bind { (_) in
-            guard let window = UIApplication.shared.keyWindow else { return }
-            guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
-            //        main.setSelectIndex(from: 0, to: 1)
-            window.rootViewController = main
-            UIView.transition(with: window, duration: 0.5, options: .beginFromCurrentState, animations: nil, completion: nil)
-        }.disposed(by: disposeBag)
     }
     
     //MARK:- Register Label Action Configurations

@@ -17,35 +17,29 @@ class ForgetPasswordVC: UIViewController {
     
     private let AuthViewModel = AuthenticationViewModel()
     var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        switch UIDevice().type {
-        case .iPhone4, .iPhone5, .iPhone6, .iPhone6S, .iPhone7, .iPhone8, .iPhone5S, .iPhoneSE, .iPhoneSE2:
-            self.sendEmailButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.sendEmailButton.frame.width - 75), bottom: 0, right: 0)
-        default:
-            self.sendEmailButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: (self.sendEmailButton.frame.width - 75), bottom: 0, right: 0)
-        }
-        
         DataBinding()
     }
-    
-    
- 
+
+    @IBAction func BackAction(_ sender: UIButton) {
+         guard let window = UIApplication.shared.keyWindow else { return }
+         guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
+         window.rootViewController = main
+     }
 }
+
 //MARK:- View Model Functions
 extension ForgetPasswordVC {
     func POSTGetForgetPassword() {
+    
         self.sendEmailButton.isEnabled = false
         self.AuthViewModel.POSTForgetPassword().subscribe(onNext: { (passwordModel) in
             if passwordModel.status ?? false {
-                guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "OTPScreenVC") as? OTPScreenVC else { return }
-                main.email = self.phoneTF.text ?? ""
-                main.pageType = "pass"
-                main.modalPresentationStyle = .overFullScreen
-                main.modalTransitionStyle = .crossDissolve
-                self.present(main, animated: true, completion: nil)
+            guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "ConfirmationCode") as? ConfirmationCode else { return }
+            main.email = self.phoneTF.text ?? ""
+            self.navigationController?.pushViewController(main, animated: true)
             }else{
                 displayMessage(title: "", message: passwordModel.errors ?? "", status: .error, forController: self)
             }
@@ -56,6 +50,7 @@ extension ForgetPasswordVC {
             }).disposed(by: disposeBag)
     }
 }
+
 //MARK:- Data Binding
 extension ForgetPasswordVC {
     func DataBinding() {

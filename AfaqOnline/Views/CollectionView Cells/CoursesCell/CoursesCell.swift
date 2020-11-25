@@ -25,6 +25,9 @@ class CoursesCell: CustomCollectionViewCell {
     var isVideoPlaying = false
     var openDetailsAction: (() -> Void)? = nil
     var openFullScreenVideo: (() -> Void)? = nil
+    var addToCart: (() -> Void)? = nil
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -83,4 +86,9 @@ class CoursesCell: CustomCollectionViewCell {
     @IBAction func GoForDetailsAction(_ sender: UIButton) {
         openDetailsAction?()
     }
+    
+    @IBAction func addToCartAction(_ sender: UIButton) {
+          addToCart?()
+       }
+    
 }

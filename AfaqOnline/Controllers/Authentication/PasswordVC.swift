@@ -17,6 +17,10 @@ class PasswordVC: UIViewController {
     @IBOutlet weak var new_password_confirmationTF: CustomTextField!
     @IBOutlet weak var termsConditionsButton: CustomButtons!
     @IBOutlet weak var confirmButton: CustomButtons!
+    @IBOutlet weak var termsLabel : UILabel!
+    @IBOutlet weak var privcyLabel : UILabel!
+
+    
     private let AuthViewModel = AuthenticationViewModel()
     var gender = String()
     var Title = String()
@@ -37,8 +41,19 @@ class PasswordVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.TermsTapAction(_:)))
+             termsLabel.isUserInteractionEnabled = true
+             termsLabel.addGestureRecognizer(gestureRecognizer)
+        let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(self.PrivecyTapAction(_:)))
+        privcyLabel.isUserInteractionEnabled = true
+        privcyLabel.addGestureRecognizer(gestureRecognizer2)
         
-        DataBinding()
+        
+        
+             setupMultiColorRegisterLabel()
+             setupMultiColorRegisterLabel2()
+        
+            DataBinding()
         
     }
     
@@ -61,6 +76,42 @@ class PasswordVC: UIViewController {
         }
         
     }
+    
+    
+    @objc func PrivecyTapAction(_ sender: UITapGestureRecognizer) {
+          guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "PrivecyVC") as? PrivecyVC else { return }
+               main.appPageType = "Return"
+               self.navigationController?.pushViewController(main, animated: true)
+      }
+    
+     @objc func TermsTapAction(_ sender: UITapGestureRecognizer) {
+            guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "PrivecyVC") as? PrivecyVC else { return }
+               main.appPageType = "Terms"
+                self.navigationController?.pushViewController(main, animated: true)
+       }
+    
+  
+    
+    func setupMultiColorRegisterLabel() {
+         let main_string = "I read and agree to the Terms & Conditions and"
+         let coloredString = "Terms & Conditions"
+
+         let Range = (main_string as NSString).range(of: coloredString)
+         let attribute = NSMutableAttributedString.init(string: main_string)
+         attribute.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black , range: Range)
+         termsLabel.attributedText = attribute
+     }
+    
+    
+    func setupMultiColorRegisterLabel2() {
+           let main_string = "Privacy Policy listed"
+           let coloredString2 = "Privacy Policy"
+          let Range2 = (main_string as NSString).range(of: coloredString2)
+          let attribute2 = NSMutableAttributedString.init(string: main_string)
+          attribute2.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black , range: Range2)
+          privcyLabel.attributedText = attribute2
+       }
+    
 }
 
 //MARK:- Data Binding

@@ -191,10 +191,16 @@ struct AuthenticationViewModel {
     }
 
     
-    func GETCheckUserCode(code: String,type : String) -> Observable<PasswordJSONModel> {
-        let observer = Authentication.shared.getCheckUserCode(code: code, type :type)
+    func GETCheckUserCode(code: String) -> Observable<PasswordJSONModel> {
+        let observer = Authentication.shared.getCheckUserCode(code: code)
         return observer
     }
+    
+    func GETCheckForgetPasswordCode(code: String) -> Observable<PasswordJSONModel> {
+           let observer = Authentication.shared.getCheckPassCode(code: code)
+           return observer
+       }
+    
     
     func POSTUpdatePassowrd(code:String) -> Observable<PasswordUpdatJSONModel> {
         let bindedPhone = try? phone.value()

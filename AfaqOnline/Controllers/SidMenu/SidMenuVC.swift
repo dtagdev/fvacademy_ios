@@ -6,15 +6,6 @@
 //  Copyright © 2020 Dtag. All rights reserved.
 //
 
-import Foundation
-//
-//  ProfileVC.swift
-//  AfaqOnline
-//
-//  Created by MGoKu on 5/19/20.
-//  Copyright © 2020 Dtag. All rights reserved.
-//
-
 import UIKit
 import RxCocoa
 import RxSwift
@@ -80,38 +71,29 @@ class SideMenuVC : UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             switch self.Items[index].Id ?? "" {
             case "Notification":
-                print("")
+            guard let main = UIStoryboard(name: "Notification", bundle: nil).instantiateViewController(withIdentifier: "NotificationVC") as? NotificationVC else { return }
+                self.navigationController?.pushViewController(main, animated: true)
             case "Order":
                 guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "MyOrdersVC") as? MyOrdersVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
+           
+            case "help":
+                guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "HelpVC") as? HelpVC else { return }
+              self.navigationController?.pushViewController(main, animated: true)
+                
             case "Wishlist":
                 guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
             case "Password":
                 print("")
             case "Setting":
-                guard let window = UIApplication.shared.keyWindow else { return }
-                guard let main = UIStoryboard(name: "LoadingScreens", bundle: nil).instantiateViewController(withIdentifier: "LanguageScreenVC") as? LanguageScreenVC else { return }
-                main.type = "home"
-                window.rootViewController = main
-                UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "SettingVC") as? SettingVC else { return }
+                self.navigationController?.pushViewController(main, animated: true)
             case "About":
-                guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "AboutAppVC") as? AboutAppVC else { return }
-                main.appPageType = "About"
-                self.navigationController?.pushViewController(main, animated: true)
-            case "Privacy":
-                guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "AboutAppVC") as? AboutAppVC else { return }
-                main.appPageType = "Return"
-                self.navigationController?.pushViewController(main, animated: true)
-            case "Terms":
-              guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "AboutAppVC") as? AboutAppVC else { return }
-              main.appPageType = "Terms"
+                guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "AboutVC") as? AboutVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
             case "News":
                 guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "ArticalListVC") as? ArticalListVC else { return }
-                self.navigationController?.pushViewController(main, animated: true)
-            case "ContactUs":
-                guard let main = UIStoryboard(name: "AboutApp", bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else { return }
                 self.navigationController?.pushViewController(main, animated: true)
             case "Logout":
                 let alert = UIAlertController(title: "Logout", message: "Are you sure you want to Log out?", preferredStyle: .alert)
@@ -188,7 +170,7 @@ extension SideMenuVC: UITableViewDelegate {
                 SideMenuModel(Name: "Notifications", Id: "Notification", image: #imageLiteral(resourceName: "notifications-black-48dp")),
                 SideMenuModel(Name: "About", Id: "About", image: #imageLiteral(resourceName: "info-black-48dp")),
                 SideMenuModel(Name: "Setting", Id: "Setting", image: #imageLiteral(resourceName: "settings-black-48dp")),
-                SideMenuModel(Name: "Help", Id: "Help", image: #imageLiteral(resourceName: "help-black-48dp")),
+                SideMenuModel(Name: "Help", Id: "help", image: #imageLiteral(resourceName: "help-black-48dp")),
 
                 
             ]

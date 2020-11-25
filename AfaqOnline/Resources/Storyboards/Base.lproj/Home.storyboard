@@ -35,11 +35,11 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUa-pJ-oWN">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask Group 19-1" translatesAutoresizingMaskIntoConstraints="NO" id="b9z-g0-FZI">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask Group20" translatesAutoresizingMaskIntoConstraints="NO" id="b9z-g0-FZI">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jus-ze-6wl">
-                                                        <rect key="frame" x="368" y="20" width="30" height="30"/>
+                                                        <rect key="frame" x="16" y="20" width="30" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="a7x-kh-UQG"/>
                                                             <constraint firstAttribute="height" constant="30" id="dvg-cN-Vdk"/>
@@ -49,15 +49,24 @@
                                                             <action selector="sideMenuAction:" destination="s7p-Jo-PTV" eventType="touchUpInside" id="luc-lA-bNS"/>
                                                         </connections>
                                                     </button>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 273" translatesAutoresizingMaskIntoConstraints="NO" id="Obo-Lm-sqZ">
+                                                        <rect key="frame" x="286" y="10" width="120" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="E88-bQ-ziS"/>
+                                                            <constraint firstAttribute="width" constant="120" id="VST-wG-kcY"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="b9z-g0-FZI" firstAttribute="top" secondItem="dUa-pJ-oWN" secondAttribute="top" id="7kh-6p-9h0"/>
                                                     <constraint firstAttribute="height" constant="70" id="JWb-qq-mX6"/>
                                                     <constraint firstItem="b9z-g0-FZI" firstAttribute="leading" secondItem="dUa-pJ-oWN" secondAttribute="leading" id="Svu-Wq-GHy"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Jus-ze-6wl" secondAttribute="trailing" constant="16" id="UjM-5o-fdq"/>
                                                     <constraint firstItem="Jus-ze-6wl" firstAttribute="centerY" secondItem="dUa-pJ-oWN" secondAttribute="centerY" id="YSp-LE-VsV"/>
+                                                    <constraint firstItem="Jus-ze-6wl" firstAttribute="leading" secondItem="dUa-pJ-oWN" secondAttribute="leading" constant="16" id="ebp-cE-2xG"/>
+                                                    <constraint firstItem="Obo-Lm-sqZ" firstAttribute="top" secondItem="dUa-pJ-oWN" secondAttribute="top" constant="10" id="f3q-dO-lVT"/>
                                                     <constraint firstAttribute="bottom" secondItem="b9z-g0-FZI" secondAttribute="bottom" id="si1-fB-cCN"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Obo-Lm-sqZ" secondAttribute="trailing" constant="8" id="t25-z1-zTm"/>
                                                     <constraint firstAttribute="trailing" secondItem="b9z-g0-FZI" secondAttribute="trailing" id="vJj-wQ-51c"/>
                                                 </constraints>
                                             </view>
@@ -65,7 +74,7 @@
                                                 <rect key="frame" x="4" y="86" width="406" height="200"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Courses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnB-t9-AN8">
-                                                        <rect key="frame" x="10" y="8" width="276" height="24"/>
+                                                        <rect key="frame" x="10" y="8" width="276" height="20"/>
                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                                         <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -85,7 +94,7 @@
                                                         </connections>
                                                     </button>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cLC-lC-LsK" customClass="CustomCollectionView" customModule="Al_Academya" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="32" width="406" height="168"/>
+                                                        <rect key="frame" x="0.0" y="28" width="406" height="172"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SyL-Dt-0XX">
                                                             <size key="itemSize" width="50" height="50"/>
@@ -174,6 +183,9 @@
                                                                         <real key="value" value="10"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="startTodayAction:" destination="s7p-Jo-PTV" eventType="touchUpInside" id="yeG-3k-O9g"/>
+                                                                </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68c-b8-HQh">
                                                                 <rect key="frame" x="40.666666666666657" y="53" width="324.66666666666674" height="1"/>
@@ -197,7 +209,7 @@
                                                         <rect key="frame" x="0.0" y="250" width="406" height="200"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Broadcasts (On Show)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeH-is-tIz">
-                                                                <rect key="frame" x="10" y="8" width="228.66666666666666" height="24"/>
+                                                                <rect key="frame" x="10" y="8" width="206" height="20"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                                                 <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -217,7 +229,7 @@
                                                                 </connections>
                                                             </button>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LdK-LH-GjC" customClass="CustomCollectionView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="32" width="406" height="168"/>
+                                                                <rect key="frame" x="0.0" y="28" width="406" height="172"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="095-zG-xde">
                                                                     <size key="itemSize" width="50" height="50"/>
@@ -264,7 +276,7 @@
                                                         <rect key="frame" x="0.0" y="470" width="406" height="130"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRK-GT-NaD">
-                                                                <rect key="frame" x="10" y="8" width="81.666666666666671" height="24"/>
+                                                                <rect key="frame" x="10" y="8" width="69.666666666666671" height="20"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                                                 <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -284,7 +296,7 @@
                                                                 </connections>
                                                             </button>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n4k-Mp-6tP" customClass="CustomCollectionView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="4.3333333333333428" y="32" width="397.33333333333326" height="98"/>
+                                                                <rect key="frame" x="4.3333333333333428" y="28" width="397.33333333333326" height="102"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8v9-qy-fqX">
                                                                     <size key="itemSize" width="50" height="50"/>
@@ -331,7 +343,7 @@
                                                         <rect key="frame" x="0.0" y="620" width="406" height="250"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Articles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAB-cb-6e2">
-                                                                <rect key="frame" x="10" y="8" width="276" height="24"/>
+                                                                <rect key="frame" x="10" y="8" width="276" height="20"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                                                 <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -351,7 +363,7 @@
                                                                 </connections>
                                                             </button>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="diz-7m-xQI" customClass="CustomCollectionView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="4.3333333333333428" y="32" width="397.33333333333326" height="218"/>
+                                                                <rect key="frame" x="4.3333333333333428" y="28" width="397.33333333333326" height="222"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JRt-ha-1bx">
                                                                     <size key="itemSize" width="50" height="50"/>
@@ -399,7 +411,7 @@
                                                         <rect key="frame" x="0.0" y="890" width="406" height="160"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highly Rated Instructors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tee-9d-x0U">
-                                                                <rect key="frame" x="10" y="8" width="207" height="24"/>
+                                                                <rect key="frame" x="10" y="8" width="183.66666666666666" height="20"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                                                 <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -419,7 +431,7 @@
                                                                 </connections>
                                                             </button>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5T3-LP-ezD" customClass="CustomCollectionView" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="4.3333333333333428" y="32" width="397.33333333333326" height="128"/>
+                                                                <rect key="frame" x="4.3333333333333428" y="28" width="397.33333333333326" height="132"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1TY-0A-y8Y">
                                                                     <size key="itemSize" width="50" height="50"/>
@@ -466,33 +478,14 @@
                                                         <rect key="frame" x="0.0" y="1070" width="406" height="350"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become An Instructor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNB-Zv-Aiu">
-                                                                <rect key="frame" x="113.66666666666667" y="8.0000000000000018" width="178.66666666666663" height="22.666666666666671"/>
+                                                                <rect key="frame" x="125.00000000000001" y="8.0000000000000018" width="156.33333333333337" height="18.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                                                 <color key="textColor" red="0.053060919050000002" green="0.30242323879999999" blue="0.50389450790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-10-20 at 8.09.35 PM" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-6j-DFZ">
-                                                                <rect key="frame" x="20.333333333333343" y="38.666666666666742" width="365.33333333333326" height="315"/>
+                                                                <rect key="frame" x="20.333333333333343" y="34.666666666666742" width="365.33333333333326" height="315"/>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ0-2h-fEI" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
-                                                                <rect key="frame" x="101.66666666666667" y="361.66666666666674" width="202.66666666666663" height="30"/>
-                                                                <color key="backgroundColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="30" id="35k-ie-8Hf"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
-                                                                <state key="normal" title="Join us as an Instructor">
-                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="instractorAction:" destination="s7p-Jo-PTV" eventType="touchUpInside" id="WwG-0y-dWn"/>
-                                                                </connections>
-                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
@@ -500,30 +493,49 @@
                                                             <constraint firstItem="ZFw-6j-DFZ" firstAttribute="height" secondItem="iz5-8Q-H2a" secondAttribute="height" multiplier="0.9" id="3cc-vp-6xD"/>
                                                             <constraint firstItem="ZFw-6j-DFZ" firstAttribute="centerX" secondItem="iz5-8Q-H2a" secondAttribute="centerX" id="3mq-KQ-xql"/>
                                                             <constraint firstItem="ZFw-6j-DFZ" firstAttribute="width" secondItem="iz5-8Q-H2a" secondAttribute="width" multiplier="0.9" id="AK6-Q6-mAH"/>
-                                                            <constraint firstItem="TQ0-2h-fEI" firstAttribute="top" secondItem="ZFw-6j-DFZ" secondAttribute="bottom" constant="8" id="JVa-tx-9wc"/>
                                                             <constraint firstItem="ZFw-6j-DFZ" firstAttribute="top" secondItem="jNB-Zv-Aiu" secondAttribute="bottom" constant="8" id="SAp-ax-9c3"/>
-                                                            <constraint firstItem="TQ0-2h-fEI" firstAttribute="width" secondItem="iz5-8Q-H2a" secondAttribute="width" multiplier="0.5" id="Tx7-ra-mWR"/>
                                                             <constraint firstItem="jNB-Zv-Aiu" firstAttribute="top" secondItem="iz5-8Q-H2a" secondAttribute="top" constant="8" id="a5f-3Q-FAA"/>
                                                             <constraint firstItem="jNB-Zv-Aiu" firstAttribute="centerX" secondItem="iz5-8Q-H2a" secondAttribute="centerX" id="lpl-Cw-1e7"/>
-                                                            <constraint firstItem="TQ0-2h-fEI" firstAttribute="centerX" secondItem="iz5-8Q-H2a" secondAttribute="centerX" id="vLP-N9-oXr"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ0-2h-fEI" customClass="CustomButtons" customModule="Al_Academya" customModuleProvider="target">
+                                                <rect key="frame" x="103.66666666666669" y="1716" width="207" height="40"/>
+                                                <color key="backgroundColor" red="0.34509803919999998" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="35k-ie-8Hf"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                                <state key="normal" title="Join us as an Instructor">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="instractorAction:" destination="s7p-Jo-PTV" eventType="touchUpInside" id="een-BZ-WuE"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="L1Y-B6-hvd" firstAttribute="centerX" secondItem="jzU-6P-tdZ" secondAttribute="centerX" id="2hm-DM-kBH"/>
+                                            <constraint firstItem="TQ0-2h-fEI" firstAttribute="top" secondItem="L1Y-B6-hvd" secondAttribute="bottom" constant="10" id="A6h-gd-QgF"/>
                                             <constraint firstItem="L1Y-B6-hvd" firstAttribute="width" secondItem="jzU-6P-tdZ" secondAttribute="width" multiplier="0.98" id="Egs-pJ-BSL"/>
                                             <constraint firstItem="dUa-pJ-oWN" firstAttribute="centerX" secondItem="jzU-6P-tdZ" secondAttribute="centerX" id="Ghy-UE-ho3"/>
                                             <constraint firstItem="x2J-sS-Yhw" firstAttribute="width" secondItem="jzU-6P-tdZ" secondAttribute="width" multiplier="0.980676" id="LpS-xl-GGJ"/>
                                             <constraint firstItem="L1Y-B6-hvd" firstAttribute="top" secondItem="x2J-sS-Yhw" secondAttribute="bottom" id="QgV-eF-rj0"/>
+                                            <constraint firstItem="TQ0-2h-fEI" firstAttribute="width" secondItem="jzU-6P-tdZ" secondAttribute="width" multiplier="0.5" id="VV6-k0-76N"/>
                                             <constraint firstItem="x2J-sS-Yhw" firstAttribute="top" secondItem="dUa-pJ-oWN" secondAttribute="bottom" constant="16" id="bmp-5r-D43"/>
                                             <constraint firstAttribute="height" secondItem="L1Y-B6-hvd" secondAttribute="height" multiplier="1.35" id="dH1-fe-Cph"/>
                                             <constraint firstItem="dUa-pJ-oWN" firstAttribute="width" secondItem="jzU-6P-tdZ" secondAttribute="width" id="evN-gy-yCN"/>
                                             <constraint firstItem="dUa-pJ-oWN" firstAttribute="top" secondItem="jzU-6P-tdZ" secondAttribute="top" id="g8l-0N-Hvt"/>
                                             <constraint firstItem="dUa-pJ-oWN" firstAttribute="top" secondItem="jzU-6P-tdZ" secondAttribute="top" id="gDp-zJ-3Bu"/>
                                             <constraint firstItem="x2J-sS-Yhw" firstAttribute="centerX" secondItem="jzU-6P-tdZ" secondAttribute="centerX" id="lS9-xa-BNr"/>
+                                            <constraint firstItem="TQ0-2h-fEI" firstAttribute="centerX" secondItem="jzU-6P-tdZ" secondAttribute="centerX" id="nAT-tD-kFB"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -559,16 +571,18 @@
                         <outlet property="TrendingButton" destination="hc0-kf-vIs" id="oNT-LQ-FD4"/>
                         <outlet property="articalButton" destination="495-fl-jfs" id="1lv-Hd-LkA"/>
                         <outlet property="articalCollectionView" destination="diz-7m-xQI" id="73y-hN-YHt"/>
+                        <outlet property="logoImage" destination="b9z-g0-FZI" id="qOP-RD-qkH"/>
+                        <outlet property="smalllogoImage" destination="Obo-Lm-sqZ" id="9Up-1p-HUg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VNJ-FL-A5U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1164" y="1211"/>
         </scene>
-        <!--CategoriesVC-->
+        <!--SearchVC-->
         <scene sceneID="rXE-pv-nfH">
             <objects>
-                <viewControllerPlaceholder storyboardName="Categories" referencedIdentifier="CategoriesVC" id="Psy-3X-Txj" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Search" referencedIdentifier="SearchVC" id="Psy-3X-Txj" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Zf7-Sg-vRp"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jbd-7S-KZC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1569,6 +1583,9 @@
                                                     <constraint firstAttribute="width" constant="50" id="NMu-ja-0YU"/>
                                                 </constraints>
                                                 <state key="normal" image="back"/>
+                                                <connections>
+                                                    <action selector="BackAction:" destination="HcY-Xf-oI4" eventType="touchUpInside" id="ccl-xG-diL"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKb-gC-L73">
                                                 <rect key="frame" x="153" y="11.999999999999998" width="108.33333333333331" height="26.333333333333329"/>
@@ -1942,13 +1959,13 @@
         <scene sceneID="cU8-sF-pet">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="pyC-7f-yVs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="category" selectedImage="category" id="QjR-Sa-3mc" customClass="RAMAnimatedTabBarItem" customModule="Al_Academya" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="" image="search" selectedImage="search" id="QjR-Sa-3mc" customClass="RAMAnimatedTabBarItem" customModule="Al_Academya" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="image" keyPath="itemImage" value="category"/>
-                            <userDefinedRuntimeAttribute type="image" keyPath="itemSelectedImage" value="category"/>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
                                 <color key="value" red="0.023529411760000001" green="0.30196078430000001" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="image" keyPath="itemImage" value="search"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="itemSelectedImage" value="search"/>
                         </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="tot-qb-8ky" id="ipw-cB-6eu"/>
@@ -2084,14 +2101,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Group 273" width="164" height="75"/>
         <image name="Group 5" width="16.666666030883789" height="13.666666984558105"/>
         <image name="Group 741" width="283" height="283"/>
-        <image name="Mask Group 19-1" width="375" height="85"/>
+        <image name="Mask Group20" width="500" height="113.33333587646484"/>
         <image name="Screen Shot 2020-10-20 at 8.09.35 PM" width="516" height="387"/>
         <image name="back" width="25" height="25"/>
         <image name="cartSelected" width="25" height="25"/>
         <image name="cartUnSelected" width="25" height="22.666666030883789"/>
-        <image name="category" width="16.666666030883789" height="16.666666030883789"/>
         <image name="events" width="25" height="20.333333969116211"/>
         <image name="homeSelected" width="25" height="33.666667938232422"/>
         <image name="homeUnSelected" width="25" height="33.666667938232422"/>

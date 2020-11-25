@@ -170,7 +170,6 @@ class Authentication {
     func postForgetPassword(params: [String: Any]) -> Observable<PasswordJSONModel> {
         return Observable.create { (observer) -> Disposable in
             let url = ConfigURLS.postForgetPassword
-            
             Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
@@ -188,14 +187,9 @@ class Authentication {
     }//END of POST Forget Password
     
     //MARK:- GETCheckUser Code
-    func getCheckUserCode(code: String, type : String) -> Observable<PasswordJSONModel> {
+    func getCheckUserCode(code: String) -> Observable<PasswordJSONModel> {
         return Observable.create { (observer) -> Disposable in
-            var url = String()
-            if type == "pass"{
-                 url = ConfigURLS.getCheckPassCode + "/\(code)"
-            }else{
-                 url = ConfigURLS.getCheckUserCode + "/\(code)"
-            }
+            let url = ConfigURLS.getCheckUserCode + "/\(code)"
             Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
                 .validate(statusCode: 200..<300)
                 .responseJSON { (response: DataResponse<Any>) in
@@ -211,6 +205,26 @@ class Authentication {
             return Disposables.create()
         }
     }//END of GETCheckUser Code
+    
+    //MARK:- GETCheckPAss Code
+    func getCheckPassCode(code: String) -> Observable<PasswordJSONModel> {
+         return Observable.create { (observer) -> Disposable in
+             let url = ConfigURLS.getCheckPassCode + "/\(code)"
+             Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
+                 .validate(statusCode: 200..<300)
+                 .responseJSON { (response: DataResponse<Any>) in
+                     do {
+                         let data = try JSONDecoder().decode(PasswordJSONModel.self, from: response.data!)
+                         observer.onNext(data)
+                     } catch {
+                         print(error.localizedDescription)
+                         observer.onError(error)
+                     }
+             }
+             
+             return Disposables.create()
+         }
+     }//END of GETCheckPAss Code
     
     //MARK:- POST Update Password
     func postUpdatePassword(params: [String: Any]) -> Observable<PasswordUpdatJSONModel> {

@@ -10,6 +10,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import DLRadioButton
+import FlagPhoneNumber
+
 
 class RegistrationVC: UIViewController {
     
@@ -25,7 +27,7 @@ class RegistrationVC: UIViewController {
     @IBOutlet weak var lastNameTF: CustomTextField!
     @IBOutlet weak var idNumberTF: CustomTextField!
     @IBOutlet weak var medicalNumberTF: CustomTextField!
-    @IBOutlet weak var phoneTF: CustomTextField!
+    @IBOutlet weak var phoneTF: FPNTextField!
     @IBOutlet weak var selectLanguageDropDown: TextFieldDropDown!
     @IBOutlet weak var selectCateDropDown: TextFieldDropDown!
     @IBOutlet weak var personalInfoTF : CustomTextField!
@@ -33,7 +35,8 @@ class RegistrationVC: UIViewController {
     @IBOutlet weak var CateView : CustomView!
     @IBOutlet weak var personalInfoView  : CustomView!
     @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
-
+    let listController: FPNCountryListViewController = FPNCountryListViewController(style: .grouped)
+      var dialCode = String()
     
     private let AuthViewModel = AuthenticationViewModel()
 
@@ -53,12 +56,12 @@ class RegistrationVC: UIViewController {
             }
         }
     }
-    
-    
     var type = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setupCountryPHone()
         DataBinding()
         setupTitlesDropDown()
         setupJobsDropDown()
@@ -73,19 +76,28 @@ class RegistrationVC: UIViewController {
             LanguageView.isHidden = false
             CateView.isHidden = false
             personalInfoView.isHidden = false
-            stackViewHeight.constant = 750
         }else{
              LanguageView.isHidden = true
              CateView.isHidden = true
              personalInfoView.isHidden = true
-            stackViewHeight.constant = 600
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.clearAllTexts()
     }
+    
+    
+    func setupCountryPHone() {
+             self.phoneTF.delegate = self
+             self.phoneTF.displayMode = .list // .picker by default
+             self.phoneTF.setCountries(excluding: [.IL])
+             self.phoneTF.setFlag(key: .SA)
+             listController.setup(repository: self.phoneTF.countryRepository)
+             listController.didSelect = { [weak self] country in
+             self?.phoneTF.setFlag(countryCode: country.code)
+             }
+         }
     
     func setupTitlesDropDown() {
         selectTitleDropDown.optionArray = self.titles
@@ -138,7 +150,7 @@ class RegistrationVC: UIViewController {
         main.lastName = lastNameTF.text ?? ""
         main.idNumber = idNumberTF.text ?? ""
         main.medicalNumber = medicalNumberTF.text ?? ""
-        main.phone = phoneTF.text ?? ""
+        main.phone = "+966\(phoneTF.text ?? "")"
         main.details = self.personalInfoTF.text ?? ""
         main.lang = self.lang ?? 0
         main.cat_id = self.cat_id
@@ -209,3 +221,39 @@ extension RegistrationVC {
         _ = self.phoneTF.rx.text.map({$0 ?? ""}).bind(to: AuthViewModel.phone).disposed(by: disposeBag)
     }
 }
+
+
+extension RegistrationVC : FPNTextFieldDelegate {
+    
+    func fpnDisplayCountryList() {
+        let navigationViewController = UINavigationController(rootViewController: listController)
+        
+        listController.title = "Countries"
+        
+        self.present(navigationViewController, animated: true, completion: nil)
+    }
+    
+    
+    /// The place to present/push the listController if you choosen displayMode = .list
+    
+    
+    /// Lets you know when a country is selected
+    func fpnDidSelectCountry(name: String, dialCode: String, code: String) {
+        print(name, dialCode, code) // Output "France", "+33", "FR"
+        self.dialCode = dialCode
+    }
+    
+    /// Lets you know when the phone number is valid or not. Once a phone number is valid, you can get it in severals formats (E164, International, National, RFC3966)
+    func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
+        if isValid {
+            displayMessage(title: "", message: "Number is Valid now", status: .info, forController: self)
+            self.phoneTF.text = phoneTF.getRawPhoneNumber()
+        } else {
+            
+            if textField.text!.count > 9 {
+                displayMessage(title: "", message: "Number not valid", status: .error, forController: self)
+            }
+        }
+    }
+}
+
