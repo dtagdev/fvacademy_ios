@@ -52,14 +52,7 @@ class EditProfile : UIViewController {
         }
         self.hideKeyboardWhenTappedAround()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
- 
-        if token != "" {
-            self.getProfile()
-        }
-
-    }
+  
   
     
     @IBAction func BackAction(_ sender: UIButton) {
@@ -75,21 +68,4 @@ class EditProfile : UIViewController {
 
 //MARK:- Getting Data From Observable
 extension EditProfile {
-    func getProfile() {
-        self.ProfileVM.getProfile().subscribe(onNext: { (ProfileModel) in
-            if let profile = ProfileModel.data {
-                self.UserNameLabel.text = "\(profile.firstName ??  "") \(profile.lastName ??  "")"
-                self.emailTF.text = profile.email ?? ""
-                self.idNumberTF.text = profile.idNumber ?? ""
-                self.medicalNumberTF.text = profile.medicalNumber ?? ""
-                self.usernameTF.text = "\(profile.firstName ??  "") \(profile.lastName ??  "")"
-                if profile.avatar ?? "" != "" {
-                    guard let url = URL(string: "https://dev.fv.academy/public/files/" + (profile.avatar ?? "")) else { return }
-                    self.ProfileImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "placeholder"))
-                }
-            }
-        }, onError: { (error) in
-            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-            }).disposed(by: disposeBag)
-    }
 }

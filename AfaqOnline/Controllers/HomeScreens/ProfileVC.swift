@@ -52,41 +52,10 @@ class ProfileVC : UIViewController {
         registerLabel.addGestureRecognizer(gestureRecognizer)
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        if token != "" {
-            self.ProfileVM.showIndicator()
-            self.getProfile()
-            registerLabel.isHidden = true
-            self.editButton.setTitle("Edit Profile ", for: .normal)
-             idNumber.isHidden = false
-        }else{
-            self.editButton.setTitle("Log In", for: .normal)
-            registerLabel.isHidden = false
-            emailLabel.text = "Welcome !"
-            medicalNumber.text = "Log in to access your profile"
-            idNumber.isHidden = true
-        }
 
-    }
+}
     
-    @IBAction func BackAction(_ sender: UIButton) {
-        guard let window = UIApplication.shared.keyWindow else { return }
-        guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabController") as? RAMAnimatedTabBarController else { return }
-        window.rootViewController = main
-    
-    }
-    
-    @IBAction func EditProfileAction(_ sender: CustomButtons) {
-         if token != "" {
-        guard let main = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "EditProfile") as? EditProfile else { return }
-        self.navigationController?.pushViewController(main, animated: true)
-         }else{
-            guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
-                  self.navigationController?.pushViewController(main, animated: true)
-        }
-    }
-    
+
     
     @objc func RegisterTapAction(_ sender: UITapGestureRecognizer) {
         guard let main = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "RegistrationVC") as? RegistrationVC else { return }
@@ -110,21 +79,4 @@ class ProfileVC : UIViewController {
 
 //MARK:- Getting Data From Observable
 extension ProfileVC {
-    func getProfile() {
-        self.ProfileVM.getProfile().subscribe(onNext: { (ProfileModel) in
-            if let profile = ProfileModel.data {
-                self.ProfileVM.dismissIndicator()
-                self.UserNameLabel.text = "\(profile.firstName ??  "") \(profile.lastName ??  "")"
-                self.emailLabel.text = profile.email ?? ""
-                self.idNumber.text = "ID:" + (profile.medicalNumber ?? "")
-                self.medicalNumber.text = "MN:" + (profile.idNumber ?? "")
-                if profile.avatar ?? "" != "" {
-                    guard let url = URL(string: "https://dev.fv.academy/public/files/" + (profile.avatar ?? "")) else { return }
-                    self.ProfileImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "placeholder"))
-                }
-            }
-        }, onError: { (error) in
-            displayMessage(title: "", message: error.localizedDescription, status: .error, forController: self)
-            }).disposed(by: disposeBag)
-    }
 }
