@@ -140,11 +140,8 @@
 		B0C99E062461C3070098B553 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C99DF32461C3070098B553 /* CustomTableView.swift */; };
 		B0C99E072461C3070098B553 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C99DF52461C3070098B553 /* CustomView.swift */; };
 		B0C99E082461C3070098B553 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C99DF72461C3070098B553 /* CustomCollectionView.swift */; };
-		B0D2BFDE2472976500CB0333 /* ConfigURLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2BFDD2472976500CB0333 /* ConfigURLS.swift */; };
-		B0D2BFE1247297CD00CB0333 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2BFE0247297CD00CB0333 /* Authentication.swift */; };
 		B0D2BFE3247298E700CB0333 /* ErrorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2BFE2247298E700CB0333 /* ErrorsModel.swift */; };
 		B0D2BFE52472996700CB0333 /* AfaqModelsJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2BFE42472996700CB0333 /* AfaqModelsJSON.swift */; };
-		B0D2BFE72472A77300CB0333 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2BFE62472A77300CB0333 /* Helper.swift */; };
 		B0D2BFE92472BEAF00CB0333 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2BFE82472BEAF00CB0333 /* LoginVC.swift */; };
 		B0D2BFED2472BF7A00CB0333 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2BFEC2472BF7A00CB0333 /* AuthenticationViewModel.swift */; };
 		B0D2BFF12472CEAC00CB0333 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2BFF02472CEAC00CB0333 /* ForgetPasswordVC.swift */; };
@@ -349,11 +346,8 @@
 		B0C99DF32461C3070098B553 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		B0C99DF52461C3070098B553 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		B0C99DF72461C3070098B553 /* CustomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
-		B0D2BFDD2472976500CB0333 /* ConfigURLS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigURLS.swift; sourceTree = "<group>"; };
-		B0D2BFE0247297CD00CB0333 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		B0D2BFE2247298E700CB0333 /* ErrorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsModel.swift; sourceTree = "<group>"; };
 		B0D2BFE42472996700CB0333 /* AfaqModelsJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfaqModelsJSON.swift; sourceTree = "<group>"; };
-		B0D2BFE62472A77300CB0333 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		B0D2BFE82472BEAF00CB0333 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		B0D2BFEC2472BF7A00CB0333 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		B0D2BFF02472CEAC00CB0333 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
@@ -918,9 +912,6 @@
 		B0D2BFDC247295A900CB0333 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B0D2BFDD2472976500CB0333 /* ConfigURLS.swift */,
-				B0D2BFE62472A77300CB0333 /* Helper.swift */,
-				B0D2BFE0247297CD00CB0333 /* Authentication.swift */,
 				B06E46B52476CA0500D3246C /* GetServices.swift */,
 				B0D3622324912E0D0016BB97 /* AddServices.swift */,
 				B0D87D7C24BEA51A00D3E699 /* ChatServices.swift */,
@@ -1418,7 +1409,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0C99DB32461C2650098B553 /* LoadingScreenVC.swift in Sources */,
-				B0D2BFDE2472976500CB0333 /* ConfigURLS.swift in Sources */,
 				B0202106247166A600CF3789 /* RegistrationVC.swift in Sources */,
 				B0C99DAF2461C2650098B553 /* AppDelegate.swift in Sources */,
 				04D5222A25253784003C8F33 /* EditProfileVC.swift in Sources */,
@@ -1503,7 +1493,6 @@
 				B0405F22247181AB00ED4C1C /* CustomDropDown.swift in Sources */,
 				B0F8C3D7248FD45E00BF14BF /* CustomSlider.swift in Sources */,
 				B07A293824922C7F0002AD25 /* ProfileCell.swift in Sources */,
-				B0D2BFE1247297CD00CB0333 /* Authentication.swift in Sources */,
 				0433ECB42536266D00848DFD /* PasswordVC.swift in Sources */,
 				044A1943256175F10002766C /* EditProfile.swift in Sources */,
 				B0DCA09E2491868F002E33A7 /* RAMAnimatedTabBarController.swift in Sources */,
@@ -1542,7 +1531,6 @@
 				B0D56F2B24BBAE2E006E1B33 /* PusherManager.swift in Sources */,
 				B077326B24A102470042331B /* EventsVC.swift in Sources */,
 				B02D093224CFBB5F00BDD9E8 /* CartModel.swift in Sources */,
-				B0D2BFE72472A77300CB0333 /* Helper.swift in Sources */,
 				B0D3622424912E0D0016BB97 /* AddServices.swift in Sources */,
 				B0D87D7D24BEA51A00D3E699 /* ChatServices.swift in Sources */,
 				B0C99E032461C3070098B553 /* Extensions.swift in Sources */,
